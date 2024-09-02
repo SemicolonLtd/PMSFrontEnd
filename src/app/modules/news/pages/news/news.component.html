@@ -7,7 +7,7 @@
                 <p-tabPanel header="All News">
                     <div class="grid">
                         <div class="sm:col-12 md:col-6 big-card-container">
-                            <div class="big-card">
+                            <div class="big-card" [routerLink]="'details/' + bigCardNews.id">
                                 <p-card [header]="bigCardNews.title">
                                     <ng-template pTemplate="header">
                                         <img alt="Card" [src]="bigCardNews.image" />
@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <div class="sm:col-12 md:col-6 small-cards-container">
-                            <div class="small-card" *ngFor="let card of smallCardsNews">
+                            <div class="small-card" [routerLink]="'details/' + card.id" *ngFor="let card of smallCardsNews">
                                 <p-card [header]="card.title">
                                     <ng-template pTemplate="header">
                                         <img alt="Card" [src]="card.image" />

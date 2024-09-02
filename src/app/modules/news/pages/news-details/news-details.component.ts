@@ -7,13 +7,17 @@ import { Component } from '@angular/core';
 })
 export class NewsDetailsComponent {
   responsiveOptions: any[] = [
+    // {
+    //   breakpoint: '2000px',
+    //   numVisible: 4
+    // },
     {
         breakpoint: '1024px',
-        numVisible: 5
+        numVisible: 3
     },
     {
         breakpoint: '768px',
-        numVisible: 3
+        numVisible: 2
     },
     {
         breakpoint: '560px',
@@ -66,31 +70,64 @@ export class NewsDetailsComponent {
   },
   ]
 
-  projectsList: any[] = [
+  newsData: any[] = [
     {
       id:1,
-      image: 'assets/images/home/header-2.png',
-      title: 'EPICS of Early Facilites For  NEW GNN FIELD DEVELOPMENT',
-      date: '20/8/2023',
+      title: 'Harnessing the Power of the Seas for Sustainable Energy Solutions',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor',
+      image: '../../../../../assets/images/home/core-front.webp',
+      date: '2022-01-01',
+      type: 'offshore'
     },
     {
       id:1,
-      image: 'assets/images/home/header-2.png',
-      title: 'EPICS of Early Facilites For  NEW GNN FIELD DEVELOPMENT',
-      date: '20/8/2023',
+      title: 'Harnessing the Power of the Seas for Sustainable Energy Solutions',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor',
+      image: '../../../../../assets/images/home/project-2.jpg',
+      date: '2022-01-01',
+      type: 'Oil & Gas'
     },
     {
       id:1,
-      image: 'assets/images/home/header-2.png',
-      title: 'EPICS of Early Facilites For  NEW GNN FIELD DEVELOPMENT',
-      date: '20/8/2023',
+      title: 'Harnessing the Power of the Seas for Sustainable Energy Solutions',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor',
+      image: '../../../../../assets/images/home/project-3.jpg',
+      date: '2022-01-01',
+      type: 'offshore'
     },
     {
       id:1,
-      image: 'assets/images/home/header-2.png',
-      title: 'EPICS of Early Facilites For  NEW GNN FIELD DEVELOPMENT',
-      date: '20/8/2023',
-    }
+      title: 'Harnessing the Power of the Seas for Sustainable Energy Solutions',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor',
+      image: '../../../../../assets/images/home/project-4.jpg',
+      date: '2022-01-01',
+      type: 'Marine'
+    },
+    {
+      id:1,
+      title: 'Harnessing the Power of the Seas for Sustainable Energy Solutions',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor',
+      image: '../../../../../assets/images/home/project-2.jpg',
+      date: '2022-01-01',
+      type: 'Oil & Gas'
+    },
+    {
+      id:1,
+      title: 'Harnessing the Power of the Seas for Sustainable Energy Solutions',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor',
+      image: '../../../../../assets/images/home/project-3.jpg',
+      date: '2022-01-01',
+      type: 'offshore'
+    },
+    {
+      id:1,
+      title: 'Harnessing the Power of the Seas for Sustainable Energy Solutions',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor',
+      image: '../../../../../assets/images/home/project-4.jpg',
+      date: '2022-01-01',
+      type: 'Marine'
+    },
+    
   ]
 
 }

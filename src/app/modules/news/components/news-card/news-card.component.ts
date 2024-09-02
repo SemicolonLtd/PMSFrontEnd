@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./news-card.component.scss']
 })
 export class NewsCardComponent {
-  @Input() projectData:any;
+  @Input() newsData:any;
 }
