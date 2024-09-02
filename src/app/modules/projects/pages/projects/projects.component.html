@@ -1,5 +1,5 @@
 <div class="projects">
-    <img src="assets/images/global/pages-wave-top.webp" alt="" class="pages-wave-top">
+    <!-- <img src="assets/images/global/pages-wave-top.webp" alt="" class="pages-wave-top"> -->
     <app-search [Title]="'Our Projects'"></app-search>
     <div class="latest-project">
         <div class="pms-container">
@@ -46,7 +46,24 @@
                 [(ngModel)]="value" 
                 optionLabel="label" 
                 optionValue="value"
+                (onChange)="onSelectCategory($event)"
                 />
+            </div>
+            <div class="filtered-projects mt-5">
+                <div class="grid">
+                    <div class="card-wrapper xl:col-4 lg:col-6 md:col-12 mb-4">
+                        <app-project-card></app-project-card>
+                    </div>
+                    <div class="card-wrapper xl:col-4 lg:col-6 md:col-12">
+                        <app-project-card></app-project-card>
+                    </div>
+                    <div class="card-wrapper xl:col-4 lg:col-6 md:col-12">
+                        <app-project-card></app-project-card>
+                    </div>
+                    <div class="card-wrapper xl:col-4 lg:col-6 md:col-12">
+                        <app-project-card></app-project-card>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

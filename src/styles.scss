@@ -100,5 +100,20 @@ ul, li {
     z-index: -1;
 }
 
+.pages-wave-bottom {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.p-button.p-button-icon-only.p-button-rounded {
+    border-radius: 50%;
+    background-color: #EBF0F5;
+    border: none;
+    color: var(--primary-color);
+}
 
 

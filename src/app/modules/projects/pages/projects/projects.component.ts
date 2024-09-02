@@ -13,4 +13,9 @@ export class ProjectsComponent {
   ];
 
   value: string = 'completed-projects';
+
+  onSelectCategory(category: any): void {
+    console.log(category.value);
+    
+  }
 }

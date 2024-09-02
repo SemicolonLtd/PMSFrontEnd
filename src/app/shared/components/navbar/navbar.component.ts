@@ -14,10 +14,10 @@ export class NavbarComponent {
   lang = environment.lang;
   isSticky = false
   openNavDetails: boolean = false;
-  detailsType: string = ''
-  sidebarVisible: boolean = false
-  currentRoute!: string
-  private routerSubscription!: Subscription;
+  detailsType: string = '';
+  sidebarVisible: boolean = false;
+  currentRoute!: string;
+
   constructor(
     private router: Router
   ) {}
@@ -27,17 +27,7 @@ export class NavbarComponent {
       { name: 'Ar', code: 'ar' },
   ];
 
-  this.router.events
-  .pipe(
-    filter(
-      (event): event is NavigationEnd => event instanceof NavigationEnd
-    )
-  )
-  .subscribe((event: NavigationEnd) => {
-    console.log(event);
-    
-    this.currentRoute = event.url
-  });
+  this.checkCurrentRoute()
 }
 
   @HostListener('window:scroll', [])
@@ -70,5 +60,19 @@ export class NavbarComponent {
 
   onSidebarVisibilityChange(sidebarVisible: boolean): void {
     this.openNavDetails = sidebarVisible;
+  }
+
+  checkCurrentRoute(): void {
+    this.router.events
+    .pipe(
+      filter(
+        (event): event is NavigationEnd => event instanceof NavigationEnd
+      )
+    )
+    .subscribe((event: NavigationEnd) => {
+      console.log(event);
+      
+      this.currentRoute = event.url
+    });
   }
 }
