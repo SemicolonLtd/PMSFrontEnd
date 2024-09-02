@@ -1,0 +1,5 @@
+<app-navbar></app-navbar>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
+<p-button class="scroll-btn" icon="pi pi-arrow-up" [rounded]="true" *ngIf="pageYoffset > 200" (click)="scrollToTop()" label="Back to top"
+    [raised]="true"></p-button>

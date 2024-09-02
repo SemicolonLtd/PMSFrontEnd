@@ -1,0 +1,50 @@
+
+::ng-deep {
+    .navbar-details {
+        .p-sidebar .p-sidebar-header {
+            border-top: 1px solid var(--primary-color);
+            margin-top: 10rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-inline: 5%;
+            @media (max-width: 1200px) {
+                padding-inline: 3%;
+            }
+            @media (max-width: 992px) {
+                padding-inline: 2rem;
+                margin-top: 5rem;
+            }
+        }
+        .p-sidebar .p-sidebar-content {
+            padding-inline: 0;
+            overflow-y: unset;
+            @media (max-width:992px) {
+                margin-top:2rem
+            }
+        }
+        .discover-btn {
+            .p-button {
+                background: var(--primary-color-light);
+                border: 1px solid var(--primary-color-light);
+                border-radius: 7px;
+            }
+        }
+        .links-list {
+            ul {
+                li {
+                    cursor: pointer;
+                    margin-bottom: 1rem;
+                    transition: 0.3s all ease;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    &:hover {
+                        color: var(--primary-color-light);
+                    }
+                }
+            }
+        }
+    }
+
+}
+

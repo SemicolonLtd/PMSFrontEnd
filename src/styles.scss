@@ -1,0 +1,104 @@
+@import "primeicons/primeicons.css";
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+@font-face {
+    font-family: 'title-font';
+    src: url('./assets/fonts/BlenderPro-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'main-font';
+    src: url('./assets/fonts/AktivGroteskCorp-Regular.ttf');
+}
+
+:root {
+    --primary-color: #141414;
+    --primary-color-light: #5894AC;
+    --primary-color-medium: #1B2E5E;
+    --secondary-color: #007236;
+}
+
+body {
+    font-family: 'main-font', sans-serif;
+    overflow-x: hidden;
+}
+
+html {
+    @media (max-width: 1440px) {
+        font-size: 14px;
+    }
+    @media (max-width: 1300px) {
+        font-size: 13px;
+    }
+}
+
+* {
+    // padding: 0;
+    // margin: 0;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'title-font';
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color-light);
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+.title-font-size {
+    font-size: 2.2rem;
+}
+
+.subtitle-font-size {
+    font-size: 1.8rem;
+}
+
+.color-primary {
+    color: var(--primary-color)
+}
+
+.color-primary-light {
+    color: var(--primary-color-light)
+}
+
+.color-primary-medium {
+    color: var(--primary-color-medium)
+}
+
+.color-secondary {
+    color: var(--secondary-color)
+}
+
+.pms-container {
+    padding-inline: 5%;
+    @media (max-width: 1200px) {
+        padding-inline: 3%;
+    }
+    @media (max-width: 992px) {
+        padding-inline: 2rem;
+    }
+}
+
+.sm\:col-12 {
+    @media (max-width: 575px) {
+        width: 100%;
+    }
+}
+
+.pages-wave-top {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+
+

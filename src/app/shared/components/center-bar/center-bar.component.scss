@@ -1,0 +1,18 @@
+.center-bar {
+    background-color: var(--primary-color-medium);
+    color: white;
+    .wrapper {
+        width: 40%;
+        margin-inline: auto;
+        padding-block: 2rem;
+        @media( max-width: 992px) {
+            width: 50%;
+        }
+        @media( max-width: 768px) {
+            width: 80%;
+        }
+        @media( max-width: 576px) {
+            width: 90%;
+        }
+    }
+}

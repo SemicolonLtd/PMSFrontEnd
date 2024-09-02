@@ -1,0 +1,179 @@
+<nav class="nav-container desktop" [ngClass]="{'nav-sticky': (isSticky && !openNavDetails), 'nav-on-details': (openNavDetails || currentRoute != '/')}">
+    <div class="topbar">
+        <div class="pms-container w-full">
+            <div class="topbar-wrapper flex align-items-center justify-content-between">
+                <div class="nav-links">
+                    <ul class="flex align-items-center">
+                        <li>
+                            <a (click)="onSelectLink('/', true)">Home</a>
+                        </li>
+                        <li>
+                            <a (click)="onSelectLink('about us', false)">About Us</a>
+                        </li>
+                        <li>
+                            <a (click)="onSelectLink('Our Strategy', false)">Our Strategy</a>
+                        </li>
+                        <li>
+                            <a (click)="onSelectLink('Core Business', false)">Core Business</a>
+                        </li>
+                        <li>
+                            <a (click)="onSelectLink('Key Assets', false)">Key Assets</a>
+                        </li>
+                        <li>
+                            <a (click)="onSelectLink('projects', true)">Projects</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-social-langs flex align-items-center justify-content-between">
+                    <div class="social">
+                        <a href="">
+                            <i class="pi pi-instagram"></i>
+                        </a>
+                        <a href="">
+                            <i class="pi pi-linkedin"></i>
+                        </a>
+                        <a href="">
+                            <i class="pi pi-youtube"></i>
+                        </a>
+                    </div>
+                    <div class="langs">
+                        <p-dropdown 
+                        [options]="langs" 
+                        [(ngModel)]="lang" 
+                        (onChange)="changeLang($event)"
+                        optionLabel="name" 
+                        (ngModelChange)="changeLang($event)"
+                        class="lang hide-responsive"
+                        [placeholder]="lang" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="navbar">
+        <div class="pms-container w-full">
+            <div class="navbar-wrapper flex align-items-center justify-content-between">
+                <div class="logo-wrapper">
+                    <a routerLink="/" class="flex align-items-center">
+                        <img class="logo-img" src="assets/images/global/logo.svg" alt="">
+                        <h1 class="logo-txt" *ngIf="!isSticky">Petroleum Marine Services Co.</h1>
+                    </a>
+                </div>
+                
+                <div class="nav-links">
+                    <ul class="flex align-items-center">
+                        <ng-container *ngIf="isSticky">
+                            <li>
+                                <a (click)="onSelectLink('about us', false)">About Us</a>
+                            </li>
+                            <li>
+                                <a (click)="onSelectLink('Our Strategy', false)">Our Strategy</a>
+                            </li>
+                            <li>
+                                <a (click)="onSelectLink('Core Business', false)">Core Business</a>
+                            </li>
+                            <li>
+                                <a (click)="onSelectLink('Key Assets', false)">Key Assets</a>
+                            </li>
+                            <li>
+                                <a (click)="onSelectLink('Projects', false)">Projects</a>
+                            </li>
+                        </ng-container>
+                        <li>
+                            <a (click)="onSelectLink('Contact Us', false)">Contact Us</a>
+                        </li>
+                        <li>
+                            <a (click)="onSelectLink('Media Center', false)">Media Center</a>
+                        </li>
+                        <li>
+                            <a (click)="onSelectLink('HSE', false)">HSE</a>
+                        </li>
+                        <li>
+                            <a (click)="onSelectLink('Certificates', false)">Certificates</a>
+                        </li>
+                        <li>
+                            <a (click)="onSelectLink('Sustainability', false)">Sustainability</a>
+                        </li>
+                        <li>
+                            <a (click)="onSelectLink('Search', false)">
+                                <i class="pi pi-search"></i>
+                            </a>
+                        </li>
+                        <!-- <li>
+                            <div class="langs">
+                                <p-dropdown 
+                                [options]="langs" 
+                                [(ngModel)]="lang" 
+                                (onChange)="changeLang($event)"
+                                optionLabel="name" 
+                                (ngModelChange)="changeLang($event)"
+                                class="lang hide-responsive"
+                                [placeholder]="lang" />
+                            </div>
+                        </li> -->
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+
+<nav class="nav-mobile" [ngClass]="{'nav-sticky': (isSticky && !openNavDetails), 'nav-on-details': openNavDetails}">
+    <div class="pms-container flex justify-content-between align-items-center">
+        <img class="w-5rem" src="assets/images/global/logo.svg" alt="">
+
+        <p-sidebar [(visible)]="sidebarVisible">
+            <ng-template pTemplate="header">
+                <div class="flex align-items-center gap-2">
+                    <img class="w-7rem" src="assets/images/global/logo.svg" alt="">
+                </div>
+            </ng-template>
+            <div class="nav-links">
+                <ul>
+                    <li>
+                        <a (click)="onSelectLink('about us', false)">About Us</a>
+                    </li>
+                    <li>
+                        <a (click)="onSelectLink('Our Strategy', false)">Our Strategy</a>
+                    </li>
+                    <li>
+                        <a (click)="onSelectLink('Core Business', false)">Core Business</a>
+                    </li>
+                    <li>
+                        <a (click)="onSelectLink('Key Assets', false)">Key Assets</a>
+                    </li>
+                    <li>
+                        <a (click)="onSelectLink('Projects', false)">Projects</a>
+                    </li>
+                    <li>
+                        <a (click)="onSelectLink('Contact Us', false)">Contact Us</a>
+                    </li>
+                    <hr>
+                    <li>
+                        <a (click)="onSelectLink('Media Center', false)">Media Center</a>
+                    </li>
+                    <li>
+                        <a (click)="onSelectLink('HSE', false)">HSE</a>
+                    </li>
+                    <li>
+                        <a (click)="onSelectLink('Certificates', false)">Certificates</a>
+                    </li>
+                    <li>
+                        <a (click)="onSelectLink('Sustainability', false)">Sustainability</a>
+                    </li>
+                </ul>
+            </div>
+        </p-sidebar>
+        <p-button (onClick)="sidebarVisible = true" icon="pi pi-bars" />
+    </div>
+</nav>
+
+<ng-container *ngIf="detailsType">
+    <app-navbar-details 
+    [sidebarVisible]="openNavDetails" 
+    [detailsType]="detailsType"
+    (sidebarVisibilityChange)="onSidebarVisibilityChange($event)">
+  </app-navbar-details>
+</ng-container>

@@ -1,0 +1,38 @@
+<div class="navbar-details">
+    <p-sidebar [(visible)]="sidebarVisible" [fullScreen]="true" (onHide)="onSidebarHide()">
+        <ng-template pTemplate="header">
+            <div>
+                <h3>{{detailsType}}</h3>
+                <span>Discover PMS {{detailsType}}</span>
+            </div>
+        </ng-template>
+        <div class="details-content">
+            <div class="pms-container">
+                <div class="grid">
+                    <div class="lg:col-3">
+                        <div class="discover-btn">
+                            <p-button 
+                                label="Discover More" 
+                                icon="pi pi-arrow-right" 
+                            />
+                        </div>
+                    </div>
+                    <div class="lg:col-9">
+                        <div class="links-list">
+                            <ul>
+                                <li>
+                                    Press Release
+                                </li>
+                                <li>
+                                    Events
+                                </li>
+                                <li>photogallery</li>
+                                <li>videogallery</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p-sidebar>
+</div>

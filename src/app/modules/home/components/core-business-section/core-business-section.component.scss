@@ -1,0 +1,49 @@
+.core-business-section {
+    background-image: url('../../../../../assets/images/home/bg-wave-top.jpg');
+    background-repeat: no-repeat;
+    position: relative;
+    z-index:2;
+
+    .core-info {
+        .core-card {
+            background: linear-gradient(to bottom, #FFFFFF, #B1C7E5);
+            transition: 0.4s all ease;
+            &:hover {
+                background: linear-gradient(to bottom, #B1C7E5, #FFFFFF);
+                transform: scale(1.03, 1.03);
+            }
+        }
+    }
+    .core-images {
+        @media (max-width: 992px) {
+            display: none;
+        }
+        .front, .back {
+            position: absolute;
+            img {
+                width: 30rem;
+            }
+        }
+        .front {
+            top: 0;
+            right: 5%;
+            z-index: 2;
+            transition: 0.4s all ease;
+            &:hover {
+                right: 7%;
+            }
+        }
+        .back {
+            top: -5%;
+            right: 0;
+            z-index: 1;
+        }
+
+    }
+    .wave-top {
+        width: 35rem;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+}

@@ -1,0 +1,34 @@
+::ng-deep {
+    .search-pages {
+        border: 4px solid #A9C3E2;
+        border-top: none;
+        padding-bottom: 5rem;
+        .search-content {
+            padding-top: 2.5rem;
+            width: 40%;
+            margin-inline: auto;
+            padding-bottom: 2rem;
+            @media( max-width: 992px) {
+                width: 50%;
+            }
+            @media( max-width: 768px) {
+                width: 80%;
+            }
+            @media( max-width: 576px) {
+                width: 90%;
+            }
+            .p-inputtext {
+                width: 100%;
+                margin-block: 2rem 1rem;
+            }
+            .search-btn {
+                .p-button {
+                    width: 100%;
+                    background: var(--primary-color-medium);
+                    border: 1px solid var(--primary-color-medium);
+                    border-radius: 7px;
+                }
+            }
+        }
+    }
+}
