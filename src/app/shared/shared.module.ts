@@ -13,6 +13,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SearchComponent } from './components/search/search.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { CenterBarComponent } from './components/center-bar/center-bar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CenterBarComponent } from './components/center-bar/center-bar.component
     HttpClientModule,
     SidebarModule,
     ButtonModule,
-    InputTextModule
+    InputTextModule,
+    RouterModule
   ],
   exports: [
     NavbarComponent,
