@@ -1,4 +1,4 @@
 export const environment = {
     lang:'en',
-    // apiUrl: 'https://travelapi.toortravel.com/public/api',
+    apiUrl: 'https://pms.gostcode.com/public/pms/api'
 };
