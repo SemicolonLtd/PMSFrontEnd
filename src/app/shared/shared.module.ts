@@ -14,6 +14,7 @@ import { SearchComponent } from './components/search/search.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { CenterBarComponent } from './components/center-bar/center-bar.component';
 import { RouterModule } from '@angular/router';
+import { ProjectCardComponent } from './components/project-card/project-card.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RouterModule } from '@angular/router';
     NavbarDetailsComponent,
     FooterComponent,
     SearchComponent,
-    CenterBarComponent
+    CenterBarComponent,
+    ProjectCardComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,9 @@ import { RouterModule } from '@angular/router';
     NavbarDetailsComponent,
     FooterComponent,
     SearchComponent,
-    CenterBarComponent
+    CenterBarComponent,
+    ProjectCardComponent
+
   ]
 })
 export class SharedModule { }
