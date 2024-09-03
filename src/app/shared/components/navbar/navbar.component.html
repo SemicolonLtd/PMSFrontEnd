@@ -5,7 +5,7 @@
                 <div class="nav-links">
                     <ul class="flex align-items-center">
                         <li>
-                            <a (click)="onSelectLink('/', true)">Home</a>
+                            <a routerLink="/">Home</a>
                         </li>
                         <li>
                             <a (click)="onSelectLink('about us', false)">About Us</a>
@@ -14,7 +14,7 @@
                             <a (click)="onSelectLink('Our Strategy', false)">Our Strategy</a>
                         </li>
                         <li>
-                            <a (click)="onSelectLink('Core Business', false)">Core Business</a>
+                            <a (click)="onSelectLink('core-business', true)">Core Business</a>
                         </li>
                         <li>
                             <a (click)="onSelectLink('Key Assets', false)">Key Assets</a>
@@ -71,20 +71,20 @@
                                 <a (click)="onSelectLink('Our Strategy', false)">Our Strategy</a>
                             </li>
                             <li>
-                                <a (click)="onSelectLink('Core Business', false)">Core Business</a>
+                                <a (click)="onSelectLink('core-business', true)">Core Business</a>
                             </li>
                             <li>
                                 <a (click)="onSelectLink('Key Assets', false)">Key Assets</a>
                             </li>
                             <li>
-                                <a (click)="onSelectLink('Projects', false)">Projects</a>
+                                <a (click)="onSelectLink('projects', true)">Projects</a>
                             </li>
                         </ng-container>
                         <li>
                             <a (click)="onSelectLink('Contact Us', false)">Contact Us</a>
                         </li>
                         <li>
-                            <a (click)="onSelectLink('Media Center', false)">Media Center</a>
+                            <a routerLink="/news">Media Center</a>
                         </li>
                         <li>
                             <a (click)="onSelectLink('HSE', false)">HSE</a>
@@ -139,20 +139,20 @@
                         <a (click)="onSelectLink('Our Strategy', false)">Our Strategy</a>
                     </li>
                     <li>
-                        <a (click)="onSelectLink('Core Business', false)">Core Business</a>
+                        <a (click)="onSelectLink('core-business', true)">Core Business</a>
                     </li>
                     <li>
                         <a (click)="onSelectLink('Key Assets', false)">Key Assets</a>
                     </li>
                     <li>
-                        <a (click)="onSelectLink('Projects', false)">Projects</a>
+                        <a (click)="onSelectLink('projects', true)">Projects</a>
                     </li>
                     <li>
                         <a (click)="onSelectLink('Contact Us', false)">Contact Us</a>
                     </li>
                     <hr>
                     <li>
-                        <a (click)="onSelectLink('Media Center', false)">Media Center</a>
+                        <a routerLink="/news">Media Center</a>
                     </li>
                     <li>
                         <a (click)="onSelectLink('HSE', false)">HSE</a>

@@ -1,0 +1,82 @@
+<div class="news-details margin-avoid-navbar">
+<div class="pms-container">
+    <div class="news-info">
+        <div class="grid">
+            <div class="col-12">
+                <h2 class="news-title">EPICS of Early Facilites For  NEW GNN FIELD DEVELOPMENT</h2>
+            </div>
+            <div class="lg:col-6 md:col-12">
+                <div class="news-images">
+                    <p-galleria 
+                        [value]="images" 
+                        [responsiveOptions]="responsiveOptions" 
+                        [numVisible]="5">
+                            <ng-template pTemplate="item" let-item>
+                                <img [src]="item.itemImageSrc" style="width: 100%;" />
+                            </ng-template>
+                            <ng-template pTemplate="thumbnail" let-item>
+                                <div class="grid grid-nogutter justify-content-center">
+                                    <img [src]="item.thumbnailImageSrc" style="width: 100%;" />
+                                </div>
+                            </ng-template>
+                    </p-galleria>
+                </div>
+            </div>
+            <div class="lg:col-6 md:col-12">
+                <div class="info">
+                    <span class="title block font-bold text-2xl mb-4 pb-2">
+                        news Details
+                    </span>
+                    <div class="info-wrapper flex align-items-center mb-2">
+                        <i class="pi pi-clock text-gray-900"></i>
+                        <span class="label text-gray-900">news Type: </span>
+                        <span class="data">Assiut Oil Refining Co.</span>
+                    </div>
+                    <div class="info-wrapper flex align-items-center mb-2">
+                        <i class="pi pi-clock text-gray-900"></i>
+                        <span class="label text-gray-900">news Type: </span>
+                        <span class="data">Assiut Oil Refining Co.</span>
+                    </div>
+                    <div class="info-wrapper flex align-items-center mb-2">
+                        <i class="pi pi-clock text-gray-900"></i>
+                        <span class="label text-gray-900">news Type: </span>
+                        <span class="data">Assiut Oil Refining Co.</span>
+                    </div>
+                    <div class="info-wrapper flex align-items-center mb-2">
+                        <i class="pi pi-clock text-gray-900"></i>
+                        <span class="label text-gray-900">news Type: </span>
+                        <span class="data">Assiut Oil Refining Co.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="news-description mt-5">
+        <span class="title block font-bold text-2xl mb-2">
+            Simplicity and Functionality
+        </span>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate nihil ab dolore deserunt. Dolores itaque quod eum. Illo, placeat, tempore facilis aliquam aut similique, adipisci doloribus quidem maiores nulla ipsum alias vero dolores accusantium iste animi ab. Facilis voluptates possimus corporis reprehenderit praesentium! At impedit nihil corrupti odio repellat, laboriosam aliquam error veniam sint aperiam officiis placeat officia esse consequatur, consequuntur ipsam voluptatum sequi alias facilis tenetur illo doloremque dolores. Ad corrupti alias quibusdam eveniet sequi necessitatibus fuga nulla laudantium corporis, maiores deserunt natus incidunt libero quasi aliquid consequuntur molestiae distinctio obcaecati dolorem asperiores fugiat perferendis tenetur earum in? Dolore hic, perferendis totam quae nisi earum quisquam sit tempore placeat tenetur sint illo accusamus consectetur vel aliquam quia? Ducimus nam quae, minus sequi laudantium, maiores et sint aliquid dolorum vitae, voluptatum optio obcaecati magnam quia quis similique quidem veritatis culpa deleniti. Delectus earum assumenda sit commodi aspernatur? Ipsum obcaecati sapiente, et in iste architecto numquam voluptatem dolore veniam. Veritatis eos, obcaecati quis temporibus necessitatibus sint, consectetur voluptates soluta saepe praesentium, explicabo nam nulla. Quos nihil corrupti nostrum nobis perspiciatis accusantium dolore porro provident quas dicta! Saepe eius aliquam laborum sit, totam, nam distinctio voluptate neque ipsam quod, eos perferendis eaque.
+        </p>
+    </div>
+    <div class="similar-news mt-5">
+        <span class="title block font-bold text-2xl pb-2 mb-4">
+            Similar News
+        </span>
+        <p-carousel 
+            [value]="newsData" 
+            [numVisible]="3" 
+            [numScroll]="3" 
+            [circular]="true" 
+            [responsiveOptions]="responsiveOptions" 
+            autoplayInterval="3000">
+                <ng-template let-news pTemplate="item">
+                    <div class="mx-2">
+                        <app-news-card [newsData]="news"></app-news-card>
+                    </div>
+                </ng-template>
+        </p-carousel>
+
+    </div>
+</div>
+</div>

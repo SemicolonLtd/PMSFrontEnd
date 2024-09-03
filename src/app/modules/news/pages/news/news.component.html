@@ -1,0 +1,69 @@
+<div class="news margin-avoid-navbar">
+    <!-- <img src="assets/images/global/pages-wave-top.webp" alt="" class="pages-wave-top"> -->
+    <app-search [Title]="'Our News'"></app-search>
+    <div class="pms-container">
+        <div class="news-data">
+            <p-tabView>
+                <p-tabPanel header="All News">
+                    <div class="grid">
+                        <div class="sm:col-12 md:col-6 big-card-container">
+                            <div class="big-card" [routerLink]="'details/' + bigCardNews.id">
+                                <p-card [header]="bigCardNews.title">
+                                    <ng-template pTemplate="header">
+                                        <img alt="Card" [src]="bigCardNews.image" />
+                                    </ng-template>
+                                    <span class="news-badge mobile">
+                                        {{bigCardNews.type}}
+                                    </span>
+                                    <p>
+                                        {{bigCardNews.description | slice: 0: 30}}
+                                    </p>
+                                    <ng-template pTemplate="footer">
+                                        <span>{{bigCardNews.date}}</span>
+                                    </ng-template>
+                                </p-card>
+                                <span class="news-badge desktop">
+                                    {{bigCardNews.type}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="sm:col-12 md:col-6 small-cards-container">
+                            <div class="small-card" [routerLink]="'details/' + card.id" *ngFor="let card of smallCardsNews">
+                                <p-card [header]="card.title">
+                                    <ng-template pTemplate="header">
+                                        <img alt="Card" [src]="card.image" />
+                                    </ng-template>
+                                    <span class="news-badge">
+                                        {{bigCardNews.type}}
+                                    </span>
+                                    <p>
+                                        {{card.description | slice: 0: 30}}
+                                    </p>
+                                    <ng-template pTemplate="footer">
+                                        <span>{{card.date}}</span>
+                                        
+                                    </ng-template>
+                                </p-card>
+                            </div>
+                        </div>
+                    </div>
+                </p-tabPanel>
+                <p-tabPanel header="Offshore">
+                    <p>
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium...
+                    </p>
+                </p-tabPanel>
+                <p-tabPanel header="Marine">
+                    <p>
+                        At vero eos et accusamus et iusto odio dignissimos...
+                    </p>
+                </p-tabPanel>
+                <p-tabPanel header="Oil & Gas">
+                    <p>
+                        At vero eos et accusamus et iusto odio dignissimos...
+                    </p>
+                </p-tabPanel>
+            </p-tabView>
+        </div>
+    </div>
+</div>

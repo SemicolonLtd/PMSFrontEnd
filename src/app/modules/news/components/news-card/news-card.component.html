@@ -1,0 +1,18 @@
+<div class="news-card-container" [routerLink]="'details/' + newsData.id">
+    <div class="news-card">
+        <p-card [header]="newsData.title">
+            <ng-template pTemplate="header">
+                <img alt="Card" [src]="newsData.image" />
+            </ng-template>
+            <p>
+                {{newsData.description | slice: 0: 30}}
+            </p>
+            <ng-template pTemplate="footer">
+                <span>{{newsData.date}}</span>
+            </ng-template>
+        </p-card>
+        <span class="news-badge desktop">
+            {{newsData.type}}
+        </span>
+    </div>
+</div>

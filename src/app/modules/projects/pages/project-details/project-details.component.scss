@@ -1,0 +1,43 @@
+.project-details {
+    .project-info {
+        .info {
+            .title {
+                position: relative;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 13rem;
+                    height: 2.5px;
+                    // border-bottom: 2px solid var(--secondary-color);
+                    background-color: var(--secondary-color);
+                }
+            }
+            .info-wrapper {
+                .label {
+                    font-weight: 600;
+                    margin-inline-end: 0.6rem;
+                }
+                i {
+                    margin-inline-end: 0.3rem;
+                }
+            }
+        }
+    }
+    .similar-projects {
+        .title {
+            position: relative;
+            &:before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 13rem;
+                height: 2.5px;
+                // border-bottom: 2px solid var(--secondary-color);
+                background-color: var(--secondary-color);
+            }
+        }
+    }
+}

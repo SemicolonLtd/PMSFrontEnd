@@ -29,7 +29,7 @@
         padding-block: 6rem;
     }
     @media (max-width: 992px) {
-        padding-inline: 2rem;
+        // padding-inline: 2rem;
         margin-top: 5rem;
     }
 
@@ -48,12 +48,28 @@
             .filter-btns {
                 .p-selectbutton .p-button {
                     border-color: var(--primary-color-medium);
+                    @media(max-width:576px) {
+                        padding: 0.75rem 0.4rem;
+                    }
+                    @media(max-width:475px) {
+                        font-size: 0.8rem;
+                    }
+                    @media(max-width:412px) {
+                        padding: 0.75rem 0.25rem;
+                        font-size: 0.58rem;
+                    }
                 }
                 .p-selectbutton .p-button.p-highlight {
                     background:var(--primary-color-medium);
                     transform: scale(1.1) translate(0px, -3px);
                     border-radius: 6px;
                     z-index: 2;
+                    @media(max-width:576px) {
+                        transform: scale(1.05) translate(0px, -1px);
+                    }
+                    @media(max-width:412px) {
+                        transform: scale(1) translate(0px, 0px);
+                    }
                 }
             }
         }
