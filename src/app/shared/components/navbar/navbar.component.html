@@ -114,7 +114,29 @@
                         </li> -->
                     </ul>
                 </div>
-                
+                <div class="nav-social-langs flex align-items-center justify-content-between" *ngIf="isSticky">
+                    <div class="social">
+                        <a href="">
+                            <i class="pi pi-instagram"></i>
+                        </a>
+                        <a href="">
+                            <i class="pi pi-linkedin"></i>
+                        </a>
+                        <a href="">
+                            <i class="pi pi-youtube"></i>
+                        </a>
+                    </div>
+                    <div class="langs">
+                        <p-dropdown 
+                        [options]="langs" 
+                        [(ngModel)]="lang" 
+                        (onChange)="changeLang($event)"
+                        optionLabel="name" 
+                        (ngModelChange)="changeLang($event)"
+                        class="lang hide-responsive"
+                        [placeholder]="lang" />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
