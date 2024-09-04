@@ -15,6 +15,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CenterBarComponent } from './components/center-bar/center-bar.component';
 import { RouterModule } from '@angular/router';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
+import { EventCardComponent } from './components/event-card/event-card.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ProjectCardComponent } from './components/project-card/project-card.com
     FooterComponent,
     SearchComponent,
     CenterBarComponent,
-    ProjectCardComponent
+    ProjectCardComponent,
+    EventCardComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,8 @@ import { ProjectCardComponent } from './components/project-card/project-card.com
     FooterComponent,
     SearchComponent,
     CenterBarComponent,
-    ProjectCardComponent
+    ProjectCardComponent,
+    EventCardComponent
 
   ]
 })

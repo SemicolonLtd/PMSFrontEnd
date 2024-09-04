@@ -1,0 +1,25 @@
+<div class="event-card" [routerLink]="'details/'+ eventData.id">
+    <div class="img-wrapper">
+        <img class="w-full border-round-3xl" [src]="eventData.image" alt="Project Image">
+    </div>
+    <div class="content">
+        <div class="data">
+            <div class="info">
+                <h5 class="title">
+                    {{eventData.title}}
+                </h5>
+                <p class="short-desc">
+                    {{eventData.desc | slice : 0 : 200}}
+                </p>
+            </div>
+        </div>
+        <div class="actions flex align-items-center justify-content-between">
+            <span class="date">
+                {{eventData.date}}
+            </span>
+            <div class="details-btn">
+                <p-button icon="pi pi-share-alt" [rounded]="true" severity="secondary"/>
+            </div>
+        </div>
+    </div>
+</div>
