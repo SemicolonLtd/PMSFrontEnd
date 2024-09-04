@@ -13,9 +13,9 @@ export class NavbarComponent {
   langs: any[] | undefined;
   lang = environment.lang;
   isSticky = false
-  openNavDetails: boolean = false;
+  navDetailsOpened: boolean = false;
   detailsType: string = '';
-  sidebarVisible: boolean = false;
+  sidebarMobileVisible: boolean = false;
   currentRoute!: string;
 
   constructor(
@@ -47,19 +47,19 @@ export class NavbarComponent {
   }
 
   onSelectLink(type: any, directRoute: boolean): void {
+    this.sidebarMobileVisible = false;
+
     if (directRoute) {
       this.router.navigate(['/' + type]);
-      this.sidebarVisible = false;
-      this.openNavDetails = false;
+      this.navDetailsOpened = false;
     } else {
       this.detailsType = type
-      this.sidebarVisible = false;
-      this.openNavDetails = true;
+      this.navDetailsOpened = true;
     }
   }
 
-  onSidebarVisibilityChange(sidebarVisible: boolean): void {
-    this.openNavDetails = sidebarVisible;
+  onNavDetailsVisibilityChange(NavDetailsVisible: boolean): void {
+    this.navDetailsOpened = NavDetailsVisible;
   }
 
   checkCurrentRoute(): void {

@@ -1,5 +1,5 @@
-<nav class="nav-container desktop" [ngClass]="{'nav-sticky': (isSticky && !openNavDetails), 'nav-on-details': (openNavDetails || currentRoute != '/')}">
-    <div class="topbar">
+<nav class="nav-container desktop" [ngClass]="{'nav-sticky': (isSticky || navDetailsOpened), 'nav-on-details': (navDetailsOpened || currentRoute != '/')}">
+    <div class="topbar" *ngIf="!navDetailsOpened">
         <div class="pms-container w-full">
             <div class="topbar-wrapper flex align-items-center justify-content-between">
                 <div class="nav-links">
@@ -57,13 +57,13 @@
                 <div class="logo-wrapper">
                     <a routerLink="/" class="flex align-items-center">
                         <img class="logo-img" src="assets/images/global/logo.svg" alt="">
-                        <h1 class="logo-txt" *ngIf="!isSticky">Petroleum Marine Services Co.</h1>
+                        <h1 class="logo-txt">Petroleum Marine Services Co.</h1>
                     </a>
                 </div>
                 
                 <div class="nav-links">
                     <ul class="flex align-items-center">
-                        <ng-container *ngIf="isSticky">
+                        <ng-container *ngIf="isSticky || navDetailsOpened">
                             <li>
                                 <a (click)="onSelectLink('about us', false)">About Us</a>
                             </li>
@@ -114,7 +114,7 @@
                         </li> -->
                     </ul>
                 </div>
-                <div class="nav-social-langs flex align-items-center justify-content-between" *ngIf="isSticky">
+                <div class="nav-social-langs flex align-items-center justify-content-between" *ngIf="isSticky || navDetailsOpened">
                     <div class="social">
                         <a href="">
                             <i class="pi pi-instagram"></i>
@@ -142,11 +142,11 @@
     </div>
 </nav>
 
-<nav class="nav-mobile" [ngClass]="{'nav-sticky': (isSticky && !openNavDetails), 'nav-on-details': openNavDetails}">
+<nav class="nav-mobile" [ngClass]="{'nav-sticky': (isSticky && !navDetailsOpened), 'nav-on-details': navDetailsOpened}">
     <div class="pms-container flex justify-content-between align-items-center">
         <img class="w-5rem" src="assets/images/global/logo.svg" alt="">
 
-        <p-sidebar [(visible)]="sidebarVisible">
+        <p-sidebar [(visible)]="sidebarMobileVisible">
             <ng-template pTemplate="header">
                 <div class="flex align-items-center gap-2">
                     <img class="w-7rem" src="assets/images/global/logo.svg" alt="">
@@ -188,14 +188,14 @@
                 </ul>
             </div>
         </p-sidebar>
-        <p-button (onClick)="sidebarVisible = true" icon="pi pi-bars" />
+        <p-button (onClick)="sidebarMobileVisible = true" icon="pi pi-bars" />
     </div>
 </nav>
 
 <ng-container *ngIf="detailsType">
     <app-navbar-details 
-    [sidebarVisible]="openNavDetails" 
+    [navDetailsVisible]="navDetailsOpened" 
     [detailsType]="detailsType"
-    (sidebarVisibilityChange)="onSidebarVisibilityChange($event)">
+    (navDetailsVisibilityChange)="onNavDetailsVisibilityChange($event)">
   </app-navbar-details>
 </ng-container>

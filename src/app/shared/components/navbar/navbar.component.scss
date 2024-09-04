@@ -52,7 +52,7 @@
 .nav-on-details {
     z-index: 1106;
     .navbar {
-        background-color: #A8C8E8;
+        // background-color: #A8C8E8;
         .navbar-wrapper {
             a {
                 color: var(--primary-color);
@@ -71,6 +71,16 @@
 
 }
 
+.navSubPages {
+    .navbar {
+        .navbar-wrapper {
+            a {
+                color: var(--primary-color);
+            }
+        }
+    }
+}
+
 
 .nav-sticky {
     position: sticky;
@@ -80,8 +90,13 @@
         display: none;
     }
     .navbar {
-        // background-color: #dededec7;
+        background-color: #ffffff;
         .navbar-wrapper {
+            .logo-wrapper {
+                .logo-txt {
+                    display: none;
+                }
+            }
             a {
                 color: var(--primary-color);;
             }
@@ -153,7 +168,9 @@
 
 
 .navbar {
-    background-color: #FFFFFF21;
+    // background-color: #FFFFFF21;
+    background-color: #a8c8e875;
+
     padding-block: 1rem;
     .navbar-wrapper {
         a {
