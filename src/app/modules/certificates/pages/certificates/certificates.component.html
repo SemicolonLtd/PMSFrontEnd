@@ -1,0 +1,41 @@
+<div class="certificates">
+    <div class="header flex align-items-center justify-content-center">
+        <img src="assets/images/global/certificates.webp" alt="" class="cover">
+        <div class="content">
+            <h2 class="title">Certificates</h2>
+            <span class="text mt-3">
+                Good people delivering an honest value 
+            </span>
+        </div>
+    </div>
+    <div class="center-bar flex align-items-center justify-content-center my-5">
+        <div class="wrapper text-center">
+            <h4 class="title subtitle-font-size">PMS Certificates </h4>
+            <span class="txt">
+                It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.
+            </span>
+        </div>
+    </div>
+    <div class="all-certificates">
+        <div class="pms-container">
+            <div class="grid justify-content-center">
+                <div class="xl:col-3 md:col-4 sm:col-6 mb-4" *ngFor="let certificate of certificatesList">
+                    <div class="certificate-card">
+                        <p-image 
+                            [src]="certificate.img"
+                            alt="Image"
+                            [preview]="true" 
+                        >
+                        <ng-template pTemplate="indicator">
+                            <img class="h-6rem" src="assets/images/global/certificate-icon.svg" alt="">
+                        </ng-template>
+                    </p-image>
+                        <div class="card-footer">
+                            <h3 class="card-title">{{certificate.title}}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

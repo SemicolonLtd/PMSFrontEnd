@@ -10,7 +10,9 @@
 ::ng-deep {
     .scroll-btn {
         button {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius:20px;
             width: 6rem;
             height: 6rem;
