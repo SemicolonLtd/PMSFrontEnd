@@ -2,8 +2,8 @@
     <p-sidebar [(visible)]="sidebarVisible" [fullScreen]="true" (onHide)="onSidebarHide()">
         <ng-template pTemplate="header">
             <div>
-                <h3>{{detailsType}}</h3>
-                <span>Discover PMS {{detailsType}}</span>
+                <h3>{{detailsTitle}}</h3>
+                <span>Discover PMS {{detailsTitle}}</span>
             </div>
         </ng-template>
         <div class="details-content">
@@ -20,14 +20,10 @@
                     <div class="lg:col-9">
                         <div class="links-list">
                             <ul>
-                                <li>
-                                    Press Release
+                                <li *ngFor="let link of displayedLinks" 
+                                    (click)="openLink(link)">
+                                    {{ link?.name }}
                                 </li>
-                                <li>
-                                    Events
-                                </li>
-                                <li>photogallery</li>
-                                <li>videogallery</li>
                             </ul>
                         </div>
                     </div>

@@ -1,30 +1,29 @@
-import { Component, EventEmitter, Input, Output, Renderer2, SimpleChange } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { NavbarService } from './../../../core/services/navbar.service';
+import { Component, EventEmitter, Input, OnChanges, Output, Renderer2, SimpleChange, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar-details',
   templateUrl: './navbar-details.component.html',
   styleUrls: ['./navbar-details.component.scss']
 })
-export class NavbarDetailsComponent {
+export class NavbarDetailsComponent implements OnChanges {
   @Input() sidebarVisible: boolean = false;
-  @Input() detailsType!: string;
+  @Input() displayedLinks: any[] = [];
+  @Input() detailsType: string = '';
+  @Input() detailsTitle: string = '';
   @Output() sidebarVisibilityChange = new EventEmitter<boolean>();
-  subscriptions = new Subscription()
-  loading: boolean = true;
-  linksList: any[] = []
 
   constructor(
     private renderer: Renderer2,
-    private navbarService: NavbarService
-    ) {}
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    this.getNavLinkDetails();
   }
 
-  ngOnChanges(changes: SimpleChange): void {
+  ngOnChanges(changes: SimpleChanges): void {
+    this.displayedLinks = changes['displayedLinks']?.currentValue ? changes['displayedLinks']?.currentValue : this.displayedLinks;
+    this.detailsType = changes['detailsType']?.currentValue ? changes['detailsType']?.currentValue : this.detailsType;
     this.preventScrollXPage();
   }
 
@@ -33,8 +32,8 @@ export class NavbarDetailsComponent {
       this.renderer.setStyle(document.body, 'overflow-y', 'hidden');
       this.renderer.setStyle(document.body, 'height', '100vh');
     } else {
-    this.renderer.removeStyle(document.body, 'overflow-y');
-    this.renderer.removeStyle(document.body, 'height' );
+      this.renderer.removeStyle(document.body, 'overflow-y');
+      this.renderer.removeStyle(document.body, 'height');
     }
   }
 
@@ -43,17 +42,13 @@ export class NavbarDetailsComponent {
     this.sidebarVisibilityChange.emit(this.sidebarVisible);
   }
 
-  getNavLinkDetails(): void {
-    this.loading = true;
-    this.subscriptions.add(
-      this.navbarService.getNavLinkDetails().subscribe(
-        (res:any) => {
-          if (res?.status === 200) {
-            this.linksList = res?.data?.data;
-          }
-          this.loading = false
-        } 
-      )
-    )
+  openLink(link: any): void {
+    this.onSidebarHide();
+    if(link?.slug) {
+      this.router.navigateByUrl('/content?slug=' + link.slug);
+    } else if(link?.link) {
+      this.router.navigateByUrl(link.link);
+    }
   }
+
 }

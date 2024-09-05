@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ProjectsService } from '../../services/projects.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-projects',
@@ -26,12 +27,22 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   subscriptions = new Subscription();
 
   constructor(
-    private projectsService: ProjectsService
+    private projectsService: ProjectsService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.getSelectedTypeFromParams();
     this.getTopProjectData();
-    this.getProjectsDataByType();
+  }
+
+  getSelectedTypeFromParams(): void {
+    this.route.queryParams.subscribe(params => {
+      if(params['type']) {
+        this.selectedType = params['type'];
+      }
+      this.getProjectsDataByType();
+    });
   }
 
   getTopProjectData(): void {
