@@ -2,7 +2,7 @@
     <app-search [Title]="'Our Core Business'"></app-search>
     <ng-container *ngFor="let core of coreList; let i = index">
         <div class="core-img-end" *ngIf="i % 2 === 0">
-            <app-center-bar [Title]="core.title" [Desc]="core.pref"></app-center-bar>
+            <app-center-bar [Title]="core.title" [Desc]="core.pref" [htmlDesc]="true"></app-center-bar>
             <div class="pms-container">
                 <div class="grid mt-5 justify-content-between">
                     <div class="lg:col-6 md:col-12 sm:col-12 mb-4">
