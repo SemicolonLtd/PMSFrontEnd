@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 export class CenterBarComponent {
   @Input() Title!:string;
   @Input() Desc!:string;
+  @Input() htmlDesc:boolean = false;
 }
