@@ -1,53 +1,58 @@
 <div id="carouselExampleCaptions" class="carousel slide">
     <div class="carousel-indicators">
-      <button type="button" *ngFor="let slider of slidersData; let i = index" data-bs-target="#carouselExampleCaptions" [attr.data-bs-slide-to]="i" [ngClass]="{'active': i === 0}" aria-current="true" [attr.aria-label]="slider.title"></button>
+        <button type="button" *ngFor="let slider of slidersData; let i = index"
+            data-bs-target="#carouselExampleCaptions" [attr.data-bs-slide-to]="i" [ngClass]="{'active': i === 0}"
+            aria-current="true" [attr.aria-label]="slider.title"></button>
     </div>
     <div class="carousel-inner">
-      <div class="carousel-item" *ngFor="let slider of slidersData; let i = index" [ngClass]="{'active' : i === 0}">
-        <img [src]="slider.image" class="d-block w-100 header-bg" alt="...">
-        <div class="carousel-caption d-block">
-            <img class="header-logo" src="assets/images/global/logo.svg" alt="">
-            <h5 class="header-title">{{slider.title}}</h5>
-            <p class="header-desc"> 
-                {{slider.desc}}
-            </p>
-            <a type="button" class="btn btn-light show-more" [href]="slider.link">Show More...</a>
-            <div class="statistics flex justify-content-center align-items-center mt-5">
-                <div class="item-wrapper">
-                    <span class="count d-block">
-                        {{statistics.Technical}}
-                    </span>
-                    <span class="label d-block">
-                        Technical
-                    </span>
+        <div class="carousel-item" *ngFor="let slider of slidersData; let i = index" [ngClass]="{'active' : i === 0}">
+            <img *ngIf="slider.type == 'image'" [src]="slider.image" class="d-block w-100 header-bg" alt="...">
+            <video *ngIf="slider.type == 'video'" class="d-block w-100 header-bg" autoplay loop>
+                <source [src]="slider.image" type="video/mp4">
+            </video>
+            <div class="carousel-caption d-block">
+                <img class="header-logo" src="assets/images/global/logo.svg" alt="">
+                <h5 class="header-title">{{slider.title}}</h5>
+                <div class="header-desc" [innerHTML]="slider.desc">
                 </div>
-                <div class="item-wrapper mx-5">
-                    <span class="count d-block">
-                        {{statistics.Projects}}
-                    </span>
-                    <span class="label d-block">
-                        Projects
-                    </span>
-                </div>
-                <div class="item-wrapper">
-                    <span class="count d-block">
-                        {{statistics.Engineers}}
-                    </span>
-                    <span class="label d-block">
-                        Engineers
-                    </span>
+                <a type="button" *ngIf="slider.link_to" class="btn btn-light show-more" [href]="slider.link_to">Show
+                    More...</a>
+                <div class="statistics flex justify-content-center align-items-center mt-5">
+                    <div class="item-wrapper">
+                        <span class="count d-block" [countUp]="statistics?.technical">
+                            0
+                        </span>
+                        <span class="label d-block">
+                            Technical
+                        </span>
+                    </div>
+                    <div class="item-wrapper mx-5">
+                        <span class="count d-block" [countUp]="statistics?.projects">
+                            0
+                        </span>
+                        <span class="label d-block">
+                            Projects
+                        </span>
+                    </div>
+                    <div class="item-wrapper">
+                        <span class="count d-block" [countUp]="statistics?.engineers">
+                           0
+                        </span>
+                        <span class="label d-block">
+                            Engineers
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
-      </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
     </button>
     <div class="overlay">
     </div>

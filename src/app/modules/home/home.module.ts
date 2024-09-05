@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
 import { NewsSectionComponent } from './components/news-section/news-section.component';
 import { TabViewModule } from 'primeng/tabview';
 import { CardModule } from 'primeng/card';
-
+import { CountUpModule } from 'ngx-countup';
 
 
 @NgModule({
@@ -27,7 +27,8 @@ import { CardModule } from 'primeng/card';
     ButtonModule,
     RouterModule,
     TabViewModule,
-    CardModule
+    CardModule,
+    CountUpModule
   ]
 })
 export class HomeModule { }

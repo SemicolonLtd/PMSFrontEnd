@@ -6,15 +6,16 @@
     .big-card-container ,
     .small-cards-container {
         min-height: 660px;
-        max-height: 660px;
+        // max-height: 660px;
     }
     .big-card {
         min-height: 660px;
-        max-height: 660px;
+        // max-height: 660px;
         position: relative;
         z-index: 2;
         overflow: hidden;
         cursor: pointer;
+        margin-bottom: 1em;
         img {
             min-height: 400px;
             max-height: 400px;
@@ -194,6 +195,17 @@
                     min-width: 30%;
                     max-width: 30%;
                 }
+            }
+        }
+        .load-more {
+            margin-block: 2em;
+            text-align: center;
+            .p-button {
+                width: fit-content;
+                background: var(--primary-color-medium);
+                border: 1px solid var(--primary-color-medium);
+                border-radius: 7px;
+                padding-inline: 2em;
             }
         }
     }
