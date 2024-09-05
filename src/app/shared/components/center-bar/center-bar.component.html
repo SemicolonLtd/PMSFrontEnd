@@ -1,8 +1,10 @@
 <div class="center-bar flex align-items-center justify-content-center ">
     <div class="wrapper text-center">
         <h4 class="title subtitle-font-size">{{Title}}</h4>
-        <span class="txt">
+        <span class="txt" *ngIf="!htmlDesc">
             {{Desc}}
+        </span>
+        <span class="txt" *ngIf="htmlDesc" [innerHtml]="Desc">
         </span>
     </div>
 </div>
