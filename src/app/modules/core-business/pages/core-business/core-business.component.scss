@@ -1,0 +1,26 @@
+.core-business {
+    position: relative;
+
+}
+
+.action {
+    color: var(--primary-color-medium);
+    .text {
+        margin-inline-end: 0.5rem;
+    }
+}
+
+::ng-deep {
+    .core-business {
+        .core-data {
+            .p-accordion .p-accordion-header .p-accordion-header-link {
+                border: unset;
+                border-bottom: 1px solid var(--primary-color-medium);
+                border-radius: 0;
+                background-color: white;
+                color: var(--primary-color-medium);;
+            }
+        }
+    }
+    
+}

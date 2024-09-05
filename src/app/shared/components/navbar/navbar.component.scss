@@ -131,19 +131,29 @@
                 }
             }
         }
-        .nav-social-langs {
-            .social {
-                i {
-                    font-size: 1.1rem;
-                    margin-inline-end: 1.5rem;
-                }
-            }
+
+    }
+}
+
+.nav-social-langs {
+    .social {
+        display: flex;
+        align-items: center;
+        a {
+            display: flex;
+        align-items: center;
+        }
+        i {
+            font-size: 1.1rem;
+            margin-inline-end: 1.5rem;
         }
     }
 }
 
+
+
 .navbar {
-    background-color: #FFFFFF21 !important;
+    background-color: #FFFFFF21;
     padding-block: 1rem;
     .navbar-wrapper {
         a {
@@ -252,6 +262,13 @@
         }
         .p-sidebar-header {
             justify-content: space-between;
+        }
+    }
+
+    .p-dropdown-items-wrapper {
+        ul {
+            margin-bottom: 0;
+            padding-left: 0;
         }
     }
 }
