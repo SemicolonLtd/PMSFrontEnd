@@ -1,0 +1,9 @@
+<main class="page-content" *ngIf="pageContent && !loading">
+    <div class="page-img-wrapper">
+        <img [src]="pageContent.image" [alt]="pageContent.title">
+        <h1 class="page-title">{{pageContent.title}}</h1>
+    </div>
+    <div class="content" [innerHTML]="pageContent.body">
+
+    </div>
+</main>

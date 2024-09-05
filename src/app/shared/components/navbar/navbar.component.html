@@ -12,19 +12,19 @@
                             <a routerLink="/">{{"Navbar.Home" | translate}}</a>
                         </li>
                         <li>
-                            <a (click)="onSelectLink('about us', false)">{{"Navbar.AboutUs" | translate}}</a>
+                            <a (click)="onSelectLink('about-us', 'About Us', false)">{{"Navbar.AboutUs" | translate}}</a>
                         </li>
                         <li>
-                            <a (click)="onSelectLink('Our Strategy', false)">{{"Navbar.OurStrategy" | translate}}</a>
+                            <a (click)="onSelectLink('our-strategy', 'Our Strategy', false)">{{"Navbar.OurStrategy" | translate}}</a>
                         </li>
                         <li>
-                            <a (click)="onSelectLink('core-business', true)">{{"Navbar.CoreBusiness" | translate}}</a>
+                            <a (click)="onSelectLink('core-business', 'Core Business', true)">{{"Navbar.CoreBusiness" | translate}}</a>
                         </li>
                         <li>
-                            <a (click)="onSelectLink('Key Assets', false)">{{"Navbar.KeyAssets" | translate}}</a>
+                            <a (click)="onSelectLink('key-assets', 'Key Assets', false)">{{"Navbar.KeyAssets" | translate}}</a>
                         </li>
                         <li>
-                            <a (click)="onSelectLink('projects', true)">{{"Navbar.Projects" | translate}}</a>
+                            <a (click)="onSelectLink('projects', 'Projects', false)">{{"Navbar.Projects" | translate}}</a>
                         </li>
                     </ul>
                 </div>
@@ -68,38 +68,38 @@
                     <ul class="flex align-items-center">
                         <ng-container *ngIf="isSticky || navDetailsOpened">
                             <li>
-                                <a (click)="onSelectLink('about us', false)">{{"Navbar.AboutUs" | translate}}</a>
+                                <a (click)="onSelectLink('about-us', 'About Us', false)">{{"Navbar.AboutUs" | translate}}</a>
                             </li>
                             <li>
-                                <a (click)="onSelectLink('Our Strategy', false)">{{"Navbar.OurStrategy" | translate}}</a>
+                                <a (click)="onSelectLink('our-strategy', 'Our Strategy', false)">{{"Navbar.OurStrategy" | translate}}</a>
                             </li>
                             <li>
-                                <a (click)="onSelectLink('core-business', true)">{{"Navbar.CoreBusiness" | translate}}</a>
+                                <a (click)="onSelectLink('core-business', 'Core Business', true)">{{"Navbar.CoreBusiness" | translate}}</a>
                             </li>
                             <li>
-                                <a (click)="onSelectLink('Key Assets', false)">{{"Navbar.KeyAssets" | translate}}</a>
+                                <a (click)="onSelectLink('key-assets', 'Key Assets', false)">{{"Navbar.KeyAssets" | translate}}</a>
                             </li>
                             <li>
-                                <a (click)="onSelectLink('projects', true)">{{"Navbar.Projects" | translate}}</a>
+                                <a (click)="onSelectLink('projects', 'Projects', false)">{{"Navbar.Projects" | translate}}</a>
                             </li>
                         </ng-container>
                         <li>
-                            <a (click)="onSelectLink('Contact Us', false)">{{"Navbar.ContactUs" | translate}}</a>
+                            <a (click)="onSelectLink('contact-us', 'Contact Us', true)">{{"Navbar.ContactUs" | translate}}</a>
                         </li>
                         <li>
-                            <a routerLink="/news">{{"Navbar.MediaCenter" | translate}}</a>
+                            <a (click)="onSelectLink('media-center', 'Media Center', false)">{{"Navbar.MediaCenter" | translate}}</a>
                         </li>
                         <li>
-                            <a (click)="onSelectLink('HSE', false)">{{"Navbar.HSE" | translate}}</a>
+                            <a (click)="onSelectLink('hse', 'HSE', true)">{{"Navbar.HSE" | translate}}</a>
                         </li>
                         <li>
-                            <a (click)="onSelectLink('certificates', true)">{{"Navbar.Cetrificates" | translate}}</a>
+                            <a (click)="onSelectLink('certificates', 'Certificates', true)">{{"Navbar.Cetrificates" | translate}}</a>
                         </li>
                         <li>
-                            <a (click)="onSelectLink('Sustainability', false)">{{"Navbar.Sustainability" | translate}}</a>
+                            <a (click)="onSelectLink('sustainability', 'Sustainability', true)">{{"Navbar.Sustainability" | translate}}</a>
                         </li>
                         <li>
-                            <a (click)="onSelectLink('Search', false)">
+                            <a (click)="onSelectLink('Search', 'Search', false)">
                                 <i class="pi pi-search"></i>
                             </a>
                         </li>
@@ -158,35 +158,35 @@
             <div class="nav-links">
                 <ul>
                     <li>
-                        <a (click)="onSelectLink('about us', false)">{{"Navbar.AboutUs" | translate}}</a>
+                        <a (click)="onSelectLink('about-us', 'About Us', false)">{{"Navbar.AboutUs" | translate}}</a>
                     </li>
                     <li>
-                        <a (click)="onSelectLink('Our Strategy', false)">{{"Navbar.OurStrategy" | translate}}</a>
+                        <a (click)="onSelectLink('our-strategy', 'Our Strategy', false)">{{"Navbar.OurStrategy" | translate}}</a>
                     </li>
                     <li>
-                        <a (click)="onSelectLink('core-business', true)">{{"Navbar.CoreBusiness" | translate}}</a>
+                        <a (click)="onSelectLink('core-business', 'Core Business', true)">{{"Navbar.CoreBusiness" | translate}}</a>
                     </li>
                     <li>
-                        <a (click)="onSelectLink('Key Assets', false)">{{"Navbar.KeyAssets" | translate}}</a>
+                        <a (click)="onSelectLink('key-assets', 'Key Assets', false)">{{"Navbar.KeyAssets" | translate}}</a>
                     </li>
                     <li>
-                        <a (click)="onSelectLink('projects', true)">{{"Navbar.Projects" | translate}}</a>
+                        <a (click)="onSelectLink('projects', 'Projects', false)">{{"Navbar.Projects" | translate}}</a>
                     </li>
                     <li>
-                        <a (click)="onSelectLink('Contact Us', false)">{{"Navbar.ContactUs" | translate}}</a>
+                        <a (click)="onSelectLink('contact-us', 'Contact Us', true)">{{"Navbar.ContactUs" | translate}}</a>
                     </li>
                     <hr>
                     <li>
-                        <a routerLink="/news">{{"Navbar.MediaCenter" | translate}}</a>
+                        <a (click)="onSelectLink('media-center', 'Media Center', false)">{{"Navbar.MediaCenter" | translate}}</a>
                     </li>
                     <li>
-                        <a (click)="onSelectLink('HSE', false)">{{"Navbar.HSE" | translate}}</a>
+                        <a (click)="onSelectLink('hse', 'HSE', true)">{{"Navbar.HSE" | translate}}</a>
                     </li>
                     <li>
-                        <a (click)="onSelectLink('certificates', true)">{{"Navbar.Cetrificates" | translate}}</a>
+                        <a (click)="onSelectLink('certificates', 'Certificates', true)">{{"Navbar.Cetrificates" | translate}}</a>
                     </li>
                     <li>
-                        <a (click)="onSelectLink('Sustainability', false)">{{"Navbar.Sustainability" | translate}}</a>
+                        <a (click)="onSelectLink('sustainability', 'Sustainability', true)">{{"Navbar.Sustainability" | translate}}</a>
                     </li>
                 </ul>
             </div>
@@ -199,6 +199,7 @@
     <app-navbar-details 
     [navDetailsVisible]="navDetailsOpened" 
     [detailsType]="detailsType"
-    (navDetailsVisibilityChange)="onNavDetailsVisibilityChange($event)">
+    (navDetailsVisibilityChange)="onNavDetailsVisibilityChange($event)"
+    [displayedLinks]="displayedLinks">
   </app-navbar-details>
 </ng-container>
