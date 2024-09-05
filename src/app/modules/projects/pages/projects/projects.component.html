@@ -1,36 +1,27 @@
 <div class="projects">
     <!-- <img src="assets/images/global/pages-wave-top.webp" alt="" class="pages-wave-top"> -->
-    <app-search [Title]="'Our Projects'"></app-search>
-    <div class="latest-project">
+    <app-search [Title]="'Our Projects'" (searchEmitter)="searchForProjects($event)"></app-search>
+    <div class="latest-project" *ngIf="pageTopProject && !topProjectLoading">
         <div class="pms-container">
             <div class="grid">
                 <div class="project-img md:col-6 sm:col-12 max-h-30rem min-h-30rem">
-                    <img src="assets/images/home/project-2.jpg" class="max-h-30rem min-h-30rem border-round-xl" alt="">
+                    <img [src]="pageTopProject?.image" class="max-h-30rem min-h-30rem border-round-xl" alt="">
                 </div>
                 <div class="project-info md:col-6 sm:col-12 max-h-30rem min-h-30rem">
                     <h3 class="title subtitle-font-size">
                         Latest Project
                     </h3>
                     <h5 class="short-desc">
-                        Low Cost Latest Invented Interior Designing Ideas
+                        {{ pageTopProject?.title }}
                     </h5>
-                    <span class="desc">
-                        Lorem ipsum dolor sit amet consectetur 
-                        adipisicing elit. Veniam enim, aliquam sint
-                         repudiandae dolore cum tempora eius soluta,
-                        consequatur atque vel in repellat id hic nihil
-                         perferendis inventore velit mollitia cupiditate
-                         assumenda deserunt culpa odit eligendi.
-                        Laboriosam sed vitae nisi cum necessitatibus
-                        odio sapiente impedit adipisci quasi,
-                        harum officia, tempora perferendis! Nisi,
-                        quisquam amet fugiat deleniti maiores aliquam quos earum.
-                    </span>
+                    <div class="desc" [innerHTML]="pageTopProject?.desc">
+                    </div>
                     <div class="action flex align-items-center justify-content-between">
                         <span class="date">
-                            26 December,2022 
+                            {{ pageTopProject?.start_date }}
                         </span>
-                        <p-button icon="pi pi-angle-right" [rounded]="true" severity="secondary" />
+                        <p-button icon="pi pi-angle-right" [rounded]="true" severity="secondary"
+                            [routerLink]="'projects/' + pageTopProject?.id" />
                     </div>
 
                 </div>
@@ -40,10 +31,10 @@
     <app-center-bar [Title]="'Follow Our Projects'" [Desc]="'It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.'"></app-center-bar>
     <div class="projects-list">
         <div class="pms-container">
-            <div class="filter-btns text-center">
+            <div class="filter-btns text-center" *ngIf="!searchMode">
                 <p-selectButton 
                 [options]="stateOptions" 
-                [(ngModel)]="value" 
+                [(ngModel)]="selectedType" 
                 optionLabel="label" 
                 optionValue="value"
                 (onChange)="onSelectCategory($event)"
@@ -56,6 +47,9 @@
                             <app-project-card [projectData]="project"></app-project-card>
                         </div>
                     </ng-container>
+                    <div class="load-more" *ngIf="paginationData?.total! > projectsList?.length!">
+                        <p-button label="More..." (click)="loadMore()" />
+                    </div>
                 </div>
             </div>
         </div>

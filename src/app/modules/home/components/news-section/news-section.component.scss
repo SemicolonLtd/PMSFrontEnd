@@ -5,15 +5,17 @@
     .big-card-container ,
     .small-cards-container {
         min-height: 660px;
-        max-height: 660px;
+        // max-height: 660px;
     }
     .big-card {
         min-height: 660px;
-        max-height: 660px;
+        // max-height: 660px;
         position: relative;
         z-index: 2;
         overflow: hidden;
         cursor: pointer;
+        margin-bottom: 1em;
+
         img {
             min-height: 400px;
             max-height: 400px;

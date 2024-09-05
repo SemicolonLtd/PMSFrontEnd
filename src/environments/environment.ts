@@ -1,4 +1,4 @@
 export const environment = {
     lang:'en',
-    apiUrl: 'https://pms.gostcode.com/public',
+    apiUrl: 'https://pms.gostcode.com/public/pms/api',
 };

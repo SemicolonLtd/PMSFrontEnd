@@ -10,6 +10,7 @@ import { filter, Subscription } from 'rxjs';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+  
   langs: any[] | undefined;
   lang = environment.lang;
   isSticky = false

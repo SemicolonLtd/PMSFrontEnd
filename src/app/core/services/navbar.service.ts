@@ -7,12 +7,13 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class NavbarService {
-  API_URL: string = environment.apiUrl
+
   constructor(
-    private httpClient: HttpClient
+    private http: HttpClient
   ) { }
 
-  getNavLinkDetails(Link: string): Observable<any>{
-    return this.httpClient.get(`${this.API_URL}/page/menu/${Link}`)
+  getNavLinkDetails(): Observable<any>{
+    return this.http.get(`${environment.apiUrl}/page/all/Menus`)
   }
+
 }

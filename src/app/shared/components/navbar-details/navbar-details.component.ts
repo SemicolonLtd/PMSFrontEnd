@@ -21,7 +21,7 @@ export class NavbarDetailsComponent {
     ) {}
 
   ngOnInit(): void {
-    this.getNavLinkDetails()
+    this.getNavLinkDetails();
   }
 
   ngOnChanges(changes: SimpleChange): void {
@@ -46,7 +46,7 @@ export class NavbarDetailsComponent {
   getNavLinkDetails(): void {
     this.loading = true;
     this.subscriptions.add(
-      this.navbarService.getNavLinkDetails(this.detailsType).subscribe(
+      this.navbarService.getNavLinkDetails().subscribe(
         (res:any) => {
           if (res?.status === 200) {
             this.linksList = res?.data?.data;
