@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HostListener } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
+import { DOCUMENT } from '@angular/common';
+import { CookieService } from 'ngx-cookie';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +13,6 @@ import { filter, Subscription } from 'rxjs';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  
   langs: any[] | undefined;
   lang = environment.lang;
   isSticky = false
@@ -20,7 +22,10 @@ export class NavbarComponent {
   currentRoute!: string;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private cookieService:CookieService,
+    private translateService:TranslateService,
+    @Inject(DOCUMENT) private document: Document,
   ) {}
   ngOnInit(): void {
     this.langs = [
@@ -28,7 +33,8 @@ export class NavbarComponent {
       { name: 'Ar', code: 'ar' },
   ];
 
-  this.checkCurrentRoute()
+  this.checkCurrentRoute();
+  this.checkCookiesForLang()
 }
 
   @HostListener('window:scroll', [])
@@ -37,14 +43,40 @@ export class NavbarComponent {
 
     this.isSticky = scrollPosition > 50
   }
-  changeLang(lang:any): void {
-    // this.lang = lang.code;
 
-    // environment.lang = this.lang;
-    // this.translateService.use(lang.value.code);
-    // this.cookieService.set('lang', lang.value.code);
-    // this.changeDir();
-    // location.reload();
+  checkCookiesForLang(): void {
+    if (this.cookieService.get('lang')) {
+      this.translateService.use(this.cookieService.get('lang')!);
+      this.lang = this.cookieService.get('lang')!;
+      environment.lang = this.lang;
+      this.document.documentElement.lang = this.lang;
+    } else {
+      this.translateService.use(this.lang);
+      this.cookieService.put('lang', this.lang);
+      environment.lang = this.lang;
+      this.document.documentElement.lang = this.lang;
+    }
+    this.changeDir();
+  }
+
+  changeLang(lang:any): void {
+    this.lang = lang.value.code;
+
+    environment.lang = this.lang;
+    this.translateService.use(lang.value.code);
+    this.cookieService.put('lang', lang.value.code);
+    this.changeDir();
+    location.reload();
+  }
+
+  changeDir(): void {
+    if (this.lang === 'ar') {
+      this.document.dir = 'rtl';
+      this.document.documentElement.lang;
+    } else {
+      this.document.dir = 'ltr';
+      this.document.documentElement.lang = 'en';
+    }
   }
 
   onSelectLink(type: any, directRoute: boolean): void {

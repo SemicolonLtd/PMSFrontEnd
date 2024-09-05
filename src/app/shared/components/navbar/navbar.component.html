@@ -9,22 +9,22 @@
                 <div class="nav-links">
                     <ul class="flex align-items-center">
                         <li>
-                            <a routerLink="/">Home</a>
+                            <a routerLink="/">{{"Navbar.Home" | translate}}</a>
                         </li>
                         <li>
-                            <a (click)="onSelectLink('about us', false)">About Us</a>
+                            <a (click)="onSelectLink('about us', false)">{{"Navbar.AboutUs" | translate}}</a>
                         </li>
                         <li>
-                            <a (click)="onSelectLink('Our Strategy', false)">Our Strategy</a>
+                            <a (click)="onSelectLink('Our Strategy', false)">{{"Navbar.OurStrategy" | translate}}</a>
                         </li>
                         <li>
-                            <a (click)="onSelectLink('core-business', true)">Core Business</a>
+                            <a (click)="onSelectLink('core-business', true)">{{"Navbar.CoreBusiness" | translate}}</a>
                         </li>
                         <li>
-                            <a (click)="onSelectLink('Key Assets', false)">Key Assets</a>
+                            <a (click)="onSelectLink('Key Assets', false)">{{"Navbar.KeyAssets" | translate}}</a>
                         </li>
                         <li>
-                            <a (click)="onSelectLink('projects', true)">Projects</a>
+                            <a (click)="onSelectLink('projects', true)">{{"Navbar.Projects" | translate}}</a>
                         </li>
                     </ul>
                 </div>
@@ -45,8 +45,7 @@
                         [options]="langs" 
                         [(ngModel)]="lang" 
                         (onChange)="changeLang($event)"
-                        optionLabel="name" 
-                        (ngModelChange)="changeLang($event)"
+                        optionLabel="name"
                         class="lang hide-responsive"
                         [placeholder]="lang" />
                     </div>
@@ -61,7 +60,7 @@
                 <div class="logo-wrapper">
                     <a routerLink="/" class="flex align-items-center">
                         <img class="logo-img" src="assets/images/global/logo.svg" alt="">
-                        <h1 class="logo-txt">Petroleum Marine Services Co.</h1>
+                        <h1 class="logo-txt">{{"Navbar.PMS" | translate}}</h1>
                     </a>
                 </div>
                 
@@ -69,35 +68,35 @@
                     <ul class="flex align-items-center">
                         <ng-container *ngIf="isSticky || navDetailsOpened">
                             <li>
-                                <a (click)="onSelectLink('about us', false)">About Us</a>
+                                <a (click)="onSelectLink('about us', false)">{{"Navbar.AboutUs" | translate}}</a>
                             </li>
                             <li>
-                                <a (click)="onSelectLink('Our Strategy', false)">Our Strategy</a>
+                                <a (click)="onSelectLink('Our Strategy', false)">{{"Navbar.OurStrategy" | translate}}</a>
                             </li>
                             <li>
-                                <a (click)="onSelectLink('core-business', true)">Core Business</a>
+                                <a (click)="onSelectLink('core-business', true)">{{"Navbar.CoreBusiness" | translate}}</a>
                             </li>
                             <li>
-                                <a (click)="onSelectLink('Key Assets', false)">Key Assets</a>
+                                <a (click)="onSelectLink('Key Assets', false)">{{"Navbar.KeyAssets" | translate}}</a>
                             </li>
                             <li>
-                                <a (click)="onSelectLink('projects', true)">Projects</a>
+                                <a (click)="onSelectLink('projects', true)">{{"Navbar.Projects" | translate}}</a>
                             </li>
                         </ng-container>
                         <li>
-                            <a (click)="onSelectLink('Contact Us', false)">Contact Us</a>
+                            <a (click)="onSelectLink('Contact Us', false)">{{"Navbar.ContactUs" | translate}}</a>
                         </li>
                         <li>
-                            <a routerLink="/news">Media Center</a>
+                            <a routerLink="/news">{{"Navbar.MediaCenter" | translate}}</a>
                         </li>
                         <li>
-                            <a (click)="onSelectLink('HSE', false)">HSE</a>
+                            <a (click)="onSelectLink('HSE', false)">{{"Navbar.HSE" | translate}}</a>
                         </li>
                         <li>
-                            <a (click)="onSelectLink('certificates', true)">Certificates</a>
+                            <a (click)="onSelectLink('certificates', true)">{{"Navbar.Cetrificates" | translate}}</a>
                         </li>
                         <li>
-                            <a (click)="onSelectLink('Sustainability', false)">Sustainability</a>
+                            <a (click)="onSelectLink('Sustainability', false)">{{"Navbar.Sustainability" | translate}}</a>
                         </li>
                         <li>
                             <a (click)="onSelectLink('Search', false)">
@@ -159,35 +158,35 @@
             <div class="nav-links">
                 <ul>
                     <li>
-                        <a (click)="onSelectLink('about us', false)">About Us</a>
+                        <a (click)="onSelectLink('about us', false)">{{"Navbar.AboutUs" | translate}}</a>
                     </li>
                     <li>
-                        <a (click)="onSelectLink('Our Strategy', false)">Our Strategy</a>
+                        <a (click)="onSelectLink('Our Strategy', false)">{{"Navbar.OurStrategy" | translate}}</a>
                     </li>
                     <li>
-                        <a (click)="onSelectLink('core-business', true)">Core Business</a>
+                        <a (click)="onSelectLink('core-business', true)">{{"Navbar.CoreBusiness" | translate}}</a>
                     </li>
                     <li>
-                        <a (click)="onSelectLink('Key Assets', false)">Key Assets</a>
+                        <a (click)="onSelectLink('Key Assets', false)">{{"Navbar.KeyAssets" | translate}}</a>
                     </li>
                     <li>
-                        <a (click)="onSelectLink('projects', true)">Projects</a>
+                        <a (click)="onSelectLink('projects', true)">{{"Navbar.Projects" | translate}}</a>
                     </li>
                     <li>
-                        <a (click)="onSelectLink('Contact Us', false)">Contact Us</a>
+                        <a (click)="onSelectLink('Contact Us', false)">{{"Navbar.ContactUs" | translate}}</a>
                     </li>
                     <hr>
                     <li>
-                        <a routerLink="/news">Media Center</a>
+                        <a routerLink="/news">{{"Navbar.MediaCenter" | translate}}</a>
                     </li>
                     <li>
-                        <a (click)="onSelectLink('HSE', false)">HSE</a>
+                        <a (click)="onSelectLink('HSE', false)">{{"Navbar.HSE" | translate}}</a>
                     </li>
                     <li>
-                        <a (click)="onSelectLink('certificates', true)">Certificates</a>
+                        <a (click)="onSelectLink('certificates', true)">{{"Navbar.Cetrificates" | translate}}</a>
                     </li>
                     <li>
-                        <a (click)="onSelectLink('Sustainability', false)">Sustainability</a>
+                        <a (click)="onSelectLink('Sustainability', false)">{{"Navbar.Sustainability" | translate}}</a>
                     </li>
                 </ul>
             </div>

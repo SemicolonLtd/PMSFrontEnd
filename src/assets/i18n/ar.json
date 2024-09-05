@@ -1,0 +1,27 @@
+{
+    "General": {
+        "ViewMore":"مشاهدة المزيد +"
+    },
+    "Navbar": {
+        "Home":"الرئيسية",
+        "AboutUs" :"من نحن",
+        "OurStrategy" :"استراتيجيتنا",
+        "CoreBusiness" : "الأعمال الرئيسية",
+        "KeyAssets" :"الأصول الرئيسية",
+        "Projects" :"المشاريع",
+        "ContactUs" :"اتصل بنا",
+        "MediaCenter" : "المركز الإعلامي",
+        "HSE" : "الصحة والسلامة والبيئة",
+        "Cetrificates":"الشهادات",
+        "Sustainability" :"الاستدامة",
+        "PMS": "خدمات البترول البحرية"
+    },
+    "Home" :{
+        "Technical":"تقني",
+        "Projects":"المشاريع",
+        "Engineers":"المهندسين",
+        "CoreBusiness":"الأعمال الرئيسية",
+        "RecentProjects":"المشاريع الأخيرة",
+        "OurNews":"أخبارنا"
+    }
+}

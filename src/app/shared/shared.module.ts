@@ -16,6 +16,7 @@ import { CenterBarComponent } from './components/center-bar/center-bar.component
 import { RouterModule } from '@angular/router';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
 import { EventCardComponent } from './components/event-card/event-card.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -28,14 +29,15 @@ import { EventCardComponent } from './components/event-card/event-card.component
     EventCardComponent
   ],
   imports: [
-    CommonModule,
+  CommonModule,
     DropdownModule,
     FormsModule,
     HttpClientModule,
     SidebarModule,
     ButtonModule,
     InputTextModule,
-    RouterModule
+    RouterModule,
+    TranslateModule
   ],
   exports: [
     NavbarComponent,

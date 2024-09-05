@@ -1,7 +1,10 @@
-import { ViewportScroller } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { DOCUMENT, ViewportScroller } from '@angular/common';
+import { Component, HostListener, Inject } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { CookieService } from 'ngx-cookie';
 import { filter } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -12,14 +15,19 @@ export class AppComponent {
   title = 'pms';
   pageYoffset!: number;
   currentRoute!: string;
+  lang = environment.lang;
 
   constructor(
     private scroll: ViewportScroller,
     private router: Router,
+    private cookieService:CookieService,
+    private translateService:TranslateService,
+    @Inject(DOCUMENT) private document: Document,
   ) {}
 
   ngOnInit(): void {
-    this.checkCurrentRoute()
+    this.checkCurrentRoute();
+    this.checkCookiesForLang()
   }
 
   @HostListener('window:scroll', [''])
@@ -44,6 +52,33 @@ export class AppComponent {
       
       this.currentRoute = event.url
     });
+  }
+
+  checkCookiesForLang(): void {
+    if (this.cookieService.get('lang')) {
+      console.log(this.cookieService.get('lang'));
+      
+      this.translateService.use(this.cookieService.get('lang')!);
+      this.lang = this.cookieService.get('lang')!;
+      environment.lang = this.lang;
+      this.document.documentElement.lang = this.lang;
+    } else {
+      this.translateService.use(this.lang);
+      this.cookieService.put('lang', this.lang);
+      environment.lang = this.lang;
+      this.document.documentElement.lang = this.lang;
+    }
+    this.changeDir();
+  }
+
+  changeDir(): void {
+    if (this.lang === 'ar') {
+      this.document.dir = 'rtl';
+      this.document.documentElement.lang;
+    } else {
+      this.document.dir = 'ltr';
+      this.document.documentElement.lang = 'en';
+    }
   }
 
 }
