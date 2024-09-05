@@ -5,7 +5,7 @@
                 <h2 class="title-font-size color-primary">Recent Projects</h2>
                 <p class="header-desc color-primary-medium">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
             </div>
-            <a class="btn text-2xl font-bold white-space-nowrap">
+            <a class="btn text-2xl font-bold white-space-nowrap" routerLink="/projects">
                 View More +
             </a>
         </div>
@@ -14,8 +14,8 @@
                 <div class="item-info flex justify-content-center align-items-center text-center">
                     <div class="info-wrapper">
                         <h3>{{project.title}}</h3>
-                        <span class="info-desc">{{project.text}}</span>
-                        <p-button icon="pi pi-arrow-right" [rounded]="true" [routerLink]="'/' + project.id" />
+                        <div class="info-desc" [innerHTML]="project?.desc"></div>
+                        <p-button icon="pi pi-arrow-right" [rounded]="true" [routerLink]="'/projects/' + project?.slug" />
                     </div>
                 </div>
             </div>

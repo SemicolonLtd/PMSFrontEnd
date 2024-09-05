@@ -30,4 +30,8 @@ export class HomeService {
     return this.http.get(`${environment.apiUrl}/news/in-home/by-category/4/${categoryId}`);
   }
 
+  getCoreBusiness(): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/core/get/2`);
+  }
+
 }

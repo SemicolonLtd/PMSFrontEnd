@@ -18,39 +18,7 @@ export class RecentProjectsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.projectsData = [
-      {
-        id: 1,
-        image: '../../../../../assets/images/home/project-1.jpg',
-        title: 'Harnessing the Power of the Seas for Sustainable Energy Solutions 1',
-        text: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet ',
-      },
-      {
-        id: 1,
-        image: '../../../../../assets/images/home/project-2.jpg',
-        title: 'Harnessing the Power of the Seas for Sustainable Energy Solutions 2',
-        text: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet ',
-      },
-      {
-        id: 1,
-        image: '../../../../../assets/images/home/project-3.jpg',
-        title: 'Harnessing the Power of the Seas for Sustainable Energy Solutions 3',
-        text: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet ',
-      },
-      {
-        id: 1,
-        image: '../../../../../assets/images/home/project-2.jpg',
-        title: 'Harnessing the Power of the Seas for Sustainable Energy Solutions 4',
-        text: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet ',
-      },
-      {
-        id: 1,
-        image: '../../../../../assets/images/home/project-4.jpg',
-        title: 'Harnessing the Power of the Seas for Sustainable Energy Solutions 5',
-        text: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet ',
-      },
-    ]
-    // this.getProjectsData();
+    this.getProjectsData();
   }
 
   getProjectsData(): void {
@@ -58,8 +26,10 @@ export class RecentProjectsComponent implements OnInit, OnDestroy {
     this.subscriptions.add(
       this.homeService.getRecentProjects().subscribe({
         next: (res: any) => {
-          this.loading = false
-          this.projectsData = res
+          if(res?.status == 200) {
+            this.projectsData = res?.data?.data;
+          }
+          this.loading = false;
         },
         error: (err: any) => {
           this.loading = false

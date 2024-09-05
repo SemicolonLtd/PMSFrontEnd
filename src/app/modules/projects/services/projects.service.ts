@@ -10,8 +10,28 @@ export class ProjectsService {
 
   constructor(private http: HttpClient) { }
 
+  getProjects(pageSize: number): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/project/${pageSize}`);
+  }
+
   searchForProject(query: string, pageSize: number): Observable<any> {
     return this.http.get(`${environment.apiUrl}/project/search/${query}/${pageSize}`);
+  }
+
+  getProjectsByType(type: string, pageSize: number): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/project/type/${type}/${pageSize}`);
+  }
+
+  getTopProject(): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/project/get/in-page`);
+  }
+  
+  getProjectDetails(slug: string): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/project/get/slug/${slug}`);
+  }
+
+  getSimilarProjects(slug: string, projectId: number): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/project/similar/${slug}/${projectId}`);
   }
 
 }
