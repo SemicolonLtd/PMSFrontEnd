@@ -15,6 +15,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CenterBarComponent } from './components/center-bar/center-bar.component';
 import { RouterModule } from '@angular/router';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
+import { EventCardComponent } from './components/event-card/event-card.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -23,17 +25,19 @@ import { ProjectCardComponent } from './components/project-card/project-card.com
     FooterComponent,
     SearchComponent,
     CenterBarComponent,
-    ProjectCardComponent
+    ProjectCardComponent,
+    EventCardComponent
   ],
   imports: [
-    CommonModule,
+  CommonModule,
     DropdownModule,
     FormsModule,
     HttpClientModule,
     SidebarModule,
     ButtonModule,
     InputTextModule,
-    RouterModule
+    RouterModule,
+    TranslateModule
   ],
   exports: [
     NavbarComponent,
@@ -41,7 +45,8 @@ import { ProjectCardComponent } from './components/project-card/project-card.com
     FooterComponent,
     SearchComponent,
     CenterBarComponent,
-    ProjectCardComponent
+    ProjectCardComponent,
+    EventCardComponent
 
   ]
 })

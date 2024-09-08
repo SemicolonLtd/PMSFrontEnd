@@ -1,0 +1,54 @@
+<div class="events">
+    <!-- <img src="assets/images/global/pages-wave-top.webp" alt="" class="pages-wave-top"> -->
+    <app-search [Title]="'Our Events'"></app-search>
+    <div class="latest-event">
+        <div class="pms-container">
+            <div class="grid">
+                <div class="event-img md:col-6 sm:col-12 max-h-30rem min-h-30rem">
+                    <img src="assets/images/home/project-2.jpg" class="max-h-30rem min-h-30rem border-round-xl" alt="">
+                </div>
+                <div class="event-info md:col-6 sm:col-12 max-h-30rem min-h-30rem">
+                    <h3 class="title subtitle-font-size">
+                        Latest Event
+                    </h3>
+                    <h5 class="short-desc">
+                        Low Cost Latest Invented Interior Designing Ideas
+                    </h5>
+                    <span class="desc">
+                        Lorem ipsum dolor sit amet consectetur 
+                        adipisicing elit. Veniam enim, aliquam sint
+                         repudiandae dolore cum tempora eius soluta,
+                        consequatur atque vel in repellat id hic nihil
+                         perferendis inventore velit mollitia cupiditate
+                         assumenda deserunt culpa odit eligendi.
+                        Laboriosam sed vitae nisi cum necessitatibus
+                        odio sapiente impedit adipisci quasi,
+                        harum officia, tempora perferendis! Nisi,
+                        quisquam amet fugiat deleniti maiores aliquam quos earum.
+                    </span>
+                    <div class="action flex align-items-center justify-content-between">
+                        <span class="date">
+                            26 December,2022 
+                        </span>
+                        <p-button icon="pi pi-angle-right" [rounded]="true" severity="secondary" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-center-bar [Title]="'Events & Activities'" [Desc]="'It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.'"></app-center-bar>
+    <div class="events-list">
+        <div class="pms-container">
+            <div class="filtered-events mt-5">
+                <div class="grid">
+                    <ng-container *ngIf="eventsList.length">
+                        <div class="card-wrapper xl:col-4 md:col-6 sm:col-12 mb-4" *ngFor="let event of eventsList">
+                            <app-event-card [eventData]="event"></app-event-card>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

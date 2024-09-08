@@ -11,6 +11,7 @@ import { NewsSectionComponent } from './components/news-section/news-section.com
 import { TabViewModule } from 'primeng/tabview';
 import { CardModule } from 'primeng/card';
 import { CountUpModule } from 'ngx-countup';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -22,13 +23,14 @@ import { CountUpModule } from 'ngx-countup';
     NewsSectionComponent
   ],
   imports: [
-  CommonModule,
+CommonModule,
     HomeRoutingModule,
     ButtonModule,
     RouterModule,
     TabViewModule,
     CardModule,
-    CountUpModule
+    CountUpModule,
+    TranslateModule
   ]
 })
 export class HomeModule { }

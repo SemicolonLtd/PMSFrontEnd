@@ -1,0 +1,28 @@
+{
+    "General": {
+        "ViewMore":"View More +"
+    },
+    "Navbar": {
+        "Home":"Home",
+        "AboutUs" :"About Us",
+        "OurStrategy" :"Our Strategy",
+        "CoreBusiness" : "Core Business",
+        "KeyAssets" :"Key Assets",
+        "Projects" :"Projects",
+        "ContactUs" :"Contact Us",
+        "MediaCenter" : "Media Center",
+        "HSE" : "HSE",
+        "Cetrificates":"Cetrificates",
+        "Sustainability" :"Sustainability",
+        "PMS": "Petroleum Marine Services Co."
+    },
+    "Home" :{
+        "Technical":"Technical",
+        "Projects":"Projects",
+        "Engineers":"Engineers",
+        "CoreBusiness":"Core Business",
+        "RecentProjects":"Recent Projects",
+        "OurNews":"Our News"
+    }
+
+}
