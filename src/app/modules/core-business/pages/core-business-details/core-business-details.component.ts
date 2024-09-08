@@ -1,19 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { CoreBusinessService } from '../../services/core-business.service';
 
 @Component({
   selector: 'app-core-business-details',
   templateUrl: './core-business-details.component.html',
   styleUrls: ['./core-business-details.component.scss']
 })
-export class CoreBusinessDetailsComponent {
+export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
+
   responsiveOptions: any[] = [
+    // {
+    //   breakpoint: '2000px',
+    //   numVisible: 4
+    // },
     {
         breakpoint: '1024px',
-        numVisible: 5
+        numVisible: 3
     },
     {
         breakpoint: '768px',
-        numVisible: 3
+        numVisible: 2
     },
     {
         breakpoint: '560px',
@@ -21,76 +29,69 @@ export class CoreBusinessDetailsComponent {
     }
   ];
 
-  images: any[]  = [
-    {
-      itemImageSrc: 'assets/images/home/header-1.jpg',
-      thumbnailImageSrc: 'assets/images/home/header-1.jpg',
-      alt: 'Description for Image 1',
-      title: 'Title 1'
-  },
-  {
-    itemImageSrc: 'assets/images/home/header-2.png',
-    thumbnailImageSrc: 'assets/images/home/header-2.png',
-    alt: 'Description for Image 1',
-    title: 'Title 1'
-  },
-  {
-    itemImageSrc: 'assets/images/home/header-3.jpg',
-    thumbnailImageSrc: 'assets/images/home/header-3.jpg',
-    alt: 'Description for Image 1',
-    title: 'Title 1'
-  },
-  {
-    itemImageSrc: 'assets/images/home/header-2.png',
-    thumbnailImageSrc: 'assets/images/home/header-2.png',
-    alt: 'Description for Image 1',
-    title: 'Title 1'
-  },
-  {
-    itemImageSrc: 'assets/images/home/header-3.jpg',
-    thumbnailImageSrc: 'assets/images/home/header-3.jpg',
-    alt: 'Description for Image 1',
-    title: 'Title 1'
-  },
-  {
-    itemImageSrc: 'assets/images/home/header-3.jpg',
-    thumbnailImageSrc: 'assets/images/home/header-3.jpg',
-    alt: 'Description for Image 1',
-    title: 'Title 1'
-  },
-  {
-    itemImageSrc: 'assets/images/home/header-2.png',
-    thumbnailImageSrc: 'assets/images/home/header-2.png',
-    alt: 'Description for Image 1',
-    title: 'Title 1'
-  },
-  ]
+  businessData: any = {};
+  similarBusinessData: any[] = [];
+  slug: string = '';
+  loading = false;
+  subscriptions = new Subscription();
 
-  projectsList: any[] = [
-    {
-      id:1,
-      image: 'assets/images/home/header-2.png',
-      title: 'EPICS of Early Facilites For  NEW GNN FIELD DEVELOPMENT',
-      date: '20/8/2023',
-    },
-    {
-      id:1,
-      image: 'assets/images/home/header-2.png',
-      title: 'EPICS of Early Facilites For  NEW GNN FIELD DEVELOPMENT',
-      date: '20/8/2023',
-    },
-    {
-      id:1,
-      image: 'assets/images/home/header-2.png',
-      title: 'EPICS of Early Facilites For  NEW GNN FIELD DEVELOPMENT',
-      date: '20/8/2023',
-    },
-    {
-      id:1,
-      image: 'assets/images/home/header-2.png',
-      title: 'EPICS of Early Facilites For  NEW GNN FIELD DEVELOPMENT',
-      date: '20/8/2023',
-    }
-  ]
+  constructor(
+    private coreBusinessService: CoreBusinessService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
+
+  ngOnInit(): void {
+    this.getBusinessSlugFromParams();
+  }
+
+  getBusinessSlugFromParams(): void {
+    this.route.params.subscribe((params: any) => {
+      if(params['slug']) {
+        this.slug = params['slug'];
+        this.getBusinessDetails();
+      } else {
+        this.router.navigateByUrl('/news');
+      }
+    });
+  }
+
+  getBusinessDetails(): void {
+    this.loading = true;
+    this.subscriptions.add(
+      this.coreBusinessService.getBusinessDetails(this.slug).subscribe({
+        next: (res: any) => {
+          if(res?.status == 200) {
+            this.businessData = res?.data;
+            this.getSimilarBusiness();
+          }
+          this.loading = false;
+        },
+        error: (err: any) => {
+          // console.log(err);
+          this.loading = false;
+        }
+      })
+    );
+  }
+
+  getSimilarBusiness(): void {
+    this.subscriptions.add(
+      this.coreBusinessService.getSimilarBusiness(this.businessData?.category_id).subscribe({
+        next: (res: any) => {
+          if(res?.status == 200) {
+            this.similarBusinessData = res?.data?.data;
+          }
+        },
+        error: (err: any) => {
+          // console.log(err);
+        }
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe()
+  }
 
 }

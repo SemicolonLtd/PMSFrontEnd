@@ -17,5 +17,9 @@ export class CoreBusinessService {
   getBusinessDetails(slug: string): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/core/business/slug/${slug}`);
   }
+
+  getSimilarBusiness(slug: string): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/core/business/similar/${slug}/10`);
+  }
   
 }

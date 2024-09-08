@@ -1,4 +1,4 @@
-<div class="news-card-container" [routerLink]="'details/' + newsData.id">
+<div class="news-card-container" [routerLink]="'/news/details/' + newsData.slug">
     <div class="news-card">
         <p-card [header]="newsData.title">
             <ng-template pTemplate="header">

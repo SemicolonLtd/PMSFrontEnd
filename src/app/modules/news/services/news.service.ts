@@ -26,4 +26,8 @@ export class NewsService {
     return this.http.get(`${environment.apiUrl}/news/slug/${slug}`);
   }
 
+  getSimilarNews( categoryId: number): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/news/by-category/${categoryId}/10`);
+  }
+
 }
