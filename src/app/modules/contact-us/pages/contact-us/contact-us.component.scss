@@ -10,16 +10,43 @@
 .contact-card-wrapper {
     background-color: #F2F9FB;
     padding: 6.5rem 1.5rem;
+    @media (max-width:768px) {
+        padding: 1.5rem;
+    }
 }
 
 .contact-info-wrapper {
     background-color: var(--primary-color-medium);
     color:#fff;
     padding: 2rem 1.5rem;
+    @media (max-width:768px) {
+        margin-bottom: 2.5rem;
+    }
     .info-wrapper {
-        .text {
-            margin-inline-start: 1rem;
+        i {
+            font-size: 1.5rem;
         }
+        .text {
+            margin-inline-start: 2rem;
+            font-size: 1.2rem;
+
+        }
+    }
+}
+
+.contact-card-wrapper .grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contact-card-wrapper .grid > div {
+    flex: 1 1 50%; /* Flex-grow and flex-basis for two equal columns */
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+    .contact-card-wrapper .grid > div {
+        flex: 1 1 100%; /* Full-width columns on smaller screens */
     }
 }
 
@@ -27,6 +54,54 @@
     .contact-form-wrapper {
         input {
             width: 100%;
+        }
+        .p-float-label {
+            margin-bottom: 2rem;
+        }
+        textarea {
+            resize: none;
+            width: 100%;
+            
+        }
+        .search-btn {
+            .p-button {
+                width: 100%;
+                background: var(--primary-color-medium);
+                border: 1px solid var(--primary-color-medium);
+                border-radius: 7px;
+                transition: 0.4s all ease;
+                min-height: 3.125rem;
+                .pi {
+                    transition: 0.4s all ease;
+                    &:lang(ar) {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+            &:hover {
+                .p-button {
+                    text-align: start;
+                    .p-button-label {
+                        display: none;
+                    }
+                    .pi {
+                        display: block;
+                        width: 100%;
+                        transform: translateX(50%);
+                    }
+                }
+                &:lang(ar) {
+                    text-align: start;
+                    .p-button-label {
+                        display: none;
+                    }
+                    .pi {
+                        display: block;
+                        width: 100%;
+                        transform: rotate(180deg) translateX(-50%);
+                    }
+                }
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ import { InputTextModule } from 'primeng/inputtext';
 
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     ContactUsRoutingModule,
     InputTextModule,
     FloatLabelModule,
-    InputTextareaModule
+    InputTextareaModule,
+    ButtonModule
   ]
 })
 export class ContactUsModule { }
