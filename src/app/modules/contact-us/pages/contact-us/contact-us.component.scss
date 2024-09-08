@@ -1,0 +1,37 @@
+.contact-us {
+        iframe {
+            height: 60vh;
+            @media (max-width: 768px) {
+                height: 45vh;
+            }
+        }
+}
+
+.contact-card-wrapper {
+    background-color: #F2F9FB;
+    padding: 6.5rem 1.5rem;
+}
+
+.contact-info-wrapper {
+    background-color: var(--primary-color-medium);
+    color:#fff;
+    padding: 2rem 1.5rem;
+    .info-wrapper {
+        .text {
+            margin-inline-start: 1rem;
+        }
+    }
+}
+
+::ng-deep {
+    .contact-form-wrapper {
+        input {
+            width: 100%;
+        }
+    }
+}
+
+// .contact-form-wrapper {
+
+// }
+

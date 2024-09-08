@@ -9,6 +9,7 @@ const routes: Routes = [
   {path: 'core-business', loadChildren: ()=> import('./modules/core-business/core-business.module').then((m)=> m.CoreBusinessModule)},
   {path: 'events', loadChildren: ()=> import('./modules/events/events.module').then((m)=> m.EventsModule)},
   {path: 'certificates', loadChildren: ()=> import('./modules/certificates/certificates.module').then((m)=> m.CertificatesModule)},
+  {path: 'contact-us', loadChildren: ()=> import('./modules/contact-us/contact-us.module').then((m)=> m.ContactUsModule)},
 
 ];
 
