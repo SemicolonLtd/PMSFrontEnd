@@ -4,9 +4,17 @@
     border-bottom-left-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
     cursor: pointer;
+    transition: 0.4s all ease;
+    &:hover {
+        .img-wrapper {
+            transform: translateY(-10px);
+        }
+    }
     .img-wrapper {
         min-height: 15.625rem;
         max-height: 15.625rem;
+    transition: 0.4s all ease;
+
         img {
             min-height: 15.625rem;
             max-height: 15.625rem;

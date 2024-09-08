@@ -5,6 +5,7 @@ import { CertificatesRoutingModule } from './certificates-routing.module';
 import { CertificatesComponent } from './pages/certificates/certificates.component';
 
 import { ImageModule } from 'primeng/image';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { ImageModule } from 'primeng/image';
   imports: [
     CommonModule,
     CertificatesRoutingModule,
-    ImageModule
+    ImageModule,
+    ButtonModule
   ]
 })
 export class CertificatesModule { }
