@@ -30,8 +30,8 @@ export class ProjectsService {
     return this.http.get(`${environment.apiUrl}/project/get/slug/${slug}`);
   }
 
-  getSimilarProjects(slug: string, projectId: number): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/project/similar/${slug}/${projectId}`);
+  getSimilarProjects(slug: string): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/project/similar/${slug}/10`);
   }
 
 }

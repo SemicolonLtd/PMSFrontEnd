@@ -1,4 +1,18 @@
 .project-details {
+    padding-top: 2em;
+    .content-wrapper {
+        width: 100%;
+        .images {
+            float: left;
+            width: 50%; // or any width you want
+            height: auto;
+            margin: 10px; // optional
+            shape-outside: triangle(50%);
+        }
+        .text {
+            margin-left: 0;
+        }
+    }
     .project-info {
         .info {
             .title {
