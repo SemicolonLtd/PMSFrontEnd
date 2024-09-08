@@ -8,6 +8,26 @@
     .text {
         margin-inline-end: 0.5rem;
     }
+    i {
+        transition: 0.4s all ease;
+    }
+    &:hover {
+        color: var(--secondary-color);
+        i {
+            font-weight: 900;
+            transform: translateX(5px);
+        }
+    }
+    &:lang(ar) {
+        i {
+            transform: rotate(180deg)
+        }
+        &:hover {
+            i {
+                transform: rotate(180deg) translateX(5px);
+            }
+        }
+    }
 }
 
 ::ng-deep {
