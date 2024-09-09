@@ -32,11 +32,23 @@
             &:hover {
                 right: 7%;
             }
+            &:lang(ar) {
+                left: 5%;
+                right: unset;
+                &:hover {
+                    left: 7%;
+                    right: unset;
+                }
+            }
         }
         .back {
             top: -5%;
             right: 0;
             z-index: 1;
+            &:lang(ar) {
+                left: 0;
+                right: unset;
+            }
         }
 
     }
