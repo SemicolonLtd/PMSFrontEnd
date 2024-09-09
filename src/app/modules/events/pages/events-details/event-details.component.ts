@@ -1,100 +1,95 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { EventsService } from '../../services/events.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-event-details',
   templateUrl: './event-details.component.html',
   styleUrls: ['./event-details.component.scss']
 })
-export class EventDetailsComponent {
+export class EventDetailsComponent implements OnInit, OnDestroy {
+
   responsiveOptions: any[] = [
     {
-      breakpoint: '1200px',
-      numVisible: 3
+        breakpoint: '1024px',
+        numVisible: 5
     },
     {
         breakpoint: '768px',
-        numVisible: 2
+        numVisible: 3
     },
     {
-        breakpoint: '685px',
+        breakpoint: '560px',
         numVisible: 1
     }
   ];
 
-  images: any[]  = [
-    {
-      itemImageSrc: 'assets/images/home/header-1.jpg',
-      thumbnailImageSrc: 'assets/images/home/header-1.jpg',
-      alt: 'Description for Image 1',
-      title: 'Title 1'
-  },
-  {
-    itemImageSrc: 'assets/images/home/header-2.png',
-    thumbnailImageSrc: 'assets/images/home/header-2.png',
-    alt: 'Description for Image 1',
-    title: 'Title 1'
-  },
-  {
-    itemImageSrc: 'assets/images/home/header-3.jpg',
-    thumbnailImageSrc: 'assets/images/home/header-3.jpg',
-    alt: 'Description for Image 1',
-    title: 'Title 1'
-  },
-  {
-    itemImageSrc: 'assets/images/home/header-2.png',
-    thumbnailImageSrc: 'assets/images/home/header-2.png',
-    alt: 'Description for Image 1',
-    title: 'Title 1'
-  },
-  {
-    itemImageSrc: 'assets/images/home/header-3.jpg',
-    thumbnailImageSrc: 'assets/images/home/header-3.jpg',
-    alt: 'Description for Image 1',
-    title: 'Title 1'
-  },
-  {
-    itemImageSrc: 'assets/images/home/header-3.jpg',
-    thumbnailImageSrc: 'assets/images/home/header-3.jpg',
-    alt: 'Description for Image 1',
-    title: 'Title 1'
-  },
-  {
-    itemImageSrc: 'assets/images/home/header-2.png',
-    thumbnailImageSrc: 'assets/images/home/header-2.png',
-    alt: 'Description for Image 1',
-    title: 'Title 1'
-  },
-  ]
+  eventData: any = {};
+  similarEventsData: any[] = [];
+  slug: string = '';
+  typeId: any;
+  loading = false;
+  subscriptions = new Subscription();
 
-  eventsList: any[] = [
-    {
-      id:1,
-      image: 'assets/images/home/event-1.jpg',
-      desc: 'The body of the late US Rep. John Lewis on Sunday will make the final journey across the famous bridge The body of the late US Rep. John Lewis on Sunday will make the final journey across the famous .',
-      title: 'EPICS of Early Facilites For  NEW GNN FIELD DEVELOPMENT',
-      date: '20/8/2023',
-    },
-    {
-      id:1,
-      image: 'assets/images/home/event-2.jpg',
-      title: 'EPICS of Early Facilites For  NEW GNN FIELD DEVELOPMENT',
-      desc: 'The body of the late US Rep. John Lewis on Sunday will make the final journey across the famous bridge The body of the late US Rep. John Lewis on Sunday will make the final journey across the famous .',
-      date: '20/8/2023',
-    },
-    {
-      id:1,
-      image: 'assets/images/home/event-1.jpg',
-      title: 'EPICS of Early Facilites For  NEW GNN FIELD DEVELOPMENT',
-      desc: 'The body of the late US Rep. John Lewis on Sunday will make the final journey across the famous bridge The body of the late US Rep. John Lewis on Sunday will make the final journey across the famous .',
-      date: '20/8/2023',
-    },
-    {
-      id:1,
-      image: 'assets/images/home/event-2.jpg',
-      title: 'EPICS of Early Facilites For  NEW GNN FIELD DEVELOPMENT',
-      desc: 'The body of the late US Rep. John Lewis on Sunday will make the final journey across the famous bridge The body of the late US Rep. John Lewis on Sunday will make the final journey across the famous .',
-      date: '20/8/2023',
-    }
-  ]
+  constructor(
+    private eventsService: EventsService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
+
+  ngOnInit(): void {
+    this.getEventSlugFromParams();
+  }
+
+  getEventSlugFromParams(): void {
+    this.route.params.subscribe((params: any) => {
+      console.log(params);
+      if(params['slug']) {
+        this.slug = params['slug'];
+        this.getEventDetails();
+      } else {
+        this.router.navigateByUrl('/events');
+      }
+    });
+  }
+
+  getEventDetails(): void {
+    this.loading = true;
+    this.subscriptions.add(
+      this.eventsService.getEventDetails(this.slug).subscribe({
+        next: (res: any) => {
+          if(res?.status == 200) {
+            this.eventData = res?.data;
+            this.getSimilarNews();
+          }
+          this.loading = false;
+        },
+        error: (err: any) => {
+          console.log(err);
+          this.loading = false;
+        }
+      })
+    );
+  }
+
+  getSimilarNews(): void {
+    this.subscriptions.add(
+      this.eventsService.getEvents(10).subscribe({
+        next: (res: any) => {
+          if(res?.status == 200) {
+            this.similarEventsData = res?.data?.data;
+          }
+        },
+        error: (err: any) => {
+          console.log(err);
+        }
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe()
+  }
 
 }
