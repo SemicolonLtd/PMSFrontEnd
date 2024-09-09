@@ -1,4 +1,4 @@
-<div class="certificates">
+<div class="certificates pb-5">
     <div class="header flex align-items-center justify-content-center">
         <img src="assets/images/global/certificates.webp" alt="" class="cover">
         <div class="content">
@@ -22,7 +22,7 @@
                 <div class="xl:col-3 md:col-4 sm:col-6 mb-5" *ngFor="let certificate of certificatesList">
                     <div class="certificate-card">
                         <p-image 
-                            [src]="certificate.img"
+                            [src]="certificate.image"
                             alt="Image"
                             [preview]="true" 
                         >
@@ -42,5 +42,8 @@
                 <i class="pi pi-angle-down"></i>
             </span>
         </div>
+    </div>
+    <div class="load-more"  *ngIf="paginationData?.total! > certificatesList?.length!">
+        <p-button label="More..." (click)="loadMore()" />
     </div>
 </div>

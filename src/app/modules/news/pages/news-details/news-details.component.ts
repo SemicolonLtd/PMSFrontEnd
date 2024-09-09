@@ -1,11 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { NewsService } from '../../services/news.service';
 
 @Component({
   selector: 'app-news-details',
   templateUrl: './news-details.component.html',
   styleUrls: ['./news-details.component.scss']
 })
-export class NewsDetailsComponent {
+export class NewsDetailsComponent implements OnInit, OnDestroy {
+  
   responsiveOptions: any[] = [
     // {
     //   breakpoint: '2000px',
@@ -24,110 +28,71 @@ export class NewsDetailsComponent {
         numVisible: 1
     }
   ];
+  newsData: any = {};
+  similarNewsData: any[] = [];
+  slug: string = '';
+  typeId: any;
+  loading = false;
+  subscriptions = new Subscription();
 
-  images: any[]  = [
-    {
-      itemImageSrc: 'assets/images/home/header-1.jpg',
-      thumbnailImageSrc: 'assets/images/home/header-1.jpg',
-      alt: 'Description for Image 1',
-      title: 'Title 1'
-  },
-  {
-    itemImageSrc: 'assets/images/home/header-2.png',
-    thumbnailImageSrc: 'assets/images/home/header-2.png',
-    alt: 'Description for Image 1',
-    title: 'Title 1'
-  },
-  {
-    itemImageSrc: 'assets/images/home/header-3.jpg',
-    thumbnailImageSrc: 'assets/images/home/header-3.jpg',
-    alt: 'Description for Image 1',
-    title: 'Title 1'
-  },
-  {
-    itemImageSrc: 'assets/images/home/header-2.png',
-    thumbnailImageSrc: 'assets/images/home/header-2.png',
-    alt: 'Description for Image 1',
-    title: 'Title 1'
-  },
-  {
-    itemImageSrc: 'assets/images/home/header-3.jpg',
-    thumbnailImageSrc: 'assets/images/home/header-3.jpg',
-    alt: 'Description for Image 1',
-    title: 'Title 1'
-  },
-  {
-    itemImageSrc: 'assets/images/home/header-3.jpg',
-    thumbnailImageSrc: 'assets/images/home/header-3.jpg',
-    alt: 'Description for Image 1',
-    title: 'Title 1'
-  },
-  {
-    itemImageSrc: 'assets/images/home/header-2.png',
-    thumbnailImageSrc: 'assets/images/home/header-2.png',
-    alt: 'Description for Image 1',
-    title: 'Title 1'
-  },
-  ]
+  constructor(
+    private newsService: NewsService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
-  newsData: any[] = [
-    {
-      id:1,
-      title: 'Harnessing the Power of the Seas for Sustainable Energy Solutions',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor',
-      image: '../../../../../assets/images/home/core-front.webp',
-      date: '2022-01-01',
-      type: 'offshore'
-    },
-    {
-      id:1,
-      title: 'Harnessing the Power of the Seas for Sustainable Energy Solutions',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor',
-      image: '../../../../../assets/images/home/project-2.jpg',
-      date: '2022-01-01',
-      type: 'Oil & Gas'
-    },
-    {
-      id:1,
-      title: 'Harnessing the Power of the Seas for Sustainable Energy Solutions',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor',
-      image: '../../../../../assets/images/home/project-3.jpg',
-      date: '2022-01-01',
-      type: 'offshore'
-    },
-    {
-      id:1,
-      title: 'Harnessing the Power of the Seas for Sustainable Energy Solutions',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor',
-      image: '../../../../../assets/images/home/project-4.jpg',
-      date: '2022-01-01',
-      type: 'Marine'
-    },
-    {
-      id:1,
-      title: 'Harnessing the Power of the Seas for Sustainable Energy Solutions',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor',
-      image: '../../../../../assets/images/home/project-2.jpg',
-      date: '2022-01-01',
-      type: 'Oil & Gas'
-    },
-    {
-      id:1,
-      title: 'Harnessing the Power of the Seas for Sustainable Energy Solutions',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor',
-      image: '../../../../../assets/images/home/project-3.jpg',
-      date: '2022-01-01',
-      type: 'offshore'
-    },
-    {
-      id:1,
-      title: 'Harnessing the Power of the Seas for Sustainable Energy Solutions',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctorLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor',
-      image: '../../../../../assets/images/home/project-4.jpg',
-      date: '2022-01-01',
-      type: 'Marine'
-    },
-    
-  ]
+  ngOnInit(): void {
+    this.getNewsSlugFromParams();
+  }
+
+  getNewsSlugFromParams(): void {
+    this.route.params.subscribe((params: any) => {
+      if(params['slug']) {
+        this.slug = params['slug'];
+        this.getNewsDetails();
+      } else {
+        this.router.navigateByUrl('/news');
+      }
+    });
+  }
+
+  getNewsDetails(): void {
+    this.loading = true;
+    this.subscriptions.add(
+      this.newsService.getNewsDetails(this.slug).subscribe({
+        next: (res: any) => {
+          if(res?.status == 200) {
+            console.log(res);
+            this.newsData = res?.data;
+            this.getSimilarNews();
+          }
+          this.loading = false;
+        },
+        error: (err: any) => {
+          console.log(err);
+          this.loading = false;
+        }
+      })
+    );
+  }
+
+  getSimilarNews(): void {
+    this.subscriptions.add(
+      this.newsService.getSimilarNews(this.newsData?.category_id).subscribe({
+        next: (res: any) => {
+          if(res?.status == 200) {
+            this.similarNewsData = res?.data?.data;
+          }
+        },
+        error: (err: any) => {
+          console.log(err);
+        }
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe()
+  }
 
 }

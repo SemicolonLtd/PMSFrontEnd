@@ -1,4 +1,4 @@
-<div class="event-card" [routerLink]="'details/'+ eventData.id">
+<div class="event-card" [routerLink]="'details/'+ eventData.slug">
     <div class="img-wrapper">
         <img class="w-full border-round-3xl" [src]="eventData.image" alt="Project Image">
     </div>
@@ -8,9 +8,8 @@
                 <h5 class="title">
                     {{eventData.title}}
                 </h5>
-                <p class="short-desc">
-                    {{eventData.desc | slice : 0 : 200}}
-                </p>
+                <div class="short-desc" [innerHTML]="eventData.desc">
+                </div>
             </div>
         </div>
         <div class="actions flex align-items-center justify-content-between">

@@ -1,47 +1,91 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { EventsService } from '../../services/events.service';
 
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.scss']
 })
-export class EventsComponent {
+export class EventsComponent implements OnInit, OnDestroy {
 
-  eventsList: any[] = [
-    {
-      id:1,
-      image: 'assets/images/home/event-1.jpg',
-      desc: 'The body of the late US Rep. John Lewis on Sunday will make the final journey across the famous bridge The body of the late US Rep. John Lewis on Sunday will make the final journey across the famous .',
-      title: 'EPICS of Early Facilites For  NEW GNN FIELD DEVELOPMENT',
-      date: '20/8/2023',
-    },
-    {
-      id:1,
-      image: 'assets/images/home/event-2.jpg',
-      title: 'EPICS of Early Facilites For  NEW GNN FIELD DEVELOPMENT',
-      desc: 'The body of the late US Rep. John Lewis on Sunday will make the final journey across the famous bridge The body of the late US Rep. John Lewis on Sunday will make the final journey across the famous .',
-      date: '20/8/2023',
-    },
-    {
-      id:1,
-      image: 'assets/images/home/event-1.jpg',
-      title: 'EPICS of Early Facilites For  NEW GNN FIELD DEVELOPMENT',
-      desc: 'The body of the late US Rep. John Lewis on Sunday will make the final journey across the famous bridge The body of the late US Rep. John Lewis on Sunday will make the final journey across the famous .',
-      date: '20/8/2023',
-    },
-    {
-      id:1,
-      image: 'assets/images/home/event-2.jpg',
-      title: 'EPICS of Early Facilites For  NEW GNN FIELD DEVELOPMENT',
-      desc: 'The body of the late US Rep. John Lewis on Sunday will make the final journey across the famous bridge The body of the late US Rep. John Lewis on Sunday will make the final journey across the famous .',
-      date: '20/8/2023',
-    }
-  ]
+  pageTopEvent: any;
+  topEventLoading = false;
+  eventsList: any[] = [];
+  eventsLoading = false;
+  pageSize = 10;
+  searchMode = false;
+  searchQuery = '';
+  paginationData: any;
+  subscriptions = new Subscription();
 
-  value: string = 'completed-projects';
+  constructor(
+    private eventsService: EventsService
+  ) { }
 
-  onSelectCategory(category: any): void {
-    console.log(category.value);
-    
+  ngOnInit(): void {
+    this.getTopEventData();
+    this.getEventsData();
   }
+
+  getTopEventData(): void {
+    this.topEventLoading = true;
+    this.subscriptions.add(
+      this.eventsService.getTopEvent().subscribe({
+        next: (res: any) => {
+          if(res?.status == 200) {
+            this.pageTopEvent = res?.data;
+          }
+          this.topEventLoading = false;
+        },
+        error: (err: any) => {
+          this.topEventLoading = false
+        }
+      })
+    )
+  }
+
+  getEventsData(): void {
+    this.eventsLoading = true;
+    const API = this.searchMode ? 
+    this.eventsService.searchForEvent(this.searchQuery, this.pageSize) :
+    this.eventsService.getEvents(this.pageSize)
+
+    this.subscriptions.add(
+      API.subscribe({
+        next: (res: any) => {
+          if(res?.status == 200) {
+            this.eventsList = [... this.eventsList, ...res?.data?.data];
+            this.paginationData = res?.data?.meta?.pagination;
+          }
+          this.eventsLoading = false
+        },
+        error: (err: any) => {
+          this.eventsLoading = false
+        }
+      })
+    )
+  }
+
+  searchForEvents(query: string): void {
+    if (query?.length) {
+      this.searchMode = true;
+      this.searchQuery = query;
+    } else {
+      this.searchMode = false;
+      this.searchQuery = '';
+    }
+    this.eventsList = [];
+    this.getEventsData();
+  }
+
+  loadMore(): void {
+    this.pageSize += 10;
+    this.getEventsData();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe()
+  }
+
 }
