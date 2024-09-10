@@ -16,34 +16,37 @@
             </span>
         </div>
     </div>
-    <div class="all-certificates">
-        <div class="pms-container">
-            <div class="grid justify-content-center">
-                <div class="xl:col-3 md:col-4 sm:col-6 mb-5" *ngFor="let certificate of certificatesList">
-                    <div class="certificate-card">
-                        <p-image 
-                            [src]="certificate.image"
-                            alt="Image"
-                            [preview]="true" 
-                        >
-                        <ng-template pTemplate="indicator">
-                            <img class="h-6rem" src="assets/images/global/certificate-icon.svg" alt="">
-                        </ng-template>
-                    </p-image>
-                        <div class="card-footer">
-                            <h3 class="card-title">{{certificate.title}}</h3>
+    <ng-container *ngIf="certificatesList?.length && !loading">
+        <div class="all-certificates">
+            <div class="pms-container">
+                <div class="grid justify-content-center">
+                    <div class="xl:col-3 md:col-4 sm:col-6 mb-5" *ngFor="let certificate of certificatesList">
+                        <div class="certificate-card">
+                            <p-image 
+                                [src]="certificate.image"
+                                alt="Image"
+                                [preview]="true" 
+                            >
+                            <ng-template pTemplate="indicator">
+                                <img class="h-6rem" src="assets/images/global/certificate-icon.svg" alt="">
+                            </ng-template>
+                        </p-image>
+                            <div class="card-footer">
+                                <h3 class="card-title">{{certificate.title}}</h3>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="more-btn">
+                <span class="icon-wrapper">
+                    <i class="pi pi-angle-down"></i>
+                </span>
+            </div>
         </div>
-        <div class="more-btn">
-            <span class="icon-wrapper">
-                <i class="pi pi-angle-down"></i>
-            </span>
+        <div class="load-more"  *ngIf="paginationData?.total! > certificatesList?.length!">
+            <p-button label="More..." (click)="loadMore()" />
         </div>
-    </div>
-    <div class="load-more"  *ngIf="paginationData?.total! > certificatesList?.length!">
-        <p-button label="More..." (click)="loadMore()" />
-    </div>
+    </ng-container>
+    <app-loading type="small" *ngIf="loading" ></app-loading>
 </div>

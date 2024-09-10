@@ -31,6 +31,7 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
 
   businessData: any = {};
   similarBusinessData: any[] = [];
+  similarBusinessLoading = false;
   slug: string = '';
   loading = false;
   subscriptions = new Subscription();
@@ -51,7 +52,7 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
         this.slug = params['slug'];
         this.getBusinessDetails();
       } else {
-        this.router.navigateByUrl('/news');
+        this.router.navigateByUrl('/core-business');
       }
     });
   }
@@ -76,15 +77,17 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
   }
 
   getSimilarBusiness(): void {
+    this.similarBusinessLoading = true;
     this.subscriptions.add(
       this.coreBusinessService.getSimilarBusiness(this.businessData?.category_id).subscribe({
         next: (res: any) => {
           if(res?.status == 200) {
             this.similarBusinessData = res?.data?.data;
           }
+          this.similarBusinessLoading = false;
         },
         error: (err: any) => {
-          // console.log(err);
+          this.similarBusinessLoading = false;
         }
       })
     );

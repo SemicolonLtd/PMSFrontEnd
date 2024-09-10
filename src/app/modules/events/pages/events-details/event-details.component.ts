@@ -27,6 +27,7 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
 
   eventData: any = {};
   similarEventsData: any[] = [];
+  similarEventsLoading = false;
   slug: string = '';
   typeId: any;
   loading = false;
@@ -74,15 +75,18 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
   }
 
   getSimilarNews(): void {
+    this.similarEventsLoading = true;
     this.subscriptions.add(
       this.eventsService.getEvents(10).subscribe({
         next: (res: any) => {
           if(res?.status == 200) {
             this.similarEventsData = res?.data?.data;
           }
+          this.similarEventsLoading = false;
         },
         error: (err: any) => {
           console.log(err);
+          this.similarEventsLoading = false;
         }
       })
     );

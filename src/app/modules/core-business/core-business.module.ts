@@ -23,9 +23,7 @@ import { GalleriaModule } from 'primeng/galleria';
     AccordionModule,
     CarouselModule,
     GalleriaModule,
-
-
-    
+    SharedModule
   ]
 })
 export class CoreBusinessModule { }

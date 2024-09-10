@@ -1,6 +1,6 @@
 <div class="project-details margin-avoid-navbar">
 <div class="pms-container">
-    <div class="project-info">
+    <div class="project-info" *ngIf="projectData?.title">
         <div class="grid">
             <div class="col-12">
                 <h2 class="project-title">{{ projectData?.title }}</h2>
@@ -29,7 +29,8 @@
            
         </div>
     </div>
-    <div class="similar-projects mt-5" *ngIf="similarProjectsData?.length">
+    <app-loading type="small" *ngIf="loading"></app-loading>
+    <div class="similar-projects mt-5" *ngIf="similarProjectsData?.length && !similarProjectsLoading">
         <span class="title block font-bold text-2xl pb-2 mb-4">
             Similar Projects
         </span>
@@ -49,5 +50,6 @@
         </p-carousel>
 
     </div>
+    <app-loading type="small" *ngIf="similarProjectsLoading"></app-loading>
 </div>
 </div>

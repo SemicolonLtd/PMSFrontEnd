@@ -17,6 +17,12 @@ import { RouterModule } from '@angular/router';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
 import { EventCardComponent } from './components/event-card/event-card.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { LottieModule } from 'ngx-lottie';
+import { LoadingComponent } from './components/loading/loading.component';
+
+export function playerFactory() {
+  return import('lottie-web');
+}
 
 @NgModule({
   declarations: [
@@ -26,7 +32,8 @@ import { TranslateModule } from '@ngx-translate/core';
     SearchComponent,
     CenterBarComponent,
     ProjectCardComponent,
-    EventCardComponent
+    EventCardComponent,
+    LoadingComponent
   ],
   imports: [
   CommonModule,
@@ -37,7 +44,8 @@ import { TranslateModule } from '@ngx-translate/core';
     ButtonModule,
     InputTextModule,
     RouterModule,
-    TranslateModule
+    TranslateModule,
+    LottieModule.forRoot({ player: playerFactory })
   ],
   exports: [
     NavbarComponent,
@@ -46,7 +54,8 @@ import { TranslateModule } from '@ngx-translate/core';
     SearchComponent,
     CenterBarComponent,
     ProjectCardComponent,
-    EventCardComponent
+    EventCardComponent,
+    LoadingComponent
 
   ]
 })
