@@ -1,6 +1,6 @@
 <div class="news margin-avoid-navbar">
     <!-- <img src="assets/images/global/pages-wave-top.webp" alt="" class="pages-wave-top"> -->
-    <app-search [Title]="'Our News'" (searchEmitter)="searchForNews($event)"></app-search>
+    <app-search [Title]="searchTitle" (searchEmitter)="searchForNews($event)"></app-search>
     <div class="pms-container">
         <div class="news-data">
             <ng-container *ngIf="!searchMode">

@@ -1,6 +1,6 @@
 <div class="projects">
     <!-- <img src="assets/images/global/pages-wave-top.webp" alt="" class="pages-wave-top"> -->
-    <app-search [Title]="'Our Projects'" (searchEmitter)="searchForProjects($event)"></app-search>
+    <app-search [Title]="searchTitle" (searchEmitter)="searchForProjects($event)"></app-search>
     <div class="latest-project" *ngIf="pageTopProject && !topProjectLoading">
         <div class="pms-container">
             <div class="grid">
@@ -9,7 +9,7 @@
                 </div>
                 <div class="project-info md:col-6 sm:col-12 max-h-30rem min-h-30rem">
                     <h3 class="title subtitle-font-size">
-                        Latest Project
+                        {{'Projects.LatestProject' | translate}}
                     </h3>
                     <h5 class="short-desc">
                         {{ pageTopProject?.title }}
@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    <app-center-bar [Title]="'Follow Our Projects'" [Desc]="'It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.'"></app-center-bar>
+    <app-center-bar [Title]="barTitle" [Desc]="'It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.'"></app-center-bar>
     <div class="projects-list">
         <div class="pms-container">
             <div class="filter-btns text-center" *ngIf="!searchMode">
@@ -48,7 +48,7 @@
                         </div>
                     </ng-container>
                     <div class="load-more" *ngIf="paginationData?.total! > projectsList?.length!">
-                        <p-button label="More..." (click)="loadMore()" />
+                        <p-button label="{{'Projects.More' | translate}}" (click)="loadMore()" />
                     </div>
                 </div>
             </div>

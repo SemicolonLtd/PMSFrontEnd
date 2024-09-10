@@ -135,15 +135,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 name: 'projects',
                 menu: [
                   {
-                    name: 'Recent Projects',
+                    name: this.translateService.instant('Projects.RecentProjects') ,
                     link: '/projects?type=recent-projects',
                   },
                   {
-                    name: 'Completed Projects',
+                    name: this.translateService.instant('Projects.CompletedProjects'),
                     link: '/projects?type=completed-projects',
                   },
                   {
-                    name: 'Mega Projects',
+                    name: this.translateService.instant('Projects.MegaProjects'),
                     link: '/projects?type=mega-projects',
                   }
                 ]

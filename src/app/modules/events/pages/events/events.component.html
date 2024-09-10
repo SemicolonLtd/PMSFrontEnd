@@ -1,6 +1,6 @@
 <div class="events">
     <!-- <img src="assets/images/global/pages-wave-top.webp" alt="" class="pages-wave-top"> -->
-    <app-search [Title]="'Our Events'" (searchEmitter)="searchForEvents($event)"></app-search>
+    <app-search [Title]="searchTitle" (searchEmitter)="searchForEvents($event)"></app-search>
     <div class="latest-event" *ngIf="pageTopEvent && !topEventLoading && !searchMode">
         <div class="pms-container">
             <div class="grid">

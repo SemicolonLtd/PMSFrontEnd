@@ -44,7 +44,11 @@
                 color: var(--primary-color);
             }
         }
+        .p-buttonset .p-button:not(:last-child) {
+            border-right: 1px solid var(--primary-color-medium);
+        }
         .projects-list {
+
             .filter-btns {
                 .p-selectbutton .p-button {
                     border-color: var(--primary-color-medium);

@@ -19,7 +19,7 @@ export class ContactUsComponent {
   }
 
   getGoogleMapsUrl(): SafeResourceUrl {
-    const mapUrl = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=51.51552,-0.171683&t=m&z=14&ie=UTF8&iwloc=B&output=embed`;
+    const mapUrl = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=51.51552,-0.171683&t=k&z=14&ie=UTF8&iwloc=B&output=embed`;
     // const mapUrl = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${this.hotelLocation.lat},${this.hotelLocation.lon}&t=m&z=14&ie=UTF8&iwloc=B&output=embed`;
     return this.sanitizer.bypassSecurityTrustResourceUrl(mapUrl);
   }

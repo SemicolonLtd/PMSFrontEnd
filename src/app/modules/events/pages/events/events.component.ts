@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { EventsService } from '../../services/events.service';
 
@@ -8,7 +9,7 @@ import { EventsService } from '../../services/events.service';
   styleUrls: ['./events.component.scss']
 })
 export class EventsComponent implements OnInit, OnDestroy {
-
+  searchTitle = this.translateService.instant('Search.OurCoreBusiness')
   pageTopEvent: any;
   topEventLoading = false;
   eventsList: any[] = [];
@@ -20,7 +21,9 @@ export class EventsComponent implements OnInit, OnDestroy {
   subscriptions = new Subscription();
 
   constructor(
-    private eventsService: EventsService
+    private eventsService: EventsService,
+    private translateService:TranslateService
+
   ) { }
 
   ngOnInit(): void {

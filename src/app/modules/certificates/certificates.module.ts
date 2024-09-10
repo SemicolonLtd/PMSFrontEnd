@@ -6,6 +6,7 @@ import { CertificatesComponent } from './pages/certificates/certificates.compone
 
 import { ImageModule } from 'primeng/image';
 import { ButtonModule } from 'primeng/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ButtonModule } from 'primeng/button';
     CommonModule,
     CertificatesRoutingModule,
     ImageModule,
-    ButtonModule
+    ButtonModule,
+    TranslateModule
   ]
 })
 export class CertificatesModule { }

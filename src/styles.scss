@@ -139,7 +139,17 @@ ul, li {
     order: 2; 
 }
 
+.p-image-toolbar {
+    @media (max-width:992px) {
+        top: 10%;
+    }
+}
 
+.pi-angle-right, .p-accordion-toggle-icon {
+    &:lang(ar) {
+        transform: rotate(180deg);
+    }
+}
 
 .color-primary-medium {
     color: var(--primary-color-medium)

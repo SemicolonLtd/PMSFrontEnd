@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ProjectsService } from '../../services/projects.service';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-projects',
@@ -9,13 +10,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
-
+  searchTitle = this.translateService.instant('Search.OurProjects');
+  barTitle = this.translateService.instant('Projects.FollowOurProjects');
   pageTopProject: any;
   topProjectLoading = false;
   stateOptions: any[] = [
-    { label: 'Recent Projects', value: 'recent-projects' },
-    { label: 'Completed Projects', value: 'completed-projects' },
-    { label: 'Mega Projects', value: 'mega-projects' }
+    { label: this.translateService.instant('Projects.RecentProjects'), value: 'recent-projects' },
+    { label: this.translateService.instant('Projects.CompletedProjects'), value: 'completed-projects' },
+    { label: this.translateService.instant('Projects.MegaProjects'), value: 'mega-projects' }
   ];
   projectsList: any[] = [];
   projectsLoading = false;
@@ -28,7 +30,8 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
   constructor(
     private projectsService: ProjectsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private translateService:TranslateService
   ) { }
 
   ngOnInit(): void {
