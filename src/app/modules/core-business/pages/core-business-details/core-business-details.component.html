@@ -1,50 +1,47 @@
 <div class="project-details margin-avoid-navbar">
-<div class="pms-container">
-    <div class="project-info">
-        <div class="grid">
-            <div class="col-12">
-                <h2 class="project-title">{{ businessData?.name }}</h2>
-            </div>
-            <div class="content-wrapper col-12">
-                <div class="images">
-                    <div class="news-images">
-                        <p-galleria [value]="businessData?.media" [responsiveOptions]="responsiveOptions"
-                            [numVisible]="5">
-                            <ng-template pTemplate="item" let-item>
-                                <img [src]="item.image" style="width: 100%;" />
-                            </ng-template>
-                            <ng-template pTemplate="thumbnail" let-item>
-                                <div class="grid grid-nogutter justify-content-center">
-                                    <img [src]="item.image" style="width: 100%;" />
-                                </div>
-                            </ng-template>
-                        </p-galleria>
-                    </div>
+    <div class="pms-container">
+        <div class="project-info" *ngIf="businessData?.name && !loading">
+            <div class="grid">
+                <div class="col-12">
+                    <h2 class="project-title">{{ businessData?.name }}</h2>
                 </div>
-                <div class="text" [innerHTML]="businessData?.desc">
+                <div class="content-wrapper col-12">
+                    <div class="images">
+                        <div class="news-images">
+                            <p-galleria [value]="businessData?.media" [responsiveOptions]="responsiveOptions"
+                                [numVisible]="5">
+                                <ng-template pTemplate="item" let-item>
+                                    <img [src]="item.image" style="width: 100%;" />
+                                </ng-template>
+                                <ng-template pTemplate="thumbnail" let-item>
+                                    <div class="grid grid-nogutter justify-content-center">
+                                        <img [src]="item.image" style="width: 100%;" />
+                                    </div>
+                                </ng-template>
+                            </p-galleria>
+                        </div>
+                    </div>
+                    <div class="text" [innerHTML]="businessData?.desc">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="similar-projects mt-5" *ngIf="similarBusinessData?.length">
-        <span class="title block font-bold text-2xl pb-2 mb-4">
-            Similar Projects
-        </span>
-        <p-carousel 
-            [value]="similarBusinessData" 
-            [numVisible]="3" 
-            [numScroll]="3" 
-            [circular]="true" 
-            [showIndicators]="false"
-            [responsiveOptions]="responsiveOptions" 
-            autoplayInterval="3000">
+        <app-loading type="small" *ngIf="loading" ></app-loading>
+
+        <div class="similar-projects mt-5" *ngIf="similarBusinessData?.length && !similarBusinessLoading">
+            <span class="title block font-bold text-2xl pb-2 mb-4">
+                Similar Projects
+            </span>
+            <p-carousel [value]="similarBusinessData" [numVisible]="3" [numScroll]="3" [circular]="true"
+                [showIndicators]="false" [responsiveOptions]="responsiveOptions" autoplayInterval="3000">
                 <ng-template let-product pTemplate="item">
                     <div class="m-2 p-3">
                         <app-project-card [projectData]="product"></app-project-card>
                     </div>
                 </ng-template>
-        </p-carousel>
+            </p-carousel>
 
+        </div>
+        <app-loading type="small" *ngIf="similarBusinessLoading" ></app-loading>
     </div>
-</div>
 </div>

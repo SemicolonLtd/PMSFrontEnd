@@ -98,6 +98,7 @@
             <div class="load-more" *ngIf="paginationData?.total! > newsData?.length!">
                 <p-button label="More..." (click)="loadMore()" />
             </div>
+            <app-loading type="small" *ngIf="loading"></app-loading>
         </div>
     </div>
 </div>

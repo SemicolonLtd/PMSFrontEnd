@@ -30,6 +30,7 @@ export class NewsDetailsComponent implements OnInit, OnDestroy {
   ];
   newsData: any = {};
   similarNewsData: any[] = [];
+  similarNewsLoading = false;
   slug: string = '';
   typeId: any;
   loading = false;
@@ -77,15 +78,18 @@ export class NewsDetailsComponent implements OnInit, OnDestroy {
   }
 
   getSimilarNews(): void {
+    this.similarNewsLoading = true;
     this.subscriptions.add(
       this.newsService.getSimilarNews(this.newsData?.category_id).subscribe({
         next: (res: any) => {
           if(res?.status == 200) {
             this.similarNewsData = res?.data?.data;
           }
+          this.similarNewsLoading = false;
         },
         error: (err: any) => {
           console.log(err);
+          this.similarNewsLoading = false;
         }
       })
     );

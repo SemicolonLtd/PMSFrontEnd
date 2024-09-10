@@ -20,6 +20,7 @@ export class CertificatesComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+
     this.getAllCertificates();
   }
 

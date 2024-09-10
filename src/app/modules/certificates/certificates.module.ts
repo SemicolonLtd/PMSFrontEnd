@@ -7,6 +7,8 @@ import { CertificatesComponent } from './pages/certificates/certificates.compone
 import { ImageModule } from 'primeng/image';
 import { ButtonModule } from 'primeng/button';
 import { TranslateModule } from '@ngx-translate/core';
+import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { TranslateModule } from '@ngx-translate/core';
     CertificatesRoutingModule,
     ImageModule,
     ButtonModule,
-    TranslateModule
+    TranslateModule,
+    SharedModule
   ]
 })
 export class CertificatesModule { }

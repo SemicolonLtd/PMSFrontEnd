@@ -28,6 +28,8 @@
             </div>
         </div>
     </div>
+    <app-loading type="small" *ngIf="topEventLoading && !searchMode" ></app-loading>
+
     <app-center-bar *ngIf="!searchMode" [Title]="'Events & Activities'" [Desc]="'It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.'"></app-center-bar>
     <div class="events-list" *ngIf="eventsList?.length && !eventsLoading">
         <div class="pms-container">
@@ -45,4 +47,5 @@
             </div>
         </div>
     </div>
+    <app-loading type="small" *ngIf="eventsLoading" ></app-loading>
 </div>

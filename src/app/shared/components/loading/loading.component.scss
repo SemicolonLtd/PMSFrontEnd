@@ -1,5 +1,11 @@
 .loading-wrapper {
     text-align: center;
+    ng-lottie {
+        width: 200px;
+        height: 200px;
+        display: block;
+        margin: auto;
+    }
 }
 
 .small {
