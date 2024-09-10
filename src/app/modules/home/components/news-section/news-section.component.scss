@@ -78,7 +78,38 @@
         .news-header {
             .header-desc {
                 display: none;
+            }
+        }
+    }
+}
 
+.news-header {
+    .btn {
+        position: relative;
+        border: none;
+        background: none;
+        transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition-duration: 400ms;
+        transition-property: color;
+        &::after {
+            content: "";
+            pointer-events: none;
+            bottom: -2px;
+            left: 50%;
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            background-color:var(--secondary-color);
+            transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition-duration: 400ms;
+            transition-property: all;
+        }
+        &:hover, &:focus {
+            color: var(--secondary-color);
+            transform: scale(1.1);
+            &::after {
+                width: 100%;
+                left: 0%;
             }
         }
     }
@@ -111,14 +142,21 @@
             }
             .big-card {
                 &:hover {
-                    .p-card .p-card-body {
-                        background-color: var(--primary-color-medium);
-                        * {
-                            color: white;
+                    // .p-card .p-card-body {
+                    //     background-color: var(--primary-color-medium);
+                    //     * {
+                    //         color: white;
+                    //     }
+                    // }
+                    // .news-badge {
+                    //     color: var(--primary-color-medium) !important;
+                    // }
+                    .p-card-header {
+                        overflow: hidden;
+                        img {
+                            transition: 0.5s all ease-in-out;
+                            transform: scale(1.1) rotate(-1deg);
                         }
-                    }
-                    .news-badge {
-                        color: var(--primary-color-medium) !important;
                     }
                 }
                 .p-card .p-card-body {
@@ -158,14 +196,21 @@
             }
             .small-card {
                 &:hover {
-                    .p-card .p-card-body {
-                        background-color: var(--primary-color-medium);
-                        * {
-                            color: white;
+                    // .p-card .p-card-body {
+                    //     background-color: var(--primary-color-medium);
+                    //     * {
+                    //         color: white;
+                    //     }
+                    // }
+                    // .news-badge {
+                    //     color: var(--primary-color-medium) !important;
+                    // }
+                    .p-card-header {
+                        overflow: hidden;
+                        img {
+                            transition: 0.5s all ease-in-out;
+                            transform: scale(1.1) rotate(-1deg);
                         }
-                    }
-                    .news-badge {
-                        color: var(--primary-color-medium) !important;
                     }
                 }
                 &:nth-of-type(2) {

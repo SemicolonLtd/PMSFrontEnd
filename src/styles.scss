@@ -125,6 +125,20 @@ ul, li {
     }
 }  
 
+.p-accordion-header-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.p-accordion-header-text {
+    order: 1;
+}
+
+.p-accordion-toggle-icon {
+    order: 2; 
+}
+
 
 
 .color-primary-medium {

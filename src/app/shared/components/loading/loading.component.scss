@@ -1,0 +1,27 @@
+.loading-wrapper {
+    text-align: center;
+}
+
+.small {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    video {
+        width: 17rem;
+    }
+}
+
+.medium {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    video {
+        width: 22rem;
+    }
+}
+
+.large {
+    padding-top: 10%;
+    padding-bottom: 10%;
+    video {
+        width: 30rem;
+    }
+}
