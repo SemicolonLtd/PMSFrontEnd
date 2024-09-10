@@ -9,7 +9,7 @@
                 </div>
                 <div class="event-info md:col-6 sm:col-12 max-h-30rem min-h-30rem">
                     <h3 class="title subtitle-font-size">
-                        Latest Event
+                        {{'Events.LatestEvent' | translate}}
                     </h3>
                     <h5 class="short-desc">
                         {{ pageTopEvent?.title }}
@@ -30,7 +30,7 @@
     </div>
     <app-loading type="small" *ngIf="topEventLoading && !searchMode" ></app-loading>
 
-    <app-center-bar *ngIf="!searchMode" [Title]="'Events & Activities'" [Desc]="'It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.'"></app-center-bar>
+    <app-center-bar *ngIf="!searchMode" [Title]="barTitle" [Desc]="'It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.'"></app-center-bar>
     <div class="events-list" *ngIf="eventsList?.length && !eventsLoading">
         <div class="pms-container">
             <div class="filtered-events mt-5">
@@ -41,7 +41,7 @@
                         </div>
                     </ng-container>
                     <div class="load-more" *ngIf="paginationData?.total! > eventsList?.length!">
-                        <p-button label="More..." (click)="loadMore()" />
+                        <p-button label="{{'Events.More' | translate}}" (click)="loadMore()" />
                     </div>
                 </div>
             </div>

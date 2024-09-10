@@ -145,7 +145,7 @@ ul, li {
     }
 }
 
-.pi-angle-right, .p-accordion-toggle-icon {
+.pi-angle-right, .p-accordion-toggle-icon, .p-carousel-prev, .p-carousel-next, .pi-arrow-right {
     &:lang(ar) {
         transform: rotate(180deg);
     }

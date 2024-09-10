@@ -9,7 +9,8 @@ import { EventsService } from '../../services/events.service';
   styleUrls: ['./events.component.scss']
 })
 export class EventsComponent implements OnInit, OnDestroy {
-  searchTitle = this.translateService.instant('Search.OurCoreBusiness')
+  searchTitle = this.translateService.instant('Search.OurEvents')
+  barTitle = this.translateService.instant('Events.EventAndActivities')
   pageTopEvent: any;
   topEventLoading = false;
   eventsList: any[] = [];

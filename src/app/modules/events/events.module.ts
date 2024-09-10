@@ -9,6 +9,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { EventsComponent } from './pages/events/events.component';
 import { EventDetailsComponent } from './pages/events-details/event-details.component';
 import { EventsRoutingModule } from './events-routing.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { EventsRoutingModule } from './events-routing.module';
     SelectButtonModule,
     FormsModule,
     GalleriaModule,
-    CarouselModule
+    CarouselModule,
+    TranslateModule
 ]
 })
 export class EventsModule { }

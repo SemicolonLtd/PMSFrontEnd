@@ -9,7 +9,7 @@ import { NewsService } from '../../services/news.service';
   styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit, OnDestroy {
-  searchTitle = this.translateService.instant('Search.OurProjects')
+  searchTitle = this.translateService.instant('Search.OurNews')
 
   bigCardNews: any[] = [];
   pageSize = 10;

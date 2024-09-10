@@ -30,20 +30,19 @@ export class NavbarDetailsComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.displayedLinks = changes['displayedLinks']?.currentValue ? changes['displayedLinks']?.currentValue : this.displayedLinks;
-    this.detailsType = changes['detailsType']?.currentValue ? changes['detailsType']?.currentValue : this.detailsType;
-    this.detailsTitle = this.translateService.instant(`Navbar.${this.detailsTitle}`)
-    this.preventScrollXPage();
+    this.detailsType = changes['detailsType']?.currentValue ? changes['detailsType']?.currentValue : this.detailsType; 
+    // this.preventScrollXPage();
   }
 
-  preventScrollXPage(): void {
-    if (this.navDetailsVisible) {
-      this.renderer.setStyle(document.body, 'overflow-y', 'hidden');
-      this.renderer.setStyle(document.body, 'height', '100vh');
-    } else {
-      this.renderer.removeStyle(document.body, 'overflow-y');
-      this.renderer.removeStyle(document.body, 'height');
-    }
-  }
+  // preventScrollXPage(): void {
+  //   if (this.navDetailsVisible) {
+  //     this.renderer.setStyle(document.body, 'overflow-y', 'hidden');
+  //     this.renderer.setStyle(document.body, 'height', '100vh');
+  //   } else {
+  //     this.renderer.removeStyle(document.body, 'overflow-y');
+  //     this.renderer.removeStyle(document.body, 'height');
+  //   }
+  // }
 
   onHideNavDetails(): void {
     this.navDetailsVisible = false;

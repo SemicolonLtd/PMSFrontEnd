@@ -5,7 +5,7 @@
                 <img alt="Card" [src]="newsData.image" />
             </ng-template>
             <p>
-                {{newsData.description | slice: 0: 30}}
+                {{newsData.short}}
             </p>
             <ng-template pTemplate="footer">
                 <span>{{newsData.date}}</span>

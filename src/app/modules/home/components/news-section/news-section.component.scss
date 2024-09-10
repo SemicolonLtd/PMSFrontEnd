@@ -118,6 +118,13 @@
 ::ng-deep {
     .our-news-section {
         .news-data {
+            .p-card-body {
+                position: relative;
+                .p-card-footer {
+                    position: absolute;
+                    bottom: 7%;
+                }
+            }
             .p-tabview .p-tabview-nav {
                 background: transparent;
                 border: none;

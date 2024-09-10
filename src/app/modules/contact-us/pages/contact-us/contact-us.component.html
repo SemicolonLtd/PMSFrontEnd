@@ -1,5 +1,5 @@
 <div class="contact-us margin-avoid-navbar">
-        <app-center-bar [Title]="'Contact us'" [Desc]="'Good people delivering an honest value'"></app-center-bar>
+        <app-center-bar [Title]="barTitle" [Desc]="'Good people delivering an honest value'"></app-center-bar>
         <iframe 
         width="100%"
         frameborder="0" 
@@ -14,8 +14,8 @@
                 <div class="grid justify-content-between">
                     <div class="contact-info-wrapper md:col-5 sm:col-12">
                         <div class="">
-                            <h4 class="title">Contact Information</h4>
-                            <span class="sub-title mb-5 block">Say something to start a live chat!</span>
+                            <h4 class="title">{{'Contact.ContactInformation' | translate}}</h4>
+                            <span class="sub-title mb-5 block">{{'Contact.Desc' | translate}}</span>
                             <div class="info-wrapper mb-4">
                                 <i class="pi pi-phone"></i>
                                 <span class="text">+1 123 456 7890</span>
@@ -35,15 +35,15 @@
                         <form>
                             <p-floatLabel class="mb-5">
                                 <input pInputText id="username" />
-                                <label for="username">Username</label>
+                                <label for="username">{{'Contact.Username' | translate}}</label>
                             </p-floatLabel>
                             <p-floatLabel>
                                 <input pInputText id="email" />
-                                <label for="email">email</label>
+                                <label for="email">{{'Contact.Email' | translate}}</label>
                             </p-floatLabel>
                             <p-floatLabel>
                                 <input pInputText id="phone" />
-                                <label for="phone">phone</label>
+                                <label for="phone">{{'Contact.Phone' | translate}}</label>
                             </p-floatLabel>
                             <p-floatLabel>
                                 <textarea 
@@ -51,11 +51,11 @@
                                     rows="5" cols="30" 
                                     pInputTextarea>
                                 </textarea>
-                                <label for="float-input">Message</label>
+                                <label for="float-input">{{'Contact.Message' | translate}}</label>
                             </p-floatLabel>
                             <div class="search-btn">
                                 <p-button 
-                                    label="Send Message" 
+                                    label="{{'Contact.SendMessage' | translate}}" 
                                     icon="pi pi-arrow-right"
                                 />
                             </div>

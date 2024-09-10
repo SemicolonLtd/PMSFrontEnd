@@ -27,7 +27,7 @@ export class HomeService {
   }
 
   getNewsByCategory(categoryId: number): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/news/in-home/by-category/4/${categoryId}`);
+    return this.http.get(`${environment.apiUrl}/news/in-home/by-category/${categoryId}/4`);
   }
 
   getCoreBusiness(): Observable<any> {

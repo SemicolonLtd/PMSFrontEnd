@@ -9,6 +9,7 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ButtonModule } from 'primeng/button';
 import { SharedModule } from "../../shared/shared.module";
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   declarations: [
     ContactUsComponent
@@ -20,7 +21,9 @@ import { SharedModule } from "../../shared/shared.module";
     FloatLabelModule,
     InputTextareaModule,
     ButtonModule,
-    SharedModule
+    SharedModule,
+TranslateModule
+
 ]
 })
 export class ContactUsModule { }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-contact-us',
@@ -8,10 +9,11 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class ContactUsComponent {
   mapUrl!:SafeResourceUrl;
-
+  barTitle = this.translateService.instant('Contact.ContactUs')
 
   constructor(
-    private sanitizer:DomSanitizer
+    private sanitizer:DomSanitizer,
+    private translateService: TranslateService
   ){}
 
   ngOnInit(): void {

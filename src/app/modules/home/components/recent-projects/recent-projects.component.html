@@ -14,7 +14,7 @@
                 <div class="item-info flex justify-content-center align-items-center text-center">
                     <div class="info-wrapper">
                         <h3>{{project.title}}</h3>
-                        <div class="info-desc" [innerHTML]="project?.desc"></div>
+                        <div class="info-desc" [innerHTML]="project?.short"></div>
                         <p-button icon="pi pi-arrow-right" [rounded]="true" [routerLink]="'/projects/details/' + project?.slug" />
                     </div>
                 </div>

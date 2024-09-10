@@ -24,7 +24,7 @@
                                     <span class="news-badge mobile">
                                         {{bigCardNews?.category_title}}
                                     </span>
-                                    <p [innerHTML]="bigCardNews?.desc">
+                                    <p [innerHTML]="bigCardNews?.short">
                                         <!-- {{bigCardNews.description | slice: 0: 30}} -->
                                     </p>
                                     <ng-template pTemplate="footer">
@@ -46,7 +46,7 @@
                                     <span class="news-badge">
                                         {{card?.category_title}}
                                     </span>
-                                    <p [innerHTML]="card?.desc">
+                                    <p [innerHTML]="card?.short">
                                         <!-- {{card.description | slice: 0: 30}} -->
                                     </p>
                                     <ng-template pTemplate="footer">

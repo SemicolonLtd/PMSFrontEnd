@@ -15,7 +15,9 @@
         "Cetrificates":"الشهادات",
         "Sustainability" :"الاستدامة",
         "PMS": "خدمات البترول البحرية",
-        "DiscoverMore":"اكتشف المزيد"
+        "DiscoverMore":"اكتشف المزيد",
+        "News":"الاخبار",
+        "Events": "الفعاليات"
     },
     "Home" :{
         "Technical":"تقني",
@@ -43,9 +45,31 @@
         "FollowOurProjects":"تابع مشاريعنا",
         "More": "المزيد..."
     },
+    "Events": {
+        "LatestEvent":"اخر فعالية",
+        "EventAndActivities":"الفعاليات والنشاطات",
+        "More": "المزيد..."
+    },
     "Certificates": {
         "Certificates":"الشهادات",
         "Desc":"الناس الجيدة تعمل علي توصيل قيمة غالية",
         "PMSCertificates": "شهادات شركة خدمات البترول البحرية"
+    },
+    "Contact": {
+        "ContactUs": "اتصل بنا",
+        "ContactInformation": "معلومات الاتصال",
+        "Desc": "قل شيئًا لبدء محادثة مباشرة!",
+        "Username": "اسم المستخدم",
+        "Email": "البريد الإلكتروني",
+        "Phone": "الهاتف",
+        "Message": "الرسالة",
+        "SendMessage": "إرسال الرسالة"
+    },
+    "SimilarTitles": {
+        "SimilarProjects":"المشاريع المماثلة",
+        "SimilarNews":"الاخبار المشابهة",
+        "SimilarCoreBusiness":"الاعمال الاساسية المشابهة",
+        "SimilarEvents":"الفعاليات المشابهة"
     }
+    
 }
