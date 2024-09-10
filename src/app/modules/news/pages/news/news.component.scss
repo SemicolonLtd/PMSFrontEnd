@@ -110,14 +110,21 @@
             }
             .big-card {
                 &:hover {
-                    .p-card .p-card-body {
-                        background-color: var(--primary-color-medium);
-                        * {
-                            color: white;
+                    // .p-card .p-card-body {
+                    //     background-color: var(--primary-color-medium);
+                    //     * {
+                    //         color: white;
+                    //     }
+                    // }
+                    // .news-badge {
+                    //     color: var(--primary-color-medium) !important;
+                    // }
+                    .p-card-header {
+                        overflow: hidden;
+                        img {
+                            transition: 0.5s all ease-in-out;
+                            transform: scale(1.1) rotate(-1deg);
                         }
-                    }
-                    .news-badge {
-                        color: var(--primary-color-medium) !important;
                     }
                 }
                 .p-card .p-card-body {
@@ -157,14 +164,21 @@
             }
             .small-card {
                 &:hover {
-                    .p-card .p-card-body {
-                        background-color: var(--primary-color-medium);
-                        * {
-                            color: white;
+                    // .p-card .p-card-body {
+                    //     background-color: var(--primary-color-medium);
+                    //     * {
+                    //         color: white;
+                    //     }
+                    // }
+                    // .news-badge {
+                    //     color: var(--primary-color-medium) !important;
+                    // }
+                    .p-card-header {
+                        overflow: hidden;
+                        img {
+                            transition: 0.5s all ease-in-out;
+                            transform: scale(1.1) rotate(-1deg);
                         }
-                    }
-                    .news-badge {
-                        color: var(--primary-color-medium) !important;
                     }
                 }
                 &:nth-of-type(2) {
