@@ -6,6 +6,8 @@ import { CertificatesComponent } from './pages/certificates/certificates.compone
 
 import { ImageModule } from 'primeng/image';
 import { ButtonModule } from 'primeng/button';
+import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,8 @@ import { ButtonModule } from 'primeng/button';
     CommonModule,
     CertificatesRoutingModule,
     ImageModule,
-    ButtonModule
+    ButtonModule,
+    SharedModule
   ]
 })
 export class CertificatesModule { }

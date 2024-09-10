@@ -27,6 +27,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
 
   projectData: any = {};
   similarProjectsData: any[] = [];
+  similarProjectsLoading = false
   slug: string = '';
   typeId: any;
   loading = false;
@@ -61,7 +62,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
         next: (res: any) => {
           if(res?.status == 200) {
             this.projectData = res?.data;
-            this.getSimilarNews();
+            this.getSimilarProjects();
           }
           this.loading = false;
         },
@@ -73,16 +74,19 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     );
   }
 
-  getSimilarNews(): void {
+  getSimilarProjects(): void {
+    this.similarProjectsLoading = true;
     this.subscriptions.add(
       this.projectsService.getSimilarProjects(this.projectData?.slug).subscribe({
         next: (res: any) => {
           if(res?.status == 200) {
             this.similarProjectsData = res?.data?.data;
           }
+          this.similarProjectsLoading = false;
         },
         error: (err: any) => {
           console.log(err);
+          this.similarProjectsLoading = false;
         }
       })
     );

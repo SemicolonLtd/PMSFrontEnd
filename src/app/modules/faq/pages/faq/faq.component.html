@@ -8,27 +8,23 @@
             </span>
         </div>
     </div>
-    <div class="faq-content py-5">
+    <div class="faq-content py-5" *ngIf="faqsList?.length && !loading">
         <div class="pms-container">
             <div class="wrapper">
                 <p-accordion [activeIndex]="0" class="w-full faq-accordion" expandIcon="pi pi-plus" collapseIcon="pi pi-minus">
-                    <p-accordionTab header="Header I">
-                        <p>
-                            Lorem ipsum dolor sit amet...
-                        </p>
-                    </p-accordionTab>
-                    <p-accordionTab header="Header II">
-                        <p>
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium...
-                        </p>
-                    </p-accordionTab>
-                    <p-accordionTab header="Header III">
-                        <p>
-                            At vero eos et accusamus et iusto odio dignissimos...
-                        </p>
+                    <p-accordionTab header="header" *ngFor="let faq of faqsList">
+                        <ng-template #header>
+                            <div [innerHTML]="faq.question"></div>
+                        </ng-template>
+                        <div [innerHTML]="faq.answer">
+                        </div>
                     </p-accordionTab>
                 </p-accordion>
             </div>
+            <div class="load-more"  *ngIf="paginationData?.total! > faqsList?.length!">
+                <p-button label="More..." (click)="loadMore()" />
+            </div>
         </div>
     </div>
+    <app-loading type="small" *ngIf="loading"></app-loading>
 </div>
