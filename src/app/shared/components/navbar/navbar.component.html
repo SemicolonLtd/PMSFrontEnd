@@ -147,7 +147,7 @@
 
 <nav class="nav-mobile" [ngClass]="{'nav-sticky': (isSticky && !navDetailsOpened), 'nav-on-details': navDetailsOpened}">
     <div class="pms-container flex justify-content-between align-items-center">
-        <img class="w-5rem" src="assets/images/global/logo.svg" alt="">
+        <img routerLink="/" class="w-5rem" src="assets/images/global/logo.svg" alt="">
 
         <p-sidebar [(visible)]="sidebarMobileVisible">
             <ng-template pTemplate="header">

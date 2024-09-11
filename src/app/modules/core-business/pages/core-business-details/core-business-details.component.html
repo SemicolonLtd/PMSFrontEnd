@@ -33,7 +33,8 @@
                 {{'SimilarTitles.SimilarCoreBusiness' | translate}}
             </span>
             <p-carousel [value]="similarBusinessData" [numVisible]="3" [numScroll]="3" [circular]="true"
-                [showIndicators]="false" [responsiveOptions]="responsiveOptions" autoplayInterval="3000">
+                [showIndicators]="false" [responsiveOptions]="responsiveOptions" autoplayInterval="3000" 
+                [ngClass]="similarBusinessData.length === 1 ? 'length-one' : ''">
                 <ng-template let-product pTemplate="item">
                     <div class="m-2 p-3">
                         <app-project-card [projectData]="product"></app-project-card>

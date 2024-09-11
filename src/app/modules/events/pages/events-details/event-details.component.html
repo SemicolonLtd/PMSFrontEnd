@@ -33,7 +33,8 @@
                 {{'SimilarTitles.SimilarEvents' | translate}}
             </span>
             <p-carousel [value]="similarEventsData" [numVisible]="3" [numScroll]="3" [circular]="true"
-                [showIndicators]="false" [responsiveOptions]="responsiveOptions" autoplayInterval="3000">
+                [showIndicators]="false" [responsiveOptions]="responsiveOptions" autoplayInterval="3000"
+                [ngClass]="similarEventsData.length === 1 ? 'length-one' : ''">
                 <ng-template let-event pTemplate="item">
                     <div class="m-2 p-2">
                         <app-event-card [eventData]="event"></app-event-card>

@@ -169,6 +169,17 @@ ul, li {
     }
 }
 
+.length-one {
+    @media (min-width:768px) {
+        .p-carousel-container {
+            width: 50%;
+        }
+    }
+    .p-carousel-next, .p-carousel-prev {
+        display: none;
+    }
+}
+
 .sm\:col-12 {
     @media (max-width: 575px) {
         width: 100%;
