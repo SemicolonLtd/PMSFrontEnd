@@ -9,7 +9,7 @@
         <div class="details-content">
             <div class="pms-container">
                 <div class="grid">
-                    <div class="lg:col-3">
+                    <div class="lg:col-3" *ngIf="detailsType !== 'Search'">
                         <div class="discover-btn">
                             <p-button 
                                 label="{{'Navbar.DiscoverMore' | translate}}" 
@@ -17,7 +17,7 @@
                             />
                         </div>
                     </div>
-                    <div class="lg:col-9">
+                    <div class="lg:col-9" *ngIf="detailsType !== 'Search'">
                         <div class="links-list">
                             <ul>
                                 <li *ngFor="let link of displayedLinks" 
@@ -25,6 +25,28 @@
                                     {{ link?.name }}
                                 </li>
                             </ul>
+                        </div>
+                    </div>
+                    <div class="col-12" *ngIf="detailsType === 'Search'">
+                        <div class="search-wrapper">
+                            <!-- <div class="flex flex-column gap-2">
+                                <input 
+                                    pInputText 
+                                    id="username" 
+                                    aria-describedby="username-help" />
+                                <small id="username-help" class="text-2xl">
+                                    {{'General.SearchDesc' | translate}}                              
+                                </small>
+                            </div> -->
+                            <p-iconField iconPosition="left">
+                                <p-inputIcon styleClass="pi pi-search" />
+                                <input type="text" pInputText placeholder="{{'General.SearchDesc' | translate}} " />
+                            </p-iconField>
+                            <p-button 
+                                label="Search" 
+                                icon="pi pi-search" 
+                                class="search-btn"
+                                />
                         </div>
                     </div>
                 </div>

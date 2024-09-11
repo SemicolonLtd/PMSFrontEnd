@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';import { ProjectDetailsComponent } 
 import { GalleriaModule } from 'primeng/galleria';
 import { CarouselModule } from 'primeng/carousel';
 import { TranslateModule } from '@ngx-translate/core';
+import { EmptyStateComponent } from "../../shared/components/empty-state/empty-state.component";
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ProjectDetailsComponent
   ],
   imports: [
-  CommonModule,
+    CommonModule,
     SharedModule,
     ProjectsRoutingModule,
     ButtonModule,
@@ -27,7 +28,8 @@ import { TranslateModule } from '@ngx-translate/core';
     FormsModule,
     GalleriaModule,
     CarouselModule,
-    TranslateModule
+    TranslateModule,
+    EmptyStateComponent
 ]
 })
 export class ProjectsModule { }
