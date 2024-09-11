@@ -34,7 +34,7 @@
         <span class="title block font-bold text-2xl pb-2 mb-4">
             {{'SimilarTitles.SimilarProjects' | translate}}
         </span>
-        <p-carousel 
+        <!-- <p-carousel 
             [value]="similarProjectsData" 
             [numVisible]="3" 
             [numScroll]="3" 
@@ -48,8 +48,12 @@
                         <app-project-card [projectData]="product"></app-project-card>
                     </div>
                 </ng-template>
-        </p-carousel>
-
+        </p-carousel> -->
+        <div class="grid">
+            <div class="xl:col-3 lg:col-4 md:col-6 sm:col-12" *ngFor="let product of similarProjectsData">
+                <app-project-card [projectData]="product"></app-project-card>
+            </div>
+        </div>
     </div>
     <app-loading type="small" *ngIf="similarProjectsLoading"></app-loading>
 </div>
