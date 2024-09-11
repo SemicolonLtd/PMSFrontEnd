@@ -10,6 +10,9 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ButtonModule } from 'primeng/button';
 import { SharedModule } from "../../shared/shared.module";
 import { TranslateModule } from '@ngx-translate/core';
+import { ToastModule } from 'primeng/toast';
+
+
 @NgModule({
   declarations: [
     ContactUsComponent
@@ -22,7 +25,8 @@ import { TranslateModule } from '@ngx-translate/core';
     InputTextareaModule,
     ButtonModule,
     SharedModule,
-TranslateModule
+    TranslateModule,
+    ToastModule
 
 ]
 })
