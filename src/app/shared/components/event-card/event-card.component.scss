@@ -54,3 +54,15 @@
         color: #2A2A2A96;
     }
 }
+
+::ng-deep {
+    .content {
+        position: relative;
+        .actions {
+            position: absolute;
+            bottom: 5%;
+            left: 5%;
+            width: 90%;
+        }
+    }
+}

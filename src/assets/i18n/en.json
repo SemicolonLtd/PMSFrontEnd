@@ -71,6 +71,23 @@
         "SimilarNews":"Similar News",
         "SimilarCoreBusiness":"Similar Core Business",
         "SimilarEvents":"Similar Events"
+    },
+    "Footer": {
+        "PMS":"Petroleum Marine Services Co.",
+        "Policies":"Policies",
+        "TermsAndConditions": "Terms and conditions",
+        "PrivacyPolicy":"Privacy Policy",
+        "ContactUs": "Contact Us",
+        "Copyright": "Copyright 2010 - 2024 PMS.com",
+        "OtherLinks":"Other Links",
+        "FAQ": "FAQ",
+        "Vision": "Vision",
+        "Mission" :"Mission",
+        "AboutUs": "About Us",
+        "Email":"Email",
+        "Address": "Address",
+        "Phone": "Phone",
+        "KeepInTouch":"Keep in touch"
     }
 
 }

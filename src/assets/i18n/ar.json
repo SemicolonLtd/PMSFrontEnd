@@ -70,6 +70,23 @@
         "SimilarNews":"الاخبار المشابهة",
         "SimilarCoreBusiness":"الاعمال الاساسية المشابهة",
         "SimilarEvents":"الفعاليات المشابهة"
+    },
+    "Footer": {
+        "PMS":"خدمات البترول البحرية",
+        "Policies":"السياسات",
+        "TermsAndConditions": "الشروط والأحكام",
+        "PrivacyPolicy":"سياسة الخصوصية",
+        "ContactUs": "اتصل بنا",
+        "Copyright": "حقوق الطبع والنشر 2010 - 2024 PMS.com",
+        "OtherLinks":"روابط أخرى",
+        "FAQ": "الأسئلة الشائعة",
+        "Vision": "الرؤية",
+        "Mission" :"الرسالة",
+        "AboutUs": "من نحن",
+        "Email":"البريد الإلكتروني",
+        "Address": "العنوان",
+        "Phone": "الهاتف",
+        "KeepInTouch":"ابق على تواصل"
     }
     
 }

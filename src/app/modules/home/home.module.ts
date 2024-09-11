@@ -12,6 +12,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { CardModule } from 'primeng/card';
 import { CountUpModule } from 'ngx-countup';
 import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from "../../shared/shared.module";
 
 
 @NgModule({
@@ -23,14 +24,15 @@ import { TranslateModule } from '@ngx-translate/core';
     NewsSectionComponent
   ],
   imports: [
-CommonModule,
+    CommonModule,
     HomeRoutingModule,
     ButtonModule,
     RouterModule,
     TabViewModule,
     CardModule,
     CountUpModule,
-    TranslateModule
-  ]
+    TranslateModule,
+    SharedModule
+]
 })
 export class HomeModule { }

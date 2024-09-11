@@ -1,3 +1,7 @@
+.header-section {
+    height: 100vh;
+}
+
 .carousel-item {
     .header-bg {
         height: 100vh;
@@ -60,6 +64,13 @@
         }
     }
 
+}
+
+.loader-wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .carousel-indicators [data-bs-target] {
