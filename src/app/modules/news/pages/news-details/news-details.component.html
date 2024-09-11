@@ -29,7 +29,7 @@
         <app-loading type="small" *ngIf="loading"></app-loading>
         <div class="similar-news mt-5 pb-5" *ngIf="similarNewsData?.length">
             <span class="title block font-bold text-2xl pb-2 mb-4">
-                Similar News
+                {{'SimilarTitles.SimilarNews' | translate}}
             </span>
             <p-carousel [value]="similarNewsData" [numVisible]="3" [numScroll]="3" [circular]="true"
                 [showIndicators]="false" [responsiveOptions]="responsiveOptions" autoplayInterval="3000">

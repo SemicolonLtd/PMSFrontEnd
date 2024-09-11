@@ -100,7 +100,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.navDetailsOpened = false;
     } else {
       this.detailsType = type;
-      this.detailsTitle = title;
+      this.detailsTitle = this.translateService.instant(`Navbar.${title}`);
       this.displayedLinks = this.linksList.filter((listItem: any) => listItem.name === type)[0]?.menu;
       this.sidebarVisible = false;
       this.navDetailsOpened = true;
@@ -139,15 +139,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 name: 'projects',
                 menu: [
                   {
-                    name: 'Recent Projects',
+                    name: this.translateService.instant('Projects.RecentProjects') ,
                     link: '/projects?type=recent-projects',
                   },
                   {
-                    name: 'Completed Projects',
+                    name: this.translateService.instant('Projects.CompletedProjects'),
                     link: '/projects?type=completed-projects',
                   },
                   {
-                    name: 'Mega Projects',
+                    name: this.translateService.instant('Projects.MegaProjects'),
                     link: '/projects?type=mega-projects',
                   }
                 ]
@@ -156,15 +156,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 name: 'media-center',
                 menu: [
                   {
-                    name: 'News',
+                    name: this.translateService.instant('Navbar.News'),
                     link: 'news'
                   },
                   {
-                    name: 'Events',
+                    name: this.translateService.instant('Navbar.Events'),
                     link: 'events'
                   },
                   {
-                    name: 'Contact Us',
+                    name: this.translateService.instant('Navbar.ContactUs'),
                     link: 'contact-us'
                   }
                 ]

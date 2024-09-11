@@ -14,6 +14,7 @@ import { NewsRoutingModule } from './news-routing.module';
 import { RouterModule } from '@angular/router';
 import { TabViewModule } from 'primeng/tabview';
 import { CardModule } from 'primeng/card';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CardModule } from 'primeng/card';
     CarouselModule,
     RouterModule,
     TabViewModule,
-    CardModule
+    CardModule,
+    TranslateModule
 ]
 })
 export class NewsModule { }

@@ -9,7 +9,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { CoreBusinessDetailsComponent } from './pages/core-business-details/core-business-details.component';
 import { CarouselModule } from 'primeng/carousel';
 import { GalleriaModule } from 'primeng/galleria';
-
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   declarations: [
     CoreBusinessComponent,
@@ -23,7 +23,9 @@ import { GalleriaModule } from 'primeng/galleria';
     AccordionModule,
     CarouselModule,
     GalleriaModule,
-    SharedModule
+    SharedModule,
+TranslateModule
+
   ]
 })
 export class CoreBusinessModule { }

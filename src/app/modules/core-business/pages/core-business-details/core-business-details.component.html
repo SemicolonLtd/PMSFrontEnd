@@ -30,7 +30,7 @@
 
         <div class="similar-projects mt-5" *ngIf="similarBusinessData?.length && !similarBusinessLoading">
             <span class="title block font-bold text-2xl pb-2 mb-4">
-                Similar Projects
+                {{'SimilarTitles.SimilarCoreBusiness' | translate}}
             </span>
             <p-carousel [value]="similarBusinessData" [numVisible]="3" [numScroll]="3" [circular]="true"
                 [showIndicators]="false" [responsiveOptions]="responsiveOptions" autoplayInterval="3000">

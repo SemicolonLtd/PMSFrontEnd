@@ -14,7 +14,10 @@
         "HSE" : "الصحة والسلامة والبيئة",
         "Cetrificates":"الشهادات",
         "Sustainability" :"الاستدامة",
-        "PMS": "خدمات البترول البحرية"
+        "PMS": "خدمات البترول البحرية",
+        "DiscoverMore":"اكتشف المزيد",
+        "News":"الاخبار",
+        "Events": "الفعاليات"
     },
     "Home" :{
         "Technical":"تقني",
@@ -23,5 +26,50 @@
         "CoreBusiness":"الأعمال الرئيسية",
         "RecentProjects":"المشاريع الأخيرة",
         "OurNews":"أخبارنا"
+    },
+    "Search": {
+        "WelcomeTo": "مرحباً بك في",
+        "OurProjects":"صفحة مشاريعنا",
+        "OurNews":"صفحة اخبارنا",
+        "OurEvents":"صفحة فعالياتنا",
+        "OurCoreBusiness":"صفحة الاعمال الاساسية",
+        "Explore":"استكشف",
+        "SearchHere": "ابحث هنا...",
+        "Search": "بحث"
+    },
+    "Projects": {
+        "RecentProjects":"المشاريع الأخيرة",
+        "CompletedProjects":"المشاريع المكتملة",
+        "MegaProjects":"المشاريع الكبيرة",
+        "LatestProject":"اخر مشروع",
+        "FollowOurProjects":"تابع مشاريعنا",
+        "More": "المزيد..."
+    },
+    "Events": {
+        "LatestEvent":"اخر فعالية",
+        "EventAndActivities":"الفعاليات والنشاطات",
+        "More": "المزيد..."
+    },
+    "Certificates": {
+        "Certificates":"الشهادات",
+        "Desc":"الناس الجيدة تعمل علي توصيل قيمة غالية",
+        "PMSCertificates": "شهادات شركة خدمات البترول البحرية"
+    },
+    "Contact": {
+        "ContactUs": "اتصل بنا",
+        "ContactInformation": "معلومات الاتصال",
+        "Desc": "قل شيئًا لبدء محادثة مباشرة!",
+        "Username": "اسم المستخدم",
+        "Email": "البريد الإلكتروني",
+        "Phone": "الهاتف",
+        "Message": "الرسالة",
+        "SendMessage": "إرسال الرسالة"
+    },
+    "SimilarTitles": {
+        "SimilarProjects":"المشاريع المماثلة",
+        "SimilarNews":"الاخبار المشابهة",
+        "SimilarCoreBusiness":"الاعمال الاساسية المشابهة",
+        "SimilarEvents":"الفعاليات المشابهة"
     }
+    
 }

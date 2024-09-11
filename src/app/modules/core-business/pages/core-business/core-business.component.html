@@ -1,5 +1,5 @@
 <div class="core-business margin-avoid-navbar">
-    <app-search [Title]="'Our Core Business'"  (searchEmitter)="searchForBusiness($event)"></app-search>
+    <app-search [Title]="searchTitle"  (searchEmitter)="searchForBusiness($event)"></app-search>
     <ng-container *ngIf="coreList?.length && !loading">
         <ng-container *ngFor="let core of coreList; let i = index">
             <div class="core-img-end" *ngIf="i % 2 === 0">

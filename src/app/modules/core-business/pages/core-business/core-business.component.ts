@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { CoreBusinessService } from '../../services/core-business.service';
 
@@ -8,6 +9,7 @@ import { CoreBusinessService } from '../../services/core-business.service';
     styleUrls: ['./core-business.component.scss']
 })
 export class CoreBusinessComponent implements OnInit, OnDestroy {
+    searchTitle = this.translateService.instant('Search.OurCoreBusiness')
 
     coreList: any[] = [];
     loading = false;
@@ -16,7 +18,8 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
     subscription = new Subscription();
 
     constructor(
-        private coreBusinessService: CoreBusinessService
+        private coreBusinessService: CoreBusinessService,
+        private translateService: TranslateService
     ) { }
 
     ngOnInit(): void {

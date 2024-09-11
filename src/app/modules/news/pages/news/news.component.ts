@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { NewsService } from '../../services/news.service';
 
@@ -8,6 +9,7 @@ import { NewsService } from '../../services/news.service';
   styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit, OnDestroy {
+  searchTitle = this.translateService.instant('Search.OurNews')
 
   bigCardNews: any[] = [];
   pageSize = 10;
@@ -22,7 +24,8 @@ export class NewsComponent implements OnInit, OnDestroy {
   subscriptions = new Subscription();
 
   constructor(
-    private newsService: NewsService
+    private newsService: NewsService,
+    private translateService:TranslateService
   ) { }
 
   ngOnInit(): void {

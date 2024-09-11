@@ -10,6 +10,8 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { FormsModule } from '@angular/forms';import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
 import { GalleriaModule } from 'primeng/galleria';
 import { CarouselModule } from 'primeng/carousel';
+import { TranslateModule } from '@ngx-translate/core';
+
 
 @NgModule({
   declarations: [
@@ -17,14 +19,15 @@ import { CarouselModule } from 'primeng/carousel';
     ProjectDetailsComponent
   ],
   imports: [
-    CommonModule,
+  CommonModule,
     SharedModule,
     ProjectsRoutingModule,
     ButtonModule,
     SelectButtonModule,
     FormsModule,
     GalleriaModule,
-    CarouselModule
+    CarouselModule,
+    TranslateModule
 ]
 })
 export class ProjectsModule { }

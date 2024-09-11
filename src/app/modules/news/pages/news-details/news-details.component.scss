@@ -52,6 +52,12 @@
                 // border-bottom: 2px solid var(--secondary-color);
                 background-color: var(--secondary-color);
             }
+            &:lang(ar) {
+                &:before {
+                    left: unset;
+                    right: 0;
+                }
+            }
         }
     }
 }

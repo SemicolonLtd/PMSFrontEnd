@@ -28,6 +28,12 @@
                 background: var(--primary-color-light);
                 border: 1px solid var(--primary-color-light);
                 border-radius: 7px;
+                &:lang(ar) {
+                    flex-direction: row-reverse;
+                    .pi-arrow-right {
+                        transform: rotate(180deg);
+                    }
+                }
             }
         }
         .links-list {

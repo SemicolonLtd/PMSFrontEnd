@@ -14,7 +14,10 @@
         "HSE" : "HSE",
         "Cetrificates":"Cetrificates",
         "Sustainability" :"Sustainability",
-        "PMS": "Petroleum Marine Services Co."
+        "PMS": "Petroleum Marine Services Co.",
+        "DiscoverMore":"Discover More",
+        "News":"News",
+        "Events": "Events"
     },
     "Home" :{
         "Technical":"Technical",
@@ -23,6 +26,51 @@
         "CoreBusiness":"Core Business",
         "RecentProjects":"Recent Projects",
         "OurNews":"Our News"
+    },
+    "Search": {
+        "WelcomeTo": "Welcome to",
+        "OurProjects":"Our Projects Page",
+        "OurNews":"Our News Page",
+        "OurEvents":"Our Events Page",
+        "OurCoreBusiness":"Our Core Business Page",
+        "Page":"Page",
+        "Explore":"Explore",
+        "SearchHere": "Search Here...",
+        "Search": "Search"
+    },
+    "Projects": {
+        "RecentProjects":"Recent Projects",
+        "CompletedProjects":"Completed Projects",
+        "MegaProjects":"Mega Projects",
+        "LatestProject":"Latest Project",
+        "FollowOurProjects":"Follow Our Projects",
+        "More": "More..."
+    },
+    "Events": {
+        "LatestEvents":"Latest Events",
+        "EventAndActivities":"Event & Activities",
+        "More": "More..."
+    },
+    "Certificates": {
+        "Certificates":"Certificates",
+        "Desc":"Good people delivering an honest value ",
+        "PMSCertificates": "PMS Certificates"
+    },
+    "Contact": {
+        "ContactUs":"Contact Us",
+        "ContactInformation":"Contact Information",
+        "Desc":"Say something to start a live chat!",
+        "Username":"Username",
+        "Email":"Email",
+        "Phone":"Phone",
+        "Message":"Message",
+        "SendMessage":"Send Message"
+    },
+    "SimilarTitles": {
+        "SimilarProjects":"Similar Projects",
+        "SimilarNews":"Similar News",
+        "SimilarCoreBusiness":"Similar Core Business",
+        "SimilarEvents":"Similar Events"
     }
 
 }

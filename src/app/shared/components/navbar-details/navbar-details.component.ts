@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, Renderer2, SimpleChange, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -20,7 +21,8 @@ export class NavbarDetailsComponent implements OnChanges {
   linksList: any[] = []
   constructor(
     private renderer: Renderer2,
-    private router: Router
+    private router: Router,
+    private translateService: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -28,19 +30,19 @@ export class NavbarDetailsComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.displayedLinks = changes['displayedLinks']?.currentValue ? changes['displayedLinks']?.currentValue : this.displayedLinks;
-    this.detailsType = changes['detailsType']?.currentValue ? changes['detailsType']?.currentValue : this.detailsType;
-    this.preventScrollXPage();
+    this.detailsType = changes['detailsType']?.currentValue ? changes['detailsType']?.currentValue : this.detailsType; 
+    // this.preventScrollXPage();
   }
 
-  preventScrollXPage(): void {
-    if (this.navDetailsVisible) {
-      this.renderer.setStyle(document.body, 'overflow-y', 'hidden');
-      this.renderer.setStyle(document.body, 'height', '100vh');
-    } else {
-      this.renderer.removeStyle(document.body, 'overflow-y');
-      this.renderer.removeStyle(document.body, 'height');
-    }
-  }
+  // preventScrollXPage(): void {
+  //   if (this.navDetailsVisible) {
+  //     this.renderer.setStyle(document.body, 'overflow-y', 'hidden');
+  //     this.renderer.setStyle(document.body, 'height', '100vh');
+  //   } else {
+  //     this.renderer.removeStyle(document.body, 'overflow-y');
+  //     this.renderer.removeStyle(document.body, 'height');
+  //   }
+  // }
 
   onHideNavDetails(): void {
     this.navDetailsVisible = false;

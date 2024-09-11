@@ -80,6 +80,9 @@
         z-index: 2;
         background-color: white;
         box-shadow: 0px 4px 4px 0px #00000040;
+        @media (max-width: 768px) {
+            bottom: -2%;
+        }
         .icon-wrapper {
             display: flex;
             align-items: center;
@@ -101,8 +104,17 @@
         .p-image-preview-container {
             img {
                 width: 100%;
+                @media (min-width: 769px) {
+                    min-height: 22rem;
+                    max-height: 22rem;
+                }
+            }
+            .icon-image {
+                min-height: 6rem;
+                max-height: 6rem;
             }
         }
+
         .p-image-preview-container:hover > .p-image-preview-indicator {
             background-color: #ffffff9f;
         }
@@ -110,6 +122,10 @@
             text-align: center;
             padding-block: 1.5rem;
             color: var(--primary-color-light);
+            @media (min-width: 769px) {
+                min-height: 9.25rem;
+                max-height: 9.25rem;
+            }
         }
     }
     .certificates {

@@ -6,6 +6,7 @@ import { CertificatesComponent } from './pages/certificates/certificates.compone
 
 import { ImageModule } from 'primeng/image';
 import { ButtonModule } from 'primeng/button';
+import { TranslateModule } from '@ngx-translate/core';
 import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
@@ -18,6 +19,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CertificatesRoutingModule,
     ImageModule,
     ButtonModule,
+    TranslateModule,
     SharedModule
   ]
 })

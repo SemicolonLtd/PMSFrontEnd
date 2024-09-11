@@ -30,7 +30,7 @@
         <app-loading type="small" *ngIf="loading"></app-loading>
         <div class="similar-events mt-5" *ngIf="similarEventsData?.length && !similarEventsLoading">
             <span class="title block font-bold text-2xl pb-2 mb-4">
-                Similar Events
+                {{'SimilarTitles.SimilarEvents' | translate}}
             </span>
             <p-carousel [value]="similarEventsData" [numVisible]="3" [numScroll]="3" [circular]="true"
                 [showIndicators]="false" [responsiveOptions]="responsiveOptions" autoplayInterval="3000">
