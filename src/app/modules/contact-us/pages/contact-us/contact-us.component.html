@@ -13,7 +13,6 @@
             <div class="contact-card-wrapper">
                 <div class="grid justify-content-between">
                     <div class="contact-info-wrapper md:col-5 sm:col-12">
-                        <div class="">
                             <h4 class="title">{{'Contact.ContactInformation' | translate}}</h4>
                             <span class="sub-title mb-5 block">{{'Contact.Desc' | translate}}</span>
                             <div class="info-wrapper mb-4">
@@ -28,7 +27,23 @@
                                 <i class="pi pi-map-marker"></i>
                                 <span class="text">132 Dartmouth Street Boston, Massachusetts 02156 United States</span>
                             </div>
-                        </div>
+                            <div class="social-icons">
+                                <div class="icon-wrapper">
+                                    <i class="pi pi-facebook"></i>
+                                </div>
+                                <div class="icon-wrapper">
+                                    <i class="pi pi-twitter"></i>
+                                </div>
+                                <div class="icon-wrapper">
+                                    <i class="pi pi-instagram"></i>
+                                </div>
+                                <div class="icon-wrapper">
+                                    <i class="pi pi-youtube"></i>
+                                </div>
+                                <div class="icon-wrapper">
+                                    <i class="pi pi-linkedin"></i>
+                                </div>
+                            </div>
                         <img class="bottom-img" src="assets/images/global/contact-us-info.svg" alt="">
                     </div>
                     <div class="contact-form-wrapper md:col-6 sm:col-12">
@@ -57,7 +72,11 @@
                                 <p-button 
                                     label="{{'Contact.SendMessage' | translate}}" 
                                     icon="pi pi-arrow-right"
+                                    [loading]="loading"
+                                    (onClick)="submitContactUs()"
+                                    
                                 />
+                                <p-toast />
                             </div>
                         </form>
                     </div>

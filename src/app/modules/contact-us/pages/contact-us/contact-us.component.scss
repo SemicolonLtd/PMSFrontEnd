@@ -15,6 +15,32 @@
     }
 }
 
+.social-icons {
+    @media (min-width: 768px) {
+        position: absolute;
+        bottom: 5%;
+    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .icon-wrapper {
+        margin-inline-end: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #F6AF03;
+        color: white;
+        transition: 0.4s all ease-in-out;
+        cursor: pointer;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}
+
 .contact-info-wrapper {
     position: relative;
     background-color: var(--primary-color-medium);
@@ -64,6 +90,9 @@
 }
 
 ::ng-deep {
+    .p-toast.p-toast-top-right {
+        z-index: 1107 !important;
+    }
     .contact-form-wrapper {
         input {
             width: 100%;
