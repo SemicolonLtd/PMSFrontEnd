@@ -22,6 +22,10 @@ export class HomeService {
     return this.http.get(`${environment.apiUrl}/project/in-home/5`);
   }
 
+  getInHomeAllNews(): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/news/in-home/4`);
+  }
+
   getNewsCategories(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/news/get/category`);
   }

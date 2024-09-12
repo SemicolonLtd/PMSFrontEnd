@@ -63,7 +63,6 @@ export class NewsDetailsComponent implements OnInit, OnDestroy {
       this.newsService.getNewsDetails(this.slug).subscribe({
         next: (res: any) => {
           if(res?.status == 200) {
-            console.log(res);
             this.newsData = res?.data;
             this.getSimilarNews();
           }

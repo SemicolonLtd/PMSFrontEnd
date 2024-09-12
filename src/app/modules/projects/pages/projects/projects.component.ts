@@ -54,7 +54,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       this.projectsService.getTopProject().subscribe({
         next: (res: any) => {
           if(res?.status == 200) {
-            console.log('res', res);
             this.pageTopProject = res?.data;
           }
           this.topProjectLoading = false;

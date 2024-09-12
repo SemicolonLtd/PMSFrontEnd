@@ -45,7 +45,6 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
 
   getProjectSlugFromParams(): void {
     this.route.params.subscribe((params: any) => {
-      console.log(params);
       if(params['slug']) {
         this.slug = params['slug'];
         this.getProjectDetails();

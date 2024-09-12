@@ -119,8 +119,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         )
       )
       .subscribe((event: NavigationEnd) => {
-        console.log(event);
-
         this.currentRoute = event.url
       });
   }
@@ -131,7 +129,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.navbarService.getNavLinkDetails().subscribe(
         (res:any) => {
           if (res?.status === 200) {
-            console.log(res);
             this.linksList = res?.data;
             this.linksList = [
               ...this.linksList,
