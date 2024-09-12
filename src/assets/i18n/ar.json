@@ -90,6 +90,14 @@
         "Address": "العنوان",
         "Phone": "الهاتف",
         "KeepInTouch":"ابق على تواصل"
+    },
+    "SearchResults": {
+        "Projects":"المشاريع",
+        "News":"الاخبار",
+        "CoreBusiness":"الأعمال الرئيسية",
+        "Events": "الفعاليات",
+        "Pages": "الصفحات",
+        "Search":"بحث"
     }
     
 }

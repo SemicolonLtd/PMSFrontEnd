@@ -91,6 +91,14 @@
         "Address": "Address",
         "Phone": "Phone",
         "KeepInTouch":"Keep in touch"
+    },
+    "SearchResults": {
+        "Projects":"Projects",
+        "News":"News",
+        "CoreBusiness":"Core Business",
+        "Events": "Events",
+        "Pages": "Pages",
+        "Search":"Search"
     }
 
 }

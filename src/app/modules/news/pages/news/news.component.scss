@@ -86,6 +86,12 @@
 ::ng-deep {
     .news {
         .news-data {
+            .p-component {
+                font-family: 'main-font';
+                &:lang(ar) {
+                    font-family: 'ar-main-font';
+                }
+            }
             .p-tabview .p-tabview-nav {
                 background: transparent;
                 border: none;
@@ -96,6 +102,7 @@
             }
             .p-tabview .p-tabview-nav li .p-tabview-nav-link {
                 background: transparent;
+                font-weight: 300;
             }
             .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
                 border-color: var(--secondary-color);

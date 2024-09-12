@@ -59,4 +59,9 @@ export class NavbarDetailsComponent implements OnChanges {
     }
   }
 
+  toSearchResults(): void {
+    this.onHideNavDetails();
+    this.router.navigateByUrl('/search-results');
+  }
+
 }

@@ -43,9 +43,11 @@
                                 <input type="text" pInputText placeholder="{{'General.SearchDesc' | translate}} " />
                             </p-iconField>
                             <p-button 
-                                label="Search" 
+                                label="{{'SearchResults.Search' | translate}}" 
                                 icon="pi pi-search" 
                                 class="search-btn"
+                                routerLink="/search-results"
+                                (onClick)="toSearchResults()"
                                 />
                         </div>
                     </div>
