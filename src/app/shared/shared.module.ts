@@ -19,6 +19,8 @@ import { EventCardComponent } from './components/event-card/event-card.component
 import { TranslateModule } from '@ngx-translate/core';
 import { LottieModule } from 'ngx-lottie';
 import { LoadingComponent } from './components/loading/loading.component';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 
 export function playerFactory() {
   return import('lottie-web');
@@ -45,7 +47,9 @@ export function playerFactory() {
     InputTextModule,
     RouterModule,
     TranslateModule,
-    LottieModule.forRoot({ player: playerFactory })
+    LottieModule.forRoot({ player: playerFactory }),
+    IconFieldModule,
+    InputIconModule
   ],
   exports: [
     NavbarComponent,

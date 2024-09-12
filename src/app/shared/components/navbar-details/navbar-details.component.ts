@@ -18,7 +18,8 @@ export class NavbarDetailsComponent implements OnChanges {
   @Output() navDetailsVisibilityChange = new EventEmitter<boolean>();
   subscriptions = new Subscription()
   loading: boolean = true;
-  linksList: any[] = []
+  linksList: any[] = [];
+
   constructor(
     private renderer: Renderer2,
     private router: Router,
@@ -56,6 +57,11 @@ export class NavbarDetailsComponent implements OnChanges {
     } else if(link?.link) {
       this.router.navigateByUrl(link.link);
     }
+  }
+
+  toSearchResults(): void {
+    this.onHideNavDetails();
+    this.router.navigateByUrl('/search-results');
   }
 
 }

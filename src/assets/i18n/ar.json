@@ -1,6 +1,8 @@
 {
     "General": {
-        "ViewMore":"مشاهدة المزيد +"
+        "ViewMore":"مشاهدة المزيد +",
+        "NotFoundData": "لا يوجد بيانات",
+        "SearchDesc": "البحث في خدمات البترول البحرية"
     },
     "Navbar": {
         "Home":"الرئيسية",
@@ -17,7 +19,8 @@
         "PMS": "خدمات البترول البحرية",
         "DiscoverMore":"اكتشف المزيد",
         "News":"الاخبار",
-        "Events": "الفعاليات"
+        "Events": "الفعاليات",
+        "Search": "بحث"
     },
     "Home" :{
         "Technical":"تقني",
@@ -87,6 +90,14 @@
         "Address": "العنوان",
         "Phone": "الهاتف",
         "KeepInTouch":"ابق على تواصل"
+    },
+    "SearchResults": {
+        "Projects":"المشاريع",
+        "News":"الاخبار",
+        "CoreBusiness":"الأعمال الرئيسية",
+        "Events": "الفعاليات",
+        "Pages": "الصفحات",
+        "Search":"بحث"
     }
     
 }

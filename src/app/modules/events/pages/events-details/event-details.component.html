@@ -32,7 +32,7 @@
             <span class="title block font-bold text-2xl pb-2 mb-4">
                 {{'SimilarTitles.SimilarEvents' | translate}}
             </span>
-            <p-carousel [value]="similarEventsData" [numVisible]="3" [numScroll]="3" [circular]="true"
+            <!-- <p-carousel [value]="similarEventsData" [numVisible]="3" [numScroll]="3" [circular]="true"
                 [showIndicators]="false" [responsiveOptions]="responsiveOptions" autoplayInterval="3000"
                 [ngClass]="similarEventsData.length === 1 ? 'length-one' : ''">
                 <ng-template let-event pTemplate="item">
@@ -40,8 +40,12 @@
                         <app-event-card [eventData]="event"></app-event-card>
                     </div>
                 </ng-template>
-            </p-carousel>
-
+            </p-carousel> -->
+            <div class="grid">
+                <div class="xl:col-3 lg:col-4 md:col-6 sm:col-12" *ngFor="let event of similarEventsData">
+                    <app-event-card [eventData]="event"></app-event-card>
+                </div>
+            </div>
         </div>
         <app-loading type="small" *ngIf="similarEventsLoading"></app-loading>
     </div>

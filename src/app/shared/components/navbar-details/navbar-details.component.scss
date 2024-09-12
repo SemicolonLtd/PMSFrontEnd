@@ -50,6 +50,34 @@
                 }
             }
         }
+        .p-inputtext {
+            width: 100%;
+            // border-bottom: 1px solid var(--primary-color-medium);
+            border-radius: 0;
+            border-top: 0;
+            border-right: 0;
+            border-left: 0;
+            margin-top: 2rem;
+            &::placeholder {
+                // color: var(--primary-color-medium);
+                font-size: 1.2rem;
+                // font-weight: 700;
+            }
+        }
+        .search-btn {
+            button {
+                margin-top: 1rem;
+                background-color: var(--primary-color-light);
+                border: none;
+                .pi {
+                    margin-inline-end: 0.5rem;
+                }
+            }
+        }
+        .p-inputtext:enabled:focus {
+            box-shadow: none;
+            border-color: var(--primary-color-light);
+        }
     }
 
 }
