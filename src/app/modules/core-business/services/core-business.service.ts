@@ -10,8 +10,12 @@ export class CoreBusinessService {
 
   constructor(private http: HttpClient) { }
 
-  getCoreBusinessMenus(): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/core/get/1000`);
+  getCoreBusinessMenus(pageSize: number): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/core/get/${pageSize}`);
+  }
+
+  searchForBusiness(query: string, pageSize: number): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/core/search/${query}/${pageSize}`);
   }
 
   getBusinessDetails(slug: string): Observable<any> {

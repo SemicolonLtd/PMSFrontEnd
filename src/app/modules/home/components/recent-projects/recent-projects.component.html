@@ -9,7 +9,7 @@
                 {{"General.ViewMore" | translate}}
             </a>
         </div>
-        <div class="images-container">
+        <div class="images-container" *ngIf="projectsData?.length && !loading">
             <div class="image-item" [style.backgroundImage]="'url(' + project.image + ')'" *ngFor="let project of projectsData">
                 <div class="item-info flex justify-content-center align-items-center text-center">
                     <div class="info-wrapper">
@@ -20,6 +20,7 @@
                 </div>
             </div>
         </div>
+        <app-loading type="small" *ngIf="loading"></app-loading>
     </div>
     <img class="wave-bottom" src="assets/images/home/wave-bottom.svg" alt="">
 </div>

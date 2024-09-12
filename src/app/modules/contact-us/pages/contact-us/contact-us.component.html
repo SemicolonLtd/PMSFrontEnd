@@ -47,33 +47,38 @@
                         <img class="bottom-img" src="assets/images/global/contact-us-info.svg" alt="">
                     </div>
                     <div class="contact-form-wrapper md:col-6 sm:col-12">
-                        <form>
+                        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
                             <p-floatLabel class="mb-5">
-                                <input pInputText id="username" />
+                                <input pInputText id="username" formControlName="name" />
                                 <label for="username">{{'Contact.Username' | translate}}</label>
                             </p-floatLabel>
                             <p-floatLabel>
-                                <input pInputText id="email" />
+                                <input pInputText id="email" formControlName="email" />
                                 <label for="email">{{'Contact.Email' | translate}}</label>
                             </p-floatLabel>
-                            <p-floatLabel>
-                                <input pInputText id="phone" />
+                            <!-- <p-floatLabel>
+                                <input pInputText id="phone" formControlName="phone" />
                                 <label for="phone">{{'Contact.Phone' | translate}}</label>
+                            </p-floatLabel> -->
+                            <p-floatLabel class="mb-5">
+                                <input pInputText id="title" formControlName="title" />
+                                <label for="title">{{'Contact.Title' | translate}}</label>
                             </p-floatLabel>
                             <p-floatLabel>
                                 <textarea 
                                     id="float-input" 
                                     rows="5" cols="30" 
+                                    formControlName="desc"
                                     pInputTextarea>
                                 </textarea>
                                 <label for="float-input">{{'Contact.Message' | translate}}</label>
                             </p-floatLabel>
                             <div class="search-btn">
                                 <p-button 
+                                    type="submit"
                                     label="{{'Contact.SendMessage' | translate}}" 
                                     icon="pi pi-arrow-right"
                                     [loading]="loading"
-                                    (onClick)="submitContactUs()"
                                     
                                 />
                                 <p-toast />
