@@ -40,13 +40,12 @@
                             </div> -->
                             <p-iconField iconPosition="left">
                                 <p-inputIcon styleClass="pi pi-search" />
-                                <input type="text" pInputText placeholder="{{'General.SearchDesc' | translate}} " />
+                                <input type="text" [(ngModel)]="searchQuery" pInputText placeholder="{{'General.SearchDesc' | translate}} " />
                             </p-iconField>
                             <p-button 
                                 label="{{'SearchResults.Search' | translate}}" 
                                 icon="pi pi-search" 
                                 class="search-btn"
-                                routerLink="/search-results"
                                 (onClick)="toSearchResults()"
                                 />
                         </div>

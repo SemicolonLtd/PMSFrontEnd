@@ -13,6 +13,7 @@ import { SearchResultsCardComponent } from './components/search-results-card/sea
 import { CardModule } from 'primeng/card';
 import { SharedModule } from "../../shared/shared.module";
 import { EmptyStateComponent } from "../../shared/components/empty-state/empty-state.component";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,8 @@ import { EmptyStateComponent } from "../../shared/components/empty-state/empty-s
   imports: [
     CommonModule,
     SearchResultsRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     IconFieldModule,
     InputIconModule,
     InputTextModule,

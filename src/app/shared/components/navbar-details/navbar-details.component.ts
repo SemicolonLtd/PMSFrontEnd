@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, Output, Renderer2, SimpleChange, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
@@ -19,6 +19,7 @@ export class NavbarDetailsComponent implements OnChanges {
   subscriptions = new Subscription()
   loading: boolean = true;
   linksList: any[] = [];
+  searchQuery = '';
 
   constructor(
     private renderer: Renderer2,
@@ -31,7 +32,7 @@ export class NavbarDetailsComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.displayedLinks = changes['displayedLinks']?.currentValue ? changes['displayedLinks']?.currentValue : this.displayedLinks;
-    this.detailsType = changes['detailsType']?.currentValue ? changes['detailsType']?.currentValue : this.detailsType; 
+    this.detailsType = changes['detailsType']?.currentValue ? changes['detailsType']?.currentValue : this.detailsType;
     // this.preventScrollXPage();
   }
 
@@ -52,16 +53,18 @@ export class NavbarDetailsComponent implements OnChanges {
 
   openLink(link: any): void {
     this.onHideNavDetails();
-    if(link?.slug) {
+    if (link?.slug) {
       this.router.navigateByUrl('/content?slug=' + link.slug);
-    } else if(link?.link) {
+    } else if (link?.link) {
       this.router.navigateByUrl(link.link);
     }
   }
 
   toSearchResults(): void {
     this.onHideNavDetails();
-    this.router.navigateByUrl('/search-results');
-  }
+      this.router.navigate(['/search-results'], {
+        queryParams: { query: this.searchQuery }
+      });
+    }
 
-}
+  }
