@@ -15,7 +15,7 @@ export class HomeService {
   }
 
   getSliderStatistics(): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/statistics`);
+    return this.http.get(`${environment.apiUrl}/statistics/statistics`);
   }
 
   getRecentProjects(): Observable<any> {

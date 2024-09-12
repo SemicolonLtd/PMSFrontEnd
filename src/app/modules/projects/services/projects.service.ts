@@ -12,6 +12,7 @@ export class ProjectsService {
 
   getProjects(pageSize: number): Observable<any> {
     return this.http.get(`${environment.apiUrl}/project/${pageSize}`);
+
   }
 
   searchForProject(query: string, pageSize: number): Observable<any> {

@@ -95,7 +95,7 @@
                     </div>
                 </div>
             </ng-container>
-            <div class="load-more" *ngIf="paginationData?.total! > newsData?.length!">
+            <div class="load-more" *ngIf="(paginationData?.total! > newsData?.length!) &&!loading">
                 <p-button label="More..." (click)="loadMore()" />
             </div>
             <app-loading type="small" *ngIf="loading"></app-loading>
