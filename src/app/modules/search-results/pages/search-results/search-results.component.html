@@ -15,51 +15,81 @@
                 </div>
                 <div class="col-12" *ngIf="searchResults && !loading">
                     <p-tabView>
-                        <p-tabPanel header="{{'SearchResults.Projects' | translate}}">
-                            <div class="row" *ngIf="searchResults?.projects?.data.length ">
+                        <p-tabPanel>
+                            <ng-template pTemplate="header">
+                                <div class="flex align-items-center gap-2">
+                                    {{'SearchResults.Projects' | translate}}
+                                    <span class="badge" *ngIf="searchResults?.projects?.data?.length > 0">{{searchResults?.projects?.data?.length}}</span>
+                                </div>
+                            </ng-template>
+                            <div class="row" *ngIf="searchResults?.projects?.data?.length ">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <app-search-results-card [card]="card"
                                         *ngFor="let card of searchResults?.projects?.data"></app-search-results-card>
                                 </div>
                             </div>
-                            <app-empty-state *ngIf="!searchResults?.projects?.data.length"></app-empty-state>
+                            <app-empty-state *ngIf="!searchResults?.projects?.data?.length"></app-empty-state>
 
                         </p-tabPanel>
-                        <p-tabPanel header="{{'SearchResults.News' | translate}}">
-                            <div class="row" *ngIf="searchResults?.news?.data.length ">
+                        <p-tabPanel>
+                            <ng-template pTemplate="header">
+                                <div class="flex align-items-center gap-2">
+                                    {{'SearchResults.News' | translate}}
+                                    <span class="badge" *ngIf="searchResults?.news?.data?.length > 0">{{searchResults?.news?.data?.length}}</span>
+                                </div>
+                            </ng-template>
+                            <div class="row" *ngIf="searchResults?.news?.data?.length">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <app-search-results-card [card]="card"
                                         *ngFor="let card of searchResults?.news?.data"></app-search-results-card>
                                 </div>
                             </div>
-                            <app-empty-state *ngIf="!searchResults?.news?.data.length"></app-empty-state>
+                            <app-empty-state *ngIf="!searchResults?.news?.data?.length"></app-empty-state>
                         </p-tabPanel>
-                        <p-tabPanel header="{{'SearchResults.CoreBusiness' | translate}}">
-                            <div class="row" *ngIf="searchResults?.coreBusiness?.data.length ">
+                        <p-tabPanel>
+                            <ng-template pTemplate="header">
+                                <div class="flex align-items-center gap-2">
+                                    {{'SearchResults.CoreBusiness' | translate}}
+                                    <span class="badge" *ngIf="searchResults?.coreBusiness?.data?.length > 0">{{searchResults?.coreBusiness?.data?.length}}</span>
+                                </div>
+                            </ng-template>
+                            <div class="row" *ngIf="searchResults?.coreBusiness?.data?.length ">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <app-search-results-card [card]="card"
                                         *ngFor="let card of searchResults?.coreBusiness?.data"></app-search-results-card>
                                 </div>
                             </div>
-                            <app-empty-state *ngIf="!searchResults?.coreBusiness?.data.length"></app-empty-state>
+                            <app-empty-state *ngIf="!searchResults?.coreBusiness?.data?.length"></app-empty-state>
                         </p-tabPanel>
-                        <p-tabPanel header="{{'SearchResults.Events' | translate}}">
-                            <div class="row" *ngIf="searchResults?.events?.data.length ">
+                        <p-tabPanel>
+                            <ng-template pTemplate="header">
+                                <div class="flex align-items-center gap-2">
+                                    {{'SearchResults.Events' | translate}}
+                                    <span class="badge" *ngIf="searchResults?.events?.data?.length > 0">{{searchResults?.events?.data?.length}}</span>
+                                </div>
+                            </ng-template>
+                            <div class="row" *ngIf="searchResults?.events?.data?.length ">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <app-search-results-card [card]="card"
                                         *ngFor="let card of searchResults?.events?.data"></app-search-results-card>
                                 </div>
                             </div>
-                            <app-empty-state *ngIf="!searchResults?.events?.data.length"></app-empty-state>
+                            <app-empty-state *ngIf="!searchResults?.events?.data?.length"></app-empty-state>
                         </p-tabPanel>
-                        <p-tabPanel header="{{'SearchResults.Pages' | translate}}">
-                            <div class="row" *ngIf="searchResults?.pages?.data.length ">
+                        <p-tabPanel>
+                            <ng-template pTemplate="header">
+                                <div class="flex align-items-center gap-2">
+                                    {{'SearchResults.Pages' | translate}}
+                                    <span class="badge" *ngIf="searchResults?.pages?.data?.length > 0">{{searchResults?.pages?.data?.length}}</span>
+                                </div>
+                            </ng-template>
+                            <div class="row" *ngIf="searchResults?.pages?.data?.length ">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <app-search-results-card [card]="card"
                                         *ngFor="let card of searchResults?.pages?.data"></app-search-results-card>
                                 </div>
                             </div>
-                            <app-empty-state *ngIf="!searchResults?.pages?.data.length"></app-empty-state>
+                            <app-empty-state *ngIf="!searchResults?.pages?.data?.length"></app-empty-state>
                         </p-tabPanel>
                     </p-tabView>
                 </div>
