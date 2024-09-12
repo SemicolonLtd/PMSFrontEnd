@@ -1,6 +1,7 @@
 {
     "General": {
         "ViewMore":"View More +",
+        "ReadMore": "Read More",
         "NotFoundData": "Not Found Data",
         "SearchDesc":"Search in petroleum marine services"
     },
@@ -14,7 +15,7 @@
         "ContactUs" :"Contact Us",
         "MediaCenter" : "Media Center",
         "HSE" : "HSE",
-        "Cetrificates":"Cetrificates",
+        "Certificates":"Certificates",
         "Sustainability" :"Sustainability",
         "PMS": "Petroleum Marine Services Co.",
         "DiscoverMore":"Discover More",
@@ -67,7 +68,10 @@
         "Email":"Email",
         "Phone":"Phone",
         "Message":"Message",
-        "SendMessage":"Send Message"
+        "SendMessage":"Send Message",
+        "Title":"Title",
+        "Success": "Success",
+        "SuccessMessage": "Request sent successfully!, and you will be contacted soon"
     },
     "SimilarTitles": {
         "SimilarProjects":"Similar Projects",

@@ -10,6 +10,9 @@ import { CoreBusinessDetailsComponent } from './pages/core-business-details/core
 import { CarouselModule } from 'primeng/carousel';
 import { GalleriaModule } from 'primeng/galleria';
 import { TranslateModule } from '@ngx-translate/core';
+import { ButtonModule } from 'primeng/button';
+
+
 @NgModule({
   declarations: [
     CoreBusinessComponent,
@@ -24,7 +27,8 @@ import { TranslateModule } from '@ngx-translate/core';
     CarouselModule,
     GalleriaModule,
     SharedModule,
-TranslateModule
+    TranslateModule,
+    ButtonModule
 
   ]
 })

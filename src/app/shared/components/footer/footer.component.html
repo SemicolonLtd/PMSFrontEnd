@@ -12,18 +12,26 @@
                 </div>
                 <div class="lg:col-3 md:col-6 sm:col-12">
                     <div class="social-wrapper">
-                        <div class="social-item">
+                        <a class="social-item" *ngIf="socialMediaData?.facebook"
+                        [href]="socialMediaData?.facebook" target="_blank">
                             <i class="pi pi-facebook"></i>
-                        </div>
-                        <div class="social-item">
+                        </a>
+                        <a class="social-item" *ngIf="socialMediaData?.x"
+                        [href]="socialMediaData?.x" target="_blank">
                             <i class="pi pi-twitter"></i>
-                        </div>
-                        <div class="social-item">
+                        </a>
+                        <a class="social-item" *ngIf="socialMediaData?.youtube"
+                        [href]="socialMediaData?.youtube" target="_blank">
+                            <i class="pi pi-youtube"></i>
+                        </a>
+                        <a class="social-item" *ngIf="socialMediaData?.linkedin"
+                        [href]="socialMediaData?.linkedin" target="_blank">
                             <i class="pi pi-linkedin"></i>
-                        </div>
-                        <div class="social-item">
+                        </a>
+                        <a class="social-item" *ngIf="socialMediaData?.insta"
+                        [href]="socialMediaData?.insta" target="_blank">
                             <i class="pi pi-instagram"></i>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -39,7 +47,7 @@
                     </li>
                     <li class="mb-2">{{'Footer.TermsAndConditions' | translate}}</li>
                     <li class="mb-2">{{'Footer.PrivacyPolicy' | translate}}</li>
-                    <li class="mb-2">{{'Footer.ContactUs' | translate}}</li>
+                    <li class="mb-2" routerLink="/contact-us">{{'Footer.ContactUs' | translate}}</li>
                 </div>
                 <div class="lg:col-3 md:col-12 sm:col-12">
                     <li class="text-3xl font-medium mb-3">

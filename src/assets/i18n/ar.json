@@ -1,6 +1,7 @@
 {
     "General": {
         "ViewMore":"مشاهدة المزيد +",
+        "ReadMore": "مشاهدة المزيد",
         "NotFoundData": "لا يوجد بيانات",
         "SearchDesc": "البحث في خدمات البترول البحرية"
     },
@@ -14,7 +15,7 @@
         "ContactUs" :"اتصل بنا",
         "MediaCenter" : "المركز الإعلامي",
         "HSE" : "الصحة والسلامة والبيئة",
-        "Cetrificates":"الشهادات",
+        "Certificates":"الشهادات",
         "Sustainability" :"الاستدامة",
         "PMS": "خدمات البترول البحرية",
         "DiscoverMore":"اكتشف المزيد",
@@ -66,7 +67,10 @@
         "Email": "البريد الإلكتروني",
         "Phone": "الهاتف",
         "Message": "الرسالة",
-        "SendMessage": "إرسال الرسالة"
+        "Title": "الموضوع",
+        "Success": "تم بنجاح",
+        "SendMessage": "إرسال الرسالة",
+        "SuccessMessage": "تم الإرسال بنجاح وسيتم التواصل معك قريبا"
     },
     "SimilarTitles": {
         "SimilarProjects":"المشاريع المماثلة",

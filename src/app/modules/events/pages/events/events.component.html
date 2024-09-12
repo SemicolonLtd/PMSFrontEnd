@@ -40,7 +40,7 @@
                             <app-event-card [eventData]="event"></app-event-card>
                         </div>
                     </ng-container>
-                    <div class="load-more" *ngIf="paginationData?.total! > eventsList?.length!">
+                    <div class="load-more" *ngIf="(paginationData?.total! > eventsList?.length!) && !eventsLoading">
                         <p-button label="{{'Events.More' | translate}}" (click)="loadMore()" />
                     </div>
                 </div>

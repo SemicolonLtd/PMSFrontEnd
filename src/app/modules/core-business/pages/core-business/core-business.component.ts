@@ -9,12 +9,14 @@ import { CoreBusinessService } from '../../services/core-business.service';
     styleUrls: ['./core-business.component.scss']
 })
 export class CoreBusinessComponent implements OnInit, OnDestroy {
-    searchTitle = this.translateService.instant('Search.OurCoreBusiness')
 
+    searchTitle = this.translateService.instant('Search.OurCoreBusiness')
     coreList: any[] = [];
     loading = false;
     searchMode = false;
-    searchQuery = '';  
+    searchQuery = '';
+    pageSize = 10;
+    paginationData: any;
     subscription = new Subscription();
 
     constructor(
@@ -28,8 +30,11 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
 
     getCoreList(): void {
         this.loading = true;
+        const API = this.searchMode ?
+            this.coreBusinessService.searchForBusiness(this.searchQuery, this.pageSize) :
+            this.coreBusinessService.getCoreBusinessMenus(this.pageSize);
         this.subscription.add(
-            this.coreBusinessService.getCoreBusinessMenus().subscribe({
+            API.subscribe({
                 next: (res: any) => {
                     if (res?.status == 200) {
                         this.coreList = res?.data?.data;
@@ -45,15 +50,20 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
 
     searchForBusiness(query: string): void {
         if (query?.length) {
-          this.searchMode = true;
-          this.searchQuery = query;
+            this.searchMode = true;
+            this.searchQuery = query;
         } else {
-          this.searchMode = false;
-          this.searchQuery = '';
+            this.searchMode = false;
+            this.searchQuery = '';
         }
         this.coreList = [];
         this.getCoreList();
-      }
+    }
+
+    loadMore(): void {
+        this.pageSize += 10;
+        this.getCoreList();
+    }
 
     ngOnDestroy(): void {
         this.subscription.unsubscribe();

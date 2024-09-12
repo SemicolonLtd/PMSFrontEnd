@@ -61,3 +61,19 @@
         }
     }
 }
+
+::ng-deep {
+    .core-business {
+        .load-more {
+            margin-block: 2em;
+            text-align: center;
+            .p-button {
+                width: fit-content;
+                background: var(--primary-color-medium);
+                border: 1px solid var(--primary-color-medium);
+                border-radius: 7px;
+                padding-inline: 2em;
+            }
+        }
+    }
+}

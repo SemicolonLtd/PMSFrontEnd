@@ -3,7 +3,7 @@
     <ng-container *ngIf="coreList?.length && !loading">
         <ng-container *ngFor="let core of coreList; let i = index">
             <div class="core-img-end" *ngIf="i % 2 === 0">
-                <app-center-bar [Title]="core.title" [Desc]="core.pref" [htmlDesc]="true"></app-center-bar>
+                <app-center-bar *ngIf="!searchMode" [Title]="core.title" [Desc]="core.pref" [htmlDesc]="true"></app-center-bar>
                 <div class="pms-container">
                     <div class="grid mt-5 justify-content-between">
                         <div class="lg:col-6 md:col-12 sm:col-12 mb-4">
@@ -13,7 +13,7 @@
                                         <div [innerHTML]="tab.desc"></div>
                                         <div class="action flex align-items-center justify-content-end cursor-pointer" [routerLink]="'details/' + tab.slug">
                                             <span class="text">
-                                                Read more 
+                                                {{ 'General.ReadMore' | translate}} 
                                             </span>
                                             <i class="pi pi-angle-double-right"></i>
                                         </div>
@@ -45,7 +45,7 @@
                                         <div [innerHTML]="tab.desc"></div>
                                         <div class="action flex align-items-center justify-content-end cursor-pointer" [routerLink]="'details/' + tab.slug">
                                             <span class="text">
-                                                Read more 
+                                                {{ 'General.ReadMore' | translate}} 
                                             </span>
                                             <i class="pi pi-angle-double-right"></i>
                                         </div>
@@ -58,5 +58,8 @@
             </div>
         </ng-container>
     </ng-container>
+    <div class="load-more" *ngIf="(paginationData?.total! > coreList?.length!) && !loading">
+        <p-button label="{{'Projects.More' | translate}}" (click)="loadMore()" />
+    </div>
     <app-loading type="small" *ngIf="loading" ></app-loading>
 </div>

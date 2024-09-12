@@ -11,8 +11,7 @@ import { ButtonModule } from 'primeng/button';
 import { SharedModule } from "../../shared/shared.module";
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastModule } from 'primeng/toast';
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     ContactUsComponent
@@ -26,8 +25,9 @@ import { ToastModule } from 'primeng/toast';
     ButtonModule,
     SharedModule,
     TranslateModule,
-    ToastModule
-
-]
+    ToastModule,
+    FormsModule,
+    ReactiveFormsModule
+  ]
 })
 export class ContactUsModule { }

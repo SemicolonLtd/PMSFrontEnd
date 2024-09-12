@@ -12,16 +12,21 @@
         <div class="pms-container">
             <div class="wrapper">
                 <p-accordion [activeIndex]="0" class="w-full faq-accordion" expandIcon="pi pi-plus" collapseIcon="pi pi-minus">
-                    <p-accordionTab header="header" *ngFor="let faq of faqsList">
-                        <ng-template #header>
-                            <div [innerHTML]="faq.question"></div>
+                    <p-accordionTab *ngFor="let faq of faqsList">
+                        <ng-template pTemplate="header">
+                            <div class="flex align-items-center gap-2">
+                                <div class="question" [innerHtml]="faq.question" itemprop="name"></div>
+                            </div>
                         </ng-template>
+                        <!-- <ng-template #header>
+                            <div [innerHTML]="faq.question"></div>
+                        </ng-template> -->
                         <div [innerHTML]="faq.answer">
                         </div>
                     </p-accordionTab>
                 </p-accordion>
             </div>
-            <div class="load-more"  *ngIf="paginationData?.total! > faqsList?.length!">
+            <div class="load-more"  *ngIf="(paginationData?.total! > faqsList?.length!) && !loading">
                 <p-button label="More..." (click)="loadMore()" />
             </div>
         </div>
