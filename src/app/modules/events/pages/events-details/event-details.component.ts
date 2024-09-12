@@ -45,7 +45,6 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
 
   getEventSlugFromParams(): void {
     this.route.params.subscribe((params: any) => {
-      console.log(params);
       if(params['slug']) {
         this.slug = params['slug'];
         this.getEventDetails();

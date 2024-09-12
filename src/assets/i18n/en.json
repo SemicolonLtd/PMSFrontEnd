@@ -3,7 +3,8 @@
         "ViewMore":"View More +",
         "ReadMore": "Read More",
         "NotFoundData": "Not Found Data",
-        "SearchDesc":"Search in petroleum marine services"
+        "SearchDesc":"Search in petroleum marine services",
+        "All": "All"
     },
     "Navbar": {
         "Home":"Home",

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { HomeService } from '../../services/home.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-news-section',
@@ -18,7 +19,8 @@ export class NewsSectionComponent implements OnInit, OnDestroy {
   subscriptions = new Subscription();
 
   constructor(
-    private homeService: HomeService
+    private homeService: HomeService,
+    private translateService: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -33,9 +35,15 @@ export class NewsSectionComponent implements OnInit, OnDestroy {
         next: (res: any) => {
           // this.loading = false
           if(res?.status == 200) {
-            this.newsCategories = res?.data?.data;
-            this.selectedCategoryId = this.newsCategories[0].id;
-            this.getNewsData();
+            this.newsCategories = [
+              {
+                id: 'x',
+                name: this.translateService.instant('General.All'),
+              },
+              ...res?.data?.data
+            ];
+            // this.selectedCategoryId = this.newsCategories[0].id;
+            this.getRecentNews();
           }
         },
         error: (err: any) => {
@@ -65,11 +73,34 @@ export class NewsSectionComponent implements OnInit, OnDestroy {
   }
 
   onSelectCategory(index: any): void {
-    this.selectedCategoryId = this.newsCategories[index].id;
     this.newsData = [];
     this.bigCardNews = {};
     this.smallCardsNews = [];
-    this.getNewsData();
+    if(index == 0) {
+      this.getRecentNews();
+    } else {
+      this.selectedCategoryId = this.newsCategories[index].id;
+      this.getNewsData();
+    }
+  }
+
+  getRecentNews(): void {
+    this.loading = true;
+    this.subscriptions.add(
+      this.homeService.getInHomeAllNews().subscribe({
+        next: (res: any) => {
+          if(res?.status == 200) {
+            this.newsData = res?.data?.data;
+            this.bigCardNews = this.newsData?.filter((card: any) => card.big_card == true)[0];
+            this.smallCardsNews = this.newsData?.filter((card: any) => card.big_card == false);
+          }
+          this.loading = false
+        },
+        error: (err: any) => {
+          this.loading = false
+        }
+      })
+    )
   }
 
   ngOnDestroy(): void {

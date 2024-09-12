@@ -50,8 +50,6 @@ export class AppComponent {
       )
     )
     .subscribe((event: NavigationEnd) => {
-      console.log(event);
-      
       this.currentRoute = event.url
     });
   }
@@ -68,8 +66,6 @@ export class AppComponent {
 
   checkCookiesForLang(): void {
     if (this.cookieService.get('lang')) {
-      console.log(this.cookieService.get('lang'));
-      
       this.translateService.use(this.cookieService.get('lang')!);
       this.lang = this.cookieService.get('lang')!;
       environment.lang = this.lang;
