@@ -1,0 +1,74 @@
+<div class="search-results margin-avoid-navbar">
+    <div class="details-content">
+        <div class="pms-container">
+            <div class="grid">
+                <div class="col-12">
+                    <div class="search-wrapper">
+                        <!-- <div class="flex flex-column gap-2">
+                            <input 
+                                pInputText 
+                                id="username" 
+                                aria-describedby="username-help" />
+                            <small id="username-help" class="text-2xl">
+                                {{'General.SearchDesc' | translate}}                              
+                            </small>
+                        </div> -->
+                        <p-iconField iconPosition="left">
+                            <p-inputIcon styleClass="pi pi-search" />
+                            <input type="text" pInputText placeholder="{{'General.SearchDesc' | translate}} " />
+                        </p-iconField>
+                        <p-button 
+                            label="{{'SearchResults.Search' | translate}}" 
+                            icon="pi pi-search" 
+                            class="search-btn"
+                            />
+                    </div>
+                </div>
+                <div class="col-12">
+                    <p-tabView>
+                        <p-tabPanel header="{{'SearchResults.Projects' | translate}}">
+                            <ng-container *ngIf="searchResults.projects.data.length">
+                                <app-search-results-card [card]="card" *ngFor="let card of searchResults.projects.data"></app-search-results-card>
+                            </ng-container>
+                            <app-empty-state *ngIf="!searchResults.projects.data.length"></app-empty-state>
+
+                        </p-tabPanel>
+                        <p-tabPanel header="{{'SearchResults.News' | translate}}">
+                            <ng-container *ngIf="searchResults.news.data.length">
+                                <app-search-results-card [card]="card" *ngFor="let card of searchResults.news.data"></app-search-results-card>
+                            </ng-container>
+                            <app-empty-state *ngIf="!searchResults.news.data.length"></app-empty-state>
+
+                        </p-tabPanel>
+                        <p-tabPanel header="{{'SearchResults.CoreBusiness' | translate}}">
+                            <ng-container *ngIf="searchResults.coreBusiness.data.length">
+                                <app-search-results-card [card]="card" *ngFor="let card of searchResults.coreBusiness.data"></app-search-results-card>
+                            </ng-container>
+                            <app-empty-state *ngIf="!searchResults.coreBusiness.data.length"></app-empty-state>
+
+                        </p-tabPanel>
+                        <p-tabPanel header="{{'SearchResults.Events' | translate}}">
+                            <ng-container *ngIf="searchResults.events.data.length">
+                                <app-search-results-card 
+                                [card]="card" 
+                                *ngFor="let card of searchResults.events.data"
+                                ></app-search-results-card>
+                            </ng-container>
+                            <app-empty-state *ngIf="!searchResults.events.data.length"></app-empty-state>
+
+                        </p-tabPanel>
+                        <p-tabPanel header="{{'SearchResults.Pages' | translate}}">
+                            <ng-container *ngIf="searchResults.pages.data.length">
+                                <app-search-results-card 
+                                [card]="card" 
+                                *ngFor="let card of searchResults.pages.data"
+                                ></app-search-results-card>
+                            </ng-container>
+                            <app-empty-state *ngIf="!searchResults.pages.data.length"></app-empty-state>
+                        </p-tabPanel>
+                    </p-tabView>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

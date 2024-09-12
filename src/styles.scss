@@ -2,6 +2,16 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
 @font-face {
+    font-family: 'ar-title-font';
+    src: url('./assets/fonts/bein-ar-bold.ttf');
+}
+
+@font-face {
+    font-family: 'ar-main-font';
+    src: url('./assets/fonts/monadi.ttf');
+}
+
+@font-face {
     font-family: 'title-font';
     src: url('./assets/fonts/BlenderPro-Bold.ttf');
 }
@@ -23,6 +33,18 @@ body {
     overflow-x: hidden;
 }
 
+h1, h2, h3, h4, h5 {
+    font-family: 'title-font';
+}
+
+:lang(ar) body {
+    font-family: 'ar-main-font', sans-serif;
+}
+
+:lang(ar) h1, :lang(ar) h2, :lang(ar) h3, :lang(ar) h4, :lang(ar) h5{
+    font-family: 'ar-title-font', sans-serif;
+}
+
 html {
     @media (max-width: 1440px) {
         font-size: 14px;
@@ -38,9 +60,6 @@ html {
     box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5 {
-    font-family: 'title-font';
-}
 
 // p {
 //     padding: 0;
@@ -73,6 +92,10 @@ ul, li {
 
 .color-primary {
     color: var(--primary-color)
+}
+
+.color-primary-medium {
+    color: var(--primary-color-medium)
 }
 
 .color-primary-light {

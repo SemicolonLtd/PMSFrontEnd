@@ -1,0 +1,79 @@
+::ng-deep {
+    .search-results {
+        border-top: 1px solid var(--primary-color);
+        padding-inline: 5%;
+        padding-bottom: 5rem;
+        @media (max-width: 1200px) {
+            padding-inline: 3%;
+        }
+        @media (max-width: 992px) {
+            padding-inline: 2rem;
+            margin-top: 5rem;
+        }
+        .p-component {
+            font-family: 'main-font';
+            &:lang(ar) {
+                font-family: 'ar-main-font';
+            }
+        }
+        .p-inputtext {
+            width: 100%;
+            border-bottom: 1px solid var(--primary-color-medium);
+            border-radius: 0;
+            border-top: 0;
+            border-right: 0;
+            border-left: 0;
+            margin-top: 2rem;
+            &::placeholder {
+                // color: var(--primary-color-medium);
+                font-size: 1.2rem;
+                // font-weight: 700;
+            }
+        }
+        .search-btn {
+            button {
+                margin-top: 1rem;
+                background-color: var(--primary-color-light);
+                border: none;
+                .pi {
+                    margin-inline-end: 0.5rem;
+                }
+            }
+        }
+        .p-inputtext:enabled:focus {
+            box-shadow: none;
+            border-color: var(--primary-color-light);
+        }
+        .p-tabview .p-tabview-nav {
+            background: transparent;
+            border: none;
+            border-width: 0 0 2px 0;
+        }
+        .p-tabview .p-tabview-nav  {
+            padding-left:0;
+        }
+        .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+            background: white;
+            border-radius: 0;
+            font-weight: 300;
+            &:hover {
+                background-color: var(--secondary-color);
+                color: white;
+                border-color: var(--secondary-color);
+            }
+        }
+        .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+            // border-color: var(--secondary-color);
+            // color: var(--secondary-color);
+            background-color: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+
+        }
+        // .p-tabview .p-tabview-panels {
+        //     background: transparent;
+        //     padding: 0;
+        // }
+    }
+
+}

@@ -11,6 +11,7 @@ const routes: Routes = [
   {path: 'certificates', loadChildren: ()=> import('./modules/certificates/certificates.module').then((m)=> m.CertificatesModule)},
   {path: 'contact-us', loadChildren: ()=> import('./modules/contact-us/contact-us.module').then((m)=> m.ContactUsModule)},
   {path: 'faq', loadChildren: ()=> import('./modules/faq/faq.module').then((m)=> m.FaqModule)},
+  {path: 'search-results', loadChildren: ()=> import('./modules/search-results/search-results.module').then((m)=> m.SearchResultsModule)},
 
 ];
 

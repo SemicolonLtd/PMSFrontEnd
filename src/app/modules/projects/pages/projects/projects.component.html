@@ -53,6 +53,9 @@
                     <div class="load-more" *ngIf="(paginationData?.total! > projectsList?.length!) && !projectsLoading">
                         <p-button label="{{'Projects.More' | translate}}" (click)="loadMore()" />
                     </div>
+                    <div class="col-12" *ngIf="!projectsList.length && !projectsLoading">
+                        <app-empty-state></app-empty-state>
+                    </div>
                 </div>
             </div>
         </div>

@@ -105,6 +105,12 @@
             width: 100%;
             
         }
+        .p-float-label > label {
+            &:lang(ar) {
+                left: 0;
+                right: 0.75rem;
+            }
+        }
         .search-btn {
             .p-button {
                 width: 100%;
