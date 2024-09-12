@@ -1,6 +1,6 @@
 import { DOCUMENT, ViewportScroller } from '@angular/common';
 import { Component, HostListener, Inject } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie';
 import { filter } from 'rxjs';
@@ -16,6 +16,7 @@ export class AppComponent {
   pageYoffset!: number;
   currentRoute!: string;
   lang = environment.lang;
+  isLoading = true;
 
   constructor(
     private scroll: ViewportScroller,
@@ -28,6 +29,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.checkCurrentRoute();
     this.checkCookiesForLang()
+    this.checkLoading()
   }
 
   @HostListener('window:scroll', [''])
@@ -52,6 +54,16 @@ export class AppComponent {
       
       this.currentRoute = event.url
     });
+  }
+
+  checkLoading(): void {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+          this.isLoading = true;
+      } else if (event instanceof NavigationEnd) {
+          this.isLoading = false;
+      }
+  });
   }
 
   checkCookiesForLang(): void {
