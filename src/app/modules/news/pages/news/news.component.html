@@ -8,7 +8,8 @@
                     <p-tabPanel *ngFor="let category of newsCategories" [header]="category?.name">
                         <div class="grid">
                             <div class="sm:col-12 md:col-6 big-card-container" *ngIf="bigCardNews?.length">
-                                <div class="big-card" *ngFor="let card of bigCardNews">
+                                <div class="big-card" *ngFor="let card of bigCardNews"
+                                routerLink="/news/details/{{card?.slug}}">
                                     <p-card [header]="card?.title">
                                         <ng-template pTemplate="header">
                                             <img alt="Card" [src]="card?.image" />
@@ -29,7 +30,8 @@
                                 </div>
                             </div>
                             <div class="sm:col-12 md:col-6 small-cards-container" *ngIf="smallCardsNews?.length">
-                                <div class="small-card" *ngFor="let card of smallCardsNews">
+                                <div class="small-card" *ngFor="let card of smallCardsNews"
+                                routerLink="/news/details/{{card?.slug}}">
                                     <p-card [header]="card?.title">
                                         <ng-template pTemplate="header">
                                             <img alt="Card" [src]="card?.image" />

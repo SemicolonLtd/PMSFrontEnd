@@ -22,6 +22,7 @@ export class NewsComponent implements OnInit, OnDestroy {
   paginationData: any;
   searchMode = false;
   searchQuery = '';
+  selectedIndex: any = null;
   subscriptions = new Subscription();
 
   constructor(
@@ -42,9 +43,17 @@ export class NewsComponent implements OnInit, OnDestroy {
         next: (res: any) => {
           // this.loading = false
           if(res?.status == 200) {
-            this.newsCategories = res?.data?.data;
-            this.selectedCategoryId = this.newsCategories[0].id;
-            this.getNewsData();
+            // this.newsCategories = res?.data?.data;
+            // this.selectedCategoryId = this.newsCategories[0].id;
+            // this.getNewsData();
+            this.newsCategories = [
+              {
+                id: 'x',
+                name: this.translateService.instant('General.All'),
+              },
+              ...res?.data?.data
+            ];
+            this.getRecentNews();
           }
         },
         error: (err: any) => {
@@ -79,30 +88,62 @@ export class NewsComponent implements OnInit, OnDestroy {
   }
 
   onSelectCategory(index: any): void {
-    this.selectedCategoryId = this.newsCategories[index].id;
     this.newsData = [];
     this.bigCardNews = [];
     this.smallCardsNews = [];
-    this.getNewsData();
+    this.selectedIndex = index;
+    if(this.selectedIndex == 0) {
+      this.getRecentNews();
+    } else {
+      this.selectedCategoryId = this.newsCategories[index].id;
+      this.getNewsData();
+    }
   }
 
   loadMore(): void {
     this.pageSize += 10;
-    this.getNewsData();
+    if(this.selectedIndex == 0) {
+      this.getRecentNews();
+    } else {
+      this.getNewsData();
+    }
   }
 
   searchForNews(query: string): void {
-    if (query?.length) {
-      this.searchMode = true;
-      this.searchQuery = query;
-    } else {
-      this.searchMode = false;
-      this.searchQuery = '';
-    }
     this.newsData = [];
     this.bigCardNews = [];
     this.smallCardsNews = [];
-    this.getNewsData();
+    if (query?.length) {
+      this.searchMode = true;
+      this.searchQuery = query;
+      this.selectedIndex = null;
+      this.getNewsData();
+    } else {
+      this.searchMode = false;
+      this.searchQuery = '';
+      this.selectedIndex = 0;
+      this.getRecentNews();
+    }
+  }
+
+  getRecentNews(): void {
+    this.loading = true;
+    this.subscriptions.add(
+      this.newsService.getAllNews(this.pageSize).subscribe({
+        next: (res: any) => {
+          if(res?.status == 200) {
+            this.newsData = [... this.newsData, ...res?.data?.data];
+            this.paginationData = res?.data?.meta?.pagination;
+            this.bigCardNews = this.newsData?.filter((card: any) => card.big_card == true);
+            this.smallCardsNews = this.newsData?.filter((card: any) => card.big_card == false);
+          }
+          this.loading = false
+        },
+        error: (err: any) => {
+          this.loading = false
+        }
+      })
+    )
   }
 
   ngOnDestroy(): void {
