@@ -36,6 +36,12 @@
 }
 ::ng-deep {
     .projects {
+        .p-component {
+            font-family: 'main-font';
+            &:lang(ar) {
+                font-family: 'ar-main-font';
+            }
+        }
         .latest-project {
             .p-button.p-button-icon-only.p-button-rounded {
                 border-radius: 50%;

@@ -12,54 +12,56 @@
             </a>
         </div>
         <div class="news-data">
-            <p-tabView [scrollable]="true" (activeIndexChange)="onSelectCategory($event)">
-                <p-tabPanel *ngFor="let category of newsCategories" [header]="category?.name">
-                    <div class="grid" *ngIf="(bigCardNews || smallCardsNews?.length) && !loading">
-                        <div class="sm:col-12 md:col-6 big-card-container" *ngIf="bigCardNews">
-                            <div class="big-card" [routerLink]="'/news/details/' + bigCardNews?.slug">
-                                <p-card [header]="bigCardNews?.title">
-                                    <ng-template pTemplate="header">
-                                        <img alt="Card" [src]="bigCardNews?.image" />
-                                    </ng-template>
-                                    <span class="news-badge mobile">
+            <ng-container *ngIf="isBrowser">
+                <p-tabView [scrollable]="true" (activeIndexChange)="onSelectCategory($event)">
+                    <p-tabPanel *ngFor="let category of newsCategories" [header]="category?.name">
+                        <div class="grid" *ngIf="(bigCardNews || smallCardsNews?.length) && !loading">
+                            <div class="sm:col-12 md:col-6 big-card-container" *ngIf="bigCardNews">
+                                <div class="big-card" [routerLink]="'/news/details/' + bigCardNews?.slug">
+                                    <p-card [header]="bigCardNews?.title">
+                                        <ng-template pTemplate="header">
+                                            <img alt="Card" [src]="bigCardNews?.image" />
+                                        </ng-template>
+                                        <span class="news-badge mobile">
+                                            {{bigCardNews?.category_title}}
+                                        </span>
+                                        <p [innerHTML]="bigCardNews?.short">
+                                            <!-- {{bigCardNews.description | slice: 0: 30}} -->
+                                        </p>
+                                        <ng-template pTemplate="footer">
+                                            <span>{{bigCardNews?.date}}</span>
+                                        </ng-template>
+                                    </p-card>
+                                    <span class="news-badge desktop">
                                         {{bigCardNews?.category_title}}
                                     </span>
-                                    <p [innerHTML]="bigCardNews?.short">
-                                        <!-- {{bigCardNews.description | slice: 0: 30}} -->
-                                    </p>
-                                    <ng-template pTemplate="footer">
-                                        <span>{{bigCardNews?.date}}</span>
-                                    </ng-template>
-                                </p-card>
-                                <span class="news-badge desktop">
-                                    {{bigCardNews?.category_title}}
-                                </span>
+                                </div>
+                            </div>
+                            <div class="sm:col-12 md:col-6 small-cards-container" *ngIf="smallCardsNews?.length">
+                                <div class="small-card" *ngFor="let card of smallCardsNews" 
+                                [routerLink]="'/news/details/' + card?.slug">
+                                    <p-card [header]="card?.title">
+                                        <ng-template pTemplate="header">
+                                            <img alt="Card" [src]="card?.image" />
+                                        </ng-template>
+                                        <span class="news-badge">
+                                            {{card?.category_title}}
+                                        </span>
+                                        <p [innerHTML]="card?.short">
+                                            <!-- {{card.description | slice: 0: 30}} -->
+                                        </p>
+                                        <ng-template pTemplate="footer">
+                                            <span>{{card?.date}}</span>
+    
+                                        </ng-template>
+                                    </p-card>
+                                </div>
                             </div>
                         </div>
-                        <div class="sm:col-12 md:col-6 small-cards-container" *ngIf="smallCardsNews?.length">
-                            <div class="small-card" *ngFor="let card of smallCardsNews" 
-                            [routerLink]="'/news/details/' + card?.slug">
-                                <p-card [header]="card?.title">
-                                    <ng-template pTemplate="header">
-                                        <img alt="Card" [src]="card?.image" />
-                                    </ng-template>
-                                    <span class="news-badge">
-                                        {{card?.category_title}}
-                                    </span>
-                                    <p [innerHTML]="card?.short">
-                                        <!-- {{card.description | slice: 0: 30}} -->
-                                    </p>
-                                    <ng-template pTemplate="footer">
-                                        <span>{{card?.date}}</span>
-
-                                    </ng-template>
-                                </p-card>
-                            </div>
-                        </div>
-                    </div>
-                    <app-loading type="small" *ngIf="loading"></app-loading>
-                </p-tabPanel>
-            </p-tabView>
+                        <app-loading type="small" *ngIf="loading"></app-loading>
+                    </p-tabPanel>
+                </p-tabView>
+            </ng-container>
         </div>
     </div>
 </div>

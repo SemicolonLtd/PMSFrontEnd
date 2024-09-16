@@ -1,7 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { HomeService } from '../../services/home.service';
 import { TranslateService } from '@ngx-translate/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-news-section',
@@ -9,7 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./news-section.component.scss']
 })
 export class NewsSectionComponent implements OnInit, OnDestroy {
-
+  isBrowser!: boolean;
   bigCardNews: any
   smallCardsNews: any[] = [];
   newsData: any[] = [];
@@ -20,10 +21,12 @@ export class NewsSectionComponent implements OnInit, OnDestroy {
 
   constructor(
     private homeService: HomeService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
   ngOnInit(): void {
+    this.isBrowser = isPlatformBrowser(this.platformId);
     this.getNewsCategories();
   }
 

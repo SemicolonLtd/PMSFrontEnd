@@ -1,5 +1,5 @@
-import { DOCUMENT, ViewportScroller } from '@angular/common';
-import { Component, HostListener, Inject } from '@angular/core';
+import { DOCUMENT, isPlatformBrowser, ViewportScroller } from '@angular/common';
+import { Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie';
@@ -24,11 +24,14 @@ export class AppComponent {
     private cookieService:CookieService,
     private translateService:TranslateService,
     @Inject(DOCUMENT) private document: Document,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.checkCookiesForLang()
+    }
     this.checkCurrentRoute();
-    this.checkCookiesForLang()
     this.checkLoading()
   }
 

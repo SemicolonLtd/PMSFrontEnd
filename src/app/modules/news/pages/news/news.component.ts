@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { NewsService } from '../../services/news.service';
@@ -10,7 +11,7 @@ import { NewsService } from '../../services/news.service';
 })
 export class NewsComponent implements OnInit, OnDestroy {
   searchTitle = this.translateService.instant('Search.OurNews')
-
+  isBrowser!: boolean;
   bigCardNews: any[] = [];
   pageSize = 10;
   smallCardsNews: any[] = [];
@@ -25,10 +26,12 @@ export class NewsComponent implements OnInit, OnDestroy {
 
   constructor(
     private newsService: NewsService,
-    private translateService:TranslateService
+    private translateService:TranslateService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
   ngOnInit(): void {
+    this.isBrowser = isPlatformBrowser(this.platformId);
     this.getNewsCategories();
   }
 

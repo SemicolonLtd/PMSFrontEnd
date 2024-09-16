@@ -5,7 +5,7 @@ import { ContactUsRoutingModule } from './contact-us-routing.module';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { InputTextModule } from 'primeng/inputtext';
 
-import { FloatLabelModule } from 'primeng/floatlabel';
+// import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ButtonModule } from 'primeng/button';
 import { SharedModule } from "../../shared/shared.module";
@@ -20,7 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ContactUsRoutingModule,
     InputTextModule,
-    FloatLabelModule,
+    // FloatLabelModule,
     InputTextareaModule,
     ButtonModule,
     SharedModule,
