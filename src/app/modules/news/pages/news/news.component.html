@@ -3,7 +3,7 @@
     <app-search [Title]="searchTitle" (searchEmitter)="searchForNews($event)"></app-search>
     <div class="pms-container">
         <div class="news-data">
-            <ng-container *ngIf="!searchMode">
+            <ng-container *ngIf="!searchMode && isBrowser">
                 <p-tabView [scrollable]="true" (activeIndexChange)="onSelectCategory($event)">
                     <p-tabPanel *ngFor="let category of newsCategories" [header]="category?.name">
                         <div class="grid">

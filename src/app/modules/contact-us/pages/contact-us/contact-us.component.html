@@ -48,31 +48,27 @@
                     </div>
                     <div class="contact-form-wrapper md:col-6 sm:col-12">
                         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-                            <p-floatLabel class="mb-5">
+                            <span class="p-float-label mb-5">
                                 <input pInputText id="username" formControlName="name" />
-                                <label for="username">{{'Contact.Username' | translate}}</label>
-                            </p-floatLabel>
-                            <p-floatLabel>
+                                <label htmlFor="username">{{'Contact.Username' | translate}}</label>
+                            </span>
+                            <span class="p-float-label mb-5">
                                 <input pInputText id="email" formControlName="email" />
-                                <label for="email">{{'Contact.Email' | translate}}</label>
-                            </p-floatLabel>
-                            <!-- <p-floatLabel>
-                                <input pInputText id="phone" formControlName="phone" />
-                                <label for="phone">{{'Contact.Phone' | translate}}</label>
-                            </p-floatLabel> -->
-                            <p-floatLabel class="mb-5">
+                                <label htmlFor="email">{{'Contact.Email' | translate}}</label>
+                            </span>
+                            <span class="p-float-label mb-5">
                                 <input pInputText id="title" formControlName="title" />
-                                <label for="title">{{'Contact.Title' | translate}}</label>
-                            </p-floatLabel>
-                            <p-floatLabel>
+                                <label htmlFor="title">{{'Contact.Title' | translate}}</label>
+                            </span>
+                            <span class="p-float-label mb-5">
                                 <textarea 
                                     id="float-input" 
                                     rows="5" cols="30" 
                                     formControlName="desc"
                                     pInputTextarea>
                                 </textarea>
-                                <label for="float-input">{{'Contact.Message' | translate}}</label>
-                            </p-floatLabel>
+                                <label htmlFor="desc">{{'Contact.Message' | translate}}</label>
+                            </span>
                             <div class="search-btn">
                                 <p-button 
                                     type="submit"

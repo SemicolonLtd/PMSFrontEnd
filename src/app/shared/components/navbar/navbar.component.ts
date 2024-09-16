@@ -1,4 +1,4 @@
-import { Component,Inject, OnDestroy, OnInit } from '@angular/core';
+import { Component,Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HostListener } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
@@ -7,6 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { DOCUMENT } from '@angular/common';
 import { CookieService } from 'ngx-cookie';
 import { NavbarService } from 'src/app/core/services/navbar.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -36,12 +37,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private cookieService:CookieService,
     private translateService:TranslateService,
     @Inject(DOCUMENT) private document: Document,
-    private navbarService: NavbarService
+    private navbarService: NavbarService,
+    @Inject(PLATFORM_ID) private platformId: Object
+
   ) {}
 
   ngOnInit(): void {
+    if(isPlatformBrowser(this.platformId)) {
+      this.checkCookiesForLang()
+    }
     this.checkCurrentRoute();
-    this.checkCookiesForLang()
     this.getAllLinks();
     this.checkCurrentRoute()
   }

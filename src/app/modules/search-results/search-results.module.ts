@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { SearchResultsRoutingModule } from './search-results-routing.module';
 import { SearchResultsComponent } from './pages/search-results/search-results.component';
-import { IconFieldModule } from 'primeng/iconfield';
-import { InputIconModule } from 'primeng/inputicon';
+// import { IconFieldModule } from 'primeng/iconfield';
+// import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { TranslateModule } from '@ngx-translate/core';
@@ -25,8 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SearchResultsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    IconFieldModule,
-    InputIconModule,
+    // IconFieldModule,
+    // InputIconModule,
     InputTextModule,
     ButtonModule,
     TranslateModule,
