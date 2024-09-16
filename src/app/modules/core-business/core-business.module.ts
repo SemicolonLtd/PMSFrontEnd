@@ -11,6 +11,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { GalleriaModule } from 'primeng/galleria';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
+import { EmptyStateComponent } from "../../shared/components/empty-state/empty-state.component";
 
 
 @NgModule({
@@ -28,8 +29,8 @@ import { ButtonModule } from 'primeng/button';
     GalleriaModule,
     SharedModule,
     TranslateModule,
-    ButtonModule
-
-  ]
+    ButtonModule,
+    EmptyStateComponent
+]
 })
 export class CoreBusinessModule { }

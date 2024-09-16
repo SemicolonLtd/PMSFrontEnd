@@ -13,6 +13,7 @@ import { CardModule } from 'primeng/card';
 import { CountUpModule } from 'ngx-countup';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from "../../shared/shared.module";
+import { EmptyStateComponent } from "../../shared/components/empty-state/empty-state.component";
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { SharedModule } from "../../shared/shared.module";
     CardModule,
     CountUpModule,
     TranslateModule,
-    SharedModule
+    SharedModule,
+    EmptyStateComponent
 ]
 })
 export class HomeModule { }

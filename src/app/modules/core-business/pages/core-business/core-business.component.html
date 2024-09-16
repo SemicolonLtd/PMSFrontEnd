@@ -62,4 +62,5 @@
         <p-button label="{{'Projects.More' | translate}}" (click)="loadMore()" />
     </div>
     <app-loading type="small" *ngIf="loading" ></app-loading>
+    <app-empty-state *ngIf="!coreList?.length && !loading"></app-empty-state>
 </div>

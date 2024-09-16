@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 import { TabViewModule } from 'primeng/tabview';
 import { CardModule } from 'primeng/card';
 import { TranslateModule } from '@ngx-translate/core';
+import { EmptyStateComponent } from "../../shared/components/empty-state/empty-state.component";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TranslateModule } from '@ngx-translate/core';
     RouterModule,
     TabViewModule,
     CardModule,
-    TranslateModule
+    TranslateModule,
+    EmptyStateComponent
 ]
 })
 export class NewsModule { }

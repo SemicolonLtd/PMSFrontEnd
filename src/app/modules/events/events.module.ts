@@ -10,6 +10,7 @@ import { EventsComponent } from './pages/events/events.component';
 import { EventDetailsComponent } from './pages/events-details/event-details.component';
 import { EventsRoutingModule } from './events-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { EmptyStateComponent } from "../../shared/components/empty-state/empty-state.component";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { TranslateModule } from '@ngx-translate/core';
     FormsModule,
     GalleriaModule,
     CarouselModule,
-    TranslateModule
+    TranslateModule,
+    EmptyStateComponent
 ]
 })
 export class EventsModule { }
