@@ -9,6 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { EmptyStateComponent } from "../../shared/components/empty-state/empty-state.component";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ImageModule,
     ButtonModule,
     TranslateModule,
-    SharedModule
-  ]
+    SharedModule,
+    EmptyStateComponent
+]
 })
 export class CertificatesModule { }

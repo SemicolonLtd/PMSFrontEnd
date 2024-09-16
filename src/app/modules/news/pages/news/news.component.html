@@ -99,6 +99,7 @@
                 <p-button label="More..." (click)="loadMore()" />
             </div>
             <app-loading type="small" *ngIf="loading"></app-loading>
+            <app-empty-state *ngIf="!newsData?.length && !loading"></app-empty-state>
         </div>
     </div>
 </div>

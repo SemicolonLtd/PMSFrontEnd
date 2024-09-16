@@ -48,4 +48,5 @@
         </div>
     </div>
     <app-loading type="small" *ngIf="eventsLoading" ></app-loading>
+    <app-empty-state *ngIf="!eventsList?.length && !eventsLoading"></app-empty-state>
 </div>

@@ -49,4 +49,5 @@
         </div>
     </ng-container>
     <app-loading type="small" *ngIf="loading" ></app-loading>
+    <app-empty-state *ngIf="!certificatesList?.length && !loading"></app-empty-state>
 </div>
