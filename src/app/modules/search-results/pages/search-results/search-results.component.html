@@ -30,7 +30,7 @@
                                 </ng-template>
                                 <div class="row" *ngIf="searchResults?.projects?.data?.length ">
                                     <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <app-search-results-card [card]="card"
+                                        <app-search-results-card [card]="card" type="PROJECT"
                                             *ngFor="let card of searchResults?.projects?.data"></app-search-results-card>
                                     </div>
                                 </div>
@@ -46,7 +46,7 @@
                                 </ng-template>
                                 <div class="row" *ngIf="searchResults?.news?.data?.length">
                                     <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <app-search-results-card [card]="card"
+                                        <app-search-results-card [card]="card" type="NEWS"
                                             *ngFor="let card of searchResults?.news?.data"></app-search-results-card>
                                     </div>
                                 </div>
@@ -61,7 +61,7 @@
                                 </ng-template>
                                 <div class="row" *ngIf="searchResults?.coreBusiness?.data?.length ">
                                     <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <app-search-results-card [card]="card"
+                                        <app-search-results-card [card]="card" type="CORE-BUSINESS"
                                             *ngFor="let card of searchResults?.coreBusiness?.data"></app-search-results-card>
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@
                                 </ng-template>
                                 <div class="row" *ngIf="searchResults?.events?.data?.length ">
                                     <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <app-search-results-card [card]="card"
+                                        <app-search-results-card [card]="card" type="EVENTS"
                                             *ngFor="let card of searchResults?.events?.data"></app-search-results-card>
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@
                                 </ng-template>
                                 <div class="row" *ngIf="searchResults?.pages?.data?.length ">
                                     <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <app-search-results-card [card]="card"
+                                        <app-search-results-card [card]="card" type="PAGES"
                                             *ngFor="let card of searchResults?.pages?.data"></app-search-results-card>
                                     </div>
                                 </div>

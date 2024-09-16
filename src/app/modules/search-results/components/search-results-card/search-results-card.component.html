@@ -1,4 +1,4 @@
-<div class="small-card" [routerLink]="'/news/details/' + card?.slug">
+<div class="small-card" (click)="onClick()">
     <p-card [header]="card?.title">
         <ng-template pTemplate="header">
             <img alt="Card" [src]="card?.image" />
