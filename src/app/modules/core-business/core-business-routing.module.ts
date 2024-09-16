@@ -5,6 +5,7 @@ import { CoreBusinessComponent } from './pages/core-business/core-business.compo
 
 const routes: Routes = [
   {path: '', component: CoreBusinessComponent},
+  {path: ':slug', component: CoreBusinessComponent},
   {path: 'details/:slug', component: CoreBusinessDetailsComponent}
 ];
 

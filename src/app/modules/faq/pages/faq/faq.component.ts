@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FaqsService } from '../../services/faqs.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-faq',
@@ -13,10 +14,17 @@ export class FaqComponent implements OnInit, OnDestroy {
   loading = false;
   pageSize = 10;
   paginationData: any;
+  breadcrumbItems = [
+    {
+      name: this.translateService.instant('Footer.FAQ'),
+      link: '/faq'
+    }
+  ];
   subscriptions = new Subscription();
 
   constructor(
-    private faqsService: FaqsService
+    private faqsService: FaqsService,
+    private translateService: TranslateService
   ) { }
 
   ngOnInit(): void {

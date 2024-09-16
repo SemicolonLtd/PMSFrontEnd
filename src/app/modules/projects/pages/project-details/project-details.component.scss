@@ -29,13 +29,36 @@
                 }
             }
             .info-wrapper {
-                .label {
+                background-color: #fff;
+                padding: 1.5em 1em;
+                margin-bottom: 1em;
+                width: 100%;
+                border-radius: 5px;
+                box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+                justify-content: space-between;
+                .img-with-title {
+                    img {
+                        width: 22px;
+                        height: 22px;
+                        object-fit: contain;
+                    }
+                    .label {
+                        font-weight: 600;
+                        margin-inline-start: 0.6rem;
+                    }
+                }
+                .data {
+                    font-size: 1rem;
+                    color: var(--primary-color);
                     font-weight: 600;
-                    margin-inline-end: 0.6rem;
                 }
-                i {
-                    margin-inline-end: 0.3rem;
-                }
+                // .label {
+                //     font-weight: 600;
+                //     margin-inline-end: 0.6rem;
+                // }
+                // i {
+                //     margin-inline-end: 0.3rem;
+                // }
             }
         }
     }

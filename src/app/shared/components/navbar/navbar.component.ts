@@ -8,6 +8,7 @@ import { DOCUMENT } from '@angular/common';
 import { CookieService } from 'ngx-cookie';
 import { NavbarService } from 'src/app/core/services/navbar.service';
 import { isPlatformBrowser } from '@angular/common';
+import { CoreBusinessService } from 'src/app/modules/core-business/services/core-business.service';
 
 @Component({
   selector: 'app-navbar',
@@ -29,6 +30,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   currentRoute!: string;
   loading: boolean = true;
   linksList: any[] = [];
+  coreBusinessList: any[] = [];
   displayedLinks: any[] = [];
   subscriptions = new Subscription();
 
@@ -37,6 +39,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private cookieService:CookieService,
     private translateService:TranslateService,
     @Inject(DOCUMENT) private document: Document,
+    private coreBusinessService: CoreBusinessService,
     private navbarService: NavbarService,
     @Inject(PLATFORM_ID) private platformId: Object
 
@@ -47,8 +50,32 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.checkCookiesForLang()
     }
     this.checkCurrentRoute();
+    this.getCoreBusinessMenus();
     this.getAllLinks();
-    this.checkCurrentRoute()
+    this.checkCurrentRoute();
+  }
+
+  getCoreBusinessMenus(): void {
+    this.subscriptions.add(
+      this.coreBusinessService.getCoreBusinessMenus(1000).subscribe({
+        next: (res: any) => {
+          this.coreBusinessList = [
+            {
+              name: 'core-business',
+              menu: res.data?.data?.map((item: any) => {
+                return {
+                  name: item.title,
+                  link: 'core-business/' + item.slug
+                }
+              })
+            }
+          ];
+        },
+        error: (err: any) => {
+          console.log(err);
+        }
+      })
+    )
   }
 
   @HostListener('window:scroll', [])
@@ -106,7 +133,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     } else {
       this.detailsType = type;
       this.detailsTitle = this.translateService.instant(`Navbar.${title}`);
-      this.displayedLinks = this.linksList.filter((listItem: any) => listItem.name === type)[0]?.menu;
+      this.displayedLinks = [...this.linksList, ...this.coreBusinessList].filter((listItem: any) => listItem.name === type)[0]?.menu;
       this.sidebarVisible = false;
       this.navDetailsOpened = true;
     }

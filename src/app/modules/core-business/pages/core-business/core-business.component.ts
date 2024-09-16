@@ -1,7 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { CoreBusinessService } from '../../services/core-business.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-core-business',
@@ -17,15 +18,36 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
     searchQuery = '';
     pageSize = 10;
     paginationData: any;
+    selectedBusinessSlug = '';
     subscription = new Subscription();
 
     constructor(
         private coreBusinessService: CoreBusinessService,
-        private translateService: TranslateService
+        private translateService: TranslateService,
+        private renderer: Renderer2,
+        private route: ActivatedRoute
     ) { }
 
     ngOnInit(): void {
         this.getCoreList();
+        this.getBusinessSlugFromParams();
+    }
+
+    getBusinessSlugFromParams(): void {
+        this.route.params.subscribe((params: any) => {
+            if (params['slug']) {
+                this.selectedBusinessSlug = params['slug'];
+            }
+        });
+    }
+
+    scrollToDiv(itemSlug: string): void {
+        setTimeout(() => {
+        const element = this.renderer.selectRootElement(`#${itemSlug}`, true);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        }, 0);
     }
 
     getCoreList(): void {
@@ -38,11 +60,17 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
                 next: (res: any) => {
                     if (res?.status == 200) {
                         this.coreList = res?.data?.data;
-                        this.loading = false;
                     }
+                    this.loading = false;
                 },
                 error: (err: any) => {
                     this.loading = false;
+                },
+                complete: () => {
+                    if (this.selectedBusinessSlug) {
+                        this.scrollToDiv(this.selectedBusinessSlug);
+                        this.selectedBusinessSlug = '';  // reset the selected slug after scrolling to it
+                    }
                 }
             })
         );

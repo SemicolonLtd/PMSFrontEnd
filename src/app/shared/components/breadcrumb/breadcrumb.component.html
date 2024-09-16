@@ -1,0 +1,17 @@
+<div class="breadcrumb my-4 px-7">
+    <a routerLink="/" class="link">
+        <i class="pi pi-home"></i>
+        <span class="text">{{ 'Navbar.Home' | translate }}</span>
+        <i class="pi pi-angle-right" *ngIf="lang == 'en'"></i>
+        <i class="pi pi-angle-left" *ngIf="lang == 'ar'"></i>
+    </a>
+    <a *ngFor="let item of breadcrumbItems.slice(0, breadcrumbItems.length - 1); let i = index"
+        routerLink="{{item.link}}" class="link">
+        <span class="text"  *ngIf="!item?.name.includes('.')">{{item.name }}</span>
+        <span class="text" *ngIf="item?.name.includes('.')">{{item.name | translate}}</span>
+        <i class="pi pi-angle-right" *ngIf="lang == 'en'"></i>
+        <i class="pi pi-angle-left" *ngIf="lang == 'ar'"></i>
+    </a>
+    <span class="last-item" *ngIf="!breadcrumbItems[breadcrumbItems.length - 1].name.includes('.')">{{breadcrumbItems[breadcrumbItems.length - 1].name }}</span>
+    <span class="last-item" *ngIf="breadcrumbItems[breadcrumbItems.length - 1].name.includes('.')">{{breadcrumbItems[breadcrumbItems.length - 1].name | translate}}</span>
+</div>

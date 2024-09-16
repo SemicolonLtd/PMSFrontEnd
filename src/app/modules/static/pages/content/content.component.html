@@ -4,6 +4,7 @@
             <img [src]="pageContent.image" [alt]="pageContent.title">
             <h1 class="page-title">{{pageContent.title}}</h1>
         </div>
+        <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
         <div class="content" [innerHTML]="pageContent.body"></div>
     </ng-container>
     <app-loading type="small" *ngIf="loading"></app-loading>

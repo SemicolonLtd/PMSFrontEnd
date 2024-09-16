@@ -19,6 +19,7 @@ import { EventCardComponent } from './components/event-card/event-card.component
 import { TranslateModule } from '@ngx-translate/core';
 import { LottieModule } from 'ngx-lottie';
 import { LoadingComponent } from './components/loading/loading.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 // import { IconFieldModule } from 'primeng/iconfield';
 // import { InputIconModule } from 'primeng/inputicon';
 
@@ -35,7 +36,8 @@ export function playerFactory() {
     CenterBarComponent,
     ProjectCardComponent,
     EventCardComponent,
-    LoadingComponent
+    LoadingComponent,
+    BreadcrumbComponent
   ],
   imports: [
   CommonModule,
@@ -59,8 +61,8 @@ export function playerFactory() {
     CenterBarComponent,
     ProjectCardComponent,
     EventCardComponent,
-    LoadingComponent
-
+    LoadingComponent,
+    BreadcrumbComponent
   ]
 })
 export class SharedModule { }

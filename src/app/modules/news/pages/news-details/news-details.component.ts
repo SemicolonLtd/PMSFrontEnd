@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NewsService } from '../../services/news.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-news-details',
@@ -34,12 +35,19 @@ export class NewsDetailsComponent implements OnInit, OnDestroy {
   slug: string = '';
   typeId: any;
   loading = false;
+  breadcrumbItems = [
+    {
+      name: this.translateService.instant('Navbar.News'),
+      link: '/events'
+    }
+  ];
   subscriptions = new Subscription();
 
   constructor(
     private newsService: NewsService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private translateService: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -64,6 +72,16 @@ export class NewsDetailsComponent implements OnInit, OnDestroy {
         next: (res: any) => {
           if(res?.status == 200) {
             this.newsData = res?.data;
+            this.newsData.media = [
+              ...this.newsData.media,
+              {
+                image: this.newsData.image
+              }
+            ];
+            this.breadcrumbItems.push({
+              name: this.newsData?.title,
+              link: '/news/details/' + this.newsData?.slug
+            })
             this.getSimilarNews();
           }
           this.loading = false;
