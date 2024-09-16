@@ -17,7 +17,7 @@ export class FooterComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getSettings();
-    this.getSettingsData();
+    this.getSocialMediaData();
   }
 
   getSettings(): void {
@@ -35,7 +35,7 @@ export class FooterComponent implements OnInit, OnDestroy {
     );
   }
 
-  getSettingsData(): void {
+  getSocialMediaData(): void {
     this.subscriptions.add(
       this.settingsService.getAllSettings('social').subscribe({
         next: (res: any) => {

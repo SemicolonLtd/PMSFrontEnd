@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { ContactService } from '../../services/contact.service';
+import { SettingsService } from 'src/app/core/services/settings.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -14,23 +15,28 @@ import { ContactService } from '../../services/contact.service';
 })
 export class ContactUsComponent implements OnInit, OnDestroy {
 
-  mapUrl!:SafeResourceUrl;
+  mapUrl!: SafeResourceUrl;
   barTitle = this.translateService.instant('Contact.ContactUs')
   contactForm!: FormGroup;
   loading = false;
+  socialMediaData: any;
+  settingsData: any;
   subscriptions = new Subscription();
 
   constructor(
-    private sanitizer:DomSanitizer,
+    private sanitizer: DomSanitizer,
     private translateService: TranslateService,
     private fb: FormBuilder,
     private contactService: ContactService,
-    private messageService: MessageService
-  ){}
+    private messageService: MessageService,
+    private settingsService: SettingsService
+  ) { }
 
   ngOnInit(): void {
     this.mapUrl = this.getGoogleMapsUrl();
     this.initContactForm();
+    this.getSettings();
+    this.getSocialMediaData();
   }
 
   getGoogleMapsUrl(): SafeResourceUrl {
@@ -49,7 +55,7 @@ export class ContactUsComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    if(this.contactForm?.invalid) return;
+    if (this.contactForm?.invalid) return;
     this.loading = true;
     const formData = new FormData();
     Object.keys(this.contactForm.value).forEach((key) => {
@@ -64,10 +70,40 @@ export class ContactUsComponent implements OnInit, OnDestroy {
         },
         error: (err: any) => {
           this.loading = false;
-         
+
         }
       })
     )
+  }
+
+  getSettings(): void {
+    this.subscriptions.add(
+      this.settingsService.getAllSettings('setting').subscribe({
+        next: (res: any) => {
+          if (res?.status === 200) {
+            this.settingsData = res?.data;
+          }
+        },
+        error: (err: any) => {
+          console.log(err);
+        }
+      })
+    );
+  }
+
+  getSocialMediaData(): void {
+    this.subscriptions.add(
+      this.settingsService.getAllSettings('social').subscribe({
+        next: (res: any) => {
+          if (res?.status === 200) {
+            this.socialMediaData = res?.data;
+          }
+        },
+        error: (err: any) => {
+          console.log(err);
+        }
+      })
+    );
   }
 
   ngOnDestroy(): void {
