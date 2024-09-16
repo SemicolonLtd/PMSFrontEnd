@@ -57,24 +57,24 @@
                         <span class="title">
                             {{'Footer.KeepInTouch' | translate}} :
                         </span>
-                        <span class="txt">
-                            Nasr City It addresses everyone recounting in a transparent way
+                        <span class="txt" *ngIf="settingsData?.address">
+                            {{ settingsData?.address}}
                         </span>
                     </li>
-                    <li class="mb-2">
+                    <li class="mb-2" *ngIf="settingsData?.mail" >
                         <span class="title">
                             {{'Footer.Email' | translate}} :
                         </span>
                         <span class="txt">
-                            PMS-pms.com
+                            {{ settingsData?.mail}}
                         </span>
                     </li>
-                    <li class="mb-2">
+                    <li class="mb-2" *ngIf="settingsData?.phone">
                         <span class="title">
                             {{'Footer.Phone' | translate}} :
                         </span>
                         <span class="txt">
-                            (+20) 123 - 4567 - 900
+                            {{ settingsData?.phone}}
                         </span>
                     </li>
                 </div>
