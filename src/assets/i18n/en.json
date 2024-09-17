@@ -4,7 +4,8 @@
         "ReadMore": "Read More",
         "NotFoundData": "Not Found Data",
         "SearchDesc":"Search in petroleum marine services",
-        "All": "All"
+        "All": "All",
+        "Share": "Share"
     },
     "Navbar": {
         "Home":"Home",
@@ -109,6 +110,13 @@
         "Events": "Events",
         "Pages": "Pages",
         "Search":"Search"
+    },
+    "Static": {
+        "HSE-quality": "HSE",
+        "key-assets":"Key Assets",
+        "sustainability": "Sustainability",
+        "about-us": "About Us",
+        "our-strategy": "Our Strategy"
     }
 
 }

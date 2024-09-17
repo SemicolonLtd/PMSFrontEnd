@@ -16,12 +16,15 @@ import { TabViewModule } from 'primeng/tabview';
 import { CardModule } from 'primeng/card';
 import { TranslateModule } from '@ngx-translate/core';
 import { EmptyStateComponent } from "../../shared/components/empty-state/empty-state.component";
+import { TextSlicePipe } from 'src/app/core/pipes/text-slice.pipe';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
     NewsComponent,
     NewsCardComponent,
-    NewsDetailsComponent
+    NewsDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -36,7 +39,10 @@ import { EmptyStateComponent } from "../../shared/components/empty-state/empty-s
     TabViewModule,
     CardModule,
     TranslateModule,
-    EmptyStateComponent
+    EmptyStateComponent,
+    TextSlicePipe,
+    FontAwesomeModule,
+    ShareButtonsModule
 ]
 })
 export class NewsModule { }

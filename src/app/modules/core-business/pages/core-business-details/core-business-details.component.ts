@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CoreBusinessService } from '../../services/core-business.service';
 import { TranslateService } from '@ngx-translate/core';
+import { environment } from 'src/environments/environment';
+import { MetaService } from 'src/app/core/services/meta.service';
 
 @Component({
   selector: 'app-core-business-details',
@@ -10,7 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./core-business-details.component.scss']
 })
 export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
-
+  websiteUrl = environment.websiteUrl;
   responsiveOptions: any[] = [
     // {
     //   breakpoint: '2000px',
@@ -47,7 +49,8 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
     private coreBusinessService: CoreBusinessService,
     private translateService: TranslateService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private metaService: MetaService
   ) { }
 
   ngOnInit(): void {
@@ -97,7 +100,7 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
   getSimilarBusiness(): void {
     this.similarBusinessLoading = true;
     this.subscriptions.add(
-      this.coreBusinessService.getSimilarBusiness(this.businessData?.category_id).subscribe({
+      this.coreBusinessService.getSimilarBusiness(this.businessData?.slug).subscribe({
         next: (res: any) => {
           if(res?.status == 200) {
             this.similarBusinessData = res?.data?.data;
@@ -109,6 +112,23 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
         }
       })
     );
+  }
+
+  onLinkOpened(event: any): void {
+    this.handleMetaTags();
+  }
+
+  handleMetaTags(): void {
+    const content: any = {
+      title: this.businessData.title,
+      useTranslation: false,
+      description: this.businessData.short,
+      keywords: this.businessData.short,
+      image: this.businessData.image,
+      // url: `${environment.websiteUrl}news/news-view/${encodeURIComponent(this.businessData.slug)}`
+      url: `${environment.websiteUrl}/core-business/details/${this.businessData.slug}`
+    };
+    this.metaService.createMetaData(content);
   }
 
   ngOnDestroy(): void {

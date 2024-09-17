@@ -3,6 +3,8 @@ import { Subscription } from 'rxjs';
 import { EventsService } from '../../services/events.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { environment } from 'src/environments/environment';
+import { MetaService } from 'src/app/core/services/meta.service';
 
 @Component({
   selector: 'app-event-details',
@@ -10,6 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./event-details.component.scss']
 })
 export class EventDetailsComponent implements OnInit, OnDestroy {
+  websiteUrl = environment.websiteUrl;
 
   responsiveOptions: any[] = [
     {
@@ -44,7 +47,8 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
     private eventsService: EventsService,
     private translateService: TranslateService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private metaService: MetaService
   ) { }
 
   ngOnInit(): void {
@@ -107,6 +111,23 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
         }
       })
     );
+  }
+
+  onLinkOpened(event: any): void {
+    this.handleMetaTags();
+  }
+
+  handleMetaTags(): void {
+    const content: any = {
+      title: this.eventData.title,
+      useTranslation: false,
+      description: this.eventData.short,
+      keywords: this.eventData.short,
+      image: this.eventData.image,
+      // url: `${environment.websiteUrl}news/news-view/${encodeURIComponent(this.eventData.slug)}`
+      url: `${environment.websiteUrl}/events/details/${this.eventData.slug}`
+    };
+    this.metaService.createMetaData(content);
   }
 
   ngOnDestroy(): void {

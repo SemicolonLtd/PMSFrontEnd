@@ -1,4 +1,4 @@
-<div class="event-card" [routerLink]="'details/'+ eventData.slug">
+<div class="event-card border-round-3xl" [routerLink]="'details/'+ eventData.slug">
     <div class="img-wrapper">
         <img class="w-full border-round-3xl" [src]="eventData.image" alt="Project Image">
     </div>
@@ -6,9 +6,10 @@
         <div class="data">
             <div class="info">
                 <h5 class="title">
-                    {{eventData.title}}
+                    {{eventData.title | textSlice : 'title'}}
                 </h5>
-                <div class="short-desc" [innerHTML]="eventData.desc">
+                <div class="short-desc">
+                    {{eventData.pref | textSlice : 'desc'}}
                 </div>
             </div>
         </div>

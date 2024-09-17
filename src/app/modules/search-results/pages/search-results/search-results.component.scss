@@ -56,10 +56,15 @@
             background: white;
             border-radius: 0;
             font-weight: 300;
+            height: 61px;
             &:hover {
                 background-color: var(--secondary-color);
                 color: white;
                 border-color: var(--secondary-color);
+                .badge {
+                    background-color: white;
+                    color: black;
+                }
             }
         }
         .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
@@ -68,7 +73,11 @@
             background-color: var(--secondary-color);
             color: white;
             border-color: var(--secondary-color);
-
+            height: 61px;
+            .badge {
+                background-color: white;
+                color: black;
+            }
         }
         // .p-tabview .p-tabview-panels {
         //     background: transparent;
@@ -87,6 +96,6 @@ app-loading {
     height: 24px;
     border-radius: 50%;
     line-height: 1.5em;
-    background-color: #fff;
-    color: var(--primary-color);
+    background-color: var(--primary-color-medium);
+    color: #fff;
 }

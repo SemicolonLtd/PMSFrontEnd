@@ -10,14 +10,14 @@
                             <div class="sm:col-12 md:col-6 big-card-container" *ngIf="bigCardNews?.length">
                                 <div class="big-card" *ngFor="let card of bigCardNews"
                                 routerLink="/news/details/{{card?.slug}}">
-                                    <p-card [header]="card?.title">
+                                    <p-card [header]="card?.title | textSlice : 'title'">
                                         <ng-template pTemplate="header">
                                             <img alt="Card" [src]="card?.image" />
                                         </ng-template>
                                         <span class="news-badge mobile">
                                             {{card?.category_title}}
                                         </span>
-                                        <p [innerHTML]="card?.short">
+                                        <p [innerHTML]="card?.short | textSlice : 'desc'">
                                             <!-- {{bigCardNews.description | slice: 0: 30}} -->
                                         </p>
                                         <ng-template pTemplate="footer">
@@ -32,14 +32,14 @@
                             <div class="sm:col-12 md:col-6 small-cards-container" *ngIf="smallCardsNews?.length">
                                 <div class="small-card" *ngFor="let card of smallCardsNews"
                                 routerLink="/news/details/{{card?.slug}}">
-                                    <p-card [header]="card?.title">
+                                    <p-card [header]="card?.title | textSlice : 'title'">
                                         <ng-template pTemplate="header">
                                             <img alt="Card" [src]="card?.image" />
                                         </ng-template>
                                         <span class="news-badge">
                                             {{card?.category_title}}
                                         </span>
-                                        <p [innerHTML]="card?.desc">
+                                        <p [innerHTML]="card?.short | textSlice : 'desc'">
                                             <!-- {{card.description | slice: 0: 30}} -->
                                         </p>
                                         <ng-template pTemplate="footer">
@@ -57,14 +57,14 @@
                 <div class="grid">
                     <div class="sm:col-12 md:col-6 big-card-container" *ngIf="bigCardNews?.length">
                         <div class="big-card" *ngFor="let card of bigCardNews" routerLink="/news/details/{{card?.slug}}">
-                            <p-card [header]="card?.title" >
+                            <p-card [header]="card?.title | textSlice : 'title'" >
                                 <ng-template pTemplate="header">
                                     <img alt="Card" [src]="card?.image" />
                                 </ng-template>
                                 <span class="news-badge mobile">
                                     {{card?.category_title}}
                                 </span>
-                                <p [innerHTML]="card?.desc">
+                                <p [innerHTML]="card?.short | textSlice : 'desc'">
                                     <!-- {{bigCardNews.description | slice: 0: 30}} -->
                                 </p>
                                 <ng-template pTemplate="footer">
@@ -78,14 +78,14 @@
                     </div>
                     <div class="sm:col-12 md:col-6 small-cards-container" *ngIf="smallCardsNews?.length">
                         <div class="small-card" *ngFor="let card of smallCardsNews"  routerLink="/news/details/{{card?.slug}}">
-                            <p-card [header]="card?.title">
+                            <p-card [header]="card?.title | textSlice : 'title'">
                                 <ng-template pTemplate="header">
                                     <img alt="Card" [src]="card?.image" />
                                 </ng-template>
                                 <span class="news-badge">
                                     {{card?.category_title}}
                                 </span>
-                                <p [innerHTML]="card?.desc">
+                                <p [innerHTML]="card?.short | textSlice : 'desc'">
                                     <!-- {{card.description | slice: 0: 30}} -->
                                 </p>
                                 <ng-template pTemplate="footer">

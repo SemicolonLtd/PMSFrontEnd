@@ -1,10 +1,32 @@
 <div class="event-details margin-avoid-navbar">
-    <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
+    <!-- <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb> -->
     <div class="pms-container">
         <div class="event-info" *ngIf="eventData && !loading">
             <div class="grid">
                 <div class="col-12">
-                    <h2 class="project-title">{{ eventData?.title }}</h2>
+                    <div class="head-wrapper flex align-items-center justify-content-between">
+                        <h2 class="project-title">{{ eventData?.title }}</h2>
+                        <div class="share_details">
+                            <span class="txt">
+                                {{ 'General.Share' | translate }}
+                            </span>
+                            <button class="share_link" shareButton="facebook" 
+                            [url]="websiteUrl + '/events/details/' + eventData?.slug"
+                            [title]="eventData.title"
+                            [image]="eventData.image"
+                            [description]="eventData.short"
+                            (opened)="onLinkOpened($event)">
+                                <img src="assets/images/global/facebook.svg" alt="">
+                            </button>
+                            <button class="share_link" shareButton="twitter"
+                            [url]="websiteUrl + '/events/details/' + eventData?.slug"
+                            [title]="eventData.title"
+                            [image]="eventData.image"
+                            [description]="eventData.short">
+                                <img src="assets/images/global/twitter.svg" alt="">
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="content-wrapper col-12">
                     <div class="images">

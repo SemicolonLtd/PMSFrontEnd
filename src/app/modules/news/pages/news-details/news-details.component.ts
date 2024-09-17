@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NewsService } from '../../services/news.service';
 import { TranslateService } from '@ngx-translate/core';
+import { environment } from 'src/environments/environment';
+import { MetaService } from 'src/app/core/services/meta.service';
 
 @Component({
   selector: 'app-news-details',
@@ -10,7 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./news-details.component.scss']
 })
 export class NewsDetailsComponent implements OnInit, OnDestroy {
-  
+  websiteUrl = environment.websiteUrl;
   responsiveOptions: any[] = [
     // {
     //   breakpoint: '2000px',
@@ -47,7 +49,8 @@ export class NewsDetailsComponent implements OnInit, OnDestroy {
     private newsService: NewsService,
     private route: ActivatedRoute,
     private router: Router,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private metaService: MetaService
   ) { }
 
   ngOnInit(): void {
@@ -110,6 +113,23 @@ export class NewsDetailsComponent implements OnInit, OnDestroy {
         }
       })
     );
+  }
+
+  onLinkOpened(event: any): void {
+    this.handleMetaTags();
+  }
+
+  handleMetaTags(): void {
+    const content: any = {
+      title: this.newsData.title,
+      useTranslation: false,
+      description: this.newsData.short,
+      keywords: this.newsData.short,
+      image: this.newsData.image,
+      // url: `${environment.websiteUrl}news/news-view/${encodeURIComponent(this.newsData.slug)}`
+      url: `${environment.websiteUrl}/news/details/${this.newsData.slug}`
+    };
+    this.metaService.createMetaData(content);
   }
 
   ngOnDestroy(): void {
