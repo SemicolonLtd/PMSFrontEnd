@@ -42,7 +42,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     }
   ];
   subscriptions = new Subscription();
-  websiteUrl = environment.apiUrl;
+  websiteUrl = environment.websiteUrl;
 
   constructor(
     private projectsService: ProjectsService,
@@ -127,7 +127,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
       keywords: this.projectData.short,
       image: this.projectData.image,
       // url: `${environment.websiteUrl}news/news-view/${encodeURIComponent(this.projectData.slug)}`
-      url: `${environment.apiUrl}/projects/details/${this.projectData.slug}`
+      url: `${environment.websiteUrl}/projects/details/${this.projectData.slug}`
     };
     this.metaService.createMetaData(content);
   }

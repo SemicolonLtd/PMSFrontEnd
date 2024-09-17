@@ -4,7 +4,29 @@
         <div class="news-info" *ngIf="newsData?.title && !loading">
             <div class="grid">
                 <div class="col-12">
-                    <h2 class="news-title">{{ newsData?.title }}</h2>
+                    <div class="head-wrapper flex align-items-center justify-content-between">
+                        <h2 class="news-title">{{ newsData?.title }}</h2>
+                        <div class="share_details">
+                            <span class="txt">
+                                {{ 'General.Share' | translate }}
+                            </span>
+                            <button class="share_link" shareButton="facebook" 
+                            [url]="websiteUrl + '/news/details/' + newsData?.slug"
+                            [title]="newsData.title"
+                            [image]="newsData.image"
+                            [description]="newsData.short"
+                            (opened)="onLinkOpened($event)">
+                                <img src="assets/images/global/facebook.svg" alt="">
+                            </button>
+                            <button class="share_link" shareButton="twitter"
+                            [url]="websiteUrl + '/news/details/' + newsData?.slug"
+                            [title]="newsData.title"
+                            [image]="newsData.image"
+                            [description]="newsData.short">
+                                <img src="assets/images/global/twitter.svg" alt="">
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="content-wrapper col-12">
                     <div class="images">

@@ -109,6 +109,13 @@
         "Events": "الفعاليات",
         "Pages": "الصفحات",
         "Search":"بحث"
+    },
+    "Static": {
+        "HSE-quality": "الصحة والسلامة والبيئة",
+        "key-assets":"الاصول الرئيسية",
+        "sustainability": "الاستدامة",
+        "about-us": "من نحن",
+        "our-strategy": "استراتيجيتنا"
     }
     
 }

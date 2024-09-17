@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { StaticService } from '../../services/static.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { NavbarService } from 'src/app/core/services/navbar.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-content',
@@ -9,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit, OnDestroy {
-
+  subscriptions = new Subscription();
   pageContent: any;
   loading = false;
   pageSlug = '';
@@ -18,7 +20,8 @@ export class ContentComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private staticService: StaticService
+    private staticService: StaticService,
+    private translateService: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -43,8 +46,12 @@ export class ContentComponent implements OnInit, OnDestroy {
             this.pageContent = res?.data?.data[0];
             this.breadcrumbItems = [
               {
+                name: this.translateService.instant(`Static.${this.pageContent.menu_name}`),
+                link: 'content/' + this.pageContent.slug
+              },
+              {
                 name: this.pageContent.title,
-                link: '/static/content/' + this.pageContent.slug
+                link: 'content/' + this.pageContent.slug
               }
             ]
           }

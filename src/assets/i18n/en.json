@@ -110,6 +110,13 @@
         "Events": "Events",
         "Pages": "Pages",
         "Search":"Search"
+    },
+    "Static": {
+        "HSE-quality": "HSE",
+        "key-assets":"Key Assets",
+        "sustainability": "Sustainability",
+        "about-us": "About Us",
+        "our-strategy": "Our Strategy"
     }
 
 }
