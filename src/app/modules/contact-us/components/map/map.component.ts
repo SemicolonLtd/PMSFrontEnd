@@ -14,8 +14,9 @@ interface Marker {
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent {
+export class MapComponent implements OnInit {
 
+  @Input() settingsData: any;
   center: google.maps.LatLngLiteral = { lat: 29.994725, lng: 31.226332 };
 
   options: google.maps.MapOptions = {
@@ -111,6 +112,11 @@ export class MapComponent {
     draggable: false,
     icon: 'assets/images/global/map-pin.png'
   };
+
+  ngOnInit(): void {
+    this.center.lat = +this.settingsData?.latitude;
+    this.center.lng = +this.settingsData?.longitude;
+  }
   
 }
 

@@ -9,7 +9,9 @@
             marginwidth="0" 
             [src]="mapUrl"> 
       </iframe> -->
-      <app-map></app-map>
+      <ng-container *ngIf="settingsData">
+          <app-map [settingsData]="settingsData"></app-map>
+      </ng-container>
       <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
       <div class="pms-container pb-5">
             <div class="contact-card-wrapper">
