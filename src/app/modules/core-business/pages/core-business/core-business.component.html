@@ -9,7 +9,7 @@
                         <div class="lg:col-6 md:col-12 sm:col-12 mb-4">
                             <div class="core-data">
                                 <p-accordion [activeIndex]="0">
-                                    <p-accordionTab *ngFor="let tab of core.business" [header]="tab.name">
+                                    <p-accordionTab *ngFor="let tab of core.business" [header]="tab.title">
                                         <div [innerHTML]="tab.desc"></div>
                                         <div class="action flex align-items-center justify-content-end cursor-pointer" [routerLink]="'details/' + tab.slug">
                                             <span class="text">
@@ -41,7 +41,7 @@
                         <div class="lg:col-6 md:col-12 sm:col-12 mb-4">
                             <div class="core-data">
                                 <p-accordion [activeIndex]="0">
-                                    <p-accordionTab *ngFor="let tab of core.business" [header]="tab.name">
+                                    <p-accordionTab *ngFor="let tab of core.business" [header]="tab.title">
                                         <div [innerHTML]="tab.desc"></div>
                                         <div class="action flex align-items-center justify-content-end cursor-pointer" [routerLink]="'details/' + tab.slug">
                                             <span class="text">

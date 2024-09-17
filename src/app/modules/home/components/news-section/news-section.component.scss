@@ -123,6 +123,8 @@
                 .p-card-footer {
                     position: absolute;
                     bottom: 7%;
+                    font-weight: 600;
+
                 }
             }
             .p-component {
@@ -189,11 +191,11 @@
                         display: flex;
                         flex-direction: row-reverse;
                     }
-                    .p-card-content {
-                        p {
-                            font-size: 0.8rem;
-                        }
-                    }
+                    // .p-card-content {
+                    //     p {
+                    //         font-size: 0.8rem;
+                    //     }
+                    // }
                     .p-card-header {
                         min-width: 30%;
                         max-width: 30%;
@@ -247,11 +249,11 @@
                     max-height: calc(220px - (32px / 3));
                     transition: 0.3s all ease;
                 }
-                .p-card-content {
-                    p {
-                        font-size: 0.8rem;
-                    }
-                }
+                // .p-card-content {
+                //     p {
+                //         font-size: 0.8rem;
+                //     }
+                // }
                 .p-card-header {
                     min-width: 30%;
                     max-width: 30%;

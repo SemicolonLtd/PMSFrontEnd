@@ -1,11 +1,11 @@
 <div class="news-card-container" [routerLink]="'/news/details/' + newsData.slug">
     <div class="news-card">
-        <p-card [header]="newsData.title">
+        <p-card [header]="newsData.title | textSlice : 'title'">
             <ng-template pTemplate="header">
                 <img alt="Card" [src]="newsData.image" />
             </ng-template>
             <p>
-                {{newsData.short}}
+                {{newsData.short | textSlice : 'desc'}}
             </p>
             <ng-template pTemplate="footer">
                 <span>{{newsData.date}}</span>

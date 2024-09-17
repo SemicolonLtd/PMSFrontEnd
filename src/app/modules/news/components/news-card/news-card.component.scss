@@ -38,8 +38,21 @@
 ::ng-deep {
     .news-card-container {
         .news-card {
+            margin-bottom: 2rem;
             .p-card {
                 overflow: hidden;
+                .p-card-body {
+                    min-height: 200px;
+                    position: relative;
+                    .p-card-footer {
+                        position: absolute;
+                        bottom: 5%;
+                        font-weight: 600;
+                    }
+                    @media (max-width:576px) {
+                        min-height: 180px;
+                    }
+                }
             }
             &:hover {
                 .p-card .p-card-body {
@@ -52,6 +65,7 @@
                     color: var(--primary-color-medium) !important;
                 }
             }
+
             // .p-card .p-card-body {
             //     min-height: 260px;
             //     max-height: 260px;

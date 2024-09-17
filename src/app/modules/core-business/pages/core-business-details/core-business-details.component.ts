@@ -79,7 +79,7 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
   getSimilarBusiness(): void {
     this.similarBusinessLoading = true;
     this.subscriptions.add(
-      this.coreBusinessService.getSimilarBusiness(this.businessData?.category_id).subscribe({
+      this.coreBusinessService.getSimilarBusiness(this.businessData?.slug).subscribe({
         next: (res: any) => {
           if(res?.status == 200) {
             this.similarBusinessData = res?.data?.data;

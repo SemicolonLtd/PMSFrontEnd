@@ -86,6 +86,14 @@
 ::ng-deep {
     .news {
         .news-data {
+            .p-card-body {
+                position: relative;
+                .p-card-footer {
+                    position: absolute;
+                    bottom: 7%;
+                    font-weight: 600;
+                }
+            }
             .p-component {
                 font-family: 'main-font';
                 &:lang(ar) {
@@ -207,11 +215,11 @@
                     max-height: calc(220px - (32px / 3));
                     transition: 0.3s all ease;
                 }
-                .p-card-content {
-                    p {
-                        font-size: 0.8rem;
-                    }
-                }
+                // .p-card-content {
+                //     p {
+                //         font-size: 0.8rem;
+                //     }
+                // }
                 .p-card-header {
                     min-width: 30%;
                     max-width: 30%;

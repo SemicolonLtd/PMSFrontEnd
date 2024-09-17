@@ -5,7 +5,7 @@
     <div class="content flex align-items-center justify-content-between mt-3">
         <div class="info">
             <h5 class="title">
-                {{projectData.title}}
+                {{projectData.title | textSlice : 'desc'}}
             </h5>
             <span class="date">
                 {{projectData.date}}
