@@ -14,6 +14,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CookieModule } from 'ngx-cookie';
 // import { AgmCoreModule } from '@agm/core';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -40,6 +41,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    ShareButtonsModule
     // AgmCoreModule.forRoot({
     //   apiKey: 'AIzaSyCWBFBPsc5nHelid5Dop0o-TTmeRTscpac'
     // }),

@@ -1,10 +1,32 @@
 <div class="project-details margin-avoid-navbar">
-    <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
+    <!-- <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb> -->
     <div class="pms-container">
         <div class="project-info" *ngIf="projectData?.title">
             <div class="grid">
                 <div class="col-12">
-                    <h2 class="project-title">{{ projectData?.title }}</h2>
+                    <div class="head-wrapper flex align-items-center justify-content-between">
+                        <h2 class="project-title">{{ projectData?.title }}</h2>
+                        <div class="share_details">
+                            <span class="txt">
+                                {{ 'General.Share' | translate }}
+                            </span>
+                            <button class="share_link" shareButton="facebook" 
+                            [url]="websiteUrl + '/projects/details/' + projectData?.slug"
+                            [title]="projectData.title"
+                            [image]="projectData.image"
+                            [description]="projectData.short"
+                            (opened)="onLinkOpened($event)">
+                                <img src="assets/images/global/facebook.svg" alt="">
+                            </button>
+                            <button class="share_link" shareButton="twitter"
+                            [url]="websiteUrl + '/projects/details/' + projectData?.slug"
+                            [title]="projectData.title"
+                            [image]="projectData.image"
+                            [description]="projectData.short">
+                                <img src="assets/images/global/twitter.svg" alt="">
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="lg:col-6 md:col-12">
                     <div class="project-images">
@@ -21,7 +43,7 @@
                         </p-galleria>
                     </div>
                 </div>
-                <div class="lg:col-6 md:col-12">
+                <div class="lg:col-4 md:col-12">
                     <div class="info">
                         <!-- <span class="title block font-bold text-2xl mb-4 pb-2">
                         Project Details

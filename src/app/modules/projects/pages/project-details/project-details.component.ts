@@ -3,6 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProjectsService } from '../../services/projects.service';
 import { TranslateService } from '@ngx-translate/core';
+import { environment } from 'src/environments/environment';
+import { Meta } from '@angular/platform-browser';
+import { MetaService } from 'src/app/core/services/meta.service';
 
 @Component({
   selector: 'app-project-details',
@@ -39,12 +42,15 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     }
   ];
   subscriptions = new Subscription();
+  websiteUrl = environment.apiUrl;
 
   constructor(
     private projectsService: ProjectsService,
     private route: ActivatedRoute,
     private translateService: TranslateService,
-    private router: Router
+    private router: Router,
+    private meta: Meta,
+    private metaService: MetaService
   ) { }
 
   ngOnInit(): void {
@@ -107,6 +113,23 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
         }
       })
     );
+  }
+
+  onLinkOpened(event: any): void {
+    this.handleMetaTags();
+  }
+
+  handleMetaTags(): void {
+    const content: any = {
+      title: this.projectData.title,
+      useTranslation: false,
+      description: this.projectData.short,
+      keywords: this.projectData.short,
+      image: this.projectData.image,
+      // url: `${environment.websiteUrl}news/news-view/${encodeURIComponent(this.projectData.slug)}`
+      url: `${environment.apiUrl}/projects/details/${this.projectData.slug}`
+    };
+    this.metaService.createMetaData(content);
   }
 
   ngOnDestroy(): void {

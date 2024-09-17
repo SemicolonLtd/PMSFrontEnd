@@ -12,6 +12,8 @@ import { GalleriaModule } from 'primeng/galleria';
 import { CarouselModule } from 'primeng/carousel';
 import { TranslateModule } from '@ngx-translate/core';
 import { EmptyStateComponent } from "../../shared/components/empty-state/empty-state.component";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { EmptyStateComponent } from "../../shared/components/empty-state/empty-s
     GalleriaModule,
     CarouselModule,
     TranslateModule,
-    EmptyStateComponent
+    EmptyStateComponent,
+    FontAwesomeModule,
+    ShareButtonsModule
 ]
 })
 export class ProjectsModule { }

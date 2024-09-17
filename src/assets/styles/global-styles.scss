@@ -87,3 +87,24 @@ app-loading {
     border: none;
     color: var(--primary-color);
 }
+
+.share_details {
+    @media(min-width:993px) {
+        white-space: nowrap;
+    }
+    .txt {
+        font-weight: 700;
+    }
+    .share_link {
+        border: none;
+        background: transparent;
+        transition: 0.4s all ease;
+        &:hover {
+            transform: scale(1.1);
+        }
+        img {
+            height: 40px;
+            width: 40px;
+        }
+    }
+}
