@@ -12,9 +12,13 @@ import { SharedModule } from "../../shared/shared.module";
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastModule } from 'primeng/toast';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MapComponent } from './components/map/map.component';
+import { GoogleMap, GoogleMapsModule, MapMarker } from '@angular/google-maps';
+
 @NgModule({
   declarations: [
-    ContactUsComponent
+    ContactUsComponent,
+    MapComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +31,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TranslateModule,
     ToastModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GoogleMapsModule,
+    GoogleMap,
+    MapMarker
   ]
 })
 export class ContactUsModule { }

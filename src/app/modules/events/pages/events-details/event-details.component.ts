@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { EventsService } from '../../services/events.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-event-details',
@@ -31,10 +32,17 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
   slug: string = '';
   typeId: any;
   loading = false;
+  breadcrumbItems = [
+    {
+      name: this.translateService.instant('Navbar.Events'),
+      link: '/events'
+    }
+  ];
   subscriptions = new Subscription();
 
   constructor(
     private eventsService: EventsService,
+    private translateService: TranslateService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -61,7 +69,17 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
         next: (res: any) => {
           if(res?.status == 200) {
             this.eventData = res?.data;
-            this.getSimilarNews();
+            this.eventData.media = [
+              ...this.eventData.media,
+              {
+                image: this.eventData.image
+              }
+            ];
+            this.breadcrumbItems.push({
+              name: this.eventData?.title,
+              link: '/events/details/' + this.eventData?.slug
+            })
+            this.getSimilarEvents();
           }
           this.loading = false;
         },
@@ -73,7 +91,7 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
     );
   }
 
-  getSimilarNews(): void {
+  getSimilarEvents(): void {
     this.similarEventsLoading = true;
     this.subscriptions.add(
       this.eventsService.getEvents(10).subscribe({

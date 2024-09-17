@@ -48,7 +48,12 @@
         "MegaProjects":"المشاريع الكبيرة",
         "LatestProject":"اخر مشروع",
         "FollowOurProjects":"تابع مشاريعنا",
-        "More": "المزيد..."
+        "More": "المزيد...",
+        "StartDate": "تاريخ البدء",
+        "EndDate": "تاريخ الإنتهاء",
+        "Country": "الدولة",
+        "Location": "العنوان",
+        "Client": "العميل"
     },
     "Events": {
         "LatestEvent":"اخر فعالية",

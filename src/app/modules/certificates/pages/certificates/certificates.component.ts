@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CertificatesService } from '../../services/certificates.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-certificates',
@@ -13,10 +14,17 @@ export class CertificatesComponent implements OnInit, OnDestroy {
   loading = false;
   pageSize = 10;
   paginationData: any;
+  breadcrumbItems = [
+    {
+      name: this.translateService.instant('Navbar.Certificates'),
+      link: '/certificates'
+    }
+  ];
   subscriptions = new Subscription();
 
   constructor(
-    private certificatesService: CertificatesService
+    private certificatesService: CertificatesService,
+    private translateService: TranslateService
   ) { }
 
   ngOnInit(): void {

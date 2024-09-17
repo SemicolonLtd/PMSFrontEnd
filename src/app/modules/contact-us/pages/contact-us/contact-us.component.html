@@ -1,15 +1,19 @@
 <div class="contact-us margin-avoid-navbar">
         <app-center-bar [Title]="barTitle" [Desc]="'Good people delivering an honest value'"></app-center-bar>
-        <iframe 
-        width="100%"
-        frameborder="0" 
-        scrolling="no" 
-        marginheight="0" 
-        marginwidth="0" 
-        [src]="mapUrl"> 
-      </iframe>
-
-      <div class="pms-container py-5">
+        <!-- <iframe 
+            width="100%"
+            
+            frameborder="0" 
+            scrolling="no" 
+            marginheight="0" 
+            marginwidth="0" 
+            [src]="mapUrl"> 
+      </iframe> -->
+      <ng-container *ngIf="settingsData">
+          <app-map [settingsData]="settingsData"></app-map>
+      </ng-container>
+      <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
+      <div class="pms-container pb-5">
             <div class="contact-card-wrapper">
                 <div class="grid justify-content-between">
                     <div class="contact-info-wrapper md:col-5 sm:col-12">

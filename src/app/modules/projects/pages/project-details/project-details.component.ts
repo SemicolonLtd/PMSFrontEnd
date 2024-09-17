@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProjectsService } from '../../services/projects.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-project-details',
@@ -31,11 +32,18 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   slug: string = '';
   typeId: any;
   loading = false;
+  breadcrumbItems = [
+    {
+      name: this.translateService.instant('Navbar.Projects'),
+      link: '/events'
+    }
+  ];
   subscriptions = new Subscription();
 
   constructor(
     private projectsService: ProjectsService,
     private route: ActivatedRoute,
+    private translateService: TranslateService,
     private router: Router
   ) { }
 
@@ -61,6 +69,16 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
         next: (res: any) => {
           if(res?.status == 200) {
             this.projectData = res?.data;
+            this.projectData.media = [
+              ...this.projectData.media,
+              {
+                image: this.projectData.image
+              }
+            ];
+            this.breadcrumbItems.push({
+              name: this.projectData?.title,
+              link: '/projects/details/' + this.projectData?.slug
+            })
             this.getSimilarProjects();
           }
           this.loading = false;

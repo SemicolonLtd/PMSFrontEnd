@@ -65,6 +65,12 @@
       }
 }
 
+.core-types {
+    .col-6 {
+        cursor: pointer;
+    }
+}
+
 ::ng-deep {
     .core-business-section {
         .card-title {

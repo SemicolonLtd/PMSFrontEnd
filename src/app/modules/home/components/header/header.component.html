@@ -20,7 +20,8 @@
                         More...</a>
                     <div class="statistics flex justify-content-center align-items-center mt-5">
                         <div class="item-wrapper">
-                            <span class="count d-block" [countUp]="statistics?.technical">
+                            <span class="count d-block" [countUp]="statistics?.technical"
+                            [options]="{duration: 6}">
                                 0
                             </span>
                             <span class="label d-block">
@@ -28,7 +29,7 @@
                             </span>
                         </div>
                         <div class="item-wrapper mx-5">
-                            <span class="count d-block" [countUp]="statistics?.projects">
+                            <span class="count d-block" [countUp]="statistics?.projects" [options]="{duration: 6}">
                                 0
                             </span>
                             <span class="label d-block">
@@ -36,7 +37,7 @@
                             </span>
                         </div>
                         <div class="item-wrapper">
-                            <span class="count d-block" [countUp]="statistics?.engineers">
+                            <span class="count d-block" [countUp]="statistics?.engineers" [options]="{duration: 6}">
                                0
                             </span>
                             <span class="label d-block">
