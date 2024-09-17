@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CoreBusinessService } from '../../services/core-business.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-core-business-details',
@@ -34,10 +35,17 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
   similarBusinessLoading = false;
   slug: string = '';
   loading = false;
+  breadcrumbItems = [
+    {
+      name: this.translateService.instant('Navbar.CoreBusiness'),
+      link: '/core-business'
+    }
+  ];
   subscriptions = new Subscription();
 
   constructor(
     private coreBusinessService: CoreBusinessService,
+    private translateService: TranslateService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -64,6 +72,16 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
         next: (res: any) => {
           if(res?.status == 200) {
             this.businessData = res?.data;
+            this.businessData.media = [
+              ...this.businessData.media,
+              {
+                image: this.businessData.imageUrl
+              }
+            ];
+            this.breadcrumbItems.push({
+              name: this.businessData?.name,
+              link: '/core-business/details/' + this.businessData?.slug
+            })
             this.getSimilarBusiness();
           }
           this.loading = false;

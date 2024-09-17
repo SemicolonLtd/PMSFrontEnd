@@ -21,6 +21,12 @@ export class ContactUsComponent implements OnInit, OnDestroy {
   loading = false;
   socialMediaData: any;
   settingsData: any;
+  breadcrumbItems = [
+    {
+      name: this.translateService.instant('Contact.ContactUs'),
+      link: '/contact-us'
+    }
+  ];
   subscriptions = new Subscription();
 
   constructor(

@@ -49,10 +49,15 @@
         "MegaProjects":"Mega Projects",
         "LatestProject":"Latest Project",
         "FollowOurProjects":"Follow Our Projects",
-        "More": "More..."
+        "More": "More...",
+        "StartDate": "Start Date",
+        "EndDate": "End Date",
+        "Country": "Country",
+        "Location": "Location",
+        "Client": "Client"
     },
     "Events": {
-        "LatestEvents":"Latest Events",
+        "LatestEvent":"Latest Event",
         "EventAndActivities":"Event & Activities",
         "More": "More..."
     },

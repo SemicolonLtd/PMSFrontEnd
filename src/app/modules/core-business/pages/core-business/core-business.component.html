@@ -2,7 +2,7 @@
     <app-search [Title]="searchTitle"  (searchEmitter)="searchForBusiness($event)"></app-search>
     <ng-container *ngIf="coreList?.length && !loading">
         <ng-container *ngFor="let core of coreList; let i = index">
-            <div class="core-img-end" *ngIf="i % 2 === 0">
+            <div class="core-img-end" *ngIf="i % 2 === 0" [id]="core.slug">
                 <app-center-bar *ngIf="!searchMode" [Title]="core.title" [Desc]="core.pref" [htmlDesc]="true"></app-center-bar>
                 <div class="pms-container">
                     <div class="grid mt-5 justify-content-between">
@@ -11,7 +11,7 @@
                                 <p-accordion [activeIndex]="0">
                                     <p-accordionTab *ngFor="let tab of core.business" [header]="tab.name">
                                         <div [innerHTML]="tab.desc"></div>
-                                        <div class="action flex align-items-center justify-content-end cursor-pointer" [routerLink]="'details/' + tab.slug">
+                                        <div class="action flex align-items-center justify-content-end cursor-pointer" [routerLink]="'/core-business/details/' + tab.slug">
                                             <span class="text">
                                                 {{ 'General.ReadMore' | translate}} 
                                             </span>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="core-img-start" *ngIf="i % 2 === 1">
+            <div class="core-img-start" *ngIf="i % 2 === 1" [id]="core.slug">
                 <app-center-bar [Title]="core.title" [Desc]="core.pref"></app-center-bar>
                 <div class="pms-container">
                     <div class="grid mt-5 img-start justify-content-between">
@@ -43,7 +43,7 @@
                                 <p-accordion [activeIndex]="0">
                                     <p-accordionTab *ngFor="let tab of core.business" [header]="tab.name">
                                         <div [innerHTML]="tab.desc"></div>
-                                        <div class="action flex align-items-center justify-content-end cursor-pointer" [routerLink]="'details/' + tab.slug">
+                                        <div class="action flex align-items-center justify-content-end cursor-pointer" [routerLink]="'/core-business/details/' + tab.slug">
                                             <span class="text">
                                                 {{ 'General.ReadMore' | translate}} 
                                             </span>

@@ -13,6 +13,7 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CookieModule } from 'ngx-cookie';
+// import { AgmCoreModule } from '@agm/core';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -39,6 +40,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyCWBFBPsc5nHelid5Dop0o-TTmeRTscpac'
+    // }),
   ],
   providers: [
     {

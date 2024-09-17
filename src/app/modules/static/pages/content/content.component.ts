@@ -13,6 +13,7 @@ export class ContentComponent implements OnInit, OnDestroy {
   pageContent: any;
   loading = false;
   pageSlug = '';
+  breadcrumbItems: any[] = [];
   subscription = new Subscription();
 
   constructor(
@@ -40,6 +41,12 @@ export class ContentComponent implements OnInit, OnDestroy {
         next: (res: any) => {
           if (res?.status == 200) {
             this.pageContent = res?.data?.data[0];
+            this.breadcrumbItems = [
+              {
+                name: this.pageContent.title,
+                link: '/static/content/' + this.pageContent.slug
+              }
+            ]
           }
           this.loading = false;
         },
