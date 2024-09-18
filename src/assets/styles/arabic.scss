@@ -1,9 +1,3 @@
-.pi-angle-right, .p-accordion-toggle-icon, .p-carousel-prev, .p-carousel-next, .pi-arrow-right {
-    &:lang(ar) {
-        transform: rotate(180deg);
-    }
-}
-
 body {
     &:lang(ar) {
         font-family: 'ar-main-font', sans-serif;
@@ -13,5 +7,19 @@ body {
 h1, h2, h3, h4, h5 {
     &:lang(ar) {
         font-family: 'ar-title-font', sans-serif;
+    }
+}
+
+
+.pi-angle-right, .p-accordion-toggle-icon, .p-carousel-prev, .p-carousel-next, .pi-arrow-right, .p-galleria-thumbnail-prev-icon, .p-galleria-thumbnail-next-icon {
+    &:lang(ar) {
+        transform: rotate(180deg);
+    }
+}
+
+.p-component {
+    font-family: 'main-font';
+    &:lang(ar) {
+        font-family: 'ar-main-font';
     }
 }

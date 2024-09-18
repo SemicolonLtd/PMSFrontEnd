@@ -6,6 +6,8 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { ContactService } from '../../services/contact.service';
 import { SettingsService } from 'src/app/core/services/settings.service';
+import { environment } from 'src/environments/environment';
+import { MetaService } from 'src/app/core/services/meta.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -35,7 +37,8 @@ export class ContactUsComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private contactService: ContactService,
     private messageService: MessageService,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private metaService: MetaService
   ) { }
 
   ngOnInit(): void {
@@ -43,6 +46,7 @@ export class ContactUsComponent implements OnInit, OnDestroy {
     this.initContactForm();
     this.getSettings();
     this.getSocialMediaData();
+    this.handleMetaTags();
   }
 
   getGoogleMapsUrl(): SafeResourceUrl {
@@ -110,6 +114,19 @@ export class ContactUsComponent implements OnInit, OnDestroy {
         }
       })
     );
+  }
+  
+  handleMetaTags(): void {
+    const content: any = {
+      title: 'Navbar.ContactUs',
+      useTranslation: true,
+      description: 'Contact Us Discription',
+      keywords: 'PMS',
+      image: `${environment.websiteUrl}/assets/images/global/logo.svg`,
+      // url: `${environment.websiteUrl}news/news-view/${encodeURIComponent(this.projectData.slug)}`
+      url: `${environment.websiteUrl}/contact-us`
+    };
+    this.metaService.createMetaData(content);
   }
 
   ngOnDestroy(): void {

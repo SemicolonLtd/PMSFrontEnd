@@ -4,6 +4,9 @@ import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { NavbarService } from 'src/app/core/services/navbar.service';
 import { TranslateService } from '@ngx-translate/core';
+import { MetaData } from 'src/app/core/models/metaData.model';
+import { environment } from 'src/environments/environment';
+import { MetaService } from 'src/app/core/services/meta.service';
 
 @Component({
   selector: 'app-content',
@@ -21,7 +24,8 @@ export class ContentComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private staticService: StaticService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private metaService: MetaService
   ) { }
 
   ngOnInit(): void {
@@ -44,6 +48,7 @@ export class ContentComponent implements OnInit, OnDestroy {
         next: (res: any) => {
           if (res?.status == 200) {
             this.pageContent = res?.data?.data[0];
+            this.handleMetaTags()
             if(this.pageContent) {
               this.breadcrumbItems = [
                 {
@@ -64,6 +69,19 @@ export class ContentComponent implements OnInit, OnDestroy {
         }
       })
     )
+  }
+
+  handleMetaTags(): void {
+    const content: MetaData = {
+      title: this.pageContent.title,
+      useTranslation: false,
+      description: this.pageContent.body,
+      keywords: this.pageContent.slug,
+      image:  this.pageContent.image,
+      // url: `${environment.websiteUrl}static/${encodeURIComponent(this.staticPageData.slug)}`
+      url: `${environment.websiteUrl}/content/${this.pageContent.slug}`
+    };
+    this.metaService.createMetaData(content);
   }
 
   ngOnDestroy(): void {

@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import { MetaService } from 'src/app/core/services/meta.service';
+import { environment } from 'src/environments/environment';
 import { EventsService } from '../../services/events.service';
 
 @Component({
@@ -23,7 +25,8 @@ export class EventsComponent implements OnInit, OnDestroy {
 
   constructor(
     private eventsService: EventsService,
-    private translateService:TranslateService
+    private translateService:TranslateService,
+    private metaService: MetaService
 
   ) { }
 
@@ -61,6 +64,7 @@ export class EventsComponent implements OnInit, OnDestroy {
           if(res?.status == 200) {
             this.eventsList = [... this.eventsList, ...res?.data?.data];
             this.paginationData = res?.data?.meta?.pagination;
+            this.handleMetaTags()
           }
           this.eventsLoading = false
         },
@@ -86,6 +90,19 @@ export class EventsComponent implements OnInit, OnDestroy {
   loadMore(): void {
     this.pageSize += 10;
     this.getEventsData();
+  }
+
+  handleMetaTags(): void {
+    const content: any = {
+      title: 'Navbar.Events',
+      useTranslation: true,
+      description: 'Events Discription',
+      keywords: 'Events',
+      image: `${environment.websiteUrl}/assets/images/global/logo.svg`,
+      // url: `${environment.websiteUrl}news/news-view/${encodeURIComponent(this.projectData.slug)}`
+      url: `${environment.websiteUrl}/events`
+    };
+    this.metaService.createMetaData(content);
   }
 
   ngOnDestroy(): void {

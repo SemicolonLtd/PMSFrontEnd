@@ -3,6 +3,8 @@ import { Subscription } from 'rxjs';
 import { ProjectsService } from '../../services/projects.service';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { environment } from 'src/environments/environment';
+import { MetaService } from 'src/app/core/services/meta.service';
 
 @Component({
   selector: 'app-projects',
@@ -31,7 +33,8 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   constructor(
     private projectsService: ProjectsService,
     private route: ActivatedRoute,
-    private translateService:TranslateService
+    private translateService:TranslateService,
+    private metaService: MetaService
   ) { }
 
   ngOnInit(): void {
@@ -77,6 +80,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
           if(res?.status == 200) {
             this.projectsList = [... this.projectsList, ...res?.data?.data];
             this.paginationData = res?.data?.meta?.pagination;
+            this.handleMetaTags()
           }
           this.projectsLoading = false
         },
@@ -108,6 +112,19 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   loadMore(): void {
     this.pageSize += 10;
     this.getProjectsDataByType();
+  }
+
+  handleMetaTags(): void {
+    const content: any = {
+      title: 'Navbar.Projects',
+      useTranslation: true,
+      description: 'Project Discription',
+      keywords: 'Projects',
+      image: `${environment.websiteUrl}/assets/images/global/logo.svg`,
+      // url: `${environment.websiteUrl}news/news-view/${encodeURIComponent(this.projectData.slug)}`
+      url: `${environment.websiteUrl}/projects`
+    };
+    this.metaService.createMetaData(content);
   }
 
   ngOnDestroy(): void {

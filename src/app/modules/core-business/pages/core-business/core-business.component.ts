@@ -3,6 +3,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { CoreBusinessService } from '../../services/core-business.service';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { MetaService } from 'src/app/core/services/meta.service';
 
 @Component({
     selector: 'app-core-business',
@@ -25,7 +27,8 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
         private coreBusinessService: CoreBusinessService,
         private translateService: TranslateService,
         private renderer: Renderer2,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private metaService: MetaService
     ) { }
 
     ngOnInit(): void {
@@ -60,6 +63,7 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
                 next: (res: any) => {
                     if (res?.status == 200) {
                         this.coreList = res?.data?.data;
+                        this.handleMetaTags()
                     }
                     this.loading = false;
                 },
@@ -92,6 +96,19 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
         this.pageSize += 10;
         this.getCoreList();
     }
+
+    handleMetaTags(): void {
+        const content: any = {
+          title: 'Navbar.CoreBusiness',
+          useTranslation: true,
+          description: 'Core Business Discription',
+          keywords: 'Core Business',
+          image: `${environment.websiteUrl}/assets/images/global/logo.svg`,
+          // url: `${environment.websiteUrl}news/news-view/${encodeURIComponent(this.projectData.slug)}`
+          url: `${environment.websiteUrl}/core-business`
+        };
+        this.metaService.createMetaData(content);
+      }
 
     ngOnDestroy(): void {
         this.subscription.unsubscribe();
