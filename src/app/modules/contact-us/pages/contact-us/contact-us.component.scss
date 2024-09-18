@@ -138,15 +138,33 @@
                         transform: translateX(50%);
                     }
                 }
-                &:lang(ar) {
-                    text-align: start;
+                // &:lang(ar) {
+                //     text-align: start;
+                //     .p-button-label {
+                //         display: none;
+                //     }
+                //     .pi {
+                //         display: block;
+                //         width: 100%;
+                //         transform: rotate(180deg) translateX(-50%);
+                //     }
+                // }
+            }
+            &:lang(ar) {
+                .p-button .pi {
+                    transform: rotate(180deg);
+                }
+                &:hover {
+                    .p-button {
+                        text-align: end;
+                    }
                     .p-button-label {
                         display: none;
                     }
                     .pi {
                         display: block;
                         width: 100%;
-                        transform: rotate(180deg) translateX(-50%);
+                        transform: rotate(180deg) translateX(50%);
                     }
                 }
             }

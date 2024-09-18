@@ -44,16 +44,18 @@ export class ContentComponent implements OnInit, OnDestroy {
         next: (res: any) => {
           if (res?.status == 200) {
             this.pageContent = res?.data?.data[0];
-            this.breadcrumbItems = [
-              {
-                name: this.translateService.instant(`Static.${this.pageContent.menu_name}`),
-                link: 'content/' + this.pageContent.slug
-              },
-              {
-                name: this.pageContent.title,
-                link: 'content/' + this.pageContent.slug
-              }
-            ]
+            if(this.pageContent) {
+              this.breadcrumbItems = [
+                {
+                  name: this.translateService.instant(`Static.${this.pageContent.menu_name}`),
+                  link: '/'
+                },
+                {
+                  name: this.pageContent.title,
+                  link: 'content/' + this.pageContent.slug
+                }
+              ]
+            }
           }
           this.loading = false;
         },
