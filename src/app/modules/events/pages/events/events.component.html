@@ -39,6 +39,9 @@
                         <div class="card-wrapper xl:col-4 md:col-6 sm:col-12 mb-4" *ngFor="let event of eventsList">
                             <app-event-card [eventData]="event"></app-event-card>
                         </div>
+                        <ng-container *ngFor="let schema of schemaList">
+                            <ngx-json-ld [json]="schema"></ngx-json-ld>
+                        </ng-container>
                     </ng-container>
                     <div class="load-more" *ngIf="(paginationData?.total! > eventsList?.length!) && !eventsLoading">
                         <p-button label="{{'Events.More' | translate}}" (click)="loadMore()" />

@@ -2,18 +2,18 @@
     <div class="header flex align-items-center justify-content-center">
         <img src="assets/images/global/faq-bg.jpg" alt="" class="cover">
         <div class="content">
-            <h2 class="title">FAQ</h2>
+            <h2 class="title">{{'FAQ.FAQ' | translate}}</h2>
             <span class="text mt-3">
-                Good people delivering an honest value 
+                {{'FAQ.Desc' | translate}} 
             </span>
         </div>
     </div>
     <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
     <div class="faq-content pb-5" *ngIf="faqsList?.length && !loading">
-        <div class="pms-container">
-            <div class="wrapper">
+        <div class="pms-container" itemscope itemtype="https://schema.org/FAQPage">
+            <div class="wrapper" itemprop="mainContentOfPage">
                 <p-accordion [activeIndex]="0" class="w-full faq-accordion" expandIcon="pi pi-plus" collapseIcon="pi pi-minus">
-                    <p-accordionTab *ngFor="let faq of faqsList">
+                    <p-accordionTab *ngFor="let faq of faqsList" itemscope itemtype="https://schema.org/Question">
                         <ng-template pTemplate="header">
                             <div class="flex align-items-center gap-2">
                                 <div class="question" [innerHtml]="faq.question" itemprop="name"></div>
@@ -22,7 +22,7 @@
                         <!-- <ng-template #header>
                             <div [innerHTML]="faq.question"></div>
                         </ng-template> -->
-                        <div [innerHTML]="faq.answer">
+                        <div [innerHTML]="faq.answer" itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
                         </div>
                     </p-accordionTab>
                 </p-accordion>

@@ -22,6 +22,8 @@ export class EventsComponent implements OnInit, OnDestroy {
   searchQuery = '';
   paginationData: any;
   subscriptions = new Subscription();
+  schemaObj: any;
+  schemaList: any[] = [];
 
   constructor(
     private eventsService: EventsService,
@@ -64,7 +66,8 @@ export class EventsComponent implements OnInit, OnDestroy {
           if(res?.status == 200) {
             this.eventsList = [... this.eventsList, ...res?.data?.data];
             this.paginationData = res?.data?.meta?.pagination;
-            this.handleMetaTags()
+            this.handleMetaTags();
+            this.handleSchema()
           }
           this.eventsLoading = false
         },
@@ -103,6 +106,26 @@ export class EventsComponent implements OnInit, OnDestroy {
       url: `${environment.websiteUrl}/events`
     };
     this.metaService.createMetaData(content);
+  }
+
+  initSchemaObj(): void {
+    this.schemaObj = {
+      "@context": "https://schema.org",
+      "@type": "Event",
+    };
+  }
+
+  handleSchema(): void {
+    this.initSchemaObj();
+    this.eventsList.forEach((item: any) => {
+      this.schemaObj['startDate'] = item.date;
+      this.schemaObj['name'] = item.title;
+      this.schemaObj['description'] = item.desc;
+      this.schemaObj['image'] = item.image;
+      this.schemaObj['url'] = `${environment.websiteUrl}/events/details/${item.slug}`;
+      this.schemaList.push(this.schemaObj);
+      this.initSchemaObj();
+    })
   }
 
   ngOnDestroy(): void {

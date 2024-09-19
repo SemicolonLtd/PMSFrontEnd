@@ -26,6 +26,8 @@ export class NewsComponent implements OnInit, OnDestroy {
   searchQuery = '';
   selectedIndex: any = null;
   subscriptions = new Subscription();
+  schemaObj: any;
+  schemaList: any[] = [];
 
   constructor(
     private newsService: NewsService,
@@ -80,7 +82,8 @@ export class NewsComponent implements OnInit, OnDestroy {
             this.paginationData = res?.data?.meta?.pagination;
             this.bigCardNews = this.newsData?.filter((card: any) => card.big_card == true);
             this.smallCardsNews = this.newsData?.filter((card: any) => card.big_card == false);
-            this.handleMetaTags()
+            this.handleMetaTags();
+            this.handleSchema()
           }
           this.loading = false
         },
@@ -161,6 +164,41 @@ export class NewsComponent implements OnInit, OnDestroy {
       url: `${environment.websiteUrl}/news`
     };
     this.metaService.createMetaData(content);
+  }
+
+  initSchemaObj(): void {
+    this.schemaObj = {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": this.translateService.instant('General.OrgName')
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": this.translateService.instant('General.OrgName'),
+        "logo": {
+          "@type": "ImageObject",
+          "url": `${environment.websiteUrl}/assets/images/global/logo.svg`
+        }
+      },
+    };
+  }
+
+  handleSchema(): void {
+    this.initSchemaObj();
+    this.newsData.forEach((item: any) => {
+      this.schemaObj['mainEntityOfPage']['@id'] = `${environment.websiteUrl}/news/details/${item.slug}`;
+      this.schemaObj['headline'] = item.title;
+      this.schemaObj['image'] = [item.image];
+      this.schemaObj['datePublished'] = item.desc;
+      this.schemaObj['description'] = item.desc;
+      this.schemaList.push(this.schemaObj);
+      this.initSchemaObj();
+    })
   }
 
   ngOnDestroy(): void {

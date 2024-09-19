@@ -7,6 +7,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
 import { ButtonModule } from 'primeng/button';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FaqRoutingModule,
     AccordionModule,
     ButtonModule,
-    SharedModule
+    SharedModule,
+    TranslateModule
   ]
 })
 export class FaqModule { }
