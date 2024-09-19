@@ -13,23 +13,23 @@
           <app-map [settingsData]="settingsData"></app-map>
       </ng-container>
       <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
-      <div class="pms-container pb-5">
-            <div class="contact-card-wrapper">
+      <div class="pms-container pb-5" itemscope itemtype="https://schema.org/ContactPage">
+            <div class="contact-card-wrapper" itemprop="mainContentOfPage">
                 <div class="grid justify-content-between">
-                    <div class="contact-info-wrapper md:col-5 sm:col-12">
+                    <div class="contact-info-wrapper md:col-5 sm:col-12" itemscope itemtype="https://schema.org/ContactPoint">
                             <h4 class="title">{{'Contact.ContactInformation' | translate}}</h4>
                             <span class="sub-title mb-5 block">{{'Contact.Desc' | translate}}</span>
                             <div class="info-wrapper mb-4" *ngIf="settingsData?.phone">
                                 <i class="pi pi-phone"></i>
-                                <span class="text">{{ settingsData?.phone}}</span>
+                                <span class="text" itemprop="telephone">{{ settingsData?.phone}}</span>
                             </div>
                             <div class="info-wrapper mb-4" *ngIf="settingsData?.mail">
                                 <i class="pi pi-envelope"></i>
-                                <span class="text"> {{ settingsData?.mail}}</span>
+                                <span class="text" itemprop="email"> {{ settingsData?.mail}}</span>
                             </div>
                             <div class="info-wrapper mb-4" *ngIf="settingsData?.address">
                                 <i class="pi pi-map-marker"></i>
-                                <span class="text">{{ settingsData?.address }}</span>
+                                <span class="text" itemprop="workLocation">{{ settingsData?.address }}</span>
                             </div>
                             <div class="social-icons">
                                 <a class="icon-wrapper" *ngIf="socialMediaData?.facebook"

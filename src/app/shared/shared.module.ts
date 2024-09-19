@@ -23,6 +23,7 @@ import { TextSlicePipe } from '../core/pipes/text-slice.pipe';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 // import { IconFieldModule } from 'primeng/iconfield';
 // import { InputIconModule } from 'primeng/inputicon';
+import { NgxJsonLdComponent, NgxJsonLdModule } from '@ngx-lite/json-ld';
 
 export function playerFactory() {
   return import('lottie-web');
@@ -51,7 +52,8 @@ export function playerFactory() {
     RouterModule,
     TranslateModule,
     LottieModule.forRoot({ player: playerFactory }),
-    TextSlicePipe
+    TextSlicePipe,
+    NgxJsonLdModule
     // IconFieldModule,
     // InputIconModule
   ],
@@ -65,7 +67,8 @@ export function playerFactory() {
     EventCardComponent,
     LoadingComponent,
     TextSlicePipe,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    NgxJsonLdComponent
   ]
 })
 export class SharedModule { }
