@@ -2,6 +2,8 @@ import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import { MetaService } from 'src/app/core/services/meta.service';
+import { environment } from 'src/environments/environment';
 import { NewsService } from '../../services/news.service';
 
 @Component({
@@ -28,7 +30,8 @@ export class NewsComponent implements OnInit, OnDestroy {
   constructor(
     private newsService: NewsService,
     private translateService:TranslateService,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private metaService: MetaService
   ) { }
 
   ngOnInit(): void {
@@ -77,6 +80,7 @@ export class NewsComponent implements OnInit, OnDestroy {
             this.paginationData = res?.data?.meta?.pagination;
             this.bigCardNews = this.newsData?.filter((card: any) => card.big_card == true);
             this.smallCardsNews = this.newsData?.filter((card: any) => card.big_card == false);
+            this.handleMetaTags()
           }
           this.loading = false
         },
@@ -144,6 +148,19 @@ export class NewsComponent implements OnInit, OnDestroy {
         }
       })
     )
+  }
+
+  handleMetaTags(): void {
+    const content: any = {
+      title: 'Navbar.News',
+      useTranslation: true,
+      description: 'News Discription',
+      keywords: 'News',
+      image: `${environment.websiteUrl}/assets/images/global/logo.svg`,
+      // url: `${environment.websiteUrl}news/news-view/${encodeURIComponent(this.projectData.slug)}`
+      url: `${environment.websiteUrl}/news`
+    };
+    this.metaService.createMetaData(content);
   }
 
   ngOnDestroy(): void {

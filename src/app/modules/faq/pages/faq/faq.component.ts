@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FaqsService } from '../../services/faqs.service';
 import { TranslateService } from '@ngx-translate/core';
+import { environment } from 'src/environments/environment';
+import { MetaService } from 'src/app/core/services/meta.service';
 
 @Component({
   selector: 'app-faq',
@@ -24,11 +26,13 @@ export class FaqComponent implements OnInit, OnDestroy {
 
   constructor(
     private faqsService: FaqsService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private metaService: MetaService
   ) { }
 
   ngOnInit(): void {
     this.getAllFaqs();
+    this.handleMetaTags();
   }
 
   getAllFaqs(): void {
@@ -52,6 +56,19 @@ export class FaqComponent implements OnInit, OnDestroy {
   loadMore(): void {
     this.pageSize += 10;
     this.getAllFaqs();
+  }
+
+  handleMetaTags(): void {
+    const content: any = {
+      title: 'Footer.FAQ',
+      useTranslation: true,
+      description: 'FAQ Discription',
+      keywords: 'PMS',
+      image: `${environment.websiteUrl}/assets/images/global/logo.svg`,
+      // url: `${environment.websiteUrl}news/news-view/${encodeURIComponent(this.projectData.slug)}`
+      url: `${environment.websiteUrl}/faq`
+    };
+    this.metaService.createMetaData(content);
   }
 
   ngOnDestroy(): void {

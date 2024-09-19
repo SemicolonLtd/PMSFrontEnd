@@ -2,6 +2,12 @@
     position: relative;
 
 }
+.core-img {
+    img {
+        aspect-ratio: 10 / 11;
+        object-fit: fill;
+    }
+}
 
 .action {
     color: var(--primary-color-medium);
