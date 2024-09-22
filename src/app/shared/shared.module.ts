@@ -24,6 +24,7 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
 // import { IconFieldModule } from 'primeng/iconfield';
 // import { InputIconModule } from 'primeng/inputicon';
 import { NgxJsonLdComponent, NgxJsonLdModule } from '@ngx-lite/json-ld';
+import { RelativeTimePipe } from '../core/pipes/relative-time.pipe';
 
 export function playerFactory() {
   return import('lottie-web');
@@ -53,7 +54,8 @@ export function playerFactory() {
     TranslateModule,
     LottieModule.forRoot({ player: playerFactory }),
     TextSlicePipe,
-    NgxJsonLdModule
+    NgxJsonLdModule,
+    RelativeTimePipe
     // IconFieldModule,
     // InputIconModule
   ],

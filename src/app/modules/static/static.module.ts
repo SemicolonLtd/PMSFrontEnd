@@ -5,6 +5,8 @@ import { SharedModule } from "../../shared/shared.module";
 import { StaticRoutingModule } from './static-routing.module';
 import { ContentComponent } from './pages/content/content.component';
 import { EmptyStateComponent } from "../../shared/components/empty-state/empty-state.component";
+import { TranslateModule } from '@ngx-translate/core';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { EmptyStateComponent } from "../../shared/components/empty-state/empty-s
     CommonModule,
     SharedModule,
     StaticRoutingModule,
-    EmptyStateComponent
+    EmptyStateComponent,
+    TranslateModule,
+    ShareButtonsModule
 ]
 })
 export class StaticModule { }

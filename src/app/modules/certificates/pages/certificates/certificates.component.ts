@@ -32,8 +32,8 @@ export class CertificatesComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-
     this.getAllCertificates();
+    this.handleMetaTags();
   }
 
   getAllCertificates(): void {
@@ -43,7 +43,6 @@ export class CertificatesComponent implements OnInit, OnDestroy {
         next: (res: any) => {
           if (res?.status == 200) {
             this.certificatesList = [... this.certificatesList, ...res?.data?.data];
-            this.handleMetaTags()
             this.paginationData = res?.data?.meta?.pagination;
           }
           this.loading = false

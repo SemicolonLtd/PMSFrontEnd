@@ -61,3 +61,13 @@
         }
     }
 }
+
+::ng-deep {
+    .event-details {
+        .p-image {
+            img {
+                width: 100%;
+            }
+        }
+    }
+}

@@ -116,9 +116,9 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     );
   }
 
-  onLinkOpened(event: any): void {
-    this.handleMetaTags();
-  }
+  // onLinkOpened(event: any): void {
+  //   this.handleMetaTags();
+  // }
 
   handleMetaTags(): void {
     const content: any = {

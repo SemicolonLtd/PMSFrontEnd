@@ -33,6 +33,7 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.getCoreList();
+        this.handleMetaTags();
         this.getBusinessSlugFromParams();
     }
 
@@ -63,7 +64,6 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
                 next: (res: any) => {
                     if (res?.status == 200) {
                         this.coreList = res?.data?.data;
-                        this.handleMetaTags()
                     }
                     this.loading = false;
                 },

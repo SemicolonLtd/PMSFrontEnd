@@ -33,8 +33,8 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
   ];
 
   businessData: any = {};
-  similarBusinessData: any[] = [];
-  similarBusinessLoading = false;
+  businessProjectsData: any[] = [];
+  businessProjectsLoading = false;
   slug: string = '';
   loading = false;
   breadcrumbItems = [
@@ -78,14 +78,15 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
             this.businessData.media = [
               ...this.businessData.media,
               {
-                image: this.businessData.imageUrl
+                image: this.businessData.image
               }
             ];
             this.breadcrumbItems.push({
-              name: this.businessData?.name,
+              name: this.businessData?.title,
               link: '/core-business/details/' + this.businessData?.slug
-            })
-            this.getSimilarBusiness();
+            });
+            this.handleMetaTags();
+            this.getBusinessProjects();
           }
           this.loading = false;
         },
@@ -97,26 +98,26 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
     );
   }
 
-  getSimilarBusiness(): void {
-    this.similarBusinessLoading = true;
+  getBusinessProjects(): void {
+    this.businessProjectsLoading = true;
     this.subscriptions.add(
-      this.coreBusinessService.getSimilarBusiness(this.businessData?.slug).subscribe({
+      this.coreBusinessService.getBusinessProjects(this.businessData?.slug).subscribe({
         next: (res: any) => {
           if(res?.status == 200) {
-            this.similarBusinessData = res?.data?.data;
+            this.businessProjectsData = res?.data?.data;
           }
-          this.similarBusinessLoading = false;
+          this.businessProjectsLoading = false;
         },
         error: (err: any) => {
-          this.similarBusinessLoading = false;
+          this.businessProjectsLoading = false;
         }
       })
     );
   }
 
-  onLinkOpened(event: any): void {
-    this.handleMetaTags();
-  }
+  // onLinkOpened(event: any): void {
+  //   this.handleMetaTags();
+  // }
 
   handleMetaTags(): void {
     const content: any = {

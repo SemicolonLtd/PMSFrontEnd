@@ -86,7 +86,8 @@
         "SimilarProjects":"Similar Projects",
         "SimilarNews":"Similar News",
         "SimilarCoreBusiness":"Similar Core Business",
-        "SimilarEvents":"Similar Events"
+        "SimilarEvents":"Similar Events",
+        "CoreBusinessProjects": "Core Business Projects"
     },
     "Footer": {
         "PMS":"Petroleum Marine Services Co.",

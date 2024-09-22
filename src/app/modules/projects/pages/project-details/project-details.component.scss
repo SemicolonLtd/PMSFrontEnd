@@ -84,3 +84,13 @@
         }
     }
 }
+
+::ng-deep {
+    .project-details {
+        .p-image {
+            img {
+                width: 100%;
+            }
+        }
+    }
+}

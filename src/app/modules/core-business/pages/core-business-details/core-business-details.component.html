@@ -1,5 +1,5 @@
 <div class="project-details margin-avoid-navbar">
-    <!-- <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb> -->
+    <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
     <div class="pms-container">
         <div class="project-info" *ngIf="businessData?.title && !loading">
             <div class="grid">
@@ -10,12 +10,13 @@
                             <span class="txt">
                                 {{ 'General.Share' | translate }}
                             </span>
-                            <button class="share_link" shareButton="facebook" 
+                            <!-- (opened)="onLinkOpened($event)" -->
+                            <button class="share_link" shareButton="facebook"  
                             [url]="websiteUrl + '/core-business/details/' + businessData?.slug"
                             [title]="businessData.title"
                             [image]="businessData.image"
                             [description]="businessData.short"
-                            (opened)="onLinkOpened($event)">
+                            >
                                 <img src="assets/images/global/facebook.svg" alt="">
                             </button>
                             <button class="share_link" shareButton="twitter"
@@ -34,7 +35,7 @@
                             <p-galleria [value]="businessData?.media" [responsiveOptions]="responsiveOptions"
                                 [numVisible]="5">
                                 <ng-template pTemplate="item" let-item>
-                                    <img [src]="item.image" style="width: 100%;" />
+                                    <p-image [src]="item.image"  [preview]="true"  />
                                 </ng-template>
                                 <ng-template pTemplate="thumbnail" let-item>
                                     <div class="grid grid-nogutter justify-content-center">
@@ -51,13 +52,13 @@
         </div>
         <app-loading type="small" *ngIf="loading" ></app-loading>
 
-        <div class="similar-projects mt-5" *ngIf="similarBusinessData?.length && !similarBusinessLoading">
+        <div class="similar-projects mt-5" *ngIf="businessProjectsData?.length && !businessProjectsLoading">
             <span class="title block font-bold text-2xl pb-2 mb-4">
-                {{'SimilarTitles.SimilarCoreBusiness' | translate}}
+                {{'SimilarTitles.CoreBusinessProjects' | translate}}
             </span>
-            <!-- <p-carousel [value]="similarBusinessData" [numVisible]="3" [numScroll]="3" [circular]="true"
+            <!-- <p-carousel [value]="businessProjectsData" [numVisible]="3" [numScroll]="3" [circular]="true"
                 [showIndicators]="false" [responsiveOptions]="responsiveOptions" autoplayInterval="3000" 
-                [ngClass]="similarBusinessData.length === 1 ? 'length-one' : ''">
+                [ngClass]="businessProjectsData.length === 1 ? 'length-one' : ''">
                 <ng-template let-product pTemplate="item">
                     <div class="m-2 p-3">
                         <app-project-card [projectData]="product"></app-project-card>
@@ -65,11 +66,11 @@
                 </ng-template>
             </p-carousel> -->
             <div class="grid">
-                <div class="xl:col-3 lg:col-4 md:col-6 sm:col-12" *ngFor="let project of similarBusinessData">
+                <div class="xl:col-3 lg:col-4 md:col-6 sm:col-12" *ngFor="let project of businessProjectsData">
                     <app-project-card [projectData]="project"></app-project-card>
                 </div>
             </div>
         </div>
-        <app-loading type="small" *ngIf="similarBusinessLoading" ></app-loading>
+        <app-loading type="small" *ngIf="businessProjectsLoading" ></app-loading>
     </div>
 </div>

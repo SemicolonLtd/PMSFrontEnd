@@ -15,7 +15,7 @@
         </div>
         <div class="actions flex align-items-center justify-content-between">
             <span class="date">
-                {{eventData.date}}
+                {{eventData.date | relativeTime}}
             </span>
             <div class="details-btn">
                 <p-button icon="pi pi-share-alt" [rounded]="true" severity="secondary"/>

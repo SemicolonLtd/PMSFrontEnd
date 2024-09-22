@@ -84,7 +84,8 @@ export class NewsDetailsComponent implements OnInit, OnDestroy {
             this.breadcrumbItems.push({
               name: this.newsData?.title,
               link: '/news/details/' + this.newsData?.slug
-            })
+            });
+            this.handleMetaTags();
             this.getSimilarNews();
           }
           this.loading = false;
@@ -115,9 +116,9 @@ export class NewsDetailsComponent implements OnInit, OnDestroy {
     );
   }
 
-  onLinkOpened(event: any): void {
-    this.handleMetaTags();
-  }
+  // onLinkOpened(event: any): void {
+  //   this.handleMetaTags();
+  // }
 
   handleMetaTags(): void {
     const content: any = {

@@ -1,14 +1,37 @@
 <main class="page-content" >
-    <ng-container *ngIf="pageContent && !loading">
+    <ng-container *ngIf="pageContent?.slug && !loading">
         <div class="page-img-wrapper">
             <img [src]="pageContent.image" [alt]="pageContent.title">
             <h1 class="page-title">{{pageContent.title}}</h1>
         </div>
-        <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
+        <div class="head-wrapper flex align-items-center justify-content-between">
+            <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
+            <div class="share_details">
+                <span class="txt">
+                    {{ 'General.Share' | translate }}
+                </span>
+                <!-- (opened)="onLinkOpened($event)" -->
+                <button class="share_link" shareButton="facebook" 
+                [url]="websiteUrl + '/news/details/' + pageContent?.slug"
+                [title]="pageContent.title"
+                [image]="pageContent.image"
+                [description]="pageContent.short"
+                >
+                    <img src="assets/images/global/facebook.svg" alt="">
+                </button>
+                <button class="share_link" shareButton="twitter"
+                [url]="websiteUrl + '/news/details/' + pageContent?.slug"
+                [title]="pageContent.title"
+                [image]="pageContent.image"
+                [description]="pageContent.short">
+                    <img src="assets/images/global/twitter.svg" alt="">
+                </button>
+            </div>
+        </div>
         <div class="content" [innerHTML]="pageContent.body"></div>
     </ng-container>
     <app-loading type="small" *ngIf="loading"></app-loading>
     <div class="flex align-items-center justify-content-center" style="height: 50vh;">
-        <app-empty-state *ngIf="!pageContent && !loading"></app-empty-state>
+        <app-empty-state *ngIf="!pageContent?.slug && !loading"></app-empty-state>
     </div>
 </main>

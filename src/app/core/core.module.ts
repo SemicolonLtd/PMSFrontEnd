@@ -6,7 +6,7 @@ import { TextSlicePipe } from './pipes/text-slice.pipe';
 
 @NgModule({
   declarations: [
-    TextSlicePipe
+    
   ],
   imports: [
     CommonModule

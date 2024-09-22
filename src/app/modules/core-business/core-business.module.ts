@@ -14,6 +14,7 @@ import { ButtonModule } from 'primeng/button';
 import { EmptyStateComponent } from "../../shared/components/empty-state/empty-state.component";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ImageModule } from 'primeng/image';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
     ButtonModule,
     EmptyStateComponent,
     FontAwesomeModule,
-    ShareButtonsModule
+    ShareButtonsModule,
+    ImageModule
 ]
 })
 export class CoreBusinessModule { }

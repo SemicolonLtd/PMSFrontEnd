@@ -83,6 +83,7 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
               name: this.eventData?.title,
               link: '/events/details/' + this.eventData?.slug
             })
+            this.handleMetaTags();
             this.getSimilarEvents();
           }
           this.loading = false;
@@ -113,9 +114,9 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
     );
   }
 
-  onLinkOpened(event: any): void {
-    this.handleMetaTags();
-  }
+  // onLinkOpened(event: any): void {
+  //   this.handleMetaTags();
+  // }
 
   handleMetaTags(): void {
     const content: any = {

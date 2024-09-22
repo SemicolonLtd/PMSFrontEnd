@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { MetaService } from 'src/app/core/services/meta.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -7,7 +8,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   schema = {
     "@context": "http://www.schema.org",
@@ -19,7 +20,26 @@ export class HomeComponent {
     "description": this.translateService.instant('General.OrgDesc'),
   }
 
-    constructor(
-      private translateService:TranslateService
-    ){}
+  constructor(
+    private translateService: TranslateService,
+    private metaService: MetaService
+  ) { }
+
+  ngOnInit(): void {
+    this.handleMetaTags();
+  }
+
+  handleMetaTags(): void {
+    const content: any = {
+      title:  'General.OrgName',
+      useTranslation: true,
+      description: 'PMS Website',
+      keywords: 'PMS Website',
+      image: `${environment.websiteUrl}/assets/images/global/logo.svg`,
+      // url: `${environment.websiteUrl}news/news-view/${encodeURIComponent(this.projectData.slug)}`
+      url: `${environment.websiteUrl}`
+    };
+    this.metaService.createMetaData(content);
+  }
+
 }

@@ -19,6 +19,7 @@ import { EmptyStateComponent } from "../../shared/components/empty-state/empty-s
 import { TextSlicePipe } from 'src/app/core/pipes/text-slice.pipe';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ImageModule } from 'primeng/image';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     EmptyStateComponent,
     TextSlicePipe,
     FontAwesomeModule,
-    ShareButtonsModule
+    ShareButtonsModule,
+    ImageModule
 ]
 })
 export class NewsModule { }

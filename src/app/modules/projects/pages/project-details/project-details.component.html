@@ -1,5 +1,5 @@
 <div class="project-details margin-avoid-navbar">
-    <!-- <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb> -->
+    <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
     <div class="pms-container">
         <div class="project-info" *ngIf="projectData?.title">
             <div class="grid">
@@ -10,12 +10,13 @@
                             <span class="txt">
                                 {{ 'General.Share' | translate }}
                             </span>
+                            <!-- (opened)="onLinkOpened($event)" -->
                             <button class="share_link" shareButton="facebook" 
                             [url]="websiteUrl + '/projects/details/' + projectData?.slug"
                             [title]="projectData.title"
                             [image]="projectData.image"
                             [description]="projectData.short"
-                            (opened)="onLinkOpened($event)">
+                            >
                                 <img src="assets/images/global/facebook.svg" alt="">
                             </button>
                             <button class="share_link" shareButton="twitter"
@@ -33,7 +34,7 @@
                         <p-galleria [value]="projectData?.media" [responsiveOptions]="responsiveOptions"
                             [numVisible]="5">
                             <ng-template pTemplate="item" let-item>
-                                <img [src]="item.image" style="width: 100%;" />
+                                <p-image [preview]="true" [src]="item.image"  />
                             </ng-template>
                             <ng-template pTemplate="thumbnail" let-item>
                                 <div class="grid grid-nogutter justify-content-center">

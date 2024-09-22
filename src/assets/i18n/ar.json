@@ -85,7 +85,8 @@
         "SimilarProjects":"المشاريع المماثلة",
         "SimilarNews":"الاخبار المشابهة",
         "SimilarCoreBusiness":"الاعمال الاساسية المشابهة",
-        "SimilarEvents":"الفعاليات المشابهة"
+        "SimilarEvents":"الفعاليات المشابهة",
+        "CoreBusinessProjects": "المشاريع المرتبطة بالاعمال الاساسية"
     },
     "Footer": {
         "PMS":"خدمات البترول البحرية",

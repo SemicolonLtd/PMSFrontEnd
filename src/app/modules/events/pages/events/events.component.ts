@@ -35,6 +35,7 @@ export class EventsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getTopEventData();
     this.getEventsData();
+    this.handleMetaTags();
   }
 
   getTopEventData(): void {
@@ -66,7 +67,6 @@ export class EventsComponent implements OnInit, OnDestroy {
           if(res?.status == 200) {
             this.eventsList = [... this.eventsList, ...res?.data?.data];
             this.paginationData = res?.data?.meta?.pagination;
-            this.handleMetaTags();
             this.handleSchema()
           }
           this.eventsLoading = false

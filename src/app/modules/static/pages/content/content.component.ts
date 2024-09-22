@@ -14,12 +14,13 @@ import { MetaService } from 'src/app/core/services/meta.service';
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit, OnDestroy {
-  subscriptions = new Subscription();
+  
+  websiteUrl = environment.websiteUrl;
   pageContent: any;
   loading = false;
   pageSlug = '';
   breadcrumbItems: any[] = [];
-  subscription = new Subscription();
+  subscriptions = new Subscription();
 
   constructor(
     private route: ActivatedRoute,
@@ -36,6 +37,7 @@ export class ContentComponent implements OnInit, OnDestroy {
     this.route.queryParams.subscribe((params) => {
       if (params['slug']) {
         this.pageSlug = params['slug'];
+        this.pageContent = {};
         this.getPageContent();
       }
     })
@@ -43,23 +45,28 @@ export class ContentComponent implements OnInit, OnDestroy {
 
   getPageContent(): void {
     this.loading = true;
-    this.subscription.add(
+    this.subscriptions.add(
       this.staticService.getPageDetails(this.pageSlug).subscribe({
         next: (res: any) => {
           if (res?.status == 200) {
-            this.pageContent = res?.data?.data[0];
-            this.handleMetaTags()
-            if(this.pageContent) {
-              this.breadcrumbItems = [
-                {
-                  name: this.translateService.instant(`Static.${this.pageContent.menu_name}`),
-                  link: '/'
-                },
+            if(res?.data?.slug) {
+              this.pageContent = res?.data;
+              if(this.pageContent.menu_name) {
+                this.breadcrumbItems.push(
+                  {
+                    name: this.translateService.instant(`Static.${this.pageContent.menu_name}`),
+                    link: '/'
+                  }
+                )
+              }
+              this.breadcrumbItems.push(
                 {
                   name: this.pageContent.title,
                   link: 'content/' + this.pageContent.slug
                 }
-              ]
+              )
+              
+              this.handleMetaTags()
             }
           }
           this.loading = false;
@@ -84,8 +91,12 @@ export class ContentComponent implements OnInit, OnDestroy {
     this.metaService.createMetaData(content);
   }
 
+  // onLinkOpened(event: any): void {
+  //   this.handleMetaTags();
+  // }
+
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscriptions.unsubscribe();
   }
 
 }

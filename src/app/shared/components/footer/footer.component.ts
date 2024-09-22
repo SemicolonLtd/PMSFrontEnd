@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SettingsService } from 'src/app/core/services/settings.service';
 
@@ -13,11 +14,18 @@ export class FooterComponent implements OnInit, OnDestroy {
   socialMediaData: any;
   subscriptions = new Subscription();
 
-  constructor(private settingsService: SettingsService) { }
+  constructor(
+    private settingsService: SettingsService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.getSettings();
     this.getSocialMediaData();
+  }
+
+  openStaticPage(slug: string): void {
+    this.router.navigateByUrl('/content?slug=' + slug);
   }
 
   getSettings(): void {

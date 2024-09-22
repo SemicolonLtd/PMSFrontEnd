@@ -61,3 +61,13 @@
         }
     }
 }
+
+::ng-deep {
+    .news-details {
+        .p-image {
+            img {
+                width: 100%;
+            }
+        }
+    }
+}

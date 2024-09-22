@@ -123,7 +123,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   onSelectLink(type: string, title: string, directRoute: boolean): void {
     this.sidebarMobileVisible = false;
     if (directRoute) {
-      if(['about-us','our-strategy','key-assets','HSE-quality','sustainability'].includes(type)) {
+      if(['about-us','our-strategy','key-assets','hse-policy-records','sustainability'].includes(type)) {
         this.router.navigateByUrl('/content?slug=' + type);
       } else {
         this.router.navigate(['/' + type]);
