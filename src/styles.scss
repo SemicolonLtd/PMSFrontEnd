@@ -24,6 +24,16 @@
     src: url('./assets/fonts/AktivGroteskCorp-Regular.ttf');
 }
 
+.desc,
+pre {
+    &:lang(ar) {
+        font-family: 'ar-main-font' !important;
+    }
+    &:lang(en) {
+        font-family: 'main-font' !important;
+    }
+}
+
 :root {
     --primary-color: #141414;
     --primary-color-light: #5894AC;

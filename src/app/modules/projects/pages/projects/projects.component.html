@@ -14,7 +14,8 @@
                     <h5 class="short-desc">
                         {{ pageTopProject?.title }}
                     </h5>
-                    <div class="desc" [innerHTML]="pageTopProject?.desc">
+                    <div class="desc">
+                        {{ pageTopProject?.short}}
                     </div>
                     <div class="action flex align-items-center justify-content-between">
                         <span class="date">
