@@ -1,7 +1,7 @@
 import { Component,Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HostListener } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { DOCUMENT } from '@angular/common';
@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie';
 import { NavbarService } from 'src/app/core/services/navbar.service';
 import { isPlatformBrowser } from '@angular/common';
 import { CoreBusinessService } from 'src/app/modules/core-business/services/core-business.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -33,9 +33,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   coreBusinessList: any[] = [];
   displayedLinks: any[] = [];
   subscriptions = new Subscription();
-
+  linkName = '';
   constructor(
     private router: Router,
+    private location: Location,
+    private route: ActivatedRoute,
     private cookieService:CookieService,
     private translateService:TranslateService,
     @Inject(DOCUMENT) private document: Document,
@@ -46,9 +48,34 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    if(isPlatformBrowser(this.platformId)) {
-      this.checkCookiesForLang()
-    }
+    this.linkName = this.router.url;
+    console.log(this.route.url);
+
+    console.log(this.linkName);
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd && event.urlAfterRedirects) {
+        if (event.urlAfterRedirects.includes('?lang=ar') || event.urlAfterRedirects.includes('?lang=en')) {
+    console.log(this.linkName);
+          
+          this.lang = event.urlAfterRedirects.slice(-2);
+          this.linkName = event.urlAfterRedirects.slice(0, event.urlAfterRedirects.length - 8);
+        }
+        this.linkName = event.urlAfterRedirects;
+      }
+    });
+    // if(isPlatformBrowser(this.platformId)) {
+    //   this.checkCookiesForLang()
+    // }
+    // this.router.events.subscribe(
+    //   event=> {
+    //     if(event instanceof NavigationEnd) {
+    //       if (isPlatformBrowser(this.platformId)) {
+    //         this.checkCookiesForLang()
+    //       }
+    //     }
+        
+    //   }
+    // )
     this.checkCurrentRoute();
     this.getCoreBusinessMenus();
     this.getAllLinks();
@@ -85,27 +112,39 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.isSticky = scrollPosition > 50
   }
 
-  checkCookiesForLang(): void {
-    if (this.cookieService.get('lang')) {
-      this.translateService.use(this.cookieService.get('lang')!);
-      this.lang = this.cookieService.get('lang')!;
-      environment.lang = this.lang;
-      this.document.documentElement.lang = this.lang;
-    } else {
-      this.translateService.use(this.lang);
-      this.cookieService.put('lang', this.lang);
-      environment.lang = this.lang;
-      this.document.documentElement.lang = this.lang;
-    }
-    this.changeDir();
-  }
+  // checkCookiesForLang(): void {
+  //   if (this.cookieService.get('lang')) {
+  //     // this.translateService.use(this.cookieService.get('lang')!);
+  //     this.lang = this.cookieService.get('lang')!;
+  //     // environment.lang = this.lang;
+  //     // this.document.documentElement.lang = this.lang;
+  //   } else {
+  //     // this.translateService.use(this.lang);
+  //     this.cookieService.put('lang', this.lang);
+  //     // environment.lang = this.lang;
+  //     // this.document.documentElement.lang = this.lang;
+  //   }
+  //   this.changeDir();
+  // }
 
   changeLang(lang:any): void {
     this.lang = lang.value.code;
-
     environment.lang = this.lang;
     this.translateService.use(lang.value.code);
     this.cookieService.put('lang', lang.value.code);
+    console.log(this.linkName);
+    
+    const link = this.linkName.slice(0, this.linkName.length - 8)
+    this.router.navigate([link], { queryParams: { lang: this.lang } })
+    this.route.queryParams.subscribe(
+      params=> {
+        if (Object.keys(params).length > 1) {
+          this.location.replaceState(`${link}&lang=${this.lang}`);
+        } else {
+          this.location.replaceState(`${link}?lang=${this.lang}`);
+        }
+      }
+    )
     this.changeDir();
     location.reload();
   }
@@ -113,7 +152,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   changeDir(): void {
     if (this.lang === 'ar') {
       this.document.dir = 'rtl';
-      this.document.documentElement.lang;
+      this.document.documentElement.lang = 'ar';
     } else {
       this.document.dir = 'ltr';
       this.document.documentElement.lang = 'en';
@@ -151,7 +190,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
         )
       )
       .subscribe((event: NavigationEnd) => {
-        this.currentRoute = event.url
+        // this.currentRoute = event.url;
+
+      const urlTree = this.router.parseUrl(event.url);
+      this.currentRoute = urlTree.root.children['primary']?.segments.map(it => it.path).join('/') || '/';
       });
   }
 

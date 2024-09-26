@@ -20,8 +20,9 @@
                         <span class="date">
                             {{ pageTopEvent?.start_date }}
                         </span>
-                        <p-button icon="pi pi-angle-right" [rounded]="true" severity="secondary"
-                        [routerLink]="'/events/details/' + pageTopEvent?.slug" />
+                        <a [routerLink]="'/events/details/' + pageTopEvent?.slug">
+                            <p-button icon="pi pi-angle-right" [rounded]="true" severity="secondary"/>
+                        </a>
                     </div>
 
                 </div>

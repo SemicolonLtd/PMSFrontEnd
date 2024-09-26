@@ -54,15 +54,38 @@ html {
     @media (max-width: 1440px) {
         font-size: 14px;
     }
-    @media (max-width: 1300px) {
-        font-size: 13px;
-    }
+    // @media (max-width: 1300px) {
+    //     font-size: 13px;
+    // }
 }
 
 * {
     // padding: 0;
     // margin: 0;
     box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #ddd;
+    border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color-light);
+    border-radius: 5px;
+}
+
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: darken($color: #418caa, $amount: .3);
 }
 
 

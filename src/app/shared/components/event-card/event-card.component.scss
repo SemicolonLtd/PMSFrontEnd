@@ -5,6 +5,8 @@
     border-bottom-right-radius: 1.5rem;
     cursor: pointer;
     transition: 0.4s all ease;
+    color: #000;
+    display: block;
     &:hover {
         .img-wrapper {
             transform: translateY(-10px);
@@ -22,7 +24,30 @@
     }
     .content {
         padding:1.3rem;
-        min-height: 200px;
+        // min-height: 250px;
+        // min-height: 16rem;
+        .actions {
+            min-height: 18px;
+        }
+        .title {
+            min-height: 48px; 
+        }
+        .dates{
+            min-height: 42px;
+        }
+        .short-desc {
+            min-height: 63px;
+            @media (max-width: 1440px) {
+                min-height: 42px;
+            }
+        }
+        .dates {
+            .label {
+                @media (max-width:400px) {
+                    display: block;
+                }
+            }
+        }
     }
     @media(max-width: 1200px) {
         .img-wrapper {
@@ -51,11 +76,11 @@
 ::ng-deep {
     .content {
         position: relative;
-        .actions {
-            position: absolute;
-            bottom: 5%;
-            left: 5%;
-            width: 90%;
-        }
+        // .actions {
+        //     position: absolute;
+        //     bottom: 5%;
+        //     left: 5%;
+        //     width: 90%;
+        // }
     }
 }

@@ -1,11 +1,11 @@
 <div class="project-details margin-avoid-navbar">
-    <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
     <div class="pms-container">
+        <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
         <div class="project-info" *ngIf="projectData?.title">
             <div class="grid">
                 <div class="col-12">
-                    <div class="head-wrapper flex align-items-center justify-content-between">
-                        <h2 class="project-title">{{ projectData?.title }}</h2>
+                    <div class="head-wrapper flex align-items-center justify-content-end">
+                        <!-- <h2 class="project-title">{{ projectData?.title }}</h2> -->
                         <div class="share_details">
                             <span class="txt">
                                 {{ 'General.Share' | translate }}
@@ -44,47 +44,53 @@
                         </p-galleria>
                     </div>
                 </div>
-                <div class="lg:col-4 md:col-12">
-                    <div class="info">
-                        <!-- <span class="title block font-bold text-2xl mb-4 pb-2">
-                        Project Details
-                    </span> -->
-                        <div class="info-wrapper flex align-items-center" *ngIf="projectData?.start_date">
-                            <div class="img-with-title">
-                                <img src="assets/images/global/date-icon.svg" alt="">
-                                <span class="label text-gray-900"> {{'Projects.StartDate' | translate}} : </span>
+                <div class="lg:col-6 md:col-12">
+                    <div class="row info">
+                        <div class="col-6">
+                            <div class="info-wrapper flex align-items-center" *ngIf="projectData?.start_date">
+                                <div class="img-with-title">
+                                    <img src="assets/images/global/date-icon.svg" alt="">
+                                    <span class="label text-gray-900"> {{'Projects.StartDate' | translate}} : </span>
+                                </div>
+                                <span class="data">{{ projectData?.start_date }}</span>
                             </div>
-                            <span class="data">{{ projectData?.start_date }}</span>
                         </div>
-                        <div class="info-wrapper flex align-items-center" *ngIf="projectData?.end_date">
-                            <div class="img-with-title">
-                                <img src="assets/images/global/date-icon.svg" alt="">
-                                <span class="label text-gray-900"> {{'Projects.EndDate' | translate}} : </span>
+                        <div class="col-6">
+                            <div class="info-wrapper flex align-items-center" *ngIf="projectData?.end_date">
+                                <div class="img-with-title">
+                                    <img src="assets/images/global/date-icon.svg" alt="">
+                                    <span class="label text-gray-900"> {{'Projects.EndDate' | translate}} : </span>
+                                </div>
+                                <span class="data">{{ projectData?.end_date }}</span>
                             </div>
-                            <span class="data">{{ projectData?.end_date }}</span>
                         </div>
-                        <div class="info-wrapper flex align-items-center" *ngIf="projectData?.country">
-                            <div class="img-with-title">
-                                <img src="assets/images/global/country-icon.svg" alt="">
-                                <span class="label text-gray-900"> {{'Projects.Country' | translate}} : </span>
+                        <div class="col-6">
+                            <div class="info-wrapper flex align-items-center" *ngIf="projectData?.country">
+                                <div class="img-with-title">
+                                    <img src="assets/images/global/country-icon.svg" alt="">
+                                    <span class="label text-gray-900"> {{'Projects.Country' | translate}} : </span>
+                                </div>
+                                <span class="data">{{ projectData?.country }}</span>
                             </div>
-                            <span class="data">{{ projectData?.country }}</span>
                         </div>
-                        <div class="info-wrapper flex align-items-center" *ngIf="projectData?.location">
-                            <div class="img-with-title">
-                                <img src="assets/images/global/location-icon.svg" alt="">
-                                <span class="label text-gray-900"> {{'Projects.Location' | translate}} : </span>
+                        <div class="col-6">
+                            <div class="info-wrapper flex align-items-center" *ngIf="projectData?.location">
+                                <div class="img-with-title">
+                                    <img src="assets/images/global/location-icon.svg" alt="">
+                                    <span class="label text-gray-900"> {{'Projects.Location' | translate}} : </span>
+                                </div>
+                                <span class="data">{{ projectData?.location }}</span>
                             </div>
-                            <span class="data">{{ projectData?.location }}</span>
                         </div>
-                        <div class="info-wrapper flex align-items-center" *ngIf="projectData?.client">
-                            <div class="img-with-title">
-                                <img src="assets/images/global/client-icon.svg" alt="">
-                                <span class="label text-gray-900"> {{'Projects.Client' | translate}} : </span>
+                        <div class="col-6">
+                            <div class="info-wrapper flex align-items-center" *ngIf="projectData?.client">
+                                <div class="img-with-title">
+                                    <img src="assets/images/global/client-icon.svg" alt="">
+                                    <span class="label text-gray-900"> {{'Projects.Client' | translate}} : </span>
+                                </div>
+                                <span class="data">{{ projectData?.client }}</span>
                             </div>
-                            <span class="data">{{ projectData?.client }}</span>
                         </div>
-
                     </div>
                 </div>
                 <div class="text col-12" [innerHTML]="projectData?.desc">
@@ -118,23 +124,8 @@
             <span class="title block font-bold text-2xl pb-2 mb-4">
                 {{'SimilarTitles.SimilarProjects' | translate}}
             </span>
-            <!-- <p-carousel 
-            [value]="similarProjectsData" 
-            [numVisible]="3" 
-            [numScroll]="3" 
-            [circular]="true" 
-            [showIndicators]="false"
-            [responsiveOptions]="responsiveOptions" 
-            autoplayInterval="3000"
-            [ngClass]="similarProjectsData.length === 1 ? 'length-one' : ''">
-                <ng-template let-product pTemplate="item">
-                    <div class="m-2 p-3">
-                        <app-project-card [projectData]="product"></app-project-card>
-                    </div>
-                </ng-template>
-        </p-carousel> -->
             <div class="grid">
-                <div class="xl:col-3 lg:col-4 md:col-6 sm:col-12" *ngFor="let product of similarProjectsData">
+                <div class="xl:col-3 lg:col-4 md:col-6 sm:col-12 mb-3" *ngFor="let product of similarProjectsData">
                     <app-project-card [projectData]="product"></app-project-card>
                 </div>
             </div>

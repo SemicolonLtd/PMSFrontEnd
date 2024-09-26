@@ -6,9 +6,19 @@
         <span class="news-badge">
             {{card?.category_title}}
         </span>
-        <p [innerHTML]="card?.short | textSlice : 'desc'">
+        <ng-container *ngIf="card.short">
+            <p [innerHTML]="card?.short | textSlice : 'desc'">
+            </p>
+        </ng-container>
+        <ng-container *ngIf="card.pref">
+            <p [innerHTML]="card?.pref | textSlice : 'desc'">
+            </p>
+        </ng-container>
+        <ng-container *ngIf="card.body">
+            <p [innerHTML]="card?.body | textSlice : 'desc'">
+            </p>
+        </ng-container>
             <!-- {{card.description | slice: 0: 30}} -->
-        </p>
         <ng-template pTemplate="footer">
             <span>{{card?.date}}</span>
         </ng-template>

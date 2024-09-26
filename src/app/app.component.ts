@@ -1,6 +1,6 @@
 import { DOCUMENT, isPlatformBrowser, ViewportScroller } from '@angular/common';
 import { Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
-import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { NavigationEnd, NavigationStart, Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie';
 import { filter } from 'rxjs';
@@ -21,6 +21,7 @@ export class AppComponent {
   constructor(
     private scroll: ViewportScroller,
     private router: Router,
+    private route: ActivatedRoute,
     private cookieService:CookieService,
     private translateService:TranslateService,
     @Inject(DOCUMENT) private document: Document,
@@ -28,9 +29,20 @@ export class AppComponent {
   ) {}
 
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      this.checkCookiesForLang()
-    }
+    this.router.events.subscribe(
+      event=> {
+        if(event instanceof NavigationEnd) {
+          if (isPlatformBrowser(this.platformId)) {
+            this.checkLanguageFromUrl()
+          }
+        }
+        console.log(event);
+        
+      }
+    )
+    // if (isPlatformBrowser(this.platformId)) {
+    //   this.checkLanguageFromUrl()
+    // }
     this.checkCurrentRoute();
     this.checkLoading()
   }
@@ -90,6 +102,30 @@ export class AppComponent {
       this.document.dir = 'ltr';
       this.document.documentElement.lang = 'en';
     }
+  }
+
+  checkLanguageFromUrl(): void {
+    this.route.queryParams.subscribe(
+      params => {
+        if (params['lang']) {
+          this.cookieService.put('lang', params['lang'])
+          this.lang = params['lang'];
+          this.checkCookiesForLang()
+        } else {
+          const queryParams = {
+            lang: this.lang
+          }
+          this.router.navigate(
+            [],
+            {
+              relativeTo: this.route,
+              queryParams: queryParams,
+              queryParamsHandling: 'merge', 
+            });
+          this.checkCookiesForLang()
+        }
+      }
+    )
   }
 
 }

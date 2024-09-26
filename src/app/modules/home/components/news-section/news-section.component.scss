@@ -15,7 +15,8 @@
         overflow: hidden;
         cursor: pointer;
         margin-bottom: 1em;
-
+        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+        border-radius: 6px;
         img {
             min-height: 400px;
             max-height: 400px;
@@ -34,6 +35,7 @@
         }
     }
     .small-card {
+        display: block;
         min-height: calc(220px - (32px / 3));
         max-height: calc(220px - (32px / 3));
         cursor: pointer;
@@ -124,7 +126,9 @@
                     position: absolute;
                     bottom: 7%;
                     font-weight: 600;
-
+                    @media (max-width: 380px) {
+                        display: none;
+                    }
                 }
             }
             .p-component {
@@ -137,9 +141,12 @@
                 background: transparent;
                 border: none;
                 border-width: 0 0 2px 0;
-            }
-            .p-tabview .p-tabview-nav  {
                 padding-left:0;
+                @media(max-width: 768px) {
+                    display: flex;
+                    overflow-x: scroll;
+                    overflow-y: hidden;
+                }
             }
             .p-tabview .p-tabview-nav li .p-tabview-nav-link {
                 background: transparent;

@@ -12,8 +12,8 @@
       <ng-container *ngIf="settingsData">
           <app-map [settingsData]="settingsData"></app-map>
       </ng-container>
-      <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
       <div class="pms-container pb-5" itemscope itemtype="https://schema.org/ContactPage">
+            <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
             <div class="contact-card-wrapper" itemprop="mainContentOfPage">
                 <div class="grid justify-content-between">
                     <div class="contact-info-wrapper md:col-5 sm:col-12" itemscope itemtype="https://schema.org/ContactPoint">

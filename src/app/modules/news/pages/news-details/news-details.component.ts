@@ -61,6 +61,7 @@ export class NewsDetailsComponent implements OnInit, OnDestroy {
     this.route.params.subscribe((params: any) => {
       if(params['slug']) {
         this.slug = params['slug'];
+        this.breadcrumbItems = []
         this.getNewsDetails();
       } else {
         this.router.navigateByUrl('/news');
@@ -76,12 +77,17 @@ export class NewsDetailsComponent implements OnInit, OnDestroy {
           if(res?.status == 200) {
             this.newsData = res?.data;
             this.newsData.media = [
-              ...this.newsData.media,
-              {
-                image: this.newsData.image
-              }
+              ...this.newsData.media
+              // {
+              //   image: this.newsData.image
+              // }
             ];
-            this.breadcrumbItems.push({
+            this.breadcrumbItems.push(
+              {
+                name: this.newsData?.menu,
+                link: '/news/'
+              },
+              {
               name: this.newsData?.title,
               link: '/news/details/' + this.newsData?.slug
             });

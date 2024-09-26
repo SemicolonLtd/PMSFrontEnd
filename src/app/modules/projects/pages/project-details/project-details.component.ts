@@ -61,6 +61,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     this.route.params.subscribe((params: any) => {
       if(params['slug']) {
         this.slug = params['slug'];
+        this.breadcrumbItems = []
         this.getProjectDetails();
       } else {
         this.router.navigateByUrl('/projects');
@@ -76,12 +77,17 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
           if(res?.status == 200) {
             this.projectData = res?.data;
             this.projectData.media = [
-              ...this.projectData.media,
-              {
-                image: this.projectData.image
-              }
+              ...this.projectData.media
+              // {
+              //   image: this.projectData.image
+              // }
             ];
-            this.breadcrumbItems.push({
+            this.breadcrumbItems.push(
+              {
+                name: this.projectData?.menu,
+                link: '/projects/'
+              },
+              {
               name: this.projectData?.title,
               link: '/projects/details/' + this.projectData?.slug
             })

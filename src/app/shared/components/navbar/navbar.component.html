@@ -1,6 +1,6 @@
 <nav class="nav-container desktop" 
     [ngClass]="{'nav-sticky': (isSticky || navDetailsOpened),
-    'nav-on-details': (navDetailsOpened || (currentRoute != '/' && currentRoute != '/certificates' && currentRoute != '/faq'))}"
+    'nav-on-details': (navDetailsOpened || (currentRoute != '/' && currentRoute != 'certificates' && currentRoute != 'faq'))}"
     >
     <div class="topbar" *ngIf="!navDetailsOpened">
         <div class="pms-container w-full">
@@ -146,10 +146,41 @@
 </nav>
 
 <nav class="nav-mobile" [ngClass]="{'nav-sticky': (isSticky && !navDetailsOpened), 'nav-on-details': navDetailsOpened}">
-    <div class="pms-container flex justify-content-between align-items-center">
+    <div class="mobile-topbar">
+        <div class="pms-container w-full">
+            <div class="topbar-wrapper">
+                <div class="nav-social-langs flex align-items-center justify-content-between">
+                    <div class="social">
+                        <a href="">
+                            <i class="pi pi-instagram"></i>
+                        </a>
+                        <a href="">
+                            <i class="pi pi-linkedin"></i>
+                        </a>
+                        <a href="">
+                            <i class="pi pi-youtube"></i>
+                        </a>
+                    </div>
+                    <div class="langs">
+                        <a (click)="onSelectLink('Search', 'Search', false)">
+                            <i class="pi pi-search"></i>
+                        </a>
+                        <p-dropdown 
+                        [options]="langs" 
+                        [(ngModel)]="lang" 
+                        (onChange)="changeLang($event)"
+                        optionLabel="name"
+                        class="lang hide-responsive"
+                        [placeholder]="lang" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pms-container flex justify-content-between align-items-center py-2 bg-white">
         <img routerLink="/" class="w-5rem" src="assets/images/global/logo.svg" alt="">
 
-        <p-sidebar [(visible)]="sidebarMobileVisible">
+        <p-sidebar [(visible)]="sidebarMobileVisible"  [position]="lang == 'en' ? 'left' : 'right'">
             <ng-template pTemplate="header">
                 <div class="flex align-items-center gap-2">
                     <img class="w-7rem" src="assets/images/global/logo.svg" alt="">
@@ -157,6 +188,9 @@
             </ng-template>
             <div class="nav-links">
                 <ul>
+                    <li>
+                        <a routerLink="/">{{"Navbar.Home" | translate}}</a>
+                    </li>
                     <li>
                         <a (click)="onSelectLink('about-us', 'AboutUs', false)">{{"Navbar.AboutUs" | translate}}</a>
                     </li>
@@ -188,6 +222,17 @@
                     <li>
                         <a (click)="onSelectLink('sustainability', 'Sustainability', true)">{{"Navbar.Sustainability" | translate}}</a>
                     </li>
+                    <!-- <li>
+                        <div class="langs">
+                            <p-dropdown 
+                            [options]="langs" 
+                            [(ngModel)]="lang" 
+                            (onChange)="changeLang($event)"
+                            optionLabel="name"
+                            class="lang hide-responsive"
+                            [placeholder]="lang" />
+                        </div>
+                    </li> -->
                 </ul>
             </div>
         </p-sidebar>

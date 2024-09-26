@@ -8,9 +8,9 @@
             </span>
         </div>
     </div>
-    <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
     <div class="faq-content pb-5" *ngIf="faqsList?.length && !loading">
         <div class="pms-container" itemscope itemtype="https://schema.org/FAQPage">
+        <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
             <div class="wrapper" itemprop="mainContentOfPage">
                 <p-accordion [activeIndex]="0" class="w-full faq-accordion" expandIcon="pi pi-plus" collapseIcon="pi pi-minus">
                     <p-accordionTab *ngFor="let faq of faqsList" itemscope itemtype="https://schema.org/Question">

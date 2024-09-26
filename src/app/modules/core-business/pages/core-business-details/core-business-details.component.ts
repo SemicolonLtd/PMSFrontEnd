@@ -61,6 +61,7 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
     this.route.params.subscribe((params: any) => {
       if(params['slug']) {
         this.slug = params['slug'];
+        this.breadcrumbItems = []
         this.getBusinessDetails();
       } else {
         this.router.navigateByUrl('/core-business');
@@ -76,12 +77,17 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
           if(res?.status == 200) {
             this.businessData = res?.data;
             this.businessData.media = [
-              ...this.businessData.media,
-              {
-                image: this.businessData.image
-              }
+              ...this.businessData.media
+              // {
+              //   image: this.businessData.image
+              // }
             ];
-            this.breadcrumbItems.push({
+            this.breadcrumbItems.push(
+              {
+                name: this.businessData?.cate_name,
+                link: '/core-business'
+              },
+              {
               name: this.businessData?.title,
               link: '/core-business/details/' + this.businessData?.slug
             });

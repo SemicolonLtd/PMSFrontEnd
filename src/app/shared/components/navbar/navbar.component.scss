@@ -21,7 +21,8 @@
     width: 100%;
     color: white;
     z-index: 1200;
-    padding-block: 0.5rem;
+    box-shadow: 0px 0px 4px 0px rgb(0 0 0 / 50%);
+    // padding-bottom: 0.5rem;
     @media (min-width:992px) {
         display: none;
     }
@@ -35,6 +36,7 @@
                 border-bottom: 4px solid transparent;
                 padding-bottom: 0.4rem;
                 cursor: pointer;
+                color: inherit;
                 &:hover {
                     border-bottom: 4px solid var(--primary-color-light);
                 }
@@ -86,9 +88,12 @@
     position: sticky;
     background-color: #fff;
     color: var(--primary-color);
-    .topbar {
+    box-shadow: 0px 0px 4px 0px rgb(0 0 0 / 50%);
+    
+    .topbar, .mobile-topbar {
         display: none;
     }
+
     .navbar {
         background-color: #ffffff;
         .navbar-wrapper {
@@ -136,7 +141,7 @@
                 margin-inline-end: 1.1rem;
                 a {
                     font-size: 1.1rem;
-                    padding-bottom: 1.2rem;
+                    padding-bottom: 0.7rem;
                     font-weight: 500;
                     transition: 0.3s all ease;
                     border-bottom: 4px solid transparent;
@@ -164,8 +169,6 @@
         }
     }
 }
-
-
 
 .navbar {
     // background-color: #FFFFFF21;
@@ -201,7 +204,7 @@
                     font-weight: 500;
                     transition: 0.3s all ease;
                     border-bottom: 4px solid transparent;
-                    padding-bottom: 1.2rem;
+                    padding-bottom: 0.7rem;
                     &:hover {
                         border-bottom: 4px solid var(--primary-color-light);
                     }
@@ -213,6 +216,13 @@
 
 
 ::ng-deep {
+    .nav-sticky {
+        .topbar-wrapper {
+            .lang .p-dropdown-label.p-placeholder, .lang .p-dropdown-trigger{
+                color: white !important;
+            }
+        }
+    }
     .topbar-wrapper {
         .lang .p-dropdown{
             background: transparent;
@@ -231,6 +241,26 @@
         }
         .lang .p-dropdown-trigger {
             color: white;
+        }
+    }
+    .mobile-topbar {
+        background-color: var(--primary-color-light);
+        .nav-social-langs {
+            .social {
+                // display: flex;
+                // align-items: center;
+                // a {
+                //     display: flex;
+                //     align-items: center;
+                // }
+                i {
+                    color: white;
+                }
+            }
+        }
+        .lang .p-dropdown-trigger {
+            color: white;
+            width: 1rem;
         }
     }
 
