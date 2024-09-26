@@ -8,7 +8,7 @@
                     <p-tabPanel *ngFor="let category of newsCategories" [header]="category?.name">
                         <div class="grid">
                             <div class="sm:col-12 md:col-6 big-card-container" *ngIf="bigCardNews?.length">
-                                <div class="big-card" *ngFor="let card of bigCardNews"
+                                <a class="big-card" *ngFor="let card of bigCardNews"
                                 routerLink="/news/details/{{card?.slug}}">
                                     <p-card [header]="card?.title | textSlice : 'title'">
                                         <ng-template pTemplate="header">
@@ -27,10 +27,10 @@
                                     <span class="news-badge desktop">
                                         {{card?.category_title}}
                                     </span>
-                                </div>
+                                </a>
                             </div>
                             <div class="sm:col-12 md:col-6 small-cards-container" *ngIf="smallCardsNews?.length">
-                                <div class="small-card" *ngFor="let card of smallCardsNews"
+                                <a class="small-card" *ngFor="let card of smallCardsNews"
                                 routerLink="/news/details/{{card?.slug}}">
                                     <p-card [header]="card?.title | textSlice : 'title'">
                                         <ng-template pTemplate="header">
@@ -47,7 +47,7 @@
     
                                         </ng-template>
                                     </p-card>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </p-tabPanel>
@@ -56,7 +56,7 @@
             <ng-container *ngIf="searchMode">
                 <div class="grid">
                     <div class="sm:col-12 md:col-6 big-card-container" *ngIf="bigCardNews?.length">
-                        <div class="big-card" *ngFor="let card of bigCardNews" routerLink="/news/details/{{card?.slug}}">
+                        <a class="big-card" *ngFor="let card of bigCardNews" routerLink="/news/details/{{card?.slug}}">
                             <p-card [header]="card?.title | textSlice : 'title'" >
                                 <ng-template pTemplate="header">
                                     <img alt="Card" [src]="card?.image" />
@@ -74,10 +74,10 @@
                             <span class="news-badge desktop">
                                 {{card?.category_title}}
                             </span>
-                        </div>
+                        </a>
                     </div>
                     <div class="sm:col-12 md:col-6 small-cards-container" *ngIf="smallCardsNews?.length">
-                        <div class="small-card" *ngFor="let card of smallCardsNews"  routerLink="/news/details/{{card?.slug}}">
+                        <a class="small-card" *ngFor="let card of smallCardsNews"  routerLink="/news/details/{{card?.slug}}">
                             <p-card [header]="card?.title | textSlice : 'title'">
                                 <ng-template pTemplate="header">
                                     <img alt="Card" [src]="card?.image" />
@@ -93,9 +93,12 @@
 
                                 </ng-template>
                             </p-card>
-                        </div>
+                        </a>
                     </div>
                 </div>
+            </ng-container>
+            <ng-container *ngFor="let schema of schemaList">
+                <ngx-json-ld [json]="schema"></ngx-json-ld>
             </ng-container>
             <div class="load-more" *ngIf="(paginationData?.total! > newsData?.length!) &&!loading">
                 <p-button label="More..." (click)="loadMore()" />

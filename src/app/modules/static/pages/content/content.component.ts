@@ -38,6 +38,7 @@ export class ContentComponent implements OnInit, OnDestroy {
       if (params['slug']) {
         this.pageSlug = params['slug'];
         this.pageContent = {};
+        this.breadcrumbItems = []
         this.getPageContent();
       }
     })

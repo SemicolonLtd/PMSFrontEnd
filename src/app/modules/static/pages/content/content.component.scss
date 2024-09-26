@@ -24,4 +24,15 @@
         padding-block: 2rem;
         padding-inline: 5%;
     }
+    @media (max-width: 992px) {
+        // padding-inline: 2rem;
+        margin-top: 7rem;
+    }
+
+}
+
+::ng-deep {
+    .content p img {
+        width: 100% 
+    }
 }

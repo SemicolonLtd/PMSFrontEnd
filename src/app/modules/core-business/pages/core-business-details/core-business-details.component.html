@@ -1,11 +1,11 @@
 <div class="project-details margin-avoid-navbar">
-    <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
     <div class="pms-container">
+        <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
         <div class="project-info" *ngIf="businessData?.title && !loading">
             <div class="grid">
                 <div class="col-12">
-                    <div class="head-wrapper flex align-items-center justify-content-between">
-                        <h2 class="project-title">{{ businessData?.title }}</h2>
+                    <div class="head-wrapper flex align-items-center justify-content-end">
+                        <!-- <h2 class="project-title">{{ businessData?.title }}</h2> -->
                         <div class="share_details">
                             <span class="txt">
                                 {{ 'General.Share' | translate }}
@@ -66,7 +66,7 @@
                 </ng-template>
             </p-carousel> -->
             <div class="grid">
-                <div class="xl:col-3 lg:col-4 md:col-6 sm:col-12" *ngFor="let project of businessProjectsData">
+                <div class="xl:col-3 lg:col-4 md:col-6 sm:col-12 mb-3" *ngFor="let project of businessProjectsData">
                     <app-project-card [projectData]="project"></app-project-card>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, UrlSerializer } from '@angular/router';
+import { LanguageUrlSerializer } from './core/services/language-url-serializer';
 
 const routes: Routes = [
   {path: '', loadChildren: ()=> import('./modules/home/home.module').then((m)=> m.HomeModule)},
@@ -20,6 +21,9 @@ const routes: Routes = [
     initialNavigation: 'enabledBlocking',
     scrollPositionRestoration: 'enabled',
 })],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  // providers: [
+  //   { provide: UrlSerializer, useClass: LanguageUrlSerializer }
+  // ],
 })
 export class AppRoutingModule { }

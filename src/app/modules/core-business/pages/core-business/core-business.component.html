@@ -11,12 +11,12 @@
                                 <p-accordion [activeIndex]="0">
                                     <p-accordionTab *ngFor="let tab of core.business" [header]="tab.title">
                                         <div [innerHTML]="tab.desc"></div>
-                                        <div class="action flex align-items-center justify-content-end cursor-pointer" [routerLink]="'/core-business/details/' + tab.slug">
+                                        <a class="action flex align-items-center justify-content-end cursor-pointer" [routerLink]="'/core-business/details/' + tab.slug">
                                             <span class="text">
                                                 {{ 'General.ReadMore' | translate}} 
                                             </span>
                                             <i class="pi pi-angle-double-right"></i>
-                                        </div>
+                                        </a>
                                     </p-accordionTab>
                                 </p-accordion>
                             </div>
@@ -43,12 +43,12 @@
                                 <p-accordion [activeIndex]="0">
                                     <p-accordionTab *ngFor="let tab of core.business" [header]="tab.title">
                                         <div [innerHTML]="tab.desc"></div>
-                                        <div class="action flex align-items-center justify-content-end cursor-pointer" [routerLink]="'/core-business/details/' + tab.slug">
+                                        <a class="action flex align-items-center justify-content-end cursor-pointer" [routerLink]="'/core-business/details/' + tab.slug">
                                             <span class="text">
                                                 {{ 'General.ReadMore' | translate}} 
                                             </span>
                                             <i class="pi pi-angle-double-right"></i>
-                                        </div>
+                                        </a>
                                     </p-accordionTab>
                                 </p-accordion>
                             </div>

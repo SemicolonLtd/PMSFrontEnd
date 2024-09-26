@@ -106,7 +106,8 @@
 
     }
     .wave-bottom {
-      width: 65rem;
+      // width: 65rem;
+      width: 100%;
       position: absolute;
       left: 0;
       bottom: 0;
@@ -152,19 +153,74 @@
             background-color: #00000098;
             color: white;
             .p-button.p-button-icon-only.p-button-rounded {
-                border-radius: 50% !important;
-                background-color: var(--primary-color-medium);
-                border-color: var(--primary-color-medium);
-                margin-top: 2rem;
-                transition: 0.4s all ease;
-                color: #fff;
-                &:hover {
-                    transform: scale(1.1, 1.1);
+              border-radius: 50% !important;
+              background-color: var(--primary-color-medium);
+              border-color: var(--primary-color-medium);
+              margin-top: 2rem;
+              transition: 0.4s all ease;
+              position: relative;  // Ensure the button has position: relative
+              color: #fff;
+              overflow: hidden; // Ensure pseudo-elements are not cut off
+            
+              // Create the bubble elements
+              &::before,
+              &::after {
+                content: '';
+                position: absolute;
+                border-radius: 50%;
+                background-color: white;
+                opacity: 0;
+                pointer-events: none;
+                visibility: visible;
+                z-index: 9999; // Increase the z-index to make sure it's on top
+              }
+            
+              &::before {
+                width: 40px; // Increased size for visibility
+                height: 40px;
+                top: 10px; // Adjusted top position
+                left: -10px;
+              }
+            
+              &::after {
+                width: 25px; // Increased size for visibility
+                height: 25px;
+                top: 17px; // Adjusted top position
+                right: 0px;
+                animation-delay: 3s;
+                clip: unset;
+              }
+            
+              &:hover {
+                background-color: #0056b3;
+                &::before, &::after {
+                  animation: bubble-animation 2s ease-in-out infinite;
+                  opacity: 0.7; // Make bubbles visible on hover
                 }
-                @media (max-width: 768px) { 
-                  margin-top: 0;
+              }
+            
+              // Keyframes for bubble animation
+              @keyframes bubble-animation {
+                0% {
+                  transform: translateY(0) scale(0.5);
+                  opacity: 0.7;
                 }
+                50% {
+                  transform: translateY(-20px) scale(1);
+                  opacity: 0.5;
+                }
+                100% {
+                  transform: translateY(-40px) scale(0.8);
+                  opacity: 0;
+                }
+              }
+            
+              @media (max-width: 768px) {
+                margin-top: 0;
+              }
             }
+            
+            
         }
     }
 }

@@ -2,7 +2,7 @@
     <div class="img-wrapper">
         <img class="w-full rounded-3" [src]="projectData.image" alt="Project Image">
     </div>
-    <div class="content flex align-items-center justify-content-between mt-3">
+    <div class="content flex justify-content-between mt-3">
         <div class="info">
             <h5 class="title">
                 {{projectData.title | textSlice : 'desc'}}
@@ -11,8 +11,8 @@
                 {{projectData.date}}
             </span>
         </div>
-        <div class="details-btn">
-            <p-button icon="pi pi-angle-right" [rounded]="true" severity="secondary" [routerLink]="'/projects/details/'+ projectData.slug "  />
-        </div>
+        <a class="details-btn" [routerLink]="'/projects/details/'+ projectData.slug ">
+            <p-button icon="pi pi-angle-right" [rounded]="true" severity="secondary"  />
+        </a>
     </div>
 </div>

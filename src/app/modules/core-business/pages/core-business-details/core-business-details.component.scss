@@ -8,6 +8,9 @@
             height: auto;
             margin: 10px; // optional
             shape-outside: triangle(50%);
+            @media (max-width: 768px) {
+                width: 100%;
+            }
         }
         .text {
             margin-left: 0;

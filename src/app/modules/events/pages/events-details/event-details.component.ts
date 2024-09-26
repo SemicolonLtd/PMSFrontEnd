@@ -59,6 +59,7 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
     this.route.params.subscribe((params: any) => {
       if(params['slug']) {
         this.slug = params['slug'];
+        this.breadcrumbItems = []
         this.getEventDetails();
       } else {
         this.router.navigateByUrl('/events');
@@ -74,12 +75,17 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
           if(res?.status == 200) {
             this.eventData = res?.data;
             this.eventData.media = [
-              ...this.eventData.media,
-              {
-                image: this.eventData.image
-              }
+              ...this.eventData.media
+              // {
+              //   image: this.eventData.image
+              // }
             ];
-            this.breadcrumbItems.push({
+            this.breadcrumbItems.push(
+              {
+                name: this.eventData?.menu,
+                link: '/events/'
+              },
+              {
               name: this.eventData?.title,
               link: '/events/details/' + this.eventData?.slug
             })

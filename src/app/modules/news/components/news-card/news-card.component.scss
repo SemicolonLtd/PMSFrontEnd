@@ -6,6 +6,8 @@
         z-index: 2;
         overflow: hidden;
         cursor: pointer;
+        border-radius: 6px;
+        box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2509803922);
         img {
             min-height: 15.7rem;
             max-height: 15.7rem;
@@ -41,6 +43,7 @@
             margin-bottom: 2rem;
             .p-card {
                 overflow: hidden;
+                box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2509803922);
                 .p-card-body {
                     min-height: 200px;
                     position: relative;
