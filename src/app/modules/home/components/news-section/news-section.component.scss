@@ -5,15 +5,18 @@
     .big-card-container ,
     .small-cards-container {
         min-height: 660px;
-        max-height: 660px;
+        // max-height: 660px;
     }
     .big-card {
         min-height: 660px;
-        max-height: 660px;
+        // max-height: 660px;
         position: relative;
         z-index: 2;
         overflow: hidden;
         cursor: pointer;
+        margin-bottom: 1em;
+        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+        border-radius: 6px;
         img {
             min-height: 400px;
             max-height: 400px;
@@ -32,6 +35,7 @@
         }
     }
     .small-card {
+        display: block;
         min-height: calc(220px - (32px / 3));
         max-height: calc(220px - (32px / 3));
         cursor: pointer;
@@ -76,7 +80,38 @@
         .news-header {
             .header-desc {
                 display: none;
+            }
+        }
+    }
+}
 
+.news-header {
+    .btn {
+        position: relative;
+        border: none;
+        background: none;
+        transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition-duration: 400ms;
+        transition-property: color;
+        &::after {
+            content: "";
+            pointer-events: none;
+            bottom: -2px;
+            left: 50%;
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            background-color:var(--secondary-color);
+            transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition-duration: 400ms;
+            transition-property: all;
+        }
+        &:hover, &:focus {
+            color: var(--secondary-color);
+            transform: scale(1.1);
+            &::after {
+                width: 100%;
+                left: 0%;
             }
         }
     }
@@ -85,16 +120,38 @@
 ::ng-deep {
     .our-news-section {
         .news-data {
+            .p-card-body {
+                position: relative;
+                .p-card-footer {
+                    position: absolute;
+                    bottom: 7%;
+                    font-weight: 600;
+                    @media (max-width: 380px) {
+                        display: none;
+                    }
+                }
+            }
+            .p-component {
+                font-family: 'main-font';
+                &:lang(ar) {
+                    font-family: 'ar-main-font';
+                }
+            }
             .p-tabview .p-tabview-nav {
                 background: transparent;
                 border: none;
                 border-width: 0 0 2px 0;
-            }
-            .p-tabview .p-tabview-nav  {
                 padding-left:0;
+                @media(max-width: 768px) {
+                    display: flex;
+                    overflow-x: scroll;
+                    overflow-y: hidden;
+                }
             }
             .p-tabview .p-tabview-nav li .p-tabview-nav-link {
                 background: transparent;
+            font-weight: 300;
+
             }
             .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
                 border-color: var(--secondary-color);
@@ -109,14 +166,21 @@
             }
             .big-card {
                 &:hover {
-                    .p-card .p-card-body {
-                        background-color: var(--primary-color-medium);
-                        * {
-                            color: white;
+                    // .p-card .p-card-body {
+                    //     background-color: var(--primary-color-medium);
+                    //     * {
+                    //         color: white;
+                    //     }
+                    // }
+                    // .news-badge {
+                    //     color: var(--primary-color-medium) !important;
+                    // }
+                    .p-card-header {
+                        overflow: hidden;
+                        img {
+                            transition: 0.5s all ease-in-out;
+                            transform: scale(1.1) rotate(-1deg);
                         }
-                    }
-                    .news-badge {
-                        color: var(--primary-color-medium) !important;
                     }
                 }
                 .p-card .p-card-body {
@@ -134,11 +198,11 @@
                         display: flex;
                         flex-direction: row-reverse;
                     }
-                    .p-card-content {
-                        p {
-                            font-size: 0.8rem;
-                        }
-                    }
+                    // .p-card-content {
+                    //     p {
+                    //         font-size: 0.8rem;
+                    //     }
+                    // }
                     .p-card-header {
                         min-width: 30%;
                         max-width: 30%;
@@ -156,14 +220,21 @@
             }
             .small-card {
                 &:hover {
-                    .p-card .p-card-body {
-                        background-color: var(--primary-color-medium);
-                        * {
-                            color: white;
+                    // .p-card .p-card-body {
+                    //     background-color: var(--primary-color-medium);
+                    //     * {
+                    //         color: white;
+                    //     }
+                    // }
+                    // .news-badge {
+                    //     color: var(--primary-color-medium) !important;
+                    // }
+                    .p-card-header {
+                        overflow: hidden;
+                        img {
+                            transition: 0.5s all ease-in-out;
+                            transform: scale(1.1) rotate(-1deg);
                         }
-                    }
-                    .news-badge {
-                        color: var(--primary-color-medium) !important;
                     }
                 }
                 &:nth-of-type(2) {
@@ -185,11 +256,11 @@
                     max-height: calc(220px - (32px / 3));
                     transition: 0.3s all ease;
                 }
-                .p-card-content {
-                    p {
-                        font-size: 0.8rem;
-                    }
-                }
+                // .p-card-content {
+                //     p {
+                //         font-size: 0.8rem;
+                //     }
+                // }
                 .p-card-header {
                     min-width: 30%;
                     max-width: 30%;

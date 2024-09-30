@@ -1,0 +1,98 @@
+<div class="contact-us margin-avoid-navbar">
+        <app-center-bar [Title]="barTitle" [Desc]="'Good people delivering an honest value'"></app-center-bar>
+        <!-- <iframe 
+            width="100%"
+            
+            frameborder="0" 
+            scrolling="no" 
+            marginheight="0" 
+            marginwidth="0" 
+            [src]="mapUrl"> 
+      </iframe> -->
+      <ng-container *ngIf="settingsData">
+          <app-map [settingsData]="settingsData"></app-map>
+      </ng-container>
+      <div class="pms-container pb-5" itemscope itemtype="https://schema.org/ContactPage">
+            <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
+            <div class="contact-card-wrapper" itemprop="mainContentOfPage">
+                <div class="grid justify-content-between">
+                    <div class="contact-info-wrapper md:col-5 sm:col-12" itemscope itemtype="https://schema.org/ContactPoint">
+                            <h4 class="title">{{'Contact.ContactInformation' | translate}}</h4>
+                            <span class="sub-title mb-5 block">{{'Contact.Desc' | translate}}</span>
+                            <div class="info-wrapper mb-4" *ngIf="settingsData?.phone">
+                                <i class="pi pi-phone"></i>
+                                <span class="text" itemprop="telephone">{{ settingsData?.phone}}</span>
+                            </div>
+                            <div class="info-wrapper mb-4" *ngIf="settingsData?.mail">
+                                <i class="pi pi-envelope"></i>
+                                <span class="text" itemprop="email"> {{ settingsData?.mail}}</span>
+                            </div>
+                            <div class="info-wrapper mb-4" *ngIf="settingsData?.address">
+                                <i class="pi pi-map-marker"></i>
+                                <span class="text" itemprop="workLocation">{{ settingsData?.address }}</span>
+                            </div>
+                            <div class="social-icons">
+                                <a class="icon-wrapper" *ngIf="socialMediaData?.facebook"
+                                [href]="socialMediaData?.facebook" target="_blank">
+                                    <i class="pi pi-facebook"></i>
+                                </a>
+                                <a class="icon-wrapper" *ngIf="socialMediaData?.x"
+                                [href]="socialMediaData?.x" target="_blank">
+                                    <i class="pi pi-twitter"></i>
+                                </a>
+                                <a class="icon-wrapper" *ngIf="socialMediaData?.insta"
+                                [href]="socialMediaData?.insta" target="_blank">
+                                    <i class="pi pi-instagram"></i>
+                                </a>
+                                <a class="icon-wrapper" *ngIf="socialMediaData?.youtube"
+                                [href]="socialMediaData?.youtube" target="_blank">
+                                    <i class="pi pi-youtube"></i>
+                                </a>
+                                <a class="icon-wrapper" *ngIf="socialMediaData?.linkedin"
+                                [href]="socialMediaData?.linkedin" target="_blank">
+                                    <i class="pi pi-linkedin"></i>
+                                </a>
+                            </div>
+                        <img class="bottom-img" src="assets/images/global/contact-us-info.svg" alt="">
+                    </div>
+                    <div class="contact-form-wrapper md:col-6 sm:col-12">
+                        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                            <span class="p-float-label mb-5">
+                                <input pInputText id="username" formControlName="name" />
+                                <label htmlFor="username">{{'Contact.Username' | translate}}</label>
+                            </span>
+                            <span class="p-float-label mb-5">
+                                <input pInputText id="email" formControlName="email" />
+                                <label htmlFor="email">{{'Contact.Email' | translate}}</label>
+                            </span>
+                            <span class="p-float-label mb-5">
+                                <input pInputText id="title" formControlName="title" />
+                                <label htmlFor="title">{{'Contact.Title' | translate}}</label>
+                            </span>
+                            <span class="p-float-label mb-5">
+                                <textarea 
+                                    id="float-input" 
+                                    rows="5" cols="30" 
+                                    formControlName="desc"
+                                    pInputTextarea>
+                                </textarea>
+                                <label htmlFor="desc">{{'Contact.Message' | translate}}</label>
+                            </span>
+                            <div class="search-btn">
+                                <p-button 
+                                    type="submit"
+                                    label="{{'Contact.SendMessage' | translate}}" 
+                                    icon="pi pi-arrow-right"
+                                    class="w-full"
+                                    [loading]="loading"
+                                    
+                                />
+                                <p-toast />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+      </div>
+
+</div>

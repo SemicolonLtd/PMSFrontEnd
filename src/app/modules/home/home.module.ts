@@ -10,7 +10,10 @@ import { RouterModule } from '@angular/router';
 import { NewsSectionComponent } from './components/news-section/news-section.component';
 import { TabViewModule } from 'primeng/tabview';
 import { CardModule } from 'primeng/card';
-
+import { CountUpModule } from 'ngx-countup';
+import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from "../../shared/shared.module";
+import { EmptyStateComponent } from "../../shared/components/empty-state/empty-state.component";
 
 
 @NgModule({
@@ -22,12 +25,16 @@ import { CardModule } from 'primeng/card';
     NewsSectionComponent
   ],
   imports: [
-  CommonModule,
+    CommonModule,
     HomeRoutingModule,
     ButtonModule,
     RouterModule,
     TabViewModule,
-    CardModule
-  ]
+    CardModule,
+    CountUpModule,
+    TranslateModule,
+    SharedModule,
+    EmptyStateComponent
+]
 })
 export class HomeModule { }

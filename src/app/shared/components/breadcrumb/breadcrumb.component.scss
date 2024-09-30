@@ -1,0 +1,26 @@
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: .5em;
+    i {
+        color: steelblue;
+        align-items: baseline;
+    }
+    a {
+        color: steelblue;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: baseline;
+        .text {
+            margin-inline-start: .5em;
+        }
+        i {
+            margin-inline-start: .5em;
+        }
+    }
+    .last-item {
+        color: var(--primary-color);
+        font-size: 1.1rem;
+    }
+}

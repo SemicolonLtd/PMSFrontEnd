@@ -1,0 +1,52 @@
+.core-business {
+    position: relative;
+
+}
+.core-img {
+    img {
+        aspect-ratio: 10 / 11;
+        object-fit: fill;
+    }
+}
+
+.action {
+    color: var(--primary-color-medium);
+    .text {
+        margin-inline-end: 0.5rem;
+    }
+    i {
+        transition: 0.4s all ease;
+    }
+    &:hover {
+        color: var(--secondary-color);
+        i {
+            font-weight: 900;
+            transform: translateX(5px);
+        }
+    }
+    &:lang(ar) {
+        i {
+            transform: rotate(180deg)
+        }
+        &:hover {
+            i {
+                transform: rotate(180deg) translateX(5px);
+            }
+        }
+    }
+}
+
+::ng-deep {
+    .core-business {
+        .core-data {
+            .p-accordion .p-accordion-header .p-accordion-header-link {
+                border: unset;
+                border-bottom: 1px solid var(--primary-color-medium);
+                border-radius: 0;
+                background-color: white;
+                color: var(--primary-color-medium);;
+            }
+        }
+    }
+    
+}

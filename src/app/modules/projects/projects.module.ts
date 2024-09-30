@@ -7,11 +7,20 @@ import {SharedModule } from "../../shared/shared.module";
 import { ButtonModule } from 'primeng/button';
 
 import { SelectButtonModule } from 'primeng/selectbutton';
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
+import { GalleriaModule } from 'primeng/galleria';
+import { CarouselModule } from 'primeng/carousel';
+import { TranslateModule } from '@ngx-translate/core';
+import { EmptyStateComponent } from "../../shared/components/empty-state/empty-state.component";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ImageModule } from 'primeng/image';
+
 
 @NgModule({
   declarations: [
-    ProjectsComponent
+    ProjectsComponent,
+    ProjectDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +28,14 @@ import { FormsModule } from '@angular/forms';
     ProjectsRoutingModule,
     ButtonModule,
     SelectButtonModule,
-    FormsModule
+    FormsModule,
+    GalleriaModule,
+    CarouselModule,
+    TranslateModule,
+    EmptyStateComponent,
+    FontAwesomeModule,
+    ShareButtonsModule,
+    ImageModule
 ]
 })
 export class ProjectsModule { }

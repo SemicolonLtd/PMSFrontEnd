@@ -1,0 +1,18 @@
+.img-wrapper {
+    img {
+        height: 276px;
+        width: 100%;
+    }
+}
+::ng-deep {
+    .project-card {
+        .p-button.p-button-icon-only.p-button-rounded {
+            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2509803922); 
+            transition: 0.4s all ease;
+            &:hover {
+                color: white;
+                background: linear-gradient(45deg,var(--primary-color-medium),var(--primary-color-light));
+            }
+        }
+    }
+}

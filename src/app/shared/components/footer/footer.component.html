@@ -6,24 +6,32 @@
                     <div class="logo-wrapper">
                         <a routerLink="/" class="flex align-items-center">
                             <img class="logo-img" src="assets/images/global/footer-logo.svg" alt="">
-                            <h1 class="logo-txt">Petroleum Marine Services Co.</h1>
+                            <h1 class="logo-txt">{{'Footer.PMS' | translate}}</h1>
                         </a>
                     </div>
                 </div>
                 <div class="lg:col-3 md:col-6 sm:col-12">
                     <div class="social-wrapper">
-                        <div class="social-item">
+                        <a class="social-item" *ngIf="socialMediaData?.facebook"
+                        [href]="socialMediaData?.facebook" target="_blank">
                             <i class="pi pi-facebook"></i>
-                        </div>
-                        <div class="social-item">
+                        </a>
+                        <a class="social-item" *ngIf="socialMediaData?.x"
+                        [href]="socialMediaData?.x" target="_blank">
                             <i class="pi pi-twitter"></i>
-                        </div>
-                        <div class="social-item">
+                        </a>
+                        <a class="social-item" *ngIf="socialMediaData?.youtube"
+                        [href]="socialMediaData?.youtube" target="_blank">
+                            <i class="pi pi-youtube"></i>
+                        </a>
+                        <a class="social-item" *ngIf="socialMediaData?.linkedin"
+                        [href]="socialMediaData?.linkedin" target="_blank">
                             <i class="pi pi-linkedin"></i>
-                        </div>
-                        <div class="social-item">
+                        </a>
+                        <a class="social-item" *ngIf="socialMediaData?.insta"
+                        [href]="socialMediaData?.insta" target="_blank">
                             <i class="pi pi-instagram"></i>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -35,50 +43,49 @@
                 </div>
                 <div class="lg:col-3 md:col-12 sm:col-12">
                     <li class="text-3xl font-medium mb-3">
-                        Policies
+                        {{'Footer.Policies' | translate}}
                     </li>
-                    <li class="mb-2">Terms and conditions</li>
-                    <li class="mb-2">Privacy Policy</li>
-                    <li class="mb-2">Info Reserved Area</li>
-                    <li class="mb-2">Contact Us</li>
+                    <li class="mb-2" (click)="openStaticPage('terms-and-conditions')">{{'Footer.TermsAndConditions' | translate}}</li>
+                    <li class="mb-2" (click)="openStaticPage('privacy-policy')">{{'Footer.PrivacyPolicy' | translate}}</li>
+                    <li class="mb-2" routerLink="/contact-us">{{'Footer.ContactUs' | translate}}</li>
                 </div>
                 <div class="lg:col-3 md:col-12 sm:col-12">
                     <li class="text-3xl font-medium mb-3">
-                        Keep in Touch
+                        {{'Footer.KeepInTouch' | translate}}
                     </li>
                     <li class="mb-2">
                         <span class="title">
-                            Address: 
+                            {{'Footer.KeepInTouch' | translate}} :
                         </span>
-                        <span class="txt">
-                            Nasr City It addresses everyone recounting in a transparent way
-                        </span>
-                    </li>
-                    <li class="mb-2">
-                        <span class="title">
-                            Mail : 
-                        </span>
-                        <span class="txt">
-                            PMS-pms.com
+                        <span class="txt" *ngIf="settingsData?.address">
+                            {{ settingsData?.address}}
                         </span>
                     </li>
-                    <li class="mb-2">
+                    <li class="mb-2" *ngIf="settingsData?.mail" >
                         <span class="title">
-                            Phone :
+                            {{'Footer.Email' | translate}} :
                         </span>
                         <span class="txt">
-                            (+20) 123 - 4567 - 900
+                            {{ settingsData?.mail}}
+                        </span>
+                    </li>
+                    <li class="mb-2" *ngIf="settingsData?.phone">
+                        <span class="title">
+                            {{'Footer.Phone' | translate}} :
+                        </span>
+                        <span class="txt">
+                            {{ settingsData?.phone}}
                         </span>
                     </li>
                 </div>
                 <div class="lg:col-3 md:col-12 sm:col-12">
                     <li class="text-3xl font-medium mb-3">
-                        Other Links
+                        {{'Footer.OtherLinks' | translate}}
                     </li>
-                    <li class="mb-2">FAQ</li>
-                    <li class="mb-2">Vision</li>
-                    <li class="mb-2">Mission</li>
-                    <li class="mb-2">About Us</li>
+                    <li class="mb-2" routerLink="/faq">{{'Footer.FAQ' | translate}}</li>
+                    <li class="mb-2" (click)="openStaticPage('vision')">{{'Footer.Vision' | translate}}</li>
+                    <li class="mb-2" (click)="openStaticPage('mission')">{{'Footer.Mission' | translate}}</li>
+                    <li class="mb-2" (click)="openStaticPage('company-profile')">{{'Footer.AboutUs' | translate}}</li>
                 </div>
             </div>
         </div>
@@ -86,6 +93,6 @@
 </footer>
 <div class="footer-bottom flex align-items-center justify-content-center ">
     <span class="txt">
-        Copyright 2010 - 2024 PMS.com
+        {{'Footer.Copyright' | translate}}
     </span>
 </div>

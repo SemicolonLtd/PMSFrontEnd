@@ -1,0 +1,43 @@
+<a class="event-card border-round-3xl" [routerLink]="'/events/details/'+ eventData.slug">
+    <div class="img-wrapper">
+        <img class="w-full border-round-3xl" [src]="eventData.image" alt="Project Image">
+    </div>
+    <div class="content">
+        <div class="data">
+            <div class="info">
+                <h5 class="title">
+                    {{eventData.title | textSlice : 'title'}}
+                </h5>
+                <div class="short-desc">
+                    {{eventData.pref | textSlice : 'desc'}}
+                </div>
+                <div class="dates flex align-items-center justify-content-between mt-2">
+                    <div class="start-date">
+                        <span class="label font-semibold">
+                            {{'Events.StartDate' | translate}}:
+                        </span>
+                        <span class="date">
+                            {{eventData.date}}
+                        </span>
+                    </div>
+                    <div class="end-date">
+                        <span class="label font-semibold">
+                            {{'Events.EndDate' | translate}}:
+                        </span>
+                        <span class="date">
+                            {{eventData.end_date}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="actions">
+            <span class="date">
+                {{eventData.date | relativeTime}}
+            </span>
+            <!-- <div class="details-btn">
+                <p-button icon="pi pi-share-alt" [rounded]="true" severity="secondary"/>
+            </div> -->
+        </div>
+    </div>
+</a>

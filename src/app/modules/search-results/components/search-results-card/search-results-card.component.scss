@@ -1,0 +1,13 @@
+.results-card {
+    cursor: pointer;
+}
+
+::ng-deep {
+    .results-card {
+        .p-card-header {
+            img {
+                height: 18.5rem;
+            }
+        }
+    }
+}

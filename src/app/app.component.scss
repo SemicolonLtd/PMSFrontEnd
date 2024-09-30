@@ -7,13 +7,24 @@
     animation: zoom-in-zoom-out 1s ease ;
 }
 
+.load-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 120px); /* Adjust based on your navbar and footer height */
+  margin-top: 60px; /* Height of your navbar */
+  margin-bottom: 60px; /* Height of your footer */
+}
+
 ::ng-deep {
     .scroll-btn {
         button {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius:20px;
-            width: 6rem;
-            height: 6rem;
+            width: 4rem;
+            height: 4rem;
             color: var(--primary-color-medium);
             background-color: white;
             box-shadow: 0px 0px 15px 4px #00000040;
@@ -23,7 +34,6 @@
         .p-button-icon {
             display: block;
             font-size: 1.4rem;
-            margin-bottom: 0.5rem;
         }
     }
 }

@@ -1,0 +1,86 @@
+.event-card {
+    background-color: #EBF3F5;
+    box-shadow: 0px 2px 14px 0px #2A2A2A3D;
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+    cursor: pointer;
+    transition: 0.4s all ease;
+    color: #000;
+    display: block;
+    &:hover {
+        .img-wrapper {
+            transform: translateY(-10px);
+        }
+    }
+    .img-wrapper {
+        min-height: 15.625rem;
+        max-height: 15.625rem;
+    transition: 0.4s all ease;
+
+        img {
+            min-height: 15.625rem;
+            max-height: 15.625rem;
+        }
+    }
+    .content {
+        padding:1.3rem;
+        // min-height: 250px;
+        // min-height: 16rem;
+        .actions {
+            min-height: 18px;
+        }
+        .title {
+            min-height: 48px; 
+        }
+        .dates{
+            min-height: 42px;
+        }
+        .short-desc {
+            min-height: 63px;
+            @media (max-width: 1440px) {
+                min-height: 42px;
+            }
+        }
+        .dates {
+            .label {
+                @media (max-width:400px) {
+                    display: block;
+                }
+            }
+        }
+    }
+    @media(max-width: 1200px) {
+        .img-wrapper {
+            min-height: 16rem;
+            max-height: 16rem;
+            img {
+                min-height: 16rem;
+                max-height: 16rem;
+            }
+        }
+    }
+    @media(max-width: 768px) {
+        margin-bottom: 2rem;
+        .content {
+            min-height: 180px;
+        }
+    }
+}
+
+.info {
+    .short-desc {
+        color: #2A2A2A96;
+    }
+}
+
+::ng-deep {
+    .content {
+        position: relative;
+        // .actions {
+        //     position: absolute;
+        //     bottom: 5%;
+        //     left: 5%;
+        //     width: 90%;
+        // }
+    }
+}

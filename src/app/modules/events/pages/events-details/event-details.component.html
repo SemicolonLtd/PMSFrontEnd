@@ -1,0 +1,101 @@
+<div class="event-details margin-avoid-navbar">
+    <div class="pms-container">
+        <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
+        <div class="event-info" *ngIf="eventData && !loading">
+            <div class="grid">
+                <div class="col-12">
+                    <div class="head-wrapper flex align-items-center justify-content-end">
+                        <!-- <h2 class="project-title">{{ eventData?.title }}</h2> -->
+                        <div class="share_details">
+                            <span class="txt">
+                                {{ 'General.Share' | translate }}
+                            </span>
+                            <!-- (opened)="onLinkOpened($event)" -->
+                            <button class="share_link" shareButton="facebook" 
+                            [url]="websiteUrl + '/events/details/' + eventData?.slug"
+                            [title]="eventData.title"
+                            [image]="eventData.image"
+                            [description]="eventData.short"
+                            >
+                                <img src="assets/images/global/facebook.svg" alt="">
+                            </button>
+                            <button class="share_link" shareButton="twitter"
+                            [url]="websiteUrl + '/events/details/' + eventData?.slug"
+                            [title]="eventData.title"
+                            [image]="eventData.image"
+                            [description]="eventData.short">
+                                <img src="assets/images/global/twitter.svg" alt="">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-6 md:col-12">
+                    <div class="content-wrapper col-12">
+                        <div class="images">
+                            <div class="project-images">
+                                <p-galleria [value]="eventData?.media" [responsiveOptions]="responsiveOptions"
+                                    [numVisible]="5">
+                                    <ng-template pTemplate="item" let-item>
+                                        <p-image [preview]="true" [src]="item.image" />
+                                    </ng-template>
+                                    <ng-template pTemplate="thumbnail" let-item>
+                                        <div class="grid grid-nogutter justify-content-center">
+                                            <img [src]="item.image" style="width: 100%;" />
+                                        </div>
+                                    </ng-template>
+                                </p-galleria>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-6 md:col-12">
+                    <div class="row info">
+                        <div class="col-6" *ngIf="eventData?.date">
+                            <div class="info-wrapper flex align-items-center">
+                                <div class="img-with-title">
+                                    <img src="assets/images/global/date-icon.svg" alt="">
+                                    <span class="label text-gray-900"> {{'Projects.StartDate' | translate}} : </span>
+                                </div>
+                                <span class="data">{{ eventData?.date }}</span>
+                            </div>
+                        </div>
+                        <div class="col-6" *ngIf="eventData?.end_date">
+                            <div class="info-wrapper flex align-items-center">
+                                <div class="img-with-title">
+                                    <img src="assets/images/global/date-icon.svg" alt="">
+                                    <span class="label text-gray-900"> {{'Projects.EndDate' | translate}} : </span>
+                                </div>
+                                <span class="data">{{ eventData?.end_date }}</span>
+                            </div>
+                        </div>
+                        <div class="col-6" *ngIf="eventData?.address">
+                            <div class="info-wrapper flex align-items-center">
+                                <div class="img-with-title">
+                                    <img src="assets/images/global/location-icon.svg" alt="">
+                                    <span class="label text-gray-900"> {{'Projects.Location' | translate}} : </span>
+                                </div>
+                                <span class="data">{{ eventData?.address }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="text" [innerHTML]="eventData?.desc">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <app-loading type="small" *ngIf="loading"></app-loading>
+        <div class="similar-events mt-5" *ngIf="similarEventsData?.length && !similarEventsLoading">
+            <span class="title block font-bold text-2xl pb-2 mb-4">
+                {{'SimilarTitles.SimilarEvents' | translate}}
+            </span>
+            <div class="grid">
+                <div class="xl:col-3 lg:col-4 md:col-6 sm:col-12" *ngFor="let event of similarEventsData">
+                    <app-event-card [eventData]="event"></app-event-card>
+                </div>
+            </div>
+        </div>
+        <app-loading type="small" *ngIf="similarEventsLoading"></app-loading>
+    </div>
+</div>

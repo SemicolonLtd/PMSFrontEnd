@@ -1,0 +1,26 @@
+<div class="results-card" (click)="onClick()">
+    <p-card [header]="card?.title | textSlice : 'title'">
+        <ng-template pTemplate="header">
+            <img alt="Card" [src]="card?.image" />
+        </ng-template>
+        <span class="news-badge">
+            {{card?.category_title}}
+        </span>
+        <ng-container *ngIf="card.short">
+            <p [innerHTML]="card?.short | textSlice : 'desc'">
+            </p>
+        </ng-container>
+        <ng-container *ngIf="card.pref">
+            <p [innerHTML]="card?.pref | textSlice : 'desc'">
+            </p>
+        </ng-container>
+        <ng-container *ngIf="card.body">
+            <p [innerHTML]="card?.body | textSlice : 'desc'">
+            </p>
+        </ng-container>
+            <!-- {{card.description | slice: 0: 30}} -->
+        <ng-template pTemplate="footer">
+            <span>{{card?.date}}</span>
+        </ng-template>
+    </p-card>
+</div>

@@ -13,6 +13,22 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SearchComponent } from './components/search/search.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { CenterBarComponent } from './components/center-bar/center-bar.component';
+import { RouterModule } from '@angular/router';
+import { ProjectCardComponent } from './components/project-card/project-card.component';
+import { EventCardComponent } from './components/event-card/event-card.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { LottieModule } from 'ngx-lottie';
+import { LoadingComponent } from './components/loading/loading.component';
+import { TextSlicePipe } from '../core/pipes/text-slice.pipe';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+// import { IconFieldModule } from 'primeng/iconfield';
+// import { InputIconModule } from 'primeng/inputicon';
+import { NgxJsonLdComponent, NgxJsonLdModule } from '@ngx-lite/json-ld';
+import { RelativeTimePipe } from '../core/pipes/relative-time.pipe';
+
+export function playerFactory() {
+  return import('lottie-web');
+}
 
 @NgModule({
   declarations: [
@@ -20,23 +36,41 @@ import { CenterBarComponent } from './components/center-bar/center-bar.component
     NavbarDetailsComponent,
     FooterComponent,
     SearchComponent,
-    CenterBarComponent
+    CenterBarComponent,
+    ProjectCardComponent,
+    EventCardComponent,
+    LoadingComponent,
+    BreadcrumbComponent
   ],
   imports: [
-    CommonModule,
+  CommonModule,
     DropdownModule,
     FormsModule,
     HttpClientModule,
     SidebarModule,
     ButtonModule,
-    InputTextModule
+    InputTextModule,
+    RouterModule,
+    TranslateModule,
+    LottieModule.forRoot({ player: playerFactory }),
+    TextSlicePipe,
+    NgxJsonLdModule,
+    RelativeTimePipe
+    // IconFieldModule,
+    // InputIconModule
   ],
   exports: [
     NavbarComponent,
     NavbarDetailsComponent,
     FooterComponent,
     SearchComponent,
-    CenterBarComponent
+    CenterBarComponent,
+    ProjectCardComponent,
+    EventCardComponent,
+    LoadingComponent,
+    TextSlicePipe,
+    BreadcrumbComponent,
+    NgxJsonLdComponent
   ]
 })
 export class SharedModule { }

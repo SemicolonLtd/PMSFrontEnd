@@ -1,0 +1,110 @@
+<div class="news margin-avoid-navbar">
+    <!-- <img src="assets/images/global/pages-wave-top.webp" alt="" class="pages-wave-top"> -->
+    <app-search [Title]="searchTitle" (searchEmitter)="searchForNews($event)"></app-search>
+    <div class="pms-container">
+        <div class="news-data">
+            <ng-container *ngIf="!searchMode && isBrowser">
+                <p-tabView [scrollable]="true" (activeIndexChange)="onSelectCategory($event)">
+                    <p-tabPanel *ngFor="let category of newsCategories" [header]="category?.name">
+                        <div class="grid">
+                            <div class="sm:col-12 md:col-6 big-card-container" *ngIf="bigCardNews?.length">
+                                <a class="big-card" *ngFor="let card of bigCardNews"
+                                routerLink="/news/details/{{card?.slug}}">
+                                    <p-card [header]="card?.title | textSlice : 'title'">
+                                        <ng-template pTemplate="header">
+                                            <img alt="Card" [src]="card?.image" />
+                                        </ng-template>
+                                        <span class="news-badge mobile">
+                                            {{card?.category_title}}
+                                        </span>
+                                        <p [innerHTML]="card?.short | textSlice : 'desc'">
+                                            <!-- {{bigCardNews.description | slice: 0: 30}} -->
+                                        </p>
+                                        <ng-template pTemplate="footer">
+                                            <span>{{card?.date}}</span>
+                                        </ng-template>
+                                    </p-card>
+                                    <span class="news-badge desktop">
+                                        {{card?.category_title}}
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="sm:col-12 md:col-6 small-cards-container" *ngIf="smallCardsNews?.length">
+                                <a class="small-card" *ngFor="let card of smallCardsNews"
+                                routerLink="/news/details/{{card?.slug}}">
+                                    <p-card [header]="card?.title | textSlice : 'title'">
+                                        <ng-template pTemplate="header">
+                                            <img alt="Card" [src]="card?.image" />
+                                        </ng-template>
+                                        <span class="news-badge">
+                                            {{card?.category_title}}
+                                        </span>
+                                        <p [innerHTML]="card?.short | textSlice : 'desc'">
+                                            <!-- {{card.description | slice: 0: 30}} -->
+                                        </p>
+                                        <ng-template pTemplate="footer">
+                                            <span>{{card?.date}}</span>
+    
+                                        </ng-template>
+                                    </p-card>
+                                </a>
+                            </div>
+                        </div>
+                    </p-tabPanel>
+                </p-tabView>
+            </ng-container>
+            <ng-container *ngIf="searchMode">
+                <div class="grid">
+                    <div class="sm:col-12 md:col-6 big-card-container" *ngIf="bigCardNews?.length">
+                        <a class="big-card" *ngFor="let card of bigCardNews" routerLink="/news/details/{{card?.slug}}">
+                            <p-card [header]="card?.title | textSlice : 'title'" >
+                                <ng-template pTemplate="header">
+                                    <img alt="Card" [src]="card?.image" />
+                                </ng-template>
+                                <span class="news-badge mobile">
+                                    {{card?.category_title}}
+                                </span>
+                                <p [innerHTML]="card?.short | textSlice : 'desc'">
+                                    <!-- {{bigCardNews.description | slice: 0: 30}} -->
+                                </p>
+                                <ng-template pTemplate="footer">
+                                    <span>{{card?.date}}</span>
+                                </ng-template>
+                            </p-card>
+                            <span class="news-badge desktop">
+                                {{card?.category_title}}
+                            </span>
+                        </a>
+                    </div>
+                    <div class="sm:col-12 md:col-6 small-cards-container" *ngIf="smallCardsNews?.length">
+                        <a class="small-card" *ngFor="let card of smallCardsNews"  routerLink="/news/details/{{card?.slug}}">
+                            <p-card [header]="card?.title | textSlice : 'title'">
+                                <ng-template pTemplate="header">
+                                    <img alt="Card" [src]="card?.image" />
+                                </ng-template>
+                                <span class="news-badge">
+                                    {{card?.category_title}}
+                                </span>
+                                <p [innerHTML]="card?.short | textSlice : 'desc'">
+                                    <!-- {{card.description | slice: 0: 30}} -->
+                                </p>
+                                <ng-template pTemplate="footer">
+                                    <span>{{card?.date}}</span>
+
+                                </ng-template>
+                            </p-card>
+                        </a>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngFor="let schema of schemaList">
+                <ngx-json-ld [json]="schema"></ngx-json-ld>
+            </ng-container>
+            <div class="load-more" *ngIf="(paginationData?.total! > newsData?.length!) &&!loading">
+                <p-button label="More..." (click)="loadMore()" />
+            </div>
+            <app-loading type="small" *ngIf="loading"></app-loading>
+            <app-empty-state *ngIf="!newsData?.length && !loading"></app-empty-state>
+        </div>
+    </div>
+</div>

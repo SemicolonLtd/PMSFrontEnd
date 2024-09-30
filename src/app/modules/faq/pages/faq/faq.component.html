@@ -1,0 +1,36 @@
+<div class="faq">
+    <div class="header flex align-items-center justify-content-center">
+        <img src="assets/images/global/faq-bg.jpg" alt="" class="cover">
+        <div class="content">
+            <h2 class="title">{{'FAQ.FAQ' | translate}}</h2>
+            <span class="text mt-3">
+                {{'FAQ.Desc' | translate}} 
+            </span>
+        </div>
+    </div>
+    <div class="faq-content pb-5" *ngIf="faqsList?.length && !loading">
+        <div class="pms-container" itemscope itemtype="https://schema.org/FAQPage">
+        <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
+            <div class="wrapper" itemprop="mainContentOfPage">
+                <p-accordion [activeIndex]="0" class="w-full faq-accordion" expandIcon="pi pi-plus" collapseIcon="pi pi-minus">
+                    <p-accordionTab *ngFor="let faq of faqsList" itemscope itemtype="https://schema.org/Question">
+                        <ng-template pTemplate="header">
+                            <div class="flex align-items-center gap-2">
+                                <div class="question" [innerHtml]="faq.question" itemprop="name"></div>
+                            </div>
+                        </ng-template>
+                        <!-- <ng-template #header>
+                            <div [innerHTML]="faq.question"></div>
+                        </ng-template> -->
+                        <div [innerHTML]="faq.answer" itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                        </div>
+                    </p-accordionTab>
+                </p-accordion>
+            </div>
+            <div class="load-more"  *ngIf="(paginationData?.total! > faqsList?.length!) && !loading">
+                <p-button label="More..." (click)="loadMore()" />
+            </div>
+        </div>
+    </div>
+    <app-loading type="small" *ngIf="loading"></app-loading>
+</div>

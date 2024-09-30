@@ -1,0 +1,178 @@
+.contact-us {
+        iframe {
+            height: 35vh;
+            @media (max-width: 768px) {
+                height: 25vh;
+            }
+        }
+}
+
+.contact-card-wrapper {
+    background-color: #F2F9FB;
+    padding: 6.5rem 1.5rem;
+    @media (max-width:768px) {
+        padding: 1.5rem;
+    }
+}
+
+.social-icons {
+    @media (min-width: 768px) {
+        position: absolute;
+        bottom: 5%;
+    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .icon-wrapper {
+        margin-inline-end: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #F6AF03;
+        color: white;
+        transition: 0.4s all ease-in-out;
+        cursor: pointer;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}
+
+.contact-info-wrapper {
+    position: relative;
+    background-color: var(--primary-color-medium);
+    color:#fff;
+    padding: 2rem 1.5rem;
+    .bottom-img {
+        position: absolute;
+        bottom: -8%;
+        right: -8%;
+        width: 16rem;
+        &:lang(ar) {
+            left: -8%;
+            right: unset;
+        }
+    }
+    @media (max-width:768px) {
+        margin-bottom: 2.5rem;
+    }
+    .info-wrapper {
+        i {
+            font-size: 1.5rem;
+        }
+        .text {
+            position: relative;
+            z-index: 2;
+            margin-inline-start: 2rem;
+            font-size: 1.2rem;
+            background: var(--primary-color-medium);
+        }
+    }
+}
+
+.contact-card-wrapper .grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contact-card-wrapper .grid > div {
+    flex: 1 1 50%; /* Flex-grow and flex-basis for two equal columns */
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+    .contact-card-wrapper .grid > div {
+        flex: 1 1 100%; /* Full-width columns on smaller screens */
+    }
+}
+
+::ng-deep {
+    .p-toast.p-toast-top-right {
+        z-index: 1201 !important;
+    }
+    .contact-form-wrapper {
+        input {
+            width: 100%;
+        }
+        .p-float-label {
+            margin-bottom: 2rem;
+        }
+        textarea {
+            resize: none;
+            width: 100%;
+            
+        }
+        .p-float-label > label {
+            &:lang(ar) {
+                left: 0;
+                right: 0.75rem;
+            }
+        }
+        .search-btn {
+            .p-button {
+                width: 100%;
+                background: var(--primary-color-medium);
+                border: 1px solid var(--primary-color-medium);
+                border-radius: 7px;
+                transition: 0.4s all ease;
+                min-height: 3.125rem;
+                .pi {
+                    transition: 0.4s all ease;
+                    &:lang(ar) {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+            &:hover {
+                .p-button {
+                    text-align: start;
+                    .p-button-label {
+                        display: none;
+                    }
+                    .pi {
+                        display: block;
+                        width: 100%;
+                        transform: translateX(50%);
+                    }
+                }
+                // &:lang(ar) {
+                //     text-align: start;
+                //     .p-button-label {
+                //         display: none;
+                //     }
+                //     .pi {
+                //         display: block;
+                //         width: 100%;
+                //         transform: rotate(180deg) translateX(-50%);
+                //     }
+                // }
+            }
+            &:lang(ar) {
+                .p-button .pi {
+                    transform: rotate(180deg);
+                }
+                &:hover {
+                    .p-button {
+                        text-align: end;
+                    }
+                    .p-button-label {
+                        display: none;
+                    }
+                    .pi {
+                        display: block;
+                        width: 100%;
+                        transform: rotate(180deg) translateX(50%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// .contact-form-wrapper {
+
+// }
+

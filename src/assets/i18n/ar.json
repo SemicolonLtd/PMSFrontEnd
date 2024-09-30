@@ -1,0 +1,131 @@
+{
+    "General": {
+        "ViewMore":"مشاهدة المزيد +",
+        "ReadMore": "مشاهدة المزيد",
+        "NotFoundData": "لا يوجد بيانات",
+        "SearchDesc": "البحث في خدمات البترول البحرية",
+        "All": "الكل",
+        "Share": "مشاركة",
+        "OrgDesc": "شركة PMS هي شركة رائدة في مجال إنشاءات الهندسة والتوريد والبناء والإنشاءات البحرية في مصر، تأسست عام 2001 تحت رعاية الهيئة المصرية العامة للبترول (EGPC)، ولديها ما يقرب من أربعة عقود من الخبرة كاستمرار لكيانها السابق كقسم بحري لشركة بتروجت.",
+        "OrgName": "خدمات البترول البحرية",
+        "Close": "إغلاق"
+    },
+    "Navbar": {
+        "Home":"الرئيسية",
+        "AboutUs" :"من نحن",
+        "OurStrategy" :"استراتيجيتنا",
+        "CoreBusiness" : "الأعمال الرئيسية",
+        "KeyAssets" :"الأصول الرئيسية",
+        "Projects" :"المشاريع",
+        "ContactUs" :"اتصل بنا",
+        "MediaCenter" : "المركز الإعلامي",
+        "HSE" : "الصحة والسلامة والبيئة",
+        "Certificates":"الشهادات",
+        "Sustainability" :"الاستدامة",
+        "PMS": "خدمات البترول البحرية",
+        "DiscoverMore":"اكتشف المزيد",
+        "News":"الاخبار",
+        "Events": "الفعاليات",
+        "Search": "بحث"
+    },
+    "Home" :{
+        "Technical":"تقني",
+        "Projects":"المشاريع",
+        "Engineers":"المهندسين",
+        "CoreBusiness":"الأعمال الرئيسية",
+        "RecentProjects":"المشاريع الأخيرة",
+        "OurNews":"أخبارنا"
+    },
+    "Search": {
+        "WelcomeTo": "مرحباً بك في",
+        "OurProjects":"صفحة مشاريعنا",
+        "OurNews":"صفحة اخبارنا",
+        "OurEvents":"صفحة فعالياتنا",
+        "OurCoreBusiness":"صفحة الاعمال الاساسية",
+        "Explore":"استكشف",
+        "SearchHere": "ابحث هنا...",
+        "Search": "بحث"
+    },
+    "Projects": {
+        "RecentProjects":"المشاريع الأخيرة",
+        "CompletedProjects":"المشاريع المكتملة",
+        "MegaProjects":"المشاريع الكبيرة",
+        "LatestProject":"اخر مشروع",
+        "FollowOurProjects":"تابع مشاريعنا",
+        "More": "المزيد...",
+        "StartDate": "تاريخ البدء",
+        "EndDate": "تاريخ الإنتهاء",
+        "Country": "الدولة",
+        "Location": "العنوان",
+        "Client": "العميل"
+    },
+    "Events": {
+        "LatestEvent":"اخر فعالية",
+        "EventAndActivities":"الفعاليات والنشاطات",
+        "More": "المزيد...",
+        "StartDate": "تاريخ البدء",
+        "EndDate": "تاريخ الإنتهاء"
+    },
+    "Certificates": {
+        "Certificates":"الشهادات",
+        "Desc":"الناس الجيدة تعمل علي توصيل قيمة غالية",
+        "PMSCertificates": "شهادات شركة خدمات البترول البحرية"
+    },
+    "Contact": {
+        "ContactUs": "اتصل بنا",
+        "ContactInformation": "معلومات الاتصال",
+        "Desc": "قل شيئًا لبدء محادثة مباشرة!",
+        "Username": "اسم المستخدم",
+        "Email": "البريد الإلكتروني",
+        "Phone": "الهاتف",
+        "Message": "الرسالة",
+        "Title": "الموضوع",
+        "Success": "تم بنجاح",
+        "SendMessage": "إرسال الرسالة",
+        "SuccessMessage": "تم الإرسال بنجاح وسيتم التواصل معك قريبا"
+    },
+    "SimilarTitles": {
+        "SimilarProjects":"المشاريع المماثلة",
+        "SimilarNews":"الاخبار المشابهة",
+        "SimilarCoreBusiness":"الاعمال الاساسية المشابهة",
+        "SimilarEvents":"الفعاليات المشابهة",
+        "CoreBusinessProjects": "المشاريع المرتبطة بالاعمال الاساسية"
+    },
+    "Footer": {
+        "PMS":"خدمات البترول البحرية",
+        "Policies":"السياسات",
+        "TermsAndConditions": "الشروط والأحكام",
+        "PrivacyPolicy":"سياسة الخصوصية",
+        "ContactUs": "اتصل بنا",
+        "Copyright": "حقوق الطبع والنشر 2010 - 2024 PMS.com",
+        "OtherLinks":"روابط أخرى",
+        "FAQ": "الأسئلة الشائعة",
+        "Vision": "الرؤية",
+        "Mission" :"الرسالة",
+        "AboutUs": "من نحن",
+        "Email":"البريد الإلكتروني",
+        "Address": "العنوان",
+        "Phone": "الهاتف",
+        "KeepInTouch":"ابق على تواصل"
+    },
+    "SearchResults": {
+        "Projects":"المشاريع",
+        "News":"الاخبار",
+        "CoreBusiness":"الأعمال الرئيسية",
+        "Events": "الفعاليات",
+        "Pages": "الصفحات",
+        "Search":"بحث"
+    },
+    "Static": {
+        "HSE-quality": "الصحة والسلامة والبيئة",
+        "key-assets":"الاصول الرئيسية",
+        "sustainability": "الاستدامة",
+        "about-us": "من نحن",
+        "our-strategy": "استراتيجيتنا"
+    },
+    "FAQ": {
+        "FAQ":"الأسئلة الشائعة",
+        "Desc": "الناس الجيدة تعمل علي توصيل قيمة غالية"
+    }
+    
+}

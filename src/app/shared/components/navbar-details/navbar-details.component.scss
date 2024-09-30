@@ -1,9 +1,28 @@
 
 ::ng-deep {
     .navbar-details {
+        .p-sidebar .p-sidebar-header .p-sidebar-close:enabled:hover, .p-sidebar .p-sidebar-header .p-sidebar-icon:enabled {
+            &:hover {
+                color: #343a40;
+                border-color: transparent;
+                background: transparent;
+                font-weight: 900;
+                border-bottom: 3px solid var(--primary-color-light);
+            }
+        }
+        .p-sidebar .p-sidebar-header .p-sidebar-close, .p-sidebar .p-sidebar-header .p-sidebar-icon {
+            width: auto;
+            .close-text {
+                font-family: 'main-font';
+                font-weight: 700;
+                font-size: 1.2rem;
+                color: var(--primary-color-dark);
+                margin-inline-start: 0.5rem;
+            }
+        }
         .p-sidebar .p-sidebar-header {
             border-top: 1px solid var(--primary-color);
-            margin-top: 10rem;
+            margin-top: 5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -13,7 +32,7 @@
             }
             @media (max-width: 992px) {
                 padding-inline: 2rem;
-                margin-top: 5rem;
+                margin-top: 7rem;
             }
         }
         .p-sidebar .p-sidebar-content {
@@ -28,6 +47,12 @@
                 background: var(--primary-color-light);
                 border: 1px solid var(--primary-color-light);
                 border-radius: 7px;
+                &:lang(ar) {
+                    flex-direction: row-reverse;
+                    .pi-arrow-right {
+                        transform: rotate(180deg);
+                    }
+                }
             }
         }
         .links-list {
@@ -43,6 +68,35 @@
                     }
                 }
             }
+        }
+        .p-inputtext {
+            width: 100%;
+            // border-bottom: 1px solid var(--primary-color-medium);
+            border-radius: 0;
+            border-width: 2px;
+            // border-top: 0;
+            // border-right: 0;
+            // border-left: 0;
+            // margin-top: 2rem;
+            &::placeholder {
+                // color: var(--primary-color-medium);
+                font-size: 1.2rem;
+                // font-weight: 700;
+            }
+        }
+        .search-btn {
+            button {
+                margin-top: 1rem;
+                background-color: var(--primary-color-light);
+                border: none;
+                .pi {
+                    margin-inline-end: 0.5rem;
+                }
+            }
+        }
+        .p-inputtext:enabled:focus {
+            box-shadow: none;
+            border-color: var(--primary-color-light);
         }
     }
 

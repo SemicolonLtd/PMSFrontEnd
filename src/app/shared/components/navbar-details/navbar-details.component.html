@@ -1,34 +1,61 @@
 <div class="navbar-details">
-    <p-sidebar [(visible)]="sidebarVisible" [fullScreen]="true" (onHide)="onSidebarHide()">
+    <p-sidebar [(visible)]="navDetailsVisible" [fullScreen]="true" (onHide)="onHideNavDetails()">
         <ng-template pTemplate="header">
             <div>
-                <h3>{{detailsType}}</h3>
-                <span>Discover PMS {{detailsType}}</span>
+                <h3>{{detailsTitle}}</h3>
+                <!-- <span>Discover PMS {{detailsTitle}}</span> -->
             </div>
+        </ng-template>
+        <ng-template pTemplate="closeicon">
+            <i class="pi pi-times"></i>
+            <span class="close-text">{{'General.Close' | translate}}</span>
         </ng-template>
         <div class="details-content">
             <div class="pms-container">
                 <div class="grid">
-                    <div class="lg:col-3">
+                    <div class="lg:col-3" *ngIf="detailsType !== 'Search'">
                         <div class="discover-btn">
                             <p-button 
-                                label="Discover More" 
+                                label="{{'Navbar.DiscoverMore' | translate}}" 
                                 icon="pi pi-arrow-right" 
                             />
                         </div>
                     </div>
-                    <div class="lg:col-9">
+                    <div class="lg:col-9" *ngIf="detailsType !== 'Search'">
                         <div class="links-list">
                             <ul>
-                                <li>
-                                    Press Release
+                                <li *ngFor="let link of displayedLinks" 
+                                    (click)="openLink(link)">
+                                    {{ link?.name }}
                                 </li>
-                                <li>
-                                    Events
-                                </li>
-                                <li>photogallery</li>
-                                <li>videogallery</li>
                             </ul>
+                        </div>
+                    </div>
+                    <div class="col-12" *ngIf="detailsType === 'Search'">
+                        <div class="search-wrapper">
+                            <!-- <div class="flex flex-column gap-2">
+                                <input 
+                                    pInputText 
+                                    id="username" 
+                                    aria-describedby="username-help" />
+                                <small id="username-help" class="text-2xl">
+                                    {{'General.SearchDesc' | translate}}                              
+                                </small>
+                            </div> -->
+                            <!-- <p-iconField iconPosition="left">
+                                <p-inputIcon styleClass="pi pi-search" />
+                                <input type="text" [(ngModel)]="searchQuery" pInputText placeholder="{{'General.SearchDesc' | translate}} " />
+                            </p-iconField> -->
+                            <span class="p-input-icon-left w-full mt-4">
+                                <i class="pi pi-search"></i>
+                                <input type="text" pInputText [(ngModel)]="searchQuery" placeholder="{{'General.SearchDesc' | translate}} " />
+                            </span>
+                            <p-button 
+                                label="{{'SearchResults.Search' | translate}}" 
+                                icon="pi pi-search" 
+                                class="search-btn"
+                                (onClick)="toSearchResults()"
+                                />
                         </div>
                     </div>
                 </div>

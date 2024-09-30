@@ -2,24 +2,27 @@
     <div class="pms-container">
         <div class="recent-header mb-4 flex align-items-center justify-content-between">
             <div class="txt">
-                <h2 class="title-font-size color-primary">Recent Projects</h2>
-                <p class="header-desc color-primary-medium">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
+                <h2 class="title-font-size color-primary">{{"Home.RecentProjects" | translate}}</h2>
+                <!-- <p class="header-desc color-primary-medium">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p> -->
             </div>
-            <a class="btn text-2xl font-bold white-space-nowrap">
-                View More +
+            <a class="btn text-xl font-bold white-space-nowrap" routerLink="/projects">
+                {{"General.ViewMore" | translate}}
             </a>
         </div>
-        <div class="images-container">
-            <div class="image-item" [style.backgroundImage]="'url(' + project.image + ')'" *ngFor="let project of projectData">
+        <div class="images-container" *ngIf="projectsData?.length && !loading">
+            <div class="image-item" [style.backgroundImage]="'url(' + project.image + ')'" *ngFor="let project of projectsData">
                 <div class="item-info flex justify-content-center align-items-center text-center">
                     <div class="info-wrapper">
-                        <h3>{{project.title}}</h3>
-                        <span class="info-desc">{{project.text}}</span>
-                        <p-button icon="pi pi-arrow-right" [rounded]="true" [routerLink]="'/' + project.id" />
+                        <h3>{{project.title | textSlice : 'title'}}</h3>
+                        <div class="info-desc" [innerHTML]="project?.short | textSlice : 'desc'"></div>
+                        <a  [routerLink]="'/projects/details/' + project?.slug">
+                            <p-button icon="pi pi-arrow-right" [rounded]="true" />
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+        <app-loading type="small" *ngIf="loading"></app-loading>
     </div>
     <img class="wave-bottom" src="assets/images/home/wave-bottom.svg" alt="">
 </div>
