@@ -13,7 +13,7 @@
         <div class="details-content">
             <div class="pms-container">
                 <div class="grid">
-                    <div class="lg:col-3" *ngIf="detailsType !== 'Search'">
+                    <div class="lg:col-3 md:col-12 sm:col-12" *ngIf="detailsType !== 'Search'">
                         <div class="discover-btn">
                             <p-button 
                                 label="{{'Navbar.DiscoverMore' | translate}}" 
@@ -21,7 +21,7 @@
                             />
                         </div>
                     </div>
-                    <div class="lg:col-9" *ngIf="detailsType !== 'Search'">
+                    <div class="all-links lg:col-9 md:col-12 sm:col-12" *ngIf="detailsType !== 'Search'">
                         <div class="links-list">
                             <ul>
                                 <li *ngFor="let link of displayedLinks" 

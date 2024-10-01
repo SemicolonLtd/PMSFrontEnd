@@ -5,7 +5,7 @@
     <div class="content flex justify-content-between mt-3">
         <div class="info">
             <h5 class="title">
-                {{projectData.title | textSlice : 'desc'}}
+                {{projectData.title | textSlice : 'desc' : 80}}
             </h5>
             <span class="date">
                 {{projectData.date}}

@@ -5,6 +5,7 @@ import { NewsService } from '../../services/news.service';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
 import { MetaService } from 'src/app/core/services/meta.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-news-details',
@@ -49,12 +50,17 @@ export class NewsDetailsComponent implements OnInit, OnDestroy {
     private newsService: NewsService,
     private route: ActivatedRoute,
     private router: Router,
+    private sanitizer: DomSanitizer,
     private translateService: TranslateService,
     private metaService: MetaService
   ) { }
 
   ngOnInit(): void {
     this.getNewsSlugFromParams();
+  }
+
+  sanitizeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
   getNewsSlugFromParams(): void {

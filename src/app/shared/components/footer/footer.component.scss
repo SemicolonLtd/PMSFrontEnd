@@ -1,5 +1,5 @@
 .footer {
-    padding-block: 3rem;
+    padding-block: 2rem;
     background-color: var(--primary-color-medium);
     color: white;
     a {
@@ -18,7 +18,13 @@
             }
             .logo-txt {
                 margin-inline-start: 1.5rem;
-                font-size: 2rem;
+                font-size: 1.7rem;
+            }
+            @media (max-width: 576px) {
+                margin-bottom: 1.5rem;
+                .logo-txt {
+                    font-size: 1.5rem;
+                }
             }
         }
         .social-wrapper {
@@ -45,6 +51,9 @@
             }
         }
     }
+    // .footer-content {
+
+    // }
     @media (max-width:768px){
         text-align: center; 
         a {

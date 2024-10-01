@@ -5,7 +5,7 @@
                 <h2 class="title-font-size color-primary">{{"Home.RecentProjects" | translate}}</h2>
                 <!-- <p class="header-desc color-primary-medium">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p> -->
             </div>
-            <a class="btn text-xl font-bold white-space-nowrap" routerLink="/projects">
+            <a class="btn font-bold white-space-nowrap" routerLink="/projects">
                 {{"General.ViewMore" | translate}}
             </a>
         </div>
@@ -13,8 +13,8 @@
             <div class="image-item" [style.backgroundImage]="'url(' + project.image + ')'" *ngFor="let project of projectsData">
                 <div class="item-info flex justify-content-center align-items-center text-center">
                     <div class="info-wrapper">
-                        <h3>{{project.title | textSlice : 'title'}}</h3>
-                        <div class="info-desc" [innerHTML]="project?.short | textSlice : 'desc'"></div>
+                        <h3>{{project.title | textSlice : 'title' : 50}}</h3>
+                        <div class="info-desc" [innerHTML]="(project?.short | slice : 0 : 40) + '...'"></div>
                         <a  [routerLink]="'/projects/details/' + project?.slug">
                             <p-button icon="pi pi-arrow-right" [rounded]="true" />
                         </a>

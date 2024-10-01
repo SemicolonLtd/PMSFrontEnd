@@ -6,11 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TextSlicePipe implements PipeTransform {
 
-  transform(value: string, type: string): any {
-    if (type === 'title' && value.length > 50) {
-      return value.slice(0, 50) + '...';
-    } else if (type === 'desc' && value.length > 90) {
-      return value.slice(0, 90) + '...';
+  transform(value: string, type: string, length: number): any {
+    if (type === 'title' && value.length > length) {
+      return value.slice(0, length) + '...';
+    } else if (type === 'desc' && value.length > length) {
+      return value.slice(0, length) + '...';
     } else {
       return value;
     }

@@ -1,8 +1,8 @@
 .page-content {
-    margin-top: 9.88rem;
+    // margin-top: 9.1rem;
     position: relative;
     .page-img-wrapper {
-        height: 50vh;
+        height: 75vh;
         position: relative;
         img {
             width: 100%;
@@ -19,6 +19,9 @@
             font-size: 3.5rem;
             text-align: center;
         }
+        @media (max-width:768px) {
+            height: 40vh;
+        }
     }
     .content {
         padding-block: 2rem;
@@ -33,6 +36,8 @@
 
 ::ng-deep {
     .content p img {
-        width: 100% 
+        @media (max-width: 768px) {
+            width: 100% !important;
+        }
     }
 }

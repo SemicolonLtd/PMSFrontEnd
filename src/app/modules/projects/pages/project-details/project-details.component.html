@@ -93,7 +93,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="text col-12" [innerHTML]="projectData?.desc">
+                <div class="text col-12" [innerHTML]="sanitizeHtml(projectData?.desc)">
                 </div>
                 <!-- <div class="content-wrapper col-12">
                 <div class="images">

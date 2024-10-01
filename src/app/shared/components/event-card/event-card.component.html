@@ -6,10 +6,10 @@
         <div class="data">
             <div class="info">
                 <h5 class="title">
-                    {{eventData.title | textSlice : 'title'}}
+                    {{eventData.title | textSlice : 'title' : 50}}
                 </h5>
                 <div class="short-desc">
-                    {{eventData.pref | textSlice : 'desc'}}
+                    {{eventData.pref | textSlice : 'desc' : 80}}
                 </div>
                 <div class="dates flex align-items-center justify-content-between mt-2">
                     <div class="start-date">

@@ -45,7 +45,7 @@
                             </p-galleria>
                         </div>
                     </div>
-                    <div class="text" [innerHTML]="businessData?.desc">
+                    <div class="text" [innerHTML]="sanitizeHtml(businessData?.desc)">
                     </div>
                 </div>
             </div>

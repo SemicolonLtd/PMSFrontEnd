@@ -1,10 +1,9 @@
 <nav class="nav-container desktop" 
     [ngClass]="{'nav-sticky': (isSticky || navDetailsOpened),
-    'nav-on-details': (navDetailsOpened || (currentRoute != '/' && currentRoute != 'certificates' && currentRoute != 'faq'))}"
+    'nav-on-details': (navDetailsOpened || (currentRoute != '/' && currentRoute != 'certificates' && currentRoute != 'faq' && currentRoute != 'content'))}"
     >
     <div class="topbar" *ngIf="!navDetailsOpened">
         <div class="pms-container w-full">
-
             <div class="topbar-wrapper flex align-items-center justify-content-between">
                 <div class="nav-links">
                     <ul class="flex align-items-center">
@@ -30,14 +29,17 @@
                 </div>
                 <div class="nav-social-langs flex align-items-center justify-content-between">
                     <div class="social">
-                        <a href="">
-                            <i class="pi pi-instagram"></i>
+                        <a class="social-item" *ngIf="socialMediaData?.youtube"
+                        [href]="socialMediaData?.youtube" target="_blank">
+                            <i class="pi pi-youtube"></i>
                         </a>
-                        <a href="">
+                        <a class="social-item" *ngIf="socialMediaData?.linkedin"
+                        [href]="socialMediaData?.linkedin" target="_blank">
                             <i class="pi pi-linkedin"></i>
                         </a>
-                        <a href="">
-                            <i class="pi pi-youtube"></i>
+                        <a class="social-item" *ngIf="socialMediaData?.insta"
+                        [href]="socialMediaData?.insta" target="_blank">
+                            <i class="pi pi-instagram"></i>
                         </a>
                     </div>
                     <div class="langs">
@@ -84,12 +86,6 @@
                             </li>
                         </ng-container>
                         <li>
-                            <a (click)="onSelectLink('contact-us', 'ContactUs', true)">{{"Navbar.ContactUs" | translate}}</a>
-                        </li>
-                        <li>
-                            <a (click)="onSelectLink('media-center', 'MediaCenter', false)">{{"Navbar.MediaCenter" | translate}}</a>
-                        </li>
-                        <li>
                             <a (click)="onSelectLink('hse-policy-records', 'HSE', true)">{{"Navbar.HSE" | translate}}</a>
                         </li>
                         <li>
@@ -99,34 +95,31 @@
                             <a (click)="onSelectLink('sustainability', 'Sustainability', true)">{{"Navbar.Sustainability" | translate}}</a>
                         </li>
                         <li>
+                            <a (click)="onSelectLink('media-center', 'MediaCenter', false)">{{"Navbar.MediaCenter" | translate}}</a>
+                        </li>
+                        <li>
+                            <a (click)="onSelectLink('contact-us', 'ContactUs', true)">{{"Navbar.ContactUs" | translate}}</a>
+                        </li>
+                        <li>
                             <a (click)="onSelectLink('Search', 'Search', false)">
                                 <i class="pi pi-search"></i>
                             </a>
                         </li>
-                        <!-- <li>
-                            <div class="langs">
-                                <p-dropdown 
-                                [options]="langs" 
-                                [(ngModel)]="lang" 
-                                (onChange)="changeLang($event)"
-                                optionLabel="name" 
-                                (ngModelChange)="changeLang($event)"
-                                class="lang hide-responsive"
-                                [placeholder]="lang" />
-                            </div>
-                        </li> -->
                     </ul>
                 </div>
                 <div class="nav-social-langs flex align-items-center justify-content-between" *ngIf="isSticky || navDetailsOpened">
-                    <div class="social">
-                        <a href="">
-                            <i class="pi pi-instagram"></i>
+                    <div class="social" *ngIf="!isSticky">
+                        <a class="social-item" *ngIf="socialMediaData?.youtube"
+                        [href]="socialMediaData?.youtube" target="_blank">
+                            <i class="pi pi-youtube"></i>
                         </a>
-                        <a href="">
+                        <a class="social-item" *ngIf="socialMediaData?.linkedin"
+                        [href]="socialMediaData?.linkedin" target="_blank">
                             <i class="pi pi-linkedin"></i>
                         </a>
-                        <a href="">
-                            <i class="pi pi-youtube"></i>
+                        <a class="social-item" *ngIf="socialMediaData?.insta"
+                        [href]="socialMediaData?.insta" target="_blank">
+                            <i class="pi pi-instagram"></i>
                         </a>
                     </div>
                     <div class="langs">
@@ -151,14 +144,17 @@
             <div class="topbar-wrapper">
                 <div class="nav-social-langs flex align-items-center justify-content-between">
                     <div class="social">
-                        <a href="">
-                            <i class="pi pi-instagram"></i>
+                        <a class="social-item" *ngIf="socialMediaData?.youtube"
+                        [href]="socialMediaData?.youtube" target="_blank">
+                            <i class="pi pi-youtube"></i>
                         </a>
-                        <a href="">
+                        <a class="social-item" *ngIf="socialMediaData?.linkedin"
+                        [href]="socialMediaData?.linkedin" target="_blank">
                             <i class="pi pi-linkedin"></i>
                         </a>
-                        <a href="">
-                            <i class="pi pi-youtube"></i>
+                        <a class="social-item" *ngIf="socialMediaData?.insta"
+                        [href]="socialMediaData?.insta" target="_blank">
+                            <i class="pi pi-instagram"></i>
                         </a>
                     </div>
                     <div class="langs">
@@ -178,7 +174,7 @@
         </div>
     </div>
     <div class="pms-container flex justify-content-between align-items-center py-2 bg-white">
-        <img routerLink="/" class="w-5rem" src="assets/images/global/logo.svg" alt="">
+        <img class="logo-img" routerLink="/" src="assets/images/global/logo.svg" alt="">
 
         <p-sidebar [(visible)]="sidebarMobileVisible"  [position]="lang == 'en' ? 'left' : 'right'">
             <ng-template pTemplate="header">

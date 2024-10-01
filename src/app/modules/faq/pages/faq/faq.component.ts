@@ -4,6 +4,7 @@ import { FaqsService } from '../../services/faqs.service';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
 import { MetaService } from 'src/app/core/services/meta.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-faq',
@@ -27,6 +28,7 @@ export class FaqComponent implements OnInit, OnDestroy {
   constructor(
     private faqsService: FaqsService,
     private translateService: TranslateService,
+    private sanitizer: DomSanitizer,
     private metaService: MetaService
   ) { }
 
@@ -73,6 +75,10 @@ export class FaqComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe()
+  }
+
+  sanitizeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
   
 }

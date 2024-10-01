@@ -5,6 +5,7 @@ import { CoreBusinessService } from '../../services/core-business.service';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
 import { MetaService } from 'src/app/core/services/meta.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-core-business-details',
@@ -49,6 +50,7 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
     private coreBusinessService: CoreBusinessService,
     private translateService: TranslateService,
     private route: ActivatedRoute,
+    private sanitizer: DomSanitizer,
     private router: Router,
     private metaService: MetaService
   ) { }
@@ -136,6 +138,10 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
       url: `${environment.websiteUrl}/core-business/details/${this.businessData.slug}`
     };
     this.metaService.createMetaData(content);
+  }
+
+  sanitizeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
   ngOnDestroy(): void {

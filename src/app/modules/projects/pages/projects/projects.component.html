@@ -48,7 +48,7 @@
             <div class="filtered-projects ">
                 <div class="grid">
                     <ng-container *ngIf="projectsList.length">
-                        <div class="card-wrapper xl:col-4 lg:col-6 md:col-12 mb-4" *ngFor="let project of projectsList">
+                        <div class="card-wrapper xl:col-4 lg:col-6 md:col-12 sm:col-12 mb-4" *ngFor="let project of projectsList">
                             <app-project-card [projectData]="project"></app-project-card>
                         </div>
                     </ng-container>

@@ -17,7 +17,7 @@ export class AppComponent {
   currentRoute!: string;
   lang = environment.lang;
   isLoading = true;
-
+  isPopStateNavigation = false;
   constructor(
     private scroll: ViewportScroller,
     private router: Router,
@@ -29,22 +29,25 @@ export class AppComponent {
   ) {}
 
   ngOnInit(): void {
-    this.router.events.subscribe(
-      event=> {
-        if(event instanceof NavigationEnd) {
-          if (isPlatformBrowser(this.platformId)) {
-            this.checkLanguageFromUrl()
-          }
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        // Check if the navigation is triggered by browser back/forward button
+        if (event.navigationTrigger === 'popstate') {
+          this.isPopStateNavigation = true;
+        } else {
+          this.isPopStateNavigation = false;
         }
-        console.log(event);
-        
       }
-    )
-    // if (isPlatformBrowser(this.platformId)) {
-    //   this.checkLanguageFromUrl()
-    // }
+
+      if (event instanceof NavigationEnd) {
+        if (isPlatformBrowser(this.platformId)) {
+          this.checkLanguageFromUrl();
+        }
+      }
+    });
+
     this.checkCurrentRoute();
-    this.checkLoading()
+    this.checkLoading();
   }
 
   @HostListener('window:scroll', [''])
@@ -105,27 +108,26 @@ export class AppComponent {
   }
 
   checkLanguageFromUrl(): void {
-    this.route.queryParams.subscribe(
-      params => {
-        if (params['lang']) {
-          this.cookieService.put('lang', params['lang'])
-          this.lang = params['lang'];
-          this.checkCookiesForLang()
-        } else {
-          const queryParams = {
-            lang: this.lang
+    this.route.queryParams.subscribe(params => {
+      if (params['lang']) {
+        this.cookieService.put('lang', params['lang']);
+        this.lang = params['lang'];
+        this.checkCookiesForLang();
+      } else if (!this.isPopStateNavigation) {  // Prevent navigate on back button
+        const queryParams = {
+          lang: this.lang
+        };
+        this.router.navigate(
+          [],
+          {
+            relativeTo: this.route,
+            queryParams: queryParams,
+            queryParamsHandling: 'merge',
           }
-          this.router.navigate(
-            [],
-            {
-              relativeTo: this.route,
-              queryParams: queryParams,
-              queryParamsHandling: 'merge', 
-            });
-          this.checkCookiesForLang()
-        }
+        );
+        this.checkCookiesForLang();
       }
-    )
+    });
   }
 
 }

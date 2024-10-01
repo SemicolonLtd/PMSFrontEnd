@@ -55,6 +55,12 @@
                 border-radius: 1rem;
                 padding-top: auto;
                 padding: 1rem;
+                h3 {
+                  font-size: 1.5rem;
+                }
+                .pi {
+                  font-size: 1.18rem;
+                }
                 .info-desc {
                   display: block;
                 }
@@ -96,6 +102,15 @@
               }
           }
         }
+        @media (max-width: 420px) {
+          .image-item {
+            .item-info {
+              h3 {
+                font-size: 1.2rem;
+              }
+            }
+        }
+        }
     }
     .recent-header {
       @media (max-width: 768px) { 
@@ -123,6 +138,7 @@
       transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
       transition-duration: 400ms;
       transition-property: color;
+      font-size: 1.5rem;
       &::after {
           content: "";
           pointer-events: none;
@@ -144,6 +160,9 @@
               left: 0%;
           }
       }
+      @media (max-width:768px) {
+        font-size: 1.2rem;
+      }
   }
 }
 
@@ -156,7 +175,7 @@
               border-radius: 50% !important;
               background-color: var(--primary-color-medium);
               border-color: var(--primary-color-medium);
-              margin-top: 2rem;
+              margin-top: 1rem;
               transition: 0.4s all ease;
               position: relative;  // Ensure the button has position: relative
               color: #fff;

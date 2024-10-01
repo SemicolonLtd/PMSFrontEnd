@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { ProjectsService } from '../../services/projects.service';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
-import { Meta } from '@angular/platform-browser';
+import { DomSanitizer, Meta, SafeHtml } from '@angular/platform-browser';
 import { MetaService } from 'src/app/core/services/meta.service';
 
 @Component({
@@ -50,13 +50,18 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     private translateService: TranslateService,
     private router: Router,
     private meta: Meta,
+    private sanitizer: DomSanitizer,
     private metaService: MetaService
   ) { }
 
   ngOnInit(): void {
     this.getProjectSlugFromParams();
   }
-
+  
+  sanitizeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
+  
   getProjectSlugFromParams(): void {
     this.route.params.subscribe((params: any) => {
       if(params['slug']) {

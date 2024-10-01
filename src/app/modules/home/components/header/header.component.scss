@@ -15,17 +15,29 @@
         @media (max-width: 576px) {
             width: 8.5rem;
         }
+        @media (max-width: 400px) {
+            width: 6rem;
+        }
     }
     .header-title {
-        font-size: 5rem;
-        @media (min-width: 992px) {
+        font-size: 4rem;
+        @media (min-width: 1200px) {
             white-space: nowrap;
         }
-        @media (max-width: 768px) {
+        @media (max-width: 1440px) {
+            font-size: 3.5rem;
+        }
+        @media (max-width: 1200px) {
             font-size: 3rem;
         }
+        @media (max-width: 768px) {
+            font-size: 2.5rem;
+        }
         @media (max-width: 576px) {
-            font-size: 1.7rem;
+            font-size: 2rem;
+        }
+        @media (max-width: 400px) {
+            font-size: 1.5rem;
         }
     }
     .header-desc {
@@ -50,23 +62,30 @@
 
     .statistics {
         .item-wrapper {
+            font-family: 'title-font';
             &:nth-of-type(2) {
                 margin-inline: 3rem;
             }
-
             .count, .label {
                 font-size: 2.5rem;
                 font-weight: 700;
+                @media (max-width:1440px){
+                    font-size: 2rem;
+                    font-weight: 600;
+                }
                 @media (max-width:768px){
                     font-size: 1.8rem;
                     font-weight: 600;
                 }
                 @media (max-width:576px){
-                    font-size: 1.6rem;
+                    font-size: 1.3rem;
+                }
+                @media (max-width:400px) {
+                    font-size: 1.2rem;
                 }
             }
         }
-        @media (max-width: 400px) {
+        @media (max-width: 576px) {
             flex-wrap: wrap;
             .item-wrapper {
                 margin-bottom: 1.5rem;
@@ -74,9 +93,9 @@
                     margin-inline: 0rem;
                     margin-inline: 1rem;
                 }
-                .count, .label {
-                    font-size: 2rem;
-                }
+                // .count, .label {
+                //     font-size: 2rem;
+                // }
             }
         }
     }
@@ -100,6 +119,12 @@
     justify-content: flex-start;
     bottom: 10%;
     z-index: 3;
+    @media(max-width: 576px) {
+        bottom: 15%;
+    }
+    @media (max-width:400px) {
+        bottom: 7%;
+    }
 
 }
 
@@ -121,6 +146,9 @@
     }
     &:lang(ar) {
         transform: rotate(180deg);
+    }
+    @media (max-width: 576px) {
+        bottom: 15%;
     }
 }
 

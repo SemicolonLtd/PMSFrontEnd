@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="text" [innerHTML]="eventData?.desc">
+                    <div class="text" [innerHTML]="sanitizeHtml(eventData?.desc)">
                     </div>
                 </div>
             </div>

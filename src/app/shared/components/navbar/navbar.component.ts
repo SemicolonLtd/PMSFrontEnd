@@ -10,6 +10,7 @@ import { NavbarService } from 'src/app/core/services/navbar.service';
 import { isPlatformBrowser } from '@angular/common';
 import { CoreBusinessService } from 'src/app/modules/core-business/services/core-business.service';
 import { Location } from '@angular/common';
+import { SettingsService } from 'src/app/core/services/settings.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -34,6 +35,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   displayedLinks: any[] = [];
   subscriptions = new Subscription();
   linkName = '';
+  socialMediaData: any;
+
   constructor(
     private router: Router,
     private location: Location,
@@ -43,7 +46,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     @Inject(DOCUMENT) private document: Document,
     private coreBusinessService: CoreBusinessService,
     private navbarService: NavbarService,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private settingsService: SettingsService,
+
 
   ) {}
 
@@ -80,6 +85,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.getCoreBusinessMenus();
     this.getAllLinks();
     this.checkCurrentRoute();
+    this.getSocialMediaData();
   }
 
   getCoreBusinessMenus(): void {
@@ -103,6 +109,21 @@ export class NavbarComponent implements OnInit, OnDestroy {
         }
       })
     )
+  }
+
+  getSocialMediaData(): void {
+    this.subscriptions.add(
+      this.settingsService.getAllSettings('social').subscribe({
+        next: (res: any) => {
+          if (res?.status === 200) {
+            this.socialMediaData = res?.data;
+          }
+        },
+        error: (err: any) => {
+          console.log(err);
+        }
+      })
+    );
   }
 
   @HostListener('window:scroll', [])

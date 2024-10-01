@@ -55,10 +55,14 @@
     z-index: 1106;
     .navbar {
         // background-color: #A8C8E8;
+        border-top: 1px solid #80808089;
         .navbar-wrapper {
             a {
                 color: var(--primary-color);
             }
+        }
+        .social {
+            display: none;
         }
     }
 
@@ -93,6 +97,14 @@
     .topbar, .mobile-topbar {
         display: none;
     }
+    .pms-container {
+        @media (max-width: 1500px) {
+            padding-inline: 1%;
+        }
+        @media (max-width: 1400px) {
+            padding-inline: 0.5%;
+        }
+    }
 
     .navbar {
         background-color: #ffffff;
@@ -112,22 +124,60 @@
                     }
                     a {
                         font-size: 1.1rem;
-                        font-weight: 500;
+                        font-weight: 700;
                         transition: 0.3s all ease;
                         border-bottom: 4px solid transparent;
                         &:hover {
                             border-bottom: 4px solid var(--primary-color-light);
                         }
                     }
+
                 }
             }
         }
+        @media (max-width:1600px) {
+            .navbar-wrapper {
+                .nav-links {
+                    ul {
+                        li {
+                            margin-inline-end: 0.7rem;
+                        }
+                    }
+                }
+            }
+
+        }
+        @media (max-width:1300px) {
+            .navbar-wrapper {
+                .nav-links {
+                    ul {
+                        li {
+                            margin-inline-end: 0.5rem;
+                        }
+                    }
+                }
+            }
+
+        }
+        // @media (max-width:1600px) {
+        //     .navbar-wrapper {
+        //         .nav-links {
+        //             ul {
+        //                 li {
+        //                     margin-inline-end: 0.5rem;
+        //                 }
+        //             }
+        //         }
+        //     }
+
+        // }
     }
 }
 
 .topbar {
     .topbar-wrapper {
-        padding-block: 1.2rem;
+        padding-block: 0.6rem;
+        border-bottom:1px solid #ffffff5e;
         a {
             color: white;
             cursor: pointer;
@@ -142,7 +192,7 @@
                 a {
                     font-size: 1.1rem;
                     padding-bottom: 0.7rem;
-                    font-weight: 500;
+                    font-weight: 700;
                     transition: 0.3s all ease;
                     border-bottom: 4px solid transparent;
                     &:hover {
@@ -172,9 +222,9 @@
 
 .navbar {
     // background-color: #FFFFFF21;
-    background-color: #a8c8e875;
-
-    padding-block: 1rem;
+    // background-color: #a8c8e875;
+    // padding-block: 1rem;
+    padding-block: 0.3rem;
     .navbar-wrapper {
         a {
             color: white;
@@ -183,12 +233,15 @@
         }
         .logo-wrapper {
             .logo-img {
-                width: 4rem
+                width: 7rem;
+                @media(max-width: 1370px) {
+                    width: 5rem;
+                }
             }
             .logo-txt {
                 margin-inline-start: 1.5rem;
-                font-size: 1.3rem;
-                font-weight: 500;
+                font-size: 1.5rem;
+                font-weight: 700;
             }
         }
         .nav-links {
@@ -201,7 +254,7 @@
                 white-space: nowrap;
                 a {
                     font-size: 1.1rem;
-                    font-weight: 500;
+                    font-weight: 700;
                     transition: 0.3s all ease;
                     border-bottom: 4px solid transparent;
                     padding-bottom: 0.7rem;
@@ -222,6 +275,12 @@
                 color: white !important;
             }
         }
+        @media (max-width: 1370px) {
+            .p-inputtext{
+                padding: 0.2rem;
+            }
+        }
+
     }
     .topbar-wrapper {
         .lang .p-dropdown{
@@ -288,6 +347,18 @@
         }
         .p-sidebar-header {
             justify-content: space-between;
+        }
+        .logo-img {
+            width: 5rem;
+        }
+        @media (max-width:400px) {
+            .p-button {
+                height: 35px;
+                width: 35px;
+            }
+            .logo-img {
+                width: 3rem;
+            }
         }
     }
 

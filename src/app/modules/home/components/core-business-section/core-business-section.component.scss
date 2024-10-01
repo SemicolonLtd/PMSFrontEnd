@@ -2,8 +2,12 @@
     position: relative;
     z-index:2;
     padding-top: 4rem;
-    padding-bottom: 6rem;
+    padding-bottom: 3rem;
+    background: linear-gradient(to bottom, #B1C7E5, #FFFFFF);
     .core-info {
+        .core-desc {
+            font-size: 1.1rem;
+        }
         .core-card {
             background: linear-gradient(to bottom, #FFFFFF, #B1C7E5);
             transition: 0.4s all ease;
@@ -16,6 +20,11 @@
                 transform: scale(1.03, 1.03);
             }
         }
+        @media (max-width:576px) {
+            .core-desc {
+                font-size: 1rem;
+            }
+        }
     }
     .core-images {
         @media (max-width: 992px) {
@@ -25,6 +34,12 @@
             position: absolute;
             img {
                 width: 27rem;
+            }
+            @media (max-width: 1440px) {
+                img {
+                    width: 22rem;
+
+                }
             }
         }
         .front {
@@ -60,6 +75,7 @@
         position: absolute;
         right: 0;
         top: 0;
+        z-index: -1;
         @media (max-width: 768px) {
             width: 25rem;
         }
@@ -79,7 +95,8 @@
 ::ng-deep {
     .core-business-section {
         .card-title {
-            white-space: nowrap;
+            // white-space: nowrap;
+            min-height: 75px;
             @media(min-width: 992px) and (max-width:1200px) {
                 white-space: normal;
                 min-height: 53px;

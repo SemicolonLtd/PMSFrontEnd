@@ -28,7 +28,7 @@
                 </button>
             </div>
         </div>
-        <div class="content" [innerHTML]="pageContent.body"></div>
+        <div class="content" [innerHTML]="sanitizeHtml(pageContent.body)"></div>
     </ng-container>
     <app-loading type="small" *ngIf="loading"></app-loading>
     <div class="flex align-items-center justify-content-center" style="height: 50vh;">
