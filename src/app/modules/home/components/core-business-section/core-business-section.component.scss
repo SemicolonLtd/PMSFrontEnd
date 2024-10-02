@@ -3,7 +3,7 @@
     z-index:2;
     padding-top: 4rem;
     padding-bottom: 3rem;
-    background: linear-gradient(to bottom, #B1C7E5, #FFFFFF);
+    background: linear-gradient(to bottom, #B1C7E5, #F4F7FF);
     .core-info {
         .core-desc {
             font-size: 1.1rem;
@@ -12,17 +12,50 @@
             background: linear-gradient(to bottom, #FFFFFF, #B1C7E5);
             transition: 0.4s all ease;
             img {
-                min-height: 4.5rem;
+                // min-height: 4.5rem;
                 max-height: 4.5rem;
             }
             &:hover {
                 background: linear-gradient(to bottom, #B1C7E5, #FFFFFF);
                 transform: scale(1.03, 1.03);
             }
+            .data {
+                .card-title {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+        @media (max-width:1440px) {
+            .core-card {
+                padding: 0;
+                img {
+                    // min-height: 4rem;
+                    max-height: 3.5rem;
+                }
+                .data {
+                    .card-title {
+                        font-size: 1.3rem;
+                    }
+                }
+                .core-desc {
+                    font-size: 1rem;
+                }
+            }
         }
         @media (max-width:576px) {
-            .core-desc {
-                font-size: 1rem;
+            .core-card {
+                img {
+                    min-height: 3.5rem;
+                    max-height: 3.5rem;
+                }
+                .data {
+                    .card-title {
+                        font-size: 1.3rem;
+                    }
+                }
+                .core-desc {
+                    font-size: 1rem;
+                }
             }
         }
     }
@@ -79,6 +112,11 @@
         @media (max-width: 768px) {
             width: 25rem;
         }
+        &:lang(ar) {
+            @media (max-width: 768px) {
+                width: 22rem;
+            }
+        }
       }
 }
 
@@ -96,7 +134,9 @@
     .core-business-section {
         .card-title {
             // white-space: nowrap;
-            min-height: 75px;
+            @media (max-width: 1300px) {
+                min-height: 56px;
+            }
             @media(min-width: 992px) and (max-width:1200px) {
                 white-space: normal;
                 min-height: 53px;

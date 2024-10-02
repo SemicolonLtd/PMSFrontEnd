@@ -8,7 +8,7 @@
         object-fit: fill;
     }
     .header-logo {
-        width: 13rem;
+        width: 11rem;
         @media (max-width: 768px) {
             width: 10rem;
         }
@@ -42,34 +42,57 @@
     }
     .header-desc {
         font-size: 1.3rem;
+        @media (max-width:1440px){
+            font-size: 1.1rem;
+        }
         @media (max-width: 768px) {
             font-size: 1rem;
         }
+        @media (max-width: 576px) {
+            font-size: 0.8rem;
+        }
+        @media (max-width: 350px) {
+            display: none;
+        }
     }
     .show-more {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         font-weight: 600;
         padding-inline: 6rem;
         background-color: #ffffffbf;
+        transition: 0.4s all ease;
+        &:hover {
+            letter-spacing: 2px;
+        }
         @media (max-width: 768px) {
             font-size: 1.1rem;
             padding-inline: 4rem;
         }
         @media (max-width: 576px) {
-            padding-inline: 3rem;
+            padding-inline: 2rem;
+            font-size: 0.9rem;
         }
     }
 
     .statistics {
+        margin-top: 3rem;
         .item-wrapper {
             font-family: 'title-font';
             &:nth-of-type(2) {
                 margin-inline: 3rem;
             }
             .count, .label {
-                font-size: 2.5rem;
+                font-size: 3rem;
                 font-weight: 700;
+                font-family: 'title-font';
+                &:lang(ar) {
+                    font-family: 'ar-title-font';
+                }
                 @media (max-width:1440px){
+                    font-size: 2.5rem;
+                    font-weight: 600;
+                }
+                @media (max-width:1300px){
                     font-size: 2rem;
                     font-weight: 600;
                 }
@@ -84,6 +107,9 @@
                     font-size: 1.2rem;
                 }
             }
+        }
+        @media (max-width: 1440px) {
+            margin-top: 2rem;
         }
         @media (max-width: 576px) {
             flex-wrap: wrap;
@@ -113,6 +139,10 @@
     height: 10px;
     width: 10px;
     border-radius: 50%;
+    transition: 0.4s all ease;
+    &:hover {
+        transform: scale(1.3, 1.3);
+    }
 }
 
 .carousel-indicators  {
@@ -125,8 +155,12 @@
     @media (max-width:400px) {
         bottom: 7%;
     }
+    .active {
+        transform: scale(1.4, 1.4);
 
+    }
 }
+
 
 .carousel-control-next, .carousel-control-prev {
     top: unset;
@@ -138,6 +172,10 @@
     border-radius: 50%;
     margin-inline-end: 15%;
     z-index: 3;
+    transition: 0.4s all ease;
+    &:hover {
+        transform: scale(1.1, 1.1);    
+    }
     .carousel-control-next-icon, .carousel-control-prev-icon {
         padding: 3px;
         border-radius: 50%;

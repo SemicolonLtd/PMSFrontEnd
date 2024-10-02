@@ -32,6 +32,10 @@
         // padding-inline: 2rem;
         margin-top: 7rem;
     }
+    @media (max-width: 400px) {
+        // padding-inline: 2rem;
+        margin-top: 6rem;
+    }
 
 }
 ::ng-deep {

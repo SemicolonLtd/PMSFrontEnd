@@ -13,9 +13,9 @@
         @media(min-width: 769px) {
             min-height: 660px;
         }
-        .news-desc {
-            @media (max-width: 768px) {
-                display: none;
+        @media (max-width: 768px) {
+            .news-badge {
+                display: none !important;
             }
         }
         // max-height: 660px;
@@ -51,10 +51,8 @@
         .news-badge.mobile {
             display: none;
         }
-        .news-desc {
-            @media (max-width: 768px) {
-                display: none;
-            }
+        @media (max-width: 768px) {
+            min-height: unset;
         }
     }
     .small-card {
@@ -82,8 +80,8 @@
             margin-bottom: 16px;
         }
         .big-card, .small-card {
-            min-height: calc(180px - (32px / 3));
-            max-height: calc(180px - (32px / 3));
+            // min-height: calc(180px - (32px / 3));
+            max-height: unset;
             img {
                 min-height: calc(180px - (32px / 3));
                 max-height: calc(180px - (32px / 3));
@@ -98,12 +96,6 @@
                 padding: 0.5rem 1.5rem;
                 border-top-left-radius: 7px;
                 border-bottom-right-radius: 7px;
-            }
-        }
-        .news-header {
-            .header-desc {
-                display: none;
-
             }
         }
     }
@@ -181,13 +173,12 @@
                     .p-card {
                         display: flex;
                         flex-direction: row-reverse;
-                    }
-                    .p-card-content {
-                        display: none;
+                        flex-wrap: wrap;
                     }
                     .p-card-header {
-                        min-width: 30%;
-                        max-width: 30%;
+                        // min-width: 30%;
+                        // max-width: 30%;
+                        width: 100%;
                     }
                     .p-card .p-card-title {
                         font-size: 1rem;
@@ -197,6 +188,11 @@
                         min-height: calc(180px - (32px / 3));
                         max-height: calc(180px - (32px / 3));
                         transition: 0.3s all ease;
+                    }
+                }
+                @media (max-width: 440px) {
+                    .p-card-footer {
+                        display: none;
                     }
                 }
             }
@@ -234,13 +230,23 @@
                     max-width: 30%;
                 }
                 @media (max-width:768px) {
+                    .p-card {
+                        flex-wrap: wrap;
+                    }
                     .p-card .p-card-body {
                         width: 100%;
                         min-height: calc(180px - (32px / 3));
                         max-height: calc(180px - (32px / 3));
                         transition: 0.3s all ease;
                     }
-                    .p-card-content {
+                    .p-card-header {
+                        min-width: 100%;
+                        max-width: 100%;
+                        // width: 100%;
+                    }
+                }
+                @media (max-width: 400px) {
+                    .p-card-footer {
                         display: none;
                     }
                 }

@@ -25,12 +25,21 @@
 }
 
 .desc,
-pre {
+pre{
     &:lang(ar) {
         font-family: 'ar-main-font' !important;
     }
     &:lang(en) {
         font-family: 'main-font' !important;
+    }
+}
+span:not(.pi){
+    
+    &:lang(ar) {
+        font-family: 'ar-main-font';
+    }
+    &:lang(en) {
+        font-family: 'main-font';
     }
 }
 
@@ -57,6 +66,12 @@ html {
     // }
     @media (max-width: 768px) {
         font-size: 16px;
+    }
+    &:lang(ar){
+        font-size: 16px;
+        @media (max-width: 768px) {
+            font-size: 14px;
+        }
     }
 }
 

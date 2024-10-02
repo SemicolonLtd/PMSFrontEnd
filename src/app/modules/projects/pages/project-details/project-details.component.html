@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="lg:col-6 md:col-12">
+                <div class="lg:col-6 md:col-12 sm:col-12">
                     <div class="project-images">
                         <p-galleria [value]="projectData?.media" [responsiveOptions]="responsiveOptions"
                             [numVisible]="5">
@@ -44,8 +44,8 @@
                         </p-galleria>
                     </div>
                 </div>
-                <div class="lg:col-6 md:col-12">
-                    <div class="row info">
+                <div class="lg:col-6 md:col-12 sm:col-12">
+                    <!-- <div class="row info">
                         <div class="col-6">
                             <div class="info-wrapper flex align-items-center" *ngIf="projectData?.start_date">
                                 <div class="img-with-title">
@@ -91,6 +91,57 @@
                                 <span class="data">{{ projectData?.client }}</span>
                             </div>
                         </div>
+                    </div> -->
+                    <div class="table-part">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="img-col" style="color: white;background-color: var(--primary-color-light);">
+                                        <i class="pi pi-cog"></i>
+                                    </th>
+                                    <th colspan="2" class="text-lg" style="color: white;background-color: var(--primary-color-light);">
+                                        {{'Projects.ProjectInfo' | translate}}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngIf="projectData['start_date']">
+                                    <th class="img-col" scope="row">
+                                        <img src="assets/images/global/date-icon.svg" alt="">
+                                    </th>
+                                    <td class="title-col">{{ 'Projects.StartDate' | translate }}</td>
+                                    <td class="info-col">{{ projectData['start_date'] }}</td>
+                                </tr>
+                                <tr *ngIf="projectData['end_date']">
+                                    <th class="img-col" scope="row">
+                                        <img src="assets/images/global/date-icon.svg" alt="">
+                                    </th>
+                                    <td class="title-col">{{ 'Projects.EndDate' | translate }}</td>
+                                    <td class="info-col">{{ projectData['end_date'] }}</td>
+                                </tr>
+                                <tr *ngIf="projectData['location']">
+                                    <th class="img-col" scope="row">
+                                        <img src="assets/images/global/location-icon.svg" alt="">
+                                    </th>
+                                    <td class="title-col">{{ 'Projects.Location' | translate }}</td>
+                                    <td class="info-col">{{ projectData['location'] }}</td>
+                                </tr>
+                                <tr *ngIf="projectData['country']">
+                                    <th class="img-col" scope="row">
+                                        <img src="assets/images/global/country-icon.svg" alt="">
+                                    </th>
+                                    <td class="title-col">{{ 'Projects.Country' | translate }}</td>
+                                    <td class="info-col">{{ projectData['country'] }}</td>
+                                </tr>
+                                <tr *ngIf="projectData['client']">
+                                    <th class="img-col" scope="row">
+                                        <img src="assets/images/global/client-icon.svg" alt="">
+                                    </th>
+                                    <td class="title-col">{{ 'Projects.Client' | translate }}</td>
+                                    <td class="info-col">{{ projectData['client'] }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="text col-12" [innerHTML]="sanitizeHtml(projectData?.desc)">
@@ -125,7 +176,7 @@
                 {{'SimilarTitles.SimilarProjects' | translate}}
             </span>
             <div class="grid">
-                <div class="xl:col-3 lg:col-4 md:col-6 sm:col-12 mb-3" *ngFor="let product of similarProjectsData">
+                <div class="xl:col-4 lg:col-4 md:col-6 sm:col-12 mb-3" *ngFor="let product of similarProjectsData">
                     <app-project-card [projectData]="product"></app-project-card>
                 </div>
             </div>

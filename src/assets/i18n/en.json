@@ -8,7 +8,8 @@
         "Share": "Share",
         "OrgDesc": "PMS, is a leading Egyptian EPCI offshore construction company, established in 2001 under the auspices of the Egyptian General Petroleum Corporation (EGPC), with almost four decades of experience as a continuation of its previous entity as the Marine Department of PETROJET.",
         "OrgName": "Petroleum Marine Services Co.",
-        "Close": "Close"
+        "Close": "Close",
+        "ShowMore": "Show More..."
     },
     "Navbar": {
         "Home":"Home",
@@ -58,14 +59,16 @@
         "EndDate": "End Date",
         "Country": "Country",
         "Location": "Location",
-        "Client": "Client"
+        "Client": "Client",
+        "ProjectInfo": "Project Information"
     },
     "Events": {
         "LatestEvent":"Latest Event",
         "EventAndActivities":"Event & Activities",
         "More": "More...",
         "StartDate": "Start Date",
-        "EndDate":"End Date"
+        "EndDate":"End Date",
+        "EventInfo": "Event Information"
     },
     "Certificates": {
         "Certificates":"Certificates",

@@ -34,6 +34,10 @@
                 padding-inline: 2rem;
                 margin-top: 7rem;
             }
+            @media (max-width: 400px) {
+                // padding-inline: 2rem;
+                margin-top: 6rem;
+            }
         }
         .p-sidebar .p-sidebar-content {
             padding-inline: 0;

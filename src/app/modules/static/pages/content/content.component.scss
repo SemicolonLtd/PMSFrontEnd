@@ -21,6 +21,9 @@
         }
         @media (max-width:768px) {
             height: 40vh;
+            .page-title {
+                font-size: 2.5rem;
+            }
         }
     }
     .content {
@@ -30,6 +33,10 @@
     @media (max-width: 992px) {
         // padding-inline: 2rem;
         margin-top: 7rem;
+    }
+    @media (max-width: 400px) {
+        // padding-inline: 2rem;
+        margin-top: 6rem;
     }
 
 }

@@ -70,6 +70,18 @@
               }
 
         }
+        @media (max-width: 1440px) {
+          .image-item {
+            .item-info {
+              h3 {
+                font-size: 1.3rem;
+              }
+              .info-desc {
+                font-size: 0.9rem;
+              }
+            }
+        }
+        }
         @media (max-width: 768px) {
           grid-template-columns: 1fr; /* Make items take full width of the container */
           height: 100vh;

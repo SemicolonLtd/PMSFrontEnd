@@ -36,7 +36,7 @@
                             </ng-template>
                         </p-image>
                             <div class="card-footer">
-                                <h3 class="card-title" itemprop="name">{{certificate.title}}</h3>
+                                <h3 class="card-title" itemprop="name">{{certificate.title | textSlice : 'title' : 40}}</h3>
                             </div>
                         </div>
                     </div>

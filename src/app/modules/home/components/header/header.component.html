@@ -14,11 +14,12 @@
                 <div class="carousel-caption d-block">
                     <img class="header-logo" src="assets/images/global/logo.svg" alt="">
                     <h5 class="header-title">{{slider.title}}</h5>
-                    <div class="header-desc" [innerHTML]="slider.desc">
+                    <div class="header-desc" [innerHTML]="slider.desc | textSlice : 'desc' : 150">
                     </div>
-                    <a type="button" *ngIf="slider.link_to" class="btn btn-light show-more" [href]="slider.link_to">Show
-                        More...</a>
-                    <div class="statistics flex justify-content-center align-items-center mt-5">
+                    <a type="button" target="_blank" *ngIf="slider.link_to" class="btn btn-light show-more" [href]="slider.link_to">
+                        {{'General.ShowMore' | translate}}
+                    </a>
+                    <div class="statistics flex justify-content-center align-items-center">
                         <div class="item-wrapper">
                             <span class="count d-block" [countUp]="statistics?.technical"
                             [options]="{duration: 6}">

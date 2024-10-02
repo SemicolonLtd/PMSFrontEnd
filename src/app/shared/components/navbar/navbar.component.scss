@@ -123,13 +123,16 @@
                         margin-inline-end: 1.1rem;
                     }
                     a {
-                        font-size: 1.1rem;
+                        font-size: 1.05rem;
                         font-weight: 700;
                         transition: 0.3s all ease;
                         border-bottom: 4px solid transparent;
                         &:hover {
                             border-bottom: 4px solid var(--primary-color-light);
                         }
+                        // &:lang(ar) {
+                        // font-size: 1rem;
+                        // }
                     }
 
                 }
@@ -211,11 +214,17 @@
         align-items: center;
         a {
             display: flex;
-        align-items: center;
+            align-items: center;
+
         }
         i {
             font-size: 1.1rem;
             margin-inline-end: 1.5rem;
+            transition: 0.4s all ease;
+            &:hover {
+                color: var(--primary-color-light);
+                transform: scale(1.1, 1.1);
+            }
         }
     }
 }
