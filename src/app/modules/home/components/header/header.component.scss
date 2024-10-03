@@ -9,6 +9,9 @@
     }
     .header-logo {
         width: 11rem;
+        @media (max-height: 850px) {
+            width: 9.5rem;
+        }
         @media (max-width: 768px) {
             width: 10rem;
         }
@@ -24,8 +27,8 @@
         @media (min-width: 1200px) {
             white-space: nowrap;
         }
-        @media (max-width: 1440px) {
-            font-size: 3.5rem;
+        @media (max-height: 850px) {
+            font-size: 3.3rem;
         }
         @media (max-width: 1200px) {
             font-size: 3rem;
@@ -42,7 +45,7 @@
     }
     .header-desc {
         font-size: 1.3rem;
-        @media (max-width:1440px){
+        @media (max-height:850px){
             font-size: 1.1rem;
         }
         @media (max-width: 768px) {
@@ -73,7 +76,6 @@
             font-size: 0.9rem;
         }
     }
-
     .statistics {
         margin-top: 3rem;
         .item-wrapper {
@@ -82,18 +84,18 @@
                 margin-inline: 3rem;
             }
             .count, .label {
-                font-size: 3rem;
+                font-size: 2.8rem;
                 font-weight: 700;
                 font-family: 'title-font';
                 &:lang(ar) {
                     font-family: 'ar-title-font';
                 }
-                @media (max-width:1440px){
+                @media (max-height:850px){
                     font-size: 2.5rem;
                     font-weight: 600;
                 }
-                @media (max-width:1300px){
-                    font-size: 2rem;
+                @media (max-height:800px){
+                    font-size: 2.2rem;
                     font-weight: 600;
                 }
                 @media (max-width:768px){
