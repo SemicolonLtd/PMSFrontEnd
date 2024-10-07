@@ -68,7 +68,7 @@ export class NavbarDetailsComponent implements OnChanges {
   toSearchResults(): void {
     this.onHideNavDetails();
       this.router.navigate(['/search-results'], {
-        queryParams: { query: this.searchQuery }
+        queryParams: { query: this.searchQuery, lang: this.lang }
       });
     }
 
