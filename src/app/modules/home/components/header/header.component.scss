@@ -23,7 +23,7 @@
         }
     }
     .header-title {
-        font-size: 4rem;
+        font-size: 3.5rem;
         @media (min-width: 1200px) {
             white-space: nowrap;
         }
@@ -84,14 +84,14 @@
                 margin-inline: 3rem;
             }
             .count, .label {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
                 font-weight: 700;
                 font-family: 'title-font';
                 &:lang(ar) {
                     font-family: 'ar-title-font';
                 }
                 @media (max-height:850px){
-                    font-size: 2.5rem;
+                    font-size: 2.3rem;
                     font-weight: 600;
                 }
                 @media (max-height:800px){
