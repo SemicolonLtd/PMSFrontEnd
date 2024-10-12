@@ -28,7 +28,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   sidebarMobileVisible: boolean = false;
   detailsTitle: string = '';
   sidebarVisible: boolean = false;
-  currentRoute!: string;
+  currentRoute!: any;
   loading: boolean = true;
   linksList: any[] = [];
   coreBusinessList: any[] = [];
@@ -54,14 +54,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.linkName = this.router.url;
-    console.log(this.route.url);
 
-    console.log(this.linkName);
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd && event.urlAfterRedirects) {
         if (event.urlAfterRedirects.includes('?lang=ar') || event.urlAfterRedirects.includes('?lang=en')) {
-    console.log(this.linkName);
-          
           this.lang = event.urlAfterRedirects.slice(-2);
           this.linkName = event.urlAfterRedirects.slice(0, event.urlAfterRedirects.length - 8);
         }
@@ -184,9 +180,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.sidebarMobileVisible = false;
     if (directRoute) {
       if(['about-us','our-strategy','key-assets','hse-policy-records','sustainability'].includes(type)) {
-        this.router.navigateByUrl('/content?slug=' + type);
+        this.router.navigate(['/content'] , {queryParams: {slug: type, lang :this.lang}});
       } else {
-        this.router.navigate(['/' + type]);
+        this.router.navigate(['/' + type], {queryParams: {lang :this.lang}});
       }
       this.sidebarVisible = false;
       this.navDetailsOpened = false;
@@ -232,15 +228,21 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 menu: [
                   {
                     name: this.translateService.instant('Projects.RecentProjects') ,
-                    link: '/projects?type=recent-projects',
+                    // link: '/projects?type=recent-projects',
+                    link: '/projects',
+                    type: 'recent-projects'
                   },
                   {
                     name: this.translateService.instant('Projects.CompletedProjects'),
-                    link: '/projects?type=completed-projects',
+                    // link: '/projects?type=completed-projects',
+                    link: '/projects',
+                    type: 'completed-projects'
                   },
                   {
                     name: this.translateService.instant('Projects.MegaProjects'),
-                    link: '/projects?type=mega-projects',
+                    // link: '/projects?type=mega-projects',
+                    link: '/projects',
+                    type: 'mega-projects'
                   }
                 ]
               },
