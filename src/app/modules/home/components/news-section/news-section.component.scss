@@ -28,6 +28,7 @@
         img {
             min-height: 500px;
             max-height: 500px;
+            object-fit: cover;
             @media(max-width:1440px) {
                 min-height: 400px;
                 max-height: 400px;
@@ -54,6 +55,7 @@
         img {
             height: 100%;
             max-height: calc(300px - (32px / 3));
+            object-fit: cover;
         }
         .news-badge {
             display: inline-block;
@@ -100,7 +102,7 @@
         transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
         transition-duration: 400ms;
         transition-property: color;
-        font-size: 1.2rem;
+        font-size: 1rem;
         &::after {
             content: "";
             pointer-events: none;
@@ -122,9 +124,9 @@
                 left: 0%;
             }
         }
-        @media (max-width:1440px) {
-            font-size: 1.1rem;
-          }
+        // @media (max-width:1440px) {
+        //     font-size: 1.1rem;
+        //   }
     }
 }
 

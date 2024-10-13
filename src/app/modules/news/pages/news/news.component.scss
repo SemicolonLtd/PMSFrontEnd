@@ -34,6 +34,7 @@
         img {
             min-height: 500px;
             max-height: 500px;
+            object-fit: cover;
             @media(max-width:1440px) {
                 min-height: 400px;
                 max-height: 400px;
@@ -63,6 +64,7 @@
         img {
             height: 100%;
             max-height: calc(300px - (32px / 3));
+            object-fit: cover;
         }
         .news-badge {
             display: inline-block;
