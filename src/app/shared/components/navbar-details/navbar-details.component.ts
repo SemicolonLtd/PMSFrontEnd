@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, Output, Renderer2, SimpleCha
 import { NavigationExtras, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import { environment } from './../../../../environments/environment';
 
 @Component({
   selector: 'app-navbar-details',
@@ -20,7 +21,7 @@ export class NavbarDetailsComponent implements OnChanges {
   loading: boolean = true;
   linksList: any[] = [];
   searchQuery = '';
-
+  lang = environment.lang
   constructor(
     private renderer: Renderer2,
     private router: Router,
@@ -54,16 +55,20 @@ export class NavbarDetailsComponent implements OnChanges {
   openLink(link: any): void {
     this.onHideNavDetails();
     if (link?.slug) {
-      this.router.navigateByUrl('/content?slug=' + link.slug);
+      this.router.navigate(['/content'],  {queryParams: { slug:link.slug ,lang :this.lang}});
     } else if (link?.link) {
-      this.router.navigateByUrl(link.link);
+      if (link?.type) {
+        this.router.navigate([link.link], {queryParams: {type: link.type ,lang :this.lang}});
+      } else {
+        this.router.navigate([link.link], {queryParams: {lang :this.lang}});
+      }
     }
   }
 
   toSearchResults(): void {
     this.onHideNavDetails();
       this.router.navigate(['/search-results'], {
-        queryParams: { query: this.searchQuery }
+        queryParams: { query: this.searchQuery, lang: this.lang }
       });
     }
 
