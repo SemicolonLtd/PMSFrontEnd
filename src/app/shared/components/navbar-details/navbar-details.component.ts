@@ -55,20 +55,16 @@ export class NavbarDetailsComponent implements OnChanges {
   openLink(link: any): void {
     this.onHideNavDetails();
     if (link?.slug) {
-      this.router.navigate(['/content'],  {queryParams: { slug:link.slug ,lang :this.lang}});
+      this.router.navigateByUrl('/content?slug=' + link.slug);
     } else if (link?.link) {
-      if (link?.type) {
-        this.router.navigate([link.link], {queryParams: {type: link.type ,lang :this.lang}});
-      } else {
-        this.router.navigate([link.link], {queryParams: {lang :this.lang}});
-      }
+      this.router.navigateByUrl(link.link);
     }
   }
 
   toSearchResults(): void {
     this.onHideNavDetails();
       this.router.navigate(['/search-results'], {
-        queryParams: { query: this.searchQuery, lang: this.lang }
+        queryParams: { query: this.searchQuery }
       });
     }
 

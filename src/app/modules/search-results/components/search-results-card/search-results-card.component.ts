@@ -10,25 +10,25 @@ import { environment } from './../../../../../environments/environment';
 export class SearchResultsCardComponent {
   @Input() card:any;
   @Input() type!: 'PROJECT' | 'NEWS' | 'CORE-BUSINESS' | 'EVENTS' | 'PAGES';
-  lang = environment.lang
+  // lang = environment.lang
   constructor(private router: Router){}
 
   onClick(): void {
     switch(this.type) {
       case 'PROJECT':
-        this.router.navigate(['/projects/details', this.card.slug], {queryParams: {lang :this.lang}});
+        this.router.navigate(['/projects/details', this.card.slug]);
         break;
       case 'NEWS':
-        this.router.navigate(['/news/details', this.card.slug], {queryParams: {lang :this.lang}});
+        this.router.navigate(['/news/details', this.card.slug]);
         break;
       case 'CORE-BUSINESS':
-        this.router.navigate(['/core-business/details', this.card.slug], {queryParams: {lang :this.lang}});
+        this.router.navigate(['/core-business/details', this.card.slug]);
         break;
       case 'EVENTS':
-        this.router.navigate(['/events/details', this.card.slug], {queryParams: {lang :this.lang}});
+        this.router.navigate(['/events/details', this.card.slug]);
         break;
       case 'PAGES':
-        this.router.navigate(['/content'], {queryParams: {slug: this.card.slug, lang :this.lang}});
+        this.router.navigateByUrl('/content?slug=' + this.card.slug);
         break;
     }
   }

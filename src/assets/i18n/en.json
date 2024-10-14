@@ -20,7 +20,7 @@
         "Projects" :"Projects",
         "ContactUs" :"Contact Us",
         "MediaCenter" : "Media Center",
-        "HSE" : "HSE",
+        "HSE" : "HSE & Quality",
         "Certificates":"Certificates",
         "Sustainability" :"Sustainability",
         "PMS": "Petroleum Marine Services Co.",
@@ -121,7 +121,7 @@
         "Search":"Search"
     },
     "Static": {
-        "HSE-quality": "HSE",
+        "HSE-quality": "HSE & Quality",
         "key-assets":"Key Assets",
         "sustainability": "Sustainability",
         "about-us": "About Us",

@@ -9,6 +9,11 @@
     }
 }
 
+.core-desc {
+    font-size: 1.07rem;
+    color: black;
+}
+
 .action {
     color: var(--primary-color-medium);
     .text {
@@ -45,6 +50,7 @@
                 border-radius: 0;
                 background-color: white;
                 color: var(--primary-color-medium);;
+                font-size: 1.13rem;
             }
         }
     }

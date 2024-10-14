@@ -180,9 +180,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.sidebarMobileVisible = false;
     if (directRoute) {
       if(['about-us','our-strategy','key-assets','hse-policy-records','sustainability'].includes(type)) {
-        this.router.navigate(['/content'] , {queryParams: {slug: type, lang :this.lang}});
+        this.router.navigateByUrl('/content?slug=' + type);
       } else {
-        this.router.navigate(['/' + type], {queryParams: {lang :this.lang}});
+        this.router.navigate(['/' + type]);
       }
       this.sidebarVisible = false;
       this.navDetailsOpened = false;
@@ -228,21 +228,21 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 menu: [
                   {
                     name: this.translateService.instant('Projects.RecentProjects') ,
-                    // link: '/projects?type=recent-projects',
-                    link: '/projects',
-                    type: 'recent-projects'
+                    link: '/projects?type=recent-projects',
+                    // link: '/projects',
+                    // type: 'recent-projects'
                   },
                   {
                     name: this.translateService.instant('Projects.CompletedProjects'),
-                    // link: '/projects?type=completed-projects',
-                    link: '/projects',
-                    type: 'completed-projects'
+                    link: '/projects?type=completed-projects',
+                    // link: '/projects',
+                    // type: 'completed-projects'
                   },
                   {
                     name: this.translateService.instant('Projects.MegaProjects'),
-                    // link: '/projects?type=mega-projects',
-                    link: '/projects',
-                    type: 'mega-projects'
+                    link: '/projects?type=mega-projects',
+                    // link: '/projects',
+                    // type: 'mega-projects'
                   }
                 ]
               },

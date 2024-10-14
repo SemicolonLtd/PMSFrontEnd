@@ -13,11 +13,11 @@
         @media(min-width: 769px) {
             min-height: 660px;
         }
-        @media (max-width: 768px) {
-            .news-badge {
-                display: none !important;
-            }
-        }
+        // @media (max-width: 768px) {
+        //     .news-badge {
+        //         display: none !important;
+        //     }
+        // }
         // max-height: 660px;
     }
     .big-card {
@@ -28,12 +28,13 @@
         overflow: hidden;
         cursor: pointer;
         display: block;
-        margin-bottom: 1em;
+        // margin-bottom: 1em;
         box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
         border-radius: 6px;
         img {
             min-height: 500px;
             max-height: 500px;
+            object-fit: cover;
             @media(max-width:1440px) {
                 min-height: 400px;
                 max-height: 400px;
@@ -47,6 +48,9 @@
             position: absolute;
             top: 3%;
             left: 3%;
+            @media(max-width:768px) {
+                padding: 0.3rem 1rem;
+            }
         }
         .news-badge.mobile {
             display: none;
@@ -56,13 +60,18 @@
         }
     }
     .small-card {
+        position: relative;
+        z-index: 2;
         display: block;
-        min-height: calc(300px - (32px / 3));
-        max-height: calc(300px - (32px / 3));
+        min-height: calc(450px - 16px);
+        max-height: calc(450px - 16px);
         cursor: pointer;
         img {
             height: 100%;
-            max-height: calc(300px - (32px / 3));
+            // max-height: calc(300px - (32px / 3));
+            object-fit: cover;
+            min-height: calc(200px - (32px / 3));
+            max-height: calc(200px - (32px / 3));
         }
         .news-badge {
             display: inline-block;
@@ -71,6 +80,18 @@
             border-top-left-radius: 7px;
             border-bottom-right-radius: 7px;
             margin-bottom: 0.7rem;
+        }
+        .news-badge.desktop {
+            background-color: #fff;
+            // padding: 0.5rem 1.5rem;
+            border-top-left-radius: 7px;
+            border-bottom-right-radius: 7px;
+            position: absolute;
+            top: 3%;
+            left: 3%;
+        }
+        .news-badge.mobile {
+            display: none;
         }
     }
     @media (max-width: 768px) {
@@ -82,13 +103,14 @@
         .big-card, .small-card {
             // min-height: calc(180px - (32px / 3));
             max-height: unset;
+            min-height: unset;
             img {
                 min-height: calc(180px - (32px / 3));
                 max-height: calc(180px - (32px / 3));
             }
-            .news-badge.desktop {
-                display: none;
-            }
+            // .news-badge.desktop {
+            //     display: none;
+            // }
             .news-badge.mobile {
                 display: inline-block;
                 background-color: #F0F4FF;
@@ -144,6 +166,9 @@
             }
             .p-card {
                 overflow: hidden;
+            }
+            .p-card-content .news-desc {
+                font-size: 0.8rem;
             }
             .big-card {
                 &:hover {
@@ -206,28 +231,35 @@
                         }
                     }
                 }
-                &:nth-of-type(2) {
-                    margin-block: 16px;
-                }
+                // &:nth-of-type(2) {
+                //     margin-block: 16px;
+                // }
                 .p-card .p-card-content {
                     padding: 0;
                 }
                 .p-card {
                     display: flex;
                     flex-direction: row-reverse;
+                    flex-wrap: wrap;
                 }
                 .p-card .p-card-title {
                     font-size: 1rem;
                 }
                 .p-card .p-card-body {
                     width: 100%;
-                    min-height: calc(300px - (32px / 3));
-                    max-height: calc(300px - (32px / 3));
+                    // min-height: calc(300px - (32px / 3));
+                    // max-height: calc(300px - (32px / 3));
+                    // min-height: calc(250px - (32px / 2));
+                    // max-height: calc(250px - (32px / 2));
+                    min-height: 250px;
+                    max-height: 250px;
                     transition: 0.3s all ease;
                 }
                 .p-card-header {
-                    min-width: 30%;
-                    max-width: 30%;
+                    // min-width: 30%;
+                    // max-width: 30%;
+                    min-width: 100%;
+                    max-width: 100%;
                 }
                 @media (max-width:768px) {
                     .p-card {
