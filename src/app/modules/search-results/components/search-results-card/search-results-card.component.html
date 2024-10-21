@@ -3,9 +3,9 @@
         <ng-template pTemplate="header">
             <img alt="Card" [src]="card?.image" />
         </ng-template>
-        <span class="news-badge">
+        <!-- <span class="news-badge">
             {{card?.category_title}}
-        </span>
+        </span> -->
         <ng-container *ngIf="card.short">
             <p [innerHTML]="card?.short | textSlice : 'desc' : 80">
             </p>

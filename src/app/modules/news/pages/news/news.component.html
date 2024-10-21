@@ -14,9 +14,6 @@
                                         <ng-template pTemplate="header">
                                             <img alt="Card" [src]="card?.image" />
                                         </ng-template>
-                                        <!-- <span class="news-badge mobile">
-                                            {{card?.category_title}}
-                                        </span> -->
                                         <p class="news-desc" [innerHTML]="card?.short | textSlice : 'desc' : 150">
                                             <!-- {{bigCardNews.description | slice: 0: 30}} -->
                                         </p>
@@ -24,9 +21,9 @@
                                             <span>{{card?.date}}</span>
                                         </ng-template>
                                     </p-card>
-                                    <span class="news-badge desktop">
+                                    <!-- <span class="news-badge desktop">
                                         {{card?.category_title}}
-                                    </span>
+                                    </span> -->
                                 </a>
                             </div>
                             <div class="sm:col-12 md:col-6 small-cards-container" *ngIf="smallCardsNews?.length">
@@ -38,9 +35,6 @@
                                                 <ng-template pTemplate="header">
                                                     <img alt="Card" [src]="card?.image" />
                                                 </ng-template>
-                                                <!-- <span class="news-badge">
-                                                    {{card?.category_title}}
-                                                </span> -->
                                                 <p class="news-desc" [innerHTML]="card?.short | textSlice : 'desc' : 80">
                                                     <!-- {{card.description | slice: 0: 30}} -->
                                                 </p>
@@ -49,9 +43,9 @@
             
                                                 </ng-template>
                                             </p-card>
-                                            <span class="news-badge desktop">
+                                            <!-- <span class="news-badge desktop">
                                                 {{card?.category_title}}
-                                            </span>
+                                            </span> -->
                                         </a>
                                     </div>
 
@@ -69,9 +63,6 @@
                                 <ng-template pTemplate="header">
                                     <img alt="Card" [src]="card?.image" />
                                 </ng-template>
-                                <!-- <span class="news-badge mobile">
-                                    {{card?.category_title}}
-                                </span> -->
                                 <p class="news-desc" [innerHTML]="card?.short | textSlice : 'desc' : 80">
                                     <!-- {{bigCardNews.description | slice: 0: 30}} -->
                                 </p>
@@ -79,9 +70,9 @@
                                     <span>{{card?.date}}</span>
                                 </ng-template>
                             </p-card>
-                            <span class="news-badge desktop">
+                            <!-- <span class="news-badge desktop">
                                 {{card?.category_title}}
-                            </span>
+                            </span> -->
                         </a>
                     </div>
                     <div class="sm:col-12 md:col-6 small-cards-container" *ngIf="smallCardsNews?.length">
@@ -92,9 +83,9 @@
                                         <ng-template pTemplate="header">
                                             <img alt="Card" [src]="card?.image" />
                                         </ng-template>
-                                        <span class="news-badge">
+                                        <!-- <span class="news-badge">
                                             {{card?.category_title}}
-                                        </span>
+                                        </span> -->
                                         <p class="news-desc" [innerHTML]="card?.short | textSlice : 'desc' : 80">
                                             <!-- {{card.description | slice: 0: 30}} -->
                                         </p>
@@ -103,9 +94,9 @@
         
                                         </ng-template>
                                     </p-card>
-                                    <span class="news-badge desktop">
+                                    <!-- <span class="news-badge desktop">
                                         {{card?.category_title}}
-                                    </span>
+                                    </span> -->
                                 </a>
                             </div>
                         </div>
