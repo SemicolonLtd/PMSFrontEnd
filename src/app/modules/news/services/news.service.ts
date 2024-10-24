@@ -31,7 +31,7 @@ export class NewsService {
   }
 
   getSimilarNews( categoryId: number): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/news/by-category/${categoryId}/10`);
+    return this.http.get(`${environment.apiUrl}/news/by-category/${categoryId}/3`);
   }
 
 }

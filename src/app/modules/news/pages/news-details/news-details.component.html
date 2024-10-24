@@ -55,15 +55,6 @@
             <span class="title block font-bold text-2xl pb-2 mb-4">
                 {{'SimilarTitles.SimilarNews' | translate}}
             </span>
-            <!-- <p-carousel [value]="similarNewsData" [numVisible]="3" [numScroll]="3" [circular]="true"
-                [showIndicators]="false" [responsiveOptions]="responsiveOptions" autoplayInterval="3000"
-                [ngClass]="similarNewsData.length === 1 ? 'length-one' : ''">
-                <ng-template let-news pTemplate="item">
-                    <div class="mx-2">
-                        <app-news-card [newsData]="news"></app-news-card>
-                    </div>
-                </ng-template>
-            </p-carousel> -->
             <div class="grid">
                 <div class="xl:col-4 lg:col-4 md:col-6 sm:col-12" *ngFor="let news of similarNewsData">
                     <app-news-card [newsData]="news"></app-news-card>

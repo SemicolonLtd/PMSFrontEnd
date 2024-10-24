@@ -3,13 +3,16 @@
     .content-wrapper {
         width: 100%; 
         .images {
-            float: left;
+            float: right;
             width: 50%; // or any width you want
             height: auto;
             margin: 10px; // optional
             shape-outside: triangle(50%);
             @media (max-width: 768px) {
                 width: 100%;
+            }
+            &:lang(ar){
+            float: left;
             }
         }
         .text {

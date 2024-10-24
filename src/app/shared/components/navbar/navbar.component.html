@@ -48,8 +48,8 @@
                         [(ngModel)]="lang" 
                         (onChange)="changeLang($event)"
                         optionLabel="name"
-                        class="lang hide-responsive"
-                        [placeholder]="lang" />
+                        optionValue="code"
+                        class="lang hide-responsive" />
                     </div>
                 </div>
             </div>
@@ -128,9 +128,8 @@
                         [(ngModel)]="lang" 
                         (onChange)="changeLang($event)"
                         optionLabel="name" 
-                        (ngModelChange)="changeLang($event)"
-                        class="lang hide-responsive"
-                        [placeholder]="lang" />
+                        optionValue="code"
+                        class="lang hide-responsive" />
                     </div>
                 </div>
             </div>
@@ -166,8 +165,8 @@
                         [(ngModel)]="lang" 
                         (onChange)="changeLang($event)"
                         optionLabel="name"
-                        class="lang hide-responsive"
-                        [placeholder]="lang" />
+                        optionValue="code"
+                        class="lang hide-responsive" />
                     </div>
                 </div>
             </div>

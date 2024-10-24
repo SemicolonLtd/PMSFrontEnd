@@ -291,6 +291,7 @@
         }
 
     }
+
     .topbar-wrapper {
         .lang .p-dropdown{
             background: transparent;
@@ -308,9 +309,13 @@
             color: white;
         }
         .lang .p-dropdown-trigger {
+            width: fit-content;
+        }
+        .p-inputtext {
             color: white;
         }
     }
+
     .mobile-topbar {
         background-color: var(--primary-color-light);
         .nav-social-langs {
@@ -404,6 +409,9 @@
         }
         .lang .p-dropdown-trigger {
             width: 1rem;
+            color: var(--primary-color);
+        }
+        .p-inputtext {
             color: var(--primary-color);
         }
     }

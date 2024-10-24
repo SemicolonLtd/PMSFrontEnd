@@ -23,7 +23,7 @@ export class HomeService {
   }
 
   getInHomeAllNews(): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/news/in-home/4`);
+    return this.http.get(`${environment.apiUrl}/news/in-home/5`);
   }
 
   getNewsCategories(): Observable<any> {
@@ -31,7 +31,7 @@ export class HomeService {
   }
 
   getNewsByCategory(categoryId: number): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/news/in-home/by-category/${categoryId}/4`);
+    return this.http.get(`${environment.apiUrl}/news/in-home/by-category/${categoryId}/5`);
   }
 
   getCoreBusiness(): Observable<any> {

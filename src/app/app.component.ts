@@ -32,15 +32,6 @@ export class AppComponent {
   ) {}
 
   ngOnInit(): void {
-    // this.linkName = this.router.url;
-    // this.route.queryParams.subscribe(params => {
-    //   if (params && params['lang']) {
-    //     this.lang = params['lang']?.slice(0, 2);
-    //     this.fromLink = true;
-    //     this.cookieService.put('lang', this.lang);
-    //     this.checkCookiesForLang();
-    //   }
-    // });
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         // Check if the navigation is triggered by browser back/forward button
@@ -54,22 +45,6 @@ export class AppComponent {
             this.checkLanguageFromUrl();
           }}
     });
-    // this.router.events.subscribe(event => {
-    //   if (event instanceof NavigationStart) {
-    //     // Check if the navigation is triggered by browser back/forward button
-    //     if (event.navigationTrigger === 'popstate') {
-    //       this.isPopStateNavigation = true;
-    //     } else {  
-    //       this.isPopStateNavigation = false;
-    //     }
-    //   }
-
-    //   if (event instanceof NavigationEnd) {
-    //     if (isPlatformBrowser(this.platformId)) {
-    //       this.checkLanguageFromUrl();
-    //     }
-    //   }
-    // });
 
     this.checkCurrentRoute();
     this.checkLoading();

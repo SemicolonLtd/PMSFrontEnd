@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     { name: 'En', code: 'en' },
     { name: 'Ar', code: 'ar' },
   ];
-  lang = environment.lang;
+  lang = this.cookieService.get('lang') || '';
   isSticky = false
   navDetailsOpened: boolean = false;
   detailsType: string = '';
@@ -64,19 +64,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.linkName = event.urlAfterRedirects;
       }
     });
-    // if(isPlatformBrowser(this.platformId)) {
-    //   this.checkCookiesForLang()
-    // }
-    // this.router.events.subscribe(
-    //   event=> {
-    //     if(event instanceof NavigationEnd) {
-    //       if (isPlatformBrowser(this.platformId)) {
-    //         this.checkCookiesForLang()
-    //       }
-    //     }
-        
-    //   }
-    // )
     this.checkCurrentRoute();
     this.getCoreBusinessMenus();
     this.getAllLinks();
@@ -145,10 +132,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   // }
 
   changeLang(lang:any): void {
-    this.lang = lang.value.code;
+    console.log(lang.value);
+    
+    this.lang = lang.value;
     environment.lang = this.lang;
-    this.translateService.use(lang.value.code);
-    this.cookieService.put('lang', lang.value.code);
+    this.translateService.use(lang.value);
+    this.cookieService.put('lang', lang.value);
     console.log(this.linkName);
     
     const link = this.linkName.slice(0, this.linkName.length - 8)
