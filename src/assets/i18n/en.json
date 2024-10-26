@@ -42,6 +42,7 @@
         "OurProjects":"Our Projects Page",
         "OurNews":"Our News Page",
         "OurEvents":"Our Events Page",
+        "OurTenders":"Our Tenders Page",
         "OurCoreBusiness":"Our Core Business Page",
         "Page":"Page",
         "Explore":"Explore",
@@ -69,6 +70,17 @@
         "StartDate": "Start Date",
         "EndDate":"End Date",
         "EventInfo": "Event Information"
+    },
+    "Tenders": {
+        "LatestTender":"Latest Tender",
+        "TenderAndActivities":"Tender & Activities",
+        "More": "More...",
+        "StartDate": "Start Date",
+        "EndDate":"End Date",
+        "TenderInfo": "Tender Information",
+        "PDF":"PDF",
+        "Terms": "Terms & Conditions",
+        "ClickHere": "Click here to preview"
     },
     "Certificates": {
         "Certificates":"Certificates",
@@ -110,7 +122,8 @@
         "Email":"Email",
         "Address": "Address",
         "Phone": "Phone",
-        "KeepInTouch":"Keep in touch"
+        "KeepInTouch":"Keep in touch",
+        "Tenders":"Tenders"
     },
     "SearchResults": {
         "Projects":"Projects",

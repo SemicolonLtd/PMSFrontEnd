@@ -96,7 +96,7 @@
             </span>
             <div class="grid">
                 <div class="xl:col-4 lg:col-4 md:col-6 sm:col-12" *ngFor="let event of similarEventsData">
-                    <app-event-card [eventData]="event"></app-event-card>
+                    <app-event-card [eventData]="event" [cardType]="'event'"></app-event-card>
                 </div>
             </div>
         </div>

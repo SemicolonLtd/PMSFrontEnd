@@ -1,7 +1,7 @@
 <div class="events">
     <!-- <img src="assets/images/global/pages-wave-top.webp" alt="" class="pages-wave-top"> -->
-    <app-search [Title]="searchTitle" (searchEmitter)="searchForEvents($event)"></app-search>
-    <div class="latest-event" *ngIf="pageTopEvent && !topEventLoading && !searchMode">
+    <app-search [Title]="searchTitle" (searchEmitter)="searchForTenders($event)"></app-search>
+    <!-- <div class="latest-event" *ngIf="pageTopEvent && !topEventLoading && !searchMode">
         <div class="pms-container">
             <div class="grid">
                 <div class="event-img md:col-6 sm:col-12 max-h-30rem min-h-30rem">
@@ -9,7 +9,7 @@
                 </div>
                 <div class="event-info md:col-6 sm:col-12 max-h-30rem min-h-30rem">
                     <h3 class="title subtitle-font-size">
-                        {{'Events.LatestEvent' | translate}}
+                        {{'Tenders.LatestTender' | translate}}
                     </h3>
                     <h5 class="short-desc">
                         {{ pageTopEvent?.title }}
@@ -28,29 +28,33 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <app-loading type="small" *ngIf="topEventLoading && !searchMode" ></app-loading>
 
     <app-center-bar *ngIf="!searchMode" [Title]="barTitle" [Desc]="'It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.'"></app-center-bar>
-    <div class="events-list" *ngIf="eventsList?.length && !eventsLoading">
+    <div class="events-list">
         <div class="pms-container">
-            <div class="filtered-events mt-5">
-                <div class="grid">
-                    <ng-container *ngIf="eventsList.length">
-                        <div class="card-wrapper xl:col-4 md:col-6 sm:col-12 mb-4" *ngFor="let event of eventsList">
-                            <app-event-card [eventData]="event" [cardType]="'event'"></app-event-card>
-                        </div>
-                        <ng-container *ngFor="let schema of schemaList">
-                            <ngx-json-ld [json]="schema"></ngx-json-ld>
+            <p-tabView [scrollable]="true" (activeIndexChange)="onSelectCategory($event)">
+                <p-tabPanel *ngFor="let category of newsCategories" [header]="category?.name">
+                    <div class="grid">
+                        <ng-container *ngIf="tendersList.length">
+                            <div class="card-wrapper xl:col-4 md:col-6 sm:col-12 mb-4" *ngFor="let tender of tendersList">
+                                <app-event-card [eventData]="tender" [cardType]="'tender'"></app-event-card>
+                            </div>
+                            <ng-container *ngFor="let schema of schemaList">
+                                <ngx-json-ld [json]="schema"></ngx-json-ld>
+                            </ng-container>
                         </ng-container>
-                    </ng-container>
-                    <div class="load-more" *ngIf="(paginationData?.total! > eventsList?.length!) && !eventsLoading">
-                        <p-button label="{{'Events.More' | translate}}" (click)="loadMore()" />
+                        <app-empty-state *ngIf="!tendersList?.length && !tendersLoading"></app-empty-state> 
+                        <div class="load-more" *ngIf="(paginationData?.total! > tendersList?.length!) && !tendersLoading">
+                            <p-button label="{{'Tenders.More' | translate}}" (click)="loadMore()" />
+                        </div>
                     </div>
-                </div>
-            </div>
+                </p-tabPanel>
+            </p-tabView>
         </div>
     </div>
-    <app-loading type="small" *ngIf="eventsLoading" ></app-loading>
-    <app-empty-state *ngIf="!eventsList?.length && !eventsLoading"></app-empty-state>
+    
+    <app-loading type="small" *ngIf="tendersLoading" ></app-loading>
+    <!-- <app-empty-state *ngIf="!tendersList?.length && !tendersLoading"></app-empty-state> -->
 </div>

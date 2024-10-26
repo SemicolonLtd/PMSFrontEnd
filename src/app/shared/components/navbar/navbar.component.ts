@@ -18,8 +18,8 @@ import { SettingsService } from 'src/app/core/services/settings.service';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   langs = [
-    { name: 'En', code: 'en' },
-    { name: 'Ar', code: 'ar' },
+    { name: 'EN', code: 'en' },
+    { name: 'AR', code: 'ar' },
   ];
   lang = this.cookieService.get('lang') || '';
   isSticky = false

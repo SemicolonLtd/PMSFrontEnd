@@ -42,6 +42,7 @@
         "OurProjects":"صفحة مشاريعنا",
         "OurNews":"صفحة اخبارنا",
         "OurEvents":"صفحة فعالياتنا",
+        "OurTenders":"صفحة المناقصات",
         "OurCoreBusiness":"صفحة الاعمال الاساسية",
         "Explore":"استكشف",
         "SearchHere": "ابحث هنا...",
@@ -68,6 +69,17 @@
         "StartDate": "تاريخ البدء",
         "EndDate": "تاريخ الإنتهاء",
         "EventInfo": "معلومات الفعالية"
+    },
+    "Tenders": {
+        "LatestEvent":"اخر فعالية",
+        "EventAndActivities":"الفعاليات والنشاطات",
+        "More": "المزيد...",
+        "StartDate": "تاريخ البدء",
+        "EndDate": "تاريخ الإنتهاء",
+        "EventInfo": "معلومات الفعالية",
+        "PDF":"PDF",
+        "Terms": "الشروط والاحكام",
+        "ClickHere": "اضغط هنا للمشاهدة"
     },
     "Certificates": {
         "Certificates":"الشهادات",
@@ -109,7 +121,8 @@
         "Email":"البريد الإلكتروني",
         "Address": "العنوان",
         "Phone": "الهاتف",
-        "KeepInTouch":"ابق على تواصل"
+        "KeepInTouch":"ابق على تواصل",
+        "Tenders":"المناقصات"
     },
     "SearchResults": {
         "Projects":"المشاريع",

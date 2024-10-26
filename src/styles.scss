@@ -86,6 +86,9 @@ html {
     width: 7px;
 }
 
+.p-component-overlay {
+    z-index: 1400 !important;
+}
 
 /* Track */
 ::-webkit-scrollbar-track {

@@ -1,4 +1,6 @@
-<a class="event-card border-round-3xl" [routerLink]="'/events/details/'+ eventData.slug">
+<a class="event-card border-round-3xl" 
+[routerLink]="cardType == 'event' ? '/events/details/'+ eventData.slug : '/tenders/details/'+ eventData.slug "
+>
     <div class="img-wrapper">
         <img class="w-full border-round-3xl" [src]="eventData.image" alt="Project Image">
     </div>

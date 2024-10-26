@@ -31,7 +31,7 @@
         <div class="content" [innerHTML]="sanitizeHtml(pageContent.body)"></div>
     </ng-container>
     <app-loading type="small" *ngIf="loading"></app-loading>
-    <div class="flex align-items-center justify-content-center" style="height: 50vh;">
-        <app-empty-state *ngIf="!pageContent?.slug && !loading"></app-empty-state>
+    <div class="flex align-items-center justify-content-center" *ngIf="!pageContent?.slug && !loading" style="height: 100vh;">
+        <app-empty-state></app-empty-state>
     </div>
 </main>
