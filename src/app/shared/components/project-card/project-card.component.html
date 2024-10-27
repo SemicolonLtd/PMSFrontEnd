@@ -1,12 +1,12 @@
-<div class="project-card">
-    <div class="img-wrapper">
+<div class="project-card" >
+    <a class="img-wrapper" [routerLink]="'/projects/details/'+ projectData.slug ">
         <img class="w-full rounded-3" [src]="projectData.image" alt="Project Image">
-    </div>
+    </a>
     <div class="content flex justify-content-between mt-3">
         <div class="info">
-            <h5 class="title">
+            <a class="title" [routerLink]="'/projects/details/'+ projectData.slug ">
                 {{projectData.title | textSlice : 'desc' : 80}}
-            </h5>
+            </a>
             <span class="date">
                 {{projectData.date}}
             </span>

@@ -68,6 +68,9 @@
             max-height: 450px;
         }
     }
+    .p-image-mask {
+        z-index: 1107 !important;
+    }
 }
 
 pre {

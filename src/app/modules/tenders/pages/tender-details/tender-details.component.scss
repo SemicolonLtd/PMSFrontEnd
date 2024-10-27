@@ -7,10 +7,10 @@
         .images {
             height: auto;
             margin: 10px;
-            @media (max-width: 768px) {
-                flex-wrap: wrap;
-                flex-direction: column-reverse;
-            }
+        }
+        @media (max-width: 768px) {
+            flex-wrap: wrap;
+            flex-direction: column-reverse;
         }
         .text {
             margin-left: 0;
@@ -82,6 +82,7 @@
             font-size: 1em;
             font-weight: 600;
             text-transform: capitalize;
+            white-space: nowrap;
         }
         .info-col {
             color: #333;

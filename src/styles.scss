@@ -86,9 +86,13 @@ html {
     width: 7px;
 }
 
-.p-component-overlay {
-    z-index: 1400 !important;
+::-webkit-scrollbar-horizontal {
+    height: 7px; /* Height of the horizontal scrollbar */
 }
+
+// .p-component-overlay {
+//     z-index: 1400 !important;
+// }
 
 /* Track */
 ::-webkit-scrollbar-track {

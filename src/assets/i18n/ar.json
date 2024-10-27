@@ -77,7 +77,7 @@
         "StartDate": "تاريخ البدء",
         "EndDate": "تاريخ الإنتهاء",
         "EventInfo": "معلومات الفعالية",
-        "PDF":"PDF",
+        "PDF":"كراسة الشروط",
         "Terms": "الشروط والاحكام",
         "ClickHere": "اضغط هنا للمشاهدة"
     },
@@ -104,6 +104,7 @@
         "SimilarNews":"الاخبار المشابهة",
         "SimilarCoreBusiness":"الاعمال الاساسية المشابهة",
         "SimilarEvents":"الفعاليات المشابهة",
+        "SimilarTenders":"المناقصات المشابهة",
         "CoreBusinessProjects": "المشاريع المرتبطة بالاعمال الاساسية"
     },
     "Footer": {

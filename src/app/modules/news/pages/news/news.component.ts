@@ -15,7 +15,7 @@ export class NewsComponent implements OnInit, OnDestroy {
   searchTitle = this.translateService.instant('Search.OurNews')
   isBrowser!: boolean;
   bigCardNews: any[] = [];
-  pageSize = 10;
+  pageSize = 5;
   smallCardsNews: any[] = [];
   newsData: any[] = [];
   newsCategories: any[] = [];
@@ -24,7 +24,7 @@ export class NewsComponent implements OnInit, OnDestroy {
   paginationData: any;
   searchMode = false;
   searchQuery = '';
-  selectedIndex: any = null;
+  selectedIndex: any = 0;
   subscriptions = new Subscription();
   schemaObj: any;
   schemaList: any[] = [];
@@ -108,6 +108,8 @@ export class NewsComponent implements OnInit, OnDestroy {
   }
 
   loadMore(): void {
+    console.log(this.selectedIndex);
+    
     this.pageSize += 10;
     if(this.selectedIndex == 0) {
       this.getRecentNews();
@@ -139,7 +141,8 @@ export class NewsComponent implements OnInit, OnDestroy {
       this.newsService.getAllNews(this.pageSize).subscribe({
         next: (res: any) => {
           if(res?.status == 200) {
-            this.newsData = [... this.newsData, ...res?.data?.data];
+            this.newsData = []
+            this.newsData = res?.data?.data
             this.paginationData = res?.data?.meta?.pagination;
             this.bigCardNews = this.newsData?.filter((card: any) => card.big_card == true);
             this.smallCardsNews = this.newsData?.filter((card: any) => card.big_card == false);

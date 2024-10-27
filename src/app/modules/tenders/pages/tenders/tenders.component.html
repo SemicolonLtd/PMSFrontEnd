@@ -45,7 +45,7 @@
                                 <ngx-json-ld [json]="schema"></ngx-json-ld>
                             </ng-container>
                         </ng-container>
-                        <app-empty-state *ngIf="!tendersList?.length && !tendersLoading"></app-empty-state> 
+                        <app-empty-state class="m-auto" *ngIf="!tendersList?.length && !tendersLoading"></app-empty-state> 
                         <div class="load-more" *ngIf="(paginationData?.total! > tendersList?.length!) && !tendersLoading">
                             <p-button label="{{'Tenders.More' | translate}}" (click)="loadMore()" />
                         </div>
