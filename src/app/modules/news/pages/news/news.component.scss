@@ -1,7 +1,7 @@
 .news {
     position: relative;
     .pms-container {
-        padding-block: 5rem;
+        padding-block: 3rem;
         @media (max-width:768px) {
             padding-block: 2rem;
         }
@@ -121,7 +121,7 @@
 
 .header {
     position: relative;
-    height: 60vh;
+    height: 85vh;
     .cover {
         position: absolute;
         left: 0;
