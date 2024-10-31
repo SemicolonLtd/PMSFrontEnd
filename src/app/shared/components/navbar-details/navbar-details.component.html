@@ -1,9 +1,10 @@
 <div class="navbar-details">
     <p-sidebar [(visible)]="navDetailsVisible" [fullScreen]="true" (onHide)="onHideNavDetails()">
         <ng-template pTemplate="header">
-            <div>
+            <div class="flex align-items-center">
                 <h3>{{detailsTitle}}</h3>
                 <!-- <span>Discover PMS {{detailsTitle}}</span> -->
+                <i class="pi" [ngClass]="lang == 'ar' ? 'pi-arrow-left' : 'pi-arrow-right'"></i>
             </div>
         </ng-template>
         <ng-template pTemplate="closeicon">
@@ -13,15 +14,15 @@
         <div class="details-content">
             <div class="pms-container">
                 <div class="grid">
-                    <div class="lg:col-3 md:col-12 sm:col-12" *ngIf="detailsType !== 'Search'">
+                    <!-- <div class="lg:col-3 md:col-12 sm:col-12" *ngIf="detailsType !== 'Search'">
                         <div class="discover-btn">
                             <p-button 
                                 label="{{'Navbar.DiscoverMore' | translate}}" 
                                 icon="pi pi-arrow-right" 
                             />
                         </div>
-                    </div>
-                    <div class="all-links lg:col-9 md:col-12 sm:col-12" *ngIf="detailsType !== 'Search'">
+                    </div> -->
+                    <div class="all-links lg:col-10 md:col-12 sm:col-12" *ngIf="detailsType !== 'Search'">
                         <div class="links-list">
                             <ul>
                                 <li *ngFor="let link of displayedLinks" 

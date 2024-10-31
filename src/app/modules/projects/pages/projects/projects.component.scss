@@ -1,5 +1,5 @@
 .projects {
-    margin-top: 9.1rem;
+    // margin-top: 9.1rem;
     position: relative;
     .latest-project {
         padding-block: 6rem;
@@ -38,6 +38,60 @@
     }
 
 }
+
+.header {
+    position: relative;
+    height: 60vh;
+    .cover {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        filter: brightness(0.5);
+    }
+    .content {
+        position: absolute;
+        left: 0%;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        text-align: start;
+        padding-inline: 5%;
+        .title {
+            font-size: 5rem;
+        }
+        .text {
+            font-size: 2.5rem;
+        }
+        &:lang(ar) {
+            left: unset;
+            right: 0%;
+        }
+    }
+    @media (max-width: 1440px) {
+        .content {
+            .title {
+                font-size: 4rem;
+            }
+        }
+    }
+    @media (max-width: 768px) {
+        height: 30vh;
+        .content {
+            .title {
+                font-size: 3rem;
+            }
+            .text {
+                font-size: 1.7rem;
+            }
+        }
+    }
+}
+
 ::ng-deep {
     .projects {
         .p-component {

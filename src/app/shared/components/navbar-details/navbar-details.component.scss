@@ -1,4 +1,13 @@
-
+.navbar-details {
+    h3 {
+        font-size: 2.1rem;
+        margin-inline-end: 0.5rem;
+        margin-bottom: 0;
+        @media (max-width:576px) {
+            font-size: 1.8rem;
+        }
+    }
+}
 ::ng-deep {
     .navbar-details {
         .p-sidebar .p-sidebar-header .p-sidebar-close:enabled:hover, .p-sidebar .p-sidebar-header .p-sidebar-icon:enabled {
@@ -60,12 +69,19 @@
             }
         }
         .all-links {
+            margin-inline-start: auto;
             @media (max-width:992px) {
-                margin-top: 2rem;
+                margin-top: 0rem;
             }
         }
         .links-list {
             ul {
+                @media (max-width:992px) {
+                    padding-left: 0;
+                }
+                @media (max-width:576px) {
+                    padding-left: 1rem;
+                }
                 li {
                     cursor: pointer;
                     margin-bottom: 1rem;

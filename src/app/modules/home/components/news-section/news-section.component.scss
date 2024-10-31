@@ -4,10 +4,14 @@
     background-size: cover;
     .big-card-container ,
     .small-cards-container {
-        min-height: 850px;
+        // min-height: 850px;
+        position: relative;
+        // overflow: hidden;
         // max-height: 660px;
         @media(min-width: 769px) {
-            min-height: 610px;
+            // min-height: 610px;
+            min-height: 800px - 8px;
+            max-height: 800px - 8px;
         }
         // @media (max-width: 768px) {
         //     .news-badge {
@@ -16,9 +20,10 @@
         // }
     }
     .big-card {
-        min-height: 800px;
+        min-height: 800px - 8px;
+        max-height: 800px - 8px;
         // max-height: 660px;
-        position: relative;
+        // position: relative;
         z-index: 2;
         overflow: hidden;
         cursor: pointer;
@@ -26,8 +31,18 @@
         box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
         border-radius: 6px;
         img {
-            min-height: 400px;
-            max-height: 400px;
+            // min-height: 400px;
+            // max-height: 400px;
+            min-height: 800px - 8px;
+            max-height: 800px - 8px;
+            @media(min-width:769px) {
+                border-radius: 5px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+            }
             object-fit: cover;
         }
         .news-badge.desktop {
@@ -150,7 +165,9 @@
     .our-news-section {
         .news-data {
             .p-card-body {
-                position: relative;
+                @media(max-width:768px) {
+                    position: relative;
+                }
                 .p-card-footer {
                     position: absolute;
                     bottom: 7%;
@@ -198,18 +215,30 @@
                 font-size: 0.8rem;
             }
             .big-card {
+                overflow: hidden;
                 &:hover {
                     .p-card-header {
                         overflow: hidden;
-                        img {
-                            transition: 0.5s all ease-in-out;
-                            transform: scale(1.1) rotate(-1deg);
-                        }
+                        // img {
+                        //     transition: 0.5s all ease-in-out;
+                        //     transform: scale(1.1) rotate(-1deg);
+                        // }
                     }
                 }
                 .p-card .p-card-body {
-                    min-height: calc(400px - (16px / 2));
-                    max-height: calc(400px - (16px / 2));
+                    // min-height: calc(400px - (16px / 2));
+                    // max-height: calc(400px - (16px / 2));
+                    @media (min-width: 769px) {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 40%;
+                        margin: auto;
+                        color: white;
+                        background: #0000006b;
+                        border-radius: 5px;
+                    }
                     // @media (max-width: 1440px) {
                     //     min-height: 500px;
                     //     max-height: 500px;

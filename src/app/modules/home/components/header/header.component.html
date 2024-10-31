@@ -1,5 +1,5 @@
 <div class="header-section">
-    <div id="carouselExampleCaptions" class="carousel slide" *ngIf="!loading">
+    <div id="carouselExampleCaptions" class="carousel slide carousel-fade" *ngIf="!loading">
         <div class="carousel-indicators">
             <button type="button" *ngFor="let slider of slidersData; let i = index"
                 data-bs-target="#carouselExampleCaptions" [attr.data-bs-slide-to]="i" [ngClass]="{'active': i === 0}"

@@ -1,6 +1,6 @@
 <nav class="nav-container desktop" 
     [ngClass]="{'nav-sticky': (isSticky || navDetailsOpened),
-    'nav-on-details': (navDetailsOpened || (currentRoute != '/' && currentRoute != 'certificates' && currentRoute != 'faq' && currentRoute != 'content'))}"
+    'nav-on-details': (navDetailsOpened || currentRoute == 'contact-us')}"
     >
     <div class="topbar" *ngIf="!navDetailsOpened">
         <div class="pms-container w-full">
@@ -40,6 +40,14 @@
                         <a class="social-item" *ngIf="socialMediaData?.insta"
                         [href]="socialMediaData?.insta" target="_blank">
                             <i class="pi pi-instagram"></i>
+                        </a>
+                        <a class="social-item" *ngIf="socialMediaData?.x"
+                        [href]="socialMediaData?.x" target="_blank">
+                            <i class="pi pi-twitter"></i>
+                        </a>
+                        <a class="social-item" *ngIf="socialMediaData?.facebook"
+                        [href]="socialMediaData?.facebook" target="_blank">
+                            <i class="pi pi-facebook"></i>
                         </a>
                     </div>
                     <div class="langs">
