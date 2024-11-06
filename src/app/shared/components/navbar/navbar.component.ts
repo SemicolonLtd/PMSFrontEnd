@@ -36,6 +36,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   subscriptions = new Subscription();
   linkName = '';
   socialMediaData: any;
+  pageWithHeader: boolean = false;
 
   constructor(
     private router: Router,
@@ -54,7 +55,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.linkName = this.router.url;
-
+    
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd && event.urlAfterRedirects) {
         if (event.urlAfterRedirects.includes('?lang=ar') || event.urlAfterRedirects.includes('?lang=en')) {
@@ -200,7 +201,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
       const urlTree = this.router.parseUrl(event.url);
       this.currentRoute = urlTree.root.children['primary']?.segments.map(it => it.path).join('/') || '/';
+      console.log(this.currentRoute);
+      // if (this.currentRoute === 'news') {
+      //   // console.log(page);
+      //   this.pageWithHeader = true;
+      // } else {
+      //   this.pageWithHeader = false
+      // }
+        this.checkPagesWithHeaders()
       });
+      
   }
 
   getAllLinks(): void {
@@ -258,6 +268,29 @@ export class NavbarComponent implements OnInit, OnDestroy {
         } 
       )
     )
+  }
+
+  checkPagesWithHeaders(): void {
+    const pages = [
+      '/',
+      'news',
+      'projects',
+      'events',
+      'tenders',
+      'content', 
+      'certificates',
+      'core-business/marine-services',
+      'core-business/offshore-construction'
+    ]
+    // if (this.currentRoute === 'news') {
+    //   // console.log(page);
+    //   this.pageWithHeader = true;
+    // } else {
+    //   this.pageWithHeader = false
+    // }
+
+    this.pageWithHeader = pages.includes(this.currentRoute);
+
   }
 
   ngOnDestroy(): void {

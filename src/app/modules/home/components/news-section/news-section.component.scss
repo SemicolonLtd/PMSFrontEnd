@@ -5,13 +5,13 @@
     .big-card-container ,
     .small-cards-container {
         // min-height: 850px;
-        position: relative;
+        // position: relative;
         // overflow: hidden;
         // max-height: 660px;
         @media(min-width: 769px) {
             // min-height: 610px;
             min-height: 800px - 8px;
-            max-height: 800px - 8px;
+            // max-height: 800px - 8px;
         }
         // @media (max-width: 768px) {
         //     .news-badge {
@@ -23,7 +23,8 @@
         min-height: 800px - 8px;
         max-height: 800px - 8px;
         // max-height: 660px;
-        // position: relative;
+        position: relative;
+        display: block;
         z-index: 2;
         overflow: hidden;
         cursor: pointer;
@@ -216,13 +217,20 @@
             }
             .big-card {
                 overflow: hidden;
-                &:hover {
-                    .p-card-header {
-                        overflow: hidden;
-                        // img {
-                        //     transition: 0.5s all ease-in-out;
-                        //     transform: scale(1.1) rotate(-1deg);
-                        // }
+                // &:hover {
+                //     .p-card-header {
+                //         overflow: hidden;
+                //         // img {
+                //         //     transition: 0.5s all ease-in-out;
+                //         //     transform: scale(1.1) rotate(-1deg);
+                //         // }
+                //     }
+                // }
+                @media (min-width: 769px) { 
+                    &:hover {
+                        .p-card .p-card-body {
+                            height: 45%;
+                        }
                     }
                 }
                 .p-card .p-card-body {
@@ -238,6 +246,7 @@
                         color: white;
                         background: #0000006b;
                         border-radius: 5px;
+                        transition: 0.5s all ease;
                     }
                     // @media (max-width: 1440px) {
                     //     min-height: 500px;
