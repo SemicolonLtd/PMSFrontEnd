@@ -30,6 +30,13 @@
                                     {{ link?.name }}
                                 </li>
                             </ul>
+                            <div class="loader" *ngIf="loading"></div>
+                            <ul class="fleet-list" *ngIf="displayFleetCategories && !loading">
+                                <li *ngFor="let cate of fleetCategories" 
+                                    (click)="openFleetCategory(cate)">
+                                    {{ cate?.name }}
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="col-12" *ngIf="detailsType === 'Search'">

@@ -1,18 +1,18 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { EventsService } from '../../services/events.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
 import { MetaService } from 'src/app/core/services/meta.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { FleetsService } from '../../services/fleets.service';
 
 @Component({
-  selector: 'app-event-details',
-  templateUrl: './event-details.component.html',
-  styleUrls: ['./event-details.component.scss']
+  selector: 'app-fleet-details',
+  templateUrl: './fleet-details.component.html',
+  styleUrls: ['./fleet-details.component.scss']
 })
-export class EventDetailsComponent implements OnInit, OnDestroy {
+export class FleetDetailsComponent implements OnInit, OnDestroy {
   websiteUrl = environment.websiteUrl;
 
   responsiveOptions: any[] = [
@@ -30,7 +30,7 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
     }
   ];
 
-  eventData: any = {};
+  fleetData: any = {};
   similarEventsData: any[] = [];
   similarEventsLoading = false;
   slug: string = '';
@@ -38,14 +38,14 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
   loading = false;
   breadcrumbItems = [
     {
-      name: this.translateService.instant('Navbar.Events'),
-      link: '/events'
+      name: this.translateService.instant('Fleets.Fleets'),
+      link: '/fleets'
     }
   ];
   subscriptions = new Subscription();
 
   constructor(
-    private eventsService: EventsService,
+    private fleetsService: FleetsService,
     private translateService: TranslateService,
     private route: ActivatedRoute,
     private router: Router,
@@ -54,46 +54,46 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.getEventSlugFromParams();
+    this.getFleetSlugFromParams();
   }
 
   sanitizeHtml(html: string): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
-  getEventSlugFromParams(): void {
+  getFleetSlugFromParams(): void {
     this.route.params.subscribe((params: any) => {
       if(params['slug']) {
         this.slug = params['slug'];
         this.breadcrumbItems = []
-        this.getEventDetails();
+        this.getFleetDetails();
       } else {
-        this.router.navigateByUrl('/events');
+        this.router.navigateByUrl('/fleets');
       }
     });
   }
 
-  getEventDetails(): void {
+  getFleetDetails(): void {
     this.loading = true;
     this.subscriptions.add(
-      this.eventsService.getEventDetails(this.slug).subscribe({
+      this.fleetsService.getFleetDetails(this.slug).subscribe({
         next: (res: any) => {
           if(res?.status == 200) {
-            this.eventData = res?.data;
-            this.eventData.media = [
-              ...this.eventData.media
-            ];
-            this.breadcrumbItems.push(
-              {
-                name: this.eventData?.menu,
-                link: '/events/'
-              },
-              {
-              name: this.eventData?.title,
-              link: '/events/details/' + this.eventData?.slug
-            })
+            this.breadcrumbItems = []
+            this.fleetData = res?.data;
+              this.breadcrumbItems.push(
+                {
+                  name: this.fleetData?.menu,
+                  // link: '/fleets/category?slug=' + this.fleetData?.menu
+                  link: `/fleets/category?slug=${this.fleetData?.menu}`
+
+                },
+                {
+                name: this.fleetData?.title,
+                link: '/fleets/details?slug' + this.fleetData?.title
+              })
             this.handleMetaTags();
-            this.getSimilarEvents();
+            // this.getSimilarEvents();
           }
           this.loading = false;
         },
@@ -105,23 +105,23 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
     );
   }
 
-  getSimilarEvents(): void {
-    this.similarEventsLoading = true;
-    this.subscriptions.add(
-      this.eventsService.getEvents(10).subscribe({
-        next: (res: any) => {
-          if(res?.status == 200) {
-            this.similarEventsData = res?.data?.data;
-          }
-          this.similarEventsLoading = false;
-        },
-        error: (err: any) => {
-          console.log(err);
-          this.similarEventsLoading = false;
-        }
-      })
-    );
-  }
+  // getSimilarEvents(): void {
+  //   this.similarEventsLoading = true;
+  //   this.subscriptions.add(
+  //     this.fleetsService.getEvents(10).subscribe({
+  //       next: (res: any) => {
+  //         if(res?.status == 200) {
+  //           this.similarEventsData = res?.data?.data;
+  //         }
+  //         this.similarEventsLoading = false;
+  //       },
+  //       error: (err: any) => {
+  //         console.log(err);
+  //         this.similarEventsLoading = false;
+  //       }
+  //     })
+  //   );
+  // }
 
   // onLinkOpened(event: any): void {
   //   this.handleMetaTags();
@@ -129,13 +129,13 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
 
   handleMetaTags(): void {
     const content: any = {
-      title: this.eventData.title,
+      title: this.fleetData.title,
       useTranslation: false,
-      description: this.eventData.short,
-      keywords: this.eventData.short,
-      image: this.eventData.image,
-      // url: `${environment.websiteUrl}news/news-view/${encodeURIComponent(this.eventData.slug)}`
-      url: `${environment.websiteUrl}/events/details/${this.eventData.slug}`
+      description: this.fleetData.short,
+      keywords: this.fleetData.short,
+      image: this.fleetData.image,
+      // url: `${environment.websiteUrl}news/news-view/${encodeURIComponent(this.fleetData.slug)}`
+      url: `${environment.websiteUrl}/events/details/${this.fleetData.slug}`
     };
     this.metaService.createMetaData(content);
   }

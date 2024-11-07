@@ -82,6 +82,15 @@
         "Terms": "Terms & Conditions",
         "ClickHere": "Click here to preview"
     },
+    "Fleets": {
+        "Fleets":"Fleets",
+        "StartDate": "Start Date",
+        "EndDate":"End Date",
+        "TenderInfo": "Tender Information",
+        "PDF":"Terms Book",
+        "Terms": "Terms & Conditions",
+        "ClickHere": "Click here to preview"
+    },
     "Certificates": {
         "Certificates":"Certificates",
         "Desc":"Good people delivering an honest value ",

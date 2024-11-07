@@ -1,20 +1,27 @@
-<a class="event-card border-round-3xl" 
-[routerLink]="cardType == 'event' ? '/events/details/'+ eventData.slug : '/tenders/details/'+ eventData.slug "
->
+<a 
+  class="event-card border-round-3xl" 
+  [routerLink]="
+    cardType == 'event' ? '/events/details/' + eventData.slug :
+    cardType == 'tender' ? '/tenders/details/' + eventData.slug :
+    cardType == 'fleet' ? '/fleets/details/' + eventData.slug : ''
+  "
+> 
     <div class="img-wrapper">
         <img class="w-full border-round-3xl" [src]="eventData.image" alt="Project Image">
     </div>
     <div class="content">
         <div class="data">
             <div class="info">
-                <h5 class="title">
-                    {{eventData.title | textSlice : 'title' : 40}}
+                <h5 class="title" *ngIf="eventData?.title">
+                    {{eventData?.title | textSlice : 'title' : 40}}
                 </h5>
-                <div class="short-desc">
-                    {{eventData.pref | textSlice : 'desc' : 60}}
+                <div class="short-desc" *ngIf="eventData?.pref">
+                    {{eventData?.pref | textSlice : 'desc' : 60}}
                 </div>
-                <div class="dates flex align-items-center justify-content-between mt-2">
-                    <div class="start-date">
+                <div class="short-desc" *ngIf="!eventData?.pref && eventData?.desc" [innerHTML]="eventData?.desc | textSlice : 'desc' : 60">
+                </div>
+                <div class="dates flex align-items-center justify-content-between mt-2" *ngIf="eventData?.date">
+                    <div class="start-date" *ngIf="eventData?.date">
                         <span class="label font-semibold">
                             {{'Events.StartDate' | translate}}:
                         </span>
@@ -22,7 +29,7 @@
                             {{eventData.date}}
                         </span>
                     </div>
-                    <div class="end-date">
+                    <div class="end-date" *ngIf="eventData?.end_date">
                         <span class="label font-semibold">
                             {{'Events.EndDate' | translate}}:
                         </span>
@@ -33,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <div class="actions">
+        <div class="actions" *ngIf="eventData?.date">
             <span class="date">
                 {{eventData.date | relativeTime}}
             </span>

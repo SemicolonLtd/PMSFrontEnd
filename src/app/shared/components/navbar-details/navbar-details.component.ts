@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, Output, Renderer2, SimpleCha
 import { NavigationExtras, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import { FleetsService } from 'src/app/modules/fleets/services/fleets.service';
 import { environment } from './../../../../environments/environment';
 
 @Component({
@@ -18,13 +19,16 @@ export class NavbarDetailsComponent implements OnChanges {
   @Input() navDetailsVisible: boolean = false;
   @Output() navDetailsVisibilityChange = new EventEmitter<boolean>();
   subscriptions = new Subscription()
-  loading: boolean = true;
+  loading: boolean = false;
   linksList: any[] = [];
   searchQuery = '';
   lang = environment.lang
+  displayFleetCategories:boolean = false
+  fleetCategories:any = []
   constructor(
     private renderer: Renderer2,
     private router: Router,
+    private fleetsService: FleetsService,
     private translateService: TranslateService
   ) { }
 
@@ -32,33 +36,48 @@ export class NavbarDetailsComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.displayFleetCategories = false;
     this.displayedLinks = changes['displayedLinks']?.currentValue ? changes['displayedLinks']?.currentValue : this.displayedLinks;
     this.detailsType = changes['detailsType']?.currentValue ? changes['detailsType']?.currentValue : this.detailsType;
-    // this.preventScrollXPage();
   }
-
-  // preventScrollXPage(): void {
-  //   if (this.navDetailsVisible) {
-  //     this.renderer.setStyle(document.body, 'overflow-y', 'hidden');
-  //     this.renderer.setStyle(document.body, 'height', '100vh');
-  //   } else {
-  //     this.renderer.removeStyle(document.body, 'overflow-y');
-  //     this.renderer.removeStyle(document.body, 'height');
-  //   }
-  // }
 
   onHideNavDetails(): void {
     this.navDetailsVisible = false;
+    this.fleetCategories = []
+    this.displayFleetCategories = false
     this.navDetailsVisibilityChange.emit(this.navDetailsVisible);
   }
 
   openLink(link: any): void {
-    this.onHideNavDetails();
     if (link?.slug) {
-      this.router.navigateByUrl('/content?slug=' + link.slug);
+      if (link?.slug === 'الاسطول' || link?.slug === 'fleet') {
+        this.getFleetsCategories()
+      } else {
+        this.onHideNavDetails();
+        this.router.navigateByUrl('/content?slug=' + link.slug);
+      }
     } else if (link?.link) {
+      this.onHideNavDetails();
       this.router.navigateByUrl(link.link);
     }
+  }
+
+  getFleetsCategories(): void {
+    this.loading = true
+    this.subscriptions.add(
+      this.fleetsService.getFleetsCategories().subscribe({
+        next: (res: any) => {
+          this.loading = false
+          if(res?.status == 200) {
+            this.displayFleetCategories = true
+            this.fleetCategories = [...res?.data?.data]
+          }
+        },
+        error: (err: any) => {
+          this.loading = false
+        }
+      })
+    )
   }
 
   toSearchResults(): void {
@@ -67,5 +86,15 @@ export class NavbarDetailsComponent implements OnChanges {
         queryParams: { query: this.searchQuery }
       });
     }
+
+  openFleetCategory(category:any): void {
+    this.onHideNavDetails();
+    // this.router.navigate(['/fleets/category'], {queryParams: {slug : category.slug}});
+    this.router.navigateByUrl('/fleets/category?slug=' + category.slug);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe()
+  }
 
   }
