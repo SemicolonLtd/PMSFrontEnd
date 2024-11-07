@@ -6,7 +6,7 @@
             <h2 class="title">{{fleetsData?.name}}</h2>
         </div>
     </div>
-    <!-- <app-loading type="small" *ngIf="topEventLoading && !searchMode" ></app-loading>  -->
+    <!-- <app-loading type="small" *ngIf="topFleetLoading && !searchMode" ></app-loading>  -->
     <ng-container *ngIf="fleetsList">
         <div class="fleets-list" *ngIf="fleetsList?.length && !fleetsLoading">
             <div class="pms-container">
@@ -14,15 +14,15 @@
                 <div class="filtered-fleets mt-5">
                     <div class="grid">
                         <ng-container *ngIf="fleetsList?.length">
-                            <div class="card-wrapper xl:col-4 md:col-6 sm:col-12 mb-4" *ngFor="let event of fleetsList">
-                                <app-event-card [eventData]="event" [cardType]="'fleet'"></app-event-card>
+                            <div class="card-wrapper xl:col-4 md:col-6 sm:col-12 mb-4" *ngFor="let fleet of fleetsList">
+                                <app-event-card [eventData]="fleet" [cardType]="'fleet'"></app-event-card>
                             </div>
                             <ng-container *ngFor="let schema of schemaList">
                                 <ngx-json-ld [json]="schema"></ngx-json-ld>
                             </ng-container>
                         </ng-container>
                         <!-- <div class="load-more" *ngIf="(paginationData?.total! > fleetsList?.length!) && !fleetsLoading">
-                            <p-button label="{{'Events.More' | translate}}" (click)="loadMore()" />
+                            <p-button label="{{'Fleets.More' | translate}}" (click)="loadMore()" />
                         </div> -->
                     </div>
                 </div>

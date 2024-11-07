@@ -31,17 +31,12 @@ export class FleetDetailsComponent implements OnInit, OnDestroy {
   ];
 
   fleetData: any = {};
-  similarEventsData: any[] = [];
-  similarEventsLoading = false;
+  similarFleetsData: any[] = [];
+  similarFleetsLoading = false;
   slug: string = '';
   typeId: any;
   loading = false;
-  breadcrumbItems = [
-    {
-      name: this.translateService.instant('Fleets.Fleets'),
-      link: '/fleets'
-    }
-  ];
+  breadcrumbItems:any[] = [];
   subscriptions = new Subscription();
 
   constructor(
@@ -62,10 +57,10 @@ export class FleetDetailsComponent implements OnInit, OnDestroy {
   }
 
   getFleetSlugFromParams(): void {
-    this.route.params.subscribe((params: any) => {
-      if(params['slug']) {
-        this.slug = params['slug'];
-        this.breadcrumbItems = []
+    this.route.queryParams.subscribe((queryParams: any) => {
+      if (queryParams['slug']) {
+        this.slug = queryParams['slug'];
+        this.breadcrumbItems = [];
         this.getFleetDetails();
       } else {
         this.router.navigateByUrl('/fleets');
@@ -81,19 +76,20 @@ export class FleetDetailsComponent implements OnInit, OnDestroy {
           if(res?.status == 200) {
             this.breadcrumbItems = []
             this.fleetData = res?.data;
-              this.breadcrumbItems.push(
-                {
-                  name: this.fleetData?.menu,
-                  // link: '/fleets/category?slug=' + this.fleetData?.menu
-                  link: `/fleets/category?slug=${this.fleetData?.menu}`
-
-                },
-                {
+            this.breadcrumbItems.push(
+              {
+                name: this.fleetData?.menu,
+                link: '/fleets/category',
+                queryParams: { slug: this.fleetData?.menu }
+              },
+              {
                 name: this.fleetData?.title,
-                link: '/fleets/details?slug' + this.fleetData?.title
-              })
+                link: '/fleets/details',
+                queryParams: { slug: this.fleetData?.title }
+              }
+            );
             this.handleMetaTags();
-            // this.getSimilarEvents();
+            // this.getSimilarFleets();
           }
           this.loading = false;
         },
@@ -105,25 +101,25 @@ export class FleetDetailsComponent implements OnInit, OnDestroy {
     );
   }
 
-  // getSimilarEvents(): void {
-  //   this.similarEventsLoading = true;
+  // getSimilarFleets(): void {
+  //   this.similarFleetsLoading = true;
   //   this.subscriptions.add(
-  //     this.fleetsService.getEvents(10).subscribe({
+  //     this.fleetsService.getFleets(10).subscribe({
   //       next: (res: any) => {
   //         if(res?.status == 200) {
-  //           this.similarEventsData = res?.data?.data;
+  //           this.similarFleetsData = res?.data?.data;
   //         }
-  //         this.similarEventsLoading = false;
+  //         this.similarFleetsLoading = false;
   //       },
   //       error: (err: any) => {
   //         console.log(err);
-  //         this.similarEventsLoading = false;
+  //         this.similarFleetsLoading = false;
   //       }
   //     })
   //   );
   // }
 
-  // onLinkOpened(event: any): void {
+  // onLinkOpened(fleet: any): void {
   //   this.handleMetaTags();
   // }
 
@@ -131,11 +127,11 @@ export class FleetDetailsComponent implements OnInit, OnDestroy {
     const content: any = {
       title: this.fleetData.title,
       useTranslation: false,
-      description: this.fleetData.short,
-      keywords: this.fleetData.short,
+      description: this.fleetData.desc,
+      keywords: this.fleetData.desc,
       image: this.fleetData.image,
       // url: `${environment.websiteUrl}news/news-view/${encodeURIComponent(this.fleetData.slug)}`
-      url: `${environment.websiteUrl}/events/details/${this.fleetData.slug}`
+      url: `${environment.websiteUrl}/fleets/details?slug=${this.fleetData.slug}`
     };
     this.metaService.createMetaData(content);
   }

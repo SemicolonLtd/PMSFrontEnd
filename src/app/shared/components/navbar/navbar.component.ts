@@ -282,11 +282,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
       'core-business/marine-services',
       'core-business/offshore-construction',
       'fleets/category',
-      'fleets/details/'
+      'fleets/details'
     ]
 
-    // this.pageWithHeader = pages.includes(this.currentRoute)
-    this.pageWithHeader = pages.some(page => this.currentRoute.startsWith(page));
+    this.pageWithHeader = pages.includes(this.currentRoute)
+    // this.pageWithHeader = pages.some(page => this.currentRoute.startsWith(page));
   }
 
   ngOnDestroy(): void {

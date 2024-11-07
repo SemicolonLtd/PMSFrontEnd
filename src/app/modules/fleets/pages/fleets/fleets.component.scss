@@ -1,37 +1,6 @@
 .fleets {
     // margin-top: 9.1rem;
     position: relative;
-    .latest-event {
-        padding-block: 3rem;
-        .event-img {
-            img {
-                width: 90%;
-            }
-            @media (max-width: 768px){
-                margin-bottom: 1.5rem;
-                img {
-                    width: 100%
-                }
-            }
-        }
-        .event-info {
-            .desc {
-                margin-block: 1.5rem;
-                // display: block;
-                display: -webkit-box;
-                -webkit-line-clamp: 9;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
-            .action {
-                padding-block: 1.3rem;
-                border-top: 1px solid var(--primary-color-light);
-            }
-        }
-    }
-    .fleets-list {
-        padding-block: 6rem;
-    }
     @media (max-width: 992px) {
         // padding-inline: 2rem;
         margin-top: 7rem;
@@ -99,19 +68,6 @@
 
 ::ng-deep {
     .fleets {
-        .latest-event {
-            .p-button.p-button-icon-only.p-button-rounded {
-                border-radius: 50%;
-                background-color: #EBF0F5;
-                border: none;
-                color: var(--primary-color);
-                transition: 0.4s all ease;
-                &:hover {
-                    color: white;
-                    background: linear-gradient(45deg,var(--primary-color-medium),var(--primary-color-light));
-                }
-            }
-        }
         .fleets-list {
             .filter-btns {
                 .p-selectbutton .p-button {

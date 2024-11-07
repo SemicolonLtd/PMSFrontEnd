@@ -18,8 +18,8 @@ export class FleetsService {
     return this.http.get(`${environment.apiUrl}/fleet/categories`);
   }
 
-  searchForEvent(query: string, pageSize: number): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/event/search/${query}/${pageSize}`);
+  searchForFleet(query: string, pageSize: number): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/fleet/search/${query}/${pageSize}`);
   }
 
   getFleetDetails(slug: string): Observable<any> {

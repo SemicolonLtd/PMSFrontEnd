@@ -6,7 +6,7 @@
         <i class="pi pi-angle-left" *ngIf="lang == 'ar'"></i>
     </a>
     <a *ngFor="let item of breadcrumbItems.slice(0, breadcrumbItems.length - 1); let i = index"
-        routerLink="{{item.link}}" class="link">
+        routerLink="{{item.link}}" [queryParams]="item.queryParams" class="link">
         <span class="text"  *ngIf="!item?.name.includes('.')">{{item?.name }}</span>
         <span class="text" *ngIf="item?.name.includes('.')">{{item?.name | translate}}</span>
         <i class="pi pi-angle-right" *ngIf="lang == 'en'"></i>

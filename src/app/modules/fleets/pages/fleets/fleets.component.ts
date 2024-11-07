@@ -12,7 +12,7 @@ import { FleetsService } from '../../services/fleets.service';
   styleUrls: ['./fleets.component.scss']
 })
 export class FleetsComponent implements OnInit, OnDestroy {
-  pageTopEvent: any;
+  pageTopFleet: any;
   fleetsList: any[] = [];
   fleetsLoading = false;
   searchMode = false;
@@ -76,7 +76,7 @@ export class FleetsComponent implements OnInit, OnDestroy {
     )
   }
 
-  searchForEvents(query: string): void {
+  searchForFleets(query: string): void {
     if (query?.length) {
       this.searchMode = true;
       this.searchQuery = query;

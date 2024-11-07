@@ -5,7 +5,7 @@ import { FleetDetailsComponent } from './pages/fleet-details/fleet-details.compo
 
 const routes: Routes = [
   {path: 'category', component: FleetsComponent},
-  {path:'details/:slug', component: FleetDetailsComponent}
+  {path:'details', component: FleetDetailsComponent}
 ];
 
 @NgModule({
