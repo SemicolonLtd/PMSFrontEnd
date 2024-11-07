@@ -177,6 +177,7 @@
     }
 }
 
+
 .topbar {
     .topbar-wrapper {
         padding-block: 0.6rem;
@@ -276,6 +277,16 @@
     }
 }
 
+.nav-links {
+    ul {
+        li {
+            i {
+                margin-inline-start: 0.2rem;
+                font-size: 14px;
+            }
+        }
+    }
+}
 
 ::ng-deep {
     .nav-sticky {
