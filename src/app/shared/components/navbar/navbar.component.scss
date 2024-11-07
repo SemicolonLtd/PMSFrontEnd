@@ -60,6 +60,13 @@
             a {
                 color: var(--primary-color);
             }
+            ul {
+                li {
+                    i {
+                    color: var(--primary-color);
+                    }
+                }
+            }
         }
         .social {
             display: none;
@@ -71,6 +78,13 @@
             a {
                 color: var(--primary-color);
                 cursor: pointer;
+            }
+            ul {
+                li {
+                    i {
+                    color: var(--primary-color);
+                    }
+                }
             }
         }
     }
