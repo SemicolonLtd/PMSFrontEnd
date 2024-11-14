@@ -1,4 +1,7 @@
 .faq {
+    @media (max-width:992px) {
+        margin-top: 7rem;
+    }
     .header {
         position: relative;
         height: 75vh;

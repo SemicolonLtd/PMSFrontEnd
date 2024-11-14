@@ -15,5 +15,10 @@
         <!-- </ng-template> -->
     </div>
     <app-footer></app-footer>
-<p-button class="scroll-btn" icon="pi pi-arrow-up" [rounded]="true" *ngIf="pageYoffset > 200" (click)="scrollToTop()"
-    [raised]="true"></p-button>
+<p-button class="scroll-btn" [rounded]="true" *ngIf="pageYoffset > 200" (click)="scrollToTop()"
+    [raised]="true">
+    <div class="button-temp">
+        <i class="pi pi-arrow-up block"></i>
+        <span class="block">{{'General.BackToTop' | translate}}</span>
+    </div>
+</p-button>

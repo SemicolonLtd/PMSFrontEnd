@@ -1,5 +1,8 @@
 .news {
     position: relative;
+    @media (max-width:992px) {
+        margin-top: 7rem;
+    }
     .pms-container {
         padding-block: 3rem;
         @media (max-width:768px) {
@@ -36,18 +39,18 @@
         // box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
         border-radius: 6px;
         img {
-            // min-height: 400px;
-            // max-height: 400px;
-            min-height: 800px - 8px;
-            max-height: 800px - 8px;
-            @media(min-width:769px) {
-                border-radius: 5px;
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 100%;
-                width: 100%;
-            }
+            min-height: 600px;
+            max-height: 600px;
+            // min-height: 800px - 8px;
+            // max-height: 800px - 8px;
+            // @media(min-width:769px) {
+            //     border-radius: 5px;
+            //     position: absolute;
+            //     top: 0;
+            //     left: 0;
+            //     height: 100%;
+            //     width: 100%;
+            // }
             object-fit: cover;
         }
         .news-badge.desktop {
@@ -235,6 +238,10 @@
             }
             .p-card-content .news-desc {
                 font-size: 0.8rem;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
             }
             .big-card {
                 overflow: hidden;
@@ -266,10 +273,11 @@
                         bottom: 0;
                         left: 0;
                         width: 100%;
-                        height: 40%;
+                        // height: 40%;
+                        height: 200px;
                         margin: auto;
-                        color: white;
-                        background: #0000006b;
+                        color: #000;
+                        background: #ffffff;
                         border-radius: 5px;
                         transition: 0.5s all ease;
                     }
@@ -279,6 +287,10 @@
                 }
                 .p-card .p-card-title {
                     font-size: 1.2rem;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
                 }
                 @media (max-width: 768px) { 
                     .p-card {
@@ -293,10 +305,6 @@
                     }
                     .p-card .p-card-title {
                         font-size: 1rem;
-                        display: -webkit-box;
-                        -webkit-line-clamp: 2;
-                        -webkit-box-orient: vertical;
-                        overflow: hidden;
                     }
                     .p-card .p-card-body {
                         width: 100%;
