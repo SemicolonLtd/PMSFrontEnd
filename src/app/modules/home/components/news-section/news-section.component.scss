@@ -162,6 +162,30 @@
     }
 }
 
+.discover_btn {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    padding-bottom: 0.3rem;
+    i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--primary-color-medium);
+        color: white;
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        margin-inline-end: 0.4rem;
+    }
+    span {
+        color: var(--primary-color-medium);
+        transition: 0.4s all ease;
+        font-size: 0.9rem;
+    }
+}
+
 ::ng-deep {
     .our-news-section {
         .news-data {
@@ -171,11 +195,8 @@
                 }
                 .p-card-footer {
                     position: absolute;
-                    bottom: 7%;
+                    // bottom: 7%;
                     font-weight: 600;
-                    @media (max-width: 440px) {
-                        display: none;
-                    }
                 }
             }
             .p-component {
@@ -294,10 +315,10 @@
                         overflow: hidden;
                     }
                 }
-                @media (max-width: 420px) {
-                    .p-card-footer {
-                        display: none;
-                    }
+                .p-card-footer {
+                    position: absolute;
+                    bottom: 8%;
+                    font-weight: 600;
                 }
             }
             .small-card {
@@ -354,10 +375,8 @@
                         // width: 100%;
                     }
                 }
-                @media (max-width: 400px) {
-                    .p-card-footer {
-                        display: none;
-                    }
+                .p-card-footer {
+                    bottom: 3%;
                 }
             }
         }
