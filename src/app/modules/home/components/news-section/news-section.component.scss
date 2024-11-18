@@ -10,7 +10,7 @@
         // max-height: 660px;
         @media(min-width: 769px) {
             // min-height: 610px;
-            min-height: 800px - 8px;
+            min-height: 700px - 8px;
             // max-height: 800px - 8px;
         }
         // @media (max-width: 768px) {
@@ -20,8 +20,8 @@
         // }
     }
     .big-card {
-        min-height: 800px - 8px;
-        max-height: 800px - 8px;
+        min-height: 700px - 8px;
+        max-height: 700px - 8px;
         // max-height: 660px;
         position: relative;
         display: block;
@@ -32,8 +32,8 @@
         box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
         border-radius: 6px;
         img {
-            min-height: 600px;
-            max-height: 600px;
+            min-height: 550px;
+            max-height: 550px;
             // min-height: 800px - 8px;
             // max-height: 800px - 8px;
             // @media(min-width:769px) {
@@ -66,8 +66,8 @@
         position: relative;
         z-index: 2;
         display: block;
-        min-height: calc(400px - 16px);
-        max-height: calc(400px - 16px);
+        min-height: calc(350px - 16px);
+        max-height: calc(350px - 16px);
         cursor: pointer;
         img {
             height: 100%;
@@ -236,9 +236,12 @@
             .p-card-content .news-desc {
                 font-size: 0.8rem;
                 display: -webkit-box;
-                -webkit-line-clamp: 3;
+                -webkit-line-clamp: 1;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
+            }
+            .p-card .p-card-title {
+                color: var(--primary-color);
             }
             .big-card {
                 overflow: hidden;
@@ -254,7 +257,7 @@
                 @media (min-width: 769px) { 
                     &:hover {
                         .p-card .p-card-body {
-                            height: 45%;
+                            height: 25%;
                         }
                     }
                 }
@@ -266,11 +269,12 @@
                         bottom: 0;
                         left: 0;
                         width: 100%;
-                        height: 200px;
+                        height: 150px;
                         margin: auto;
-                        color: #000;
+                        // color: #000;
                         background: #ffffff;
-                        border-radius: 5px;
+                        // border-radius: 5px;
+                        padding: 0.7rem;
                         transition: 0.5s all ease;
                     }
                     // @media (max-width: 1440px) {
@@ -282,7 +286,7 @@
                     padding: 0;
                 }
                 .p-card .p-card-title {
-                    font-size: 1.2rem;
+                    font-size: 1rem;
                     display: -webkit-box;
                     -webkit-line-clamp: 2;
                     -webkit-box-orient: vertical;
@@ -304,15 +308,9 @@
                     }
                     .p-card .p-card-body {
                         width: 100%;
-                        min-height: calc(180px - (32px / 3));
-                        max-height: calc(180px - (32px / 3));
+                        min-height: 150px;
+                        max-height: 150px;
                         transition: 0.3s all ease;
-                    }
-                    .p-card-content .news-desc {
-                        display: -webkit-box;
-                        -webkit-line-clamp: 3;
-                        -webkit-box-orient: vertical;
-                        overflow: hidden;
                     }
                 }
                 .p-card-footer {
@@ -348,8 +346,8 @@
                 }
                 .p-card .p-card-body {
                     width: 100%;
-                    min-height: 200px;
-                    max-height: 200px;
+                    min-height: 150px;
+                    max-height: 150px;
                     transition: 0.3s all ease;
                     padding: 0.7rem;
                 }
@@ -365,8 +363,8 @@
                     }
                     .p-card .p-card-body {
                         width: 100%;
-                        min-height: calc(180px - (32px / 3));
-                        max-height: calc(180px - (32px / 3));
+                        min-height: 150px;;
+                        max-height: 150px;;
                         transition: 0.3s all ease;
                     }
                     .p-card-header {

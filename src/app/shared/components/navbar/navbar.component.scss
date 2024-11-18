@@ -265,7 +265,9 @@
             .logo-txt {
                 margin-inline-start: 1.5rem;
                 font-size: 1.4rem;
-                font-weight: 700;
+                // font-weight: 700;
+                margin-bottom: 0;
+                font-family:'logo-font' ;
             }
         }
         .nav-links {
