@@ -10,7 +10,8 @@
         "OrgName": "Petroleum Marine Services Co.",
         "Close": "Close",
         "ShowMore": "Show More...",
-        "BackToTop":"Back To Top"
+        "BackToTop":"Back To Top",
+        "DiscoverMore":"Discover More"
     },
     "Navbar": {
         "Home":"Home",
