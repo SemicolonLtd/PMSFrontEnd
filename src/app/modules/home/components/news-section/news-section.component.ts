@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { HomeService } from '../../services/home.service';
 import { TranslateService } from '@ngx-translate/core';
 import { isPlatformBrowser } from '@angular/common';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-news-section',
@@ -18,6 +19,7 @@ export class NewsSectionComponent implements OnInit, OnDestroy {
   selectedCategoryId: any;
   loading = false;
   subscriptions = new Subscription();
+  lang = environment.lang
 
   constructor(
     private homeService: HomeService,

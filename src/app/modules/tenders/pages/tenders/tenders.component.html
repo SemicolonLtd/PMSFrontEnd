@@ -1,36 +1,10 @@
 <div class="events">
-    <!-- <img src="assets/images/global/pages-wave-top.webp" alt="" class="pages-wave-top"> -->
-    <app-search [Title]="searchTitle" (searchEmitter)="searchForTenders($event)"></app-search>
-    <!-- <div class="latest-event" *ngIf="pageTopEvent && !topEventLoading && !searchMode">
-        <div class="pms-container">
-            <div class="grid">
-                <div class="event-img md:col-6 sm:col-12 max-h-30rem min-h-30rem">
-                    <img [src]="pageTopEvent?.image" class="max-h-30rem min-h-30rem border-round-xl" alt="">
-                </div>
-                <div class="event-info md:col-6 sm:col-12 max-h-30rem min-h-30rem">
-                    <h3 class="title subtitle-font-size">
-                        {{'Tenders.LatestTender' | translate}}
-                    </h3>
-                    <h5 class="short-desc">
-                        {{ pageTopEvent?.title }}
-                    </h5>
-                    <div class="desc" [innerHTML]="pageTopEvent?.desc">
-                    </div>
-                    <div class="action flex align-items-center justify-content-between">
-                        <span class="date">
-                            {{ pageTopEvent?.start_date }}
-                        </span>
-                        <a [routerLink]="'/events/details/' + pageTopEvent?.slug">
-                            <p-button icon="pi pi-angle-right" [rounded]="true" severity="secondary"/>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
+    <div class="header flex align-items-center justify-content-center">
+        <img src="assets/images/global/certificates.webp" alt="" class="cover">
+        <div class="content">
+            <h2 class="title">{{'Footer.Tenders' | translate}}</h2>
         </div>
-    </div> -->
-    <app-loading type="small" *ngIf="topEventLoading && !searchMode" ></app-loading>
-
+    </div>
     <app-center-bar *ngIf="!searchMode" [Title]="barTitle" [Desc]="'It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.'"></app-center-bar>
     <div class="events-list">
         <div class="pms-container">

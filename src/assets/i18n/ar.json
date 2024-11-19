@@ -10,7 +10,8 @@
         "OrgName": "خدمات البترول البحرية",
         "Close": "إغلاق",
         "ShowMore": "اظهار المزيد...",
-        "BackToTop":"الرجوع لأعلي الصفحة"
+        "BackToTop":"الرجوع لأعلي الصفحة",
+        "DiscoverMore":"اكتشف المزيد"
     },
     "Navbar": {
         "Home":"الرئيسية",
@@ -36,7 +37,8 @@
         "Engineers":"المهندسين",
         "CoreBusiness":"الأعمال الرئيسية",
         "RecentProjects":"المشاريع الأخيرة",
-        "OurNews":"أخبارنا"
+        "OurNews":"أخبارنا",
+        "OurPartners":"شركائنا"
     },
     "Search": {
         "WelcomeTo": "مرحباً بك في",

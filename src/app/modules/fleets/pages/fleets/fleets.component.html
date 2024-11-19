@@ -15,7 +15,24 @@
                     <div class="grid">
                         <ng-container *ngIf="fleetsList?.length">
                             <div class="card-wrapper xl:col-4 md:col-6 sm:col-12 mb-4" *ngFor="let fleet of fleetsList">
-                                <app-event-card [eventData]="fleet" [cardType]="'fleet'"></app-event-card>
+                                <a 
+                                class="fleet-card border-round-xl" 
+                                routerLink="/fleets/details'"
+                                [queryParams]="{ slug: fleet.slug }"
+                                > 
+                                    <div class="img-wrapper">
+                                        <img class="w-full border-round-xl" [src]="fleet.image" alt="Project Image">
+                                    </div>
+                                    <div class="content">
+                                        <div class="data">
+                                            <div class="info">
+                                                <h5 class="title" *ngIf="fleet?.title">
+                                                    {{fleet?.title | textSlice : 'title' : 40}}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                             <ng-container *ngFor="let schema of schemaList">
                                 <ngx-json-ld [json]="schema"></ngx-json-ld>

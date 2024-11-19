@@ -140,6 +140,103 @@
       bottom: 0;
       z-index: 0;
     }
+
+    .big-card-container ,
+    .small-cards-container {
+        @media(min-width: 769px) {
+            min-height: 700px - 8px;
+        }
+    }
+    .big-card {
+        min-height: 700px - 8px;
+        max-height: 700px - 8px;
+        position: relative;
+        display: block;
+        z-index: 2;
+        overflow: hidden;
+        cursor: pointer;
+        margin-bottom: 1em;
+        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+        border-radius: 6px;
+        img {
+            min-height: 550px;
+            max-height: 550px;
+            object-fit: cover;
+        }
+        .news-badge.desktop {
+            background-color: #fff;
+            padding: 0.5rem 1.5rem;
+            border-top-left-radius: 7px;
+            border-bottom-right-radius: 7px;
+            position: absolute;
+            top: 3%;
+            left: 3%;
+            @media(max-width:768px) {
+                padding: 0.3rem 1rem;
+            }
+        }
+        .news-badge.mobile {
+            display: none;
+        }
+    }
+    .small-card {
+        position: relative;
+        z-index: 2;
+        display: block;
+        min-height: calc(350px - 16px);
+        max-height: calc(350px - 16px);
+        cursor: pointer;
+        img {
+            height: 100%;
+            object-fit: cover;
+            min-height: calc(200px - (32px / 3));
+            max-height: calc(200px - (32px / 3));
+            // max-height: calc(300px - (32px / 3));
+        }
+        .news-badge {
+            display: inline-block;
+            background-color: #F0F4FF;
+            padding: 0.3rem 1rem;
+            border-top-left-radius: 7px;
+            border-bottom-right-radius: 7px;
+            margin-bottom: 0.7rem;
+        }
+        .news-badge.desktop {
+            background-color: #fff;
+            // padding: 0.5rem 1.5rem;
+            border-top-left-radius: 7px;
+            border-bottom-right-radius: 7px;
+            position: absolute;
+            top: 3%;
+            left: 3%;
+        }
+        .news-badge.mobile {
+            display: none;
+        }
+    }
+    @media (max-width: 768px) {
+        .big-card-container, .small-cards-container {
+            min-height: calc(180px - (32px / 3));
+            // max-height: calc(180px - (32px / 3));
+            margin-bottom: 16px;
+        }
+        .big-card, .small-card {
+            max-height: unset;
+            min-height: unset;
+            img {
+                min-height: calc(180px - (32px / 3));
+                max-height: calc(180px - (32px / 3));
+            }
+            .news-badge.mobile {
+                display: inline-block;
+                background-color: #F0F4FF;
+                margin-bottom: 0.7rem;
+                padding: 0.5rem 1.5rem;
+                border-top-left-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+    }
 }
 
 .recent-header {
@@ -178,82 +275,289 @@
   }
 }
 
+// ::ng-deep {
+//     .images-container {
+//         .item-info {
+//             background-color: #00000098;
+//             color: white;
+//             .p-button.p-button-icon-only.p-button-rounded {
+//               border-radius: 50% !important;
+//               background-color: var(--primary-color-medium);
+//               border-color: var(--primary-color-medium);
+//               margin-top: 1rem;
+//               transition: 0.4s all ease;
+//               position: relative;  // Ensure the button has position: relative
+//               color: #fff;
+//               overflow: hidden; // Ensure pseudo-elements are not cut off
+            
+//               // Create the bubble elements
+//               &::before,
+//               &::after {
+//                 content: '';
+//                 position: absolute;
+//                 border-radius: 50%;
+//                 background-color: white;
+//                 opacity: 0;
+//                 pointer-events: none;
+//                 visibility: visible;
+//                 z-index: 9999; // Increase the z-index to make sure it's on top
+//               }
+            
+//               &::before {
+//                 width: 40px; // Increased size for visibility
+//                 height: 40px;
+//                 top: 10px; // Adjusted top position
+//                 left: -10px;
+//               }
+            
+//               &::after {
+//                 width: 25px; // Increased size for visibility
+//                 height: 25px;
+//                 top: 17px; // Adjusted top position
+//                 right: 0px;
+//                 animation-delay: 3s;
+//                 clip: unset;
+//               }
+            
+//               &:hover {
+//                 background-color: #0056b3;
+//                 &::before, &::after {
+//                   animation: bubble-animation 2s ease-in-out infinite;
+//                   opacity: 0.7; // Make bubbles visible on hover
+//                 }
+//               }
+            
+//               // Keyframes for bubble animation
+//               @keyframes bubble-animation {
+//                 0% {
+//                   transform: translateY(0) scale(0.5);
+//                   opacity: 0.7;
+//                 }
+//                 50% {
+//                   transform: translateY(-20px) scale(1);
+//                   opacity: 0.5;
+//                 }
+//                 100% {
+//                   transform: translateY(-40px) scale(0.8);
+//                   opacity: 0;
+//                 }
+//               }
+            
+//               @media (max-width: 768px) {
+//                 margin-top: 0;
+//               }
+//             }
+            
+            
+//         }
+//     }
+// }
+
+.discover_btn {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    padding-bottom: 0.3rem;
+    i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--primary-color-medium);
+        color: white;
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        margin-inline-end: 0.4rem;
+    }
+    span {
+        color: var(--primary-color-medium);
+        transition: 0.4s all ease;
+        font-size: 0.9rem;
+    }
+}
+
 ::ng-deep {
-    .images-container {
-        .item-info {
-            background-color: #00000098;
-            color: white;
-            .p-button.p-button-icon-only.p-button-rounded {
-              border-radius: 50% !important;
-              background-color: var(--primary-color-medium);
-              border-color: var(--primary-color-medium);
-              margin-top: 1rem;
-              transition: 0.4s all ease;
-              position: relative;  // Ensure the button has position: relative
-              color: #fff;
-              overflow: hidden; // Ensure pseudo-elements are not cut off
-            
-              // Create the bubble elements
-              &::before,
-              &::after {
-                content: '';
-                position: absolute;
-                border-radius: 50%;
-                background-color: white;
-                opacity: 0;
-                pointer-events: none;
-                visibility: visible;
-                z-index: 9999; // Increase the z-index to make sure it's on top
-              }
-            
-              &::before {
-                width: 40px; // Increased size for visibility
-                height: 40px;
-                top: 10px; // Adjusted top position
-                left: -10px;
-              }
-            
-              &::after {
-                width: 25px; // Increased size for visibility
-                height: 25px;
-                top: 17px; // Adjusted top position
-                right: 0px;
-                animation-delay: 3s;
-                clip: unset;
-              }
-            
-              &:hover {
-                background-color: #0056b3;
-                &::before, &::after {
-                  animation: bubble-animation 2s ease-in-out infinite;
-                  opacity: 0.7; // Make bubbles visible on hover
-                }
-              }
-            
-              // Keyframes for bubble animation
-              @keyframes bubble-animation {
-                0% {
-                  transform: translateY(0) scale(0.5);
-                  opacity: 0.7;
-                }
-                50% {
-                  transform: translateY(-20px) scale(1);
-                  opacity: 0.5;
-                }
-                100% {
-                  transform: translateY(-40px) scale(0.8);
-                  opacity: 0;
-                }
-              }
-            
-              @media (max-width: 768px) {
-                margin-top: 0;
-              }
+  .projects-data {
+    .p-card-body {
+        @media(max-width:768px) {
+            position: relative;
+        }
+        .p-card-footer {
+            position: absolute;
+            // bottom: 7%;
+            font-weight: 600;
+            @media (max-width:400px) {
+                bottom: 10%;
             }
-            
-            
+        }
+    }
+    .p-component {
+        font-family: 'main-font';
+        &:lang(ar) {
+            font-family: 'ar-main-font';
+        }
+    }
+    .p-tabview .p-tabview-nav {
+        background: transparent;
+        border: none;
+        border-width: 0 0 2px 0;
+        padding-left:0;
+        @media(max-width: 768px) {
+            display: flex;
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+    }
+    .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+        background: transparent;
+        font-weight: 600;
+        font-size: 1.2rem;
+        border-width: 0 0 5px 0;
+    }
+    .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+        border-color: var(--secondary-color);
+        color: var(--secondary-color);
+    }
+    .p-tabview .p-tabview-panels {
+        background: transparent;
+        padding: 0;
+    }
+    .p-card {
+        overflow: hidden;
+    }
+    .p-card-content .news-desc {
+        font-size: 0.8rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        // @media (max-width: 440px) {
+        //     -webkit-line-clamp: 2;
+        // }
+    }
+    p-card .p-card-title {
+        color: var(--primary-color);
+    }
+    .big-card {
+        overflow: hidden;
+        @media (min-width: 769px) { 
+            &:hover {
+                .p-card .p-card-body {
+                    height: 25%;
+                }
+            }
+        }
+        .p-card .p-card-body {
+            @media (min-width: 769px) {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 150px;
+                margin: auto;
+                // color: #000;
+                background: #ffffff;
+                // border-radius: 5px;
+                transition: 0.5s all ease;
+            }
+        }
+        .p-card .p-card-content {
+            padding: 0;
+        }
+        .p-card .p-card-title {
+            font-size: 1.2rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            // @media (max-width: 440px) {
+            //     -webkit-line-clamp: 1;
+            // }
+        }
+        @media (max-width: 768px) { 
+            .p-card {
+                display: flex;
+                flex-direction: row-reverse;
+                flex-wrap: wrap;
+            }
+            .p-card-header {
+                width: 100%;
+            }
+            .p-card .p-card-title {
+                font-size: 1rem;
+            }
+            .p-card .p-card-body {
+                width: 100%;
+                min-height: calc(150px);
+                max-height: calc(150px);
+                transition: 0.3s all ease;
+            }
+        }
+        .p-card-footer {
+            position: absolute;
+            bottom: 8%;
+            font-weight: 600;
+        }
+    }
+    .small-card {
+        &:hover {
+            .p-card-header {
+                overflow: hidden;
+                img {
+                    transition: 0.5s all ease-in-out;
+                    transform: scale(1.1) rotate(-1deg);
+                }
+            }
+        }
+        .p-card .p-card-content {
+            padding: 0;
+        }
+        .p-card {
+            display: flex;
+            flex-direction: row-reverse;
+            flex-wrap: wrap;
+        }
+        .p-card .p-card-title {
+            font-size: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            // @media (max-width: 440px) {
+            //     -webkit-line-clamp: 1;
+            // }
+        }
+        .p-card .p-card-body {
+            width: 100%;
+            min-height: 150px;
+            max-height: 150px;
+            transition: 0.3s all ease;
+            padding: 0.7rem;
+        }
+        .p-card-header {
+            min-width: 100%;
+            max-width: 100%;
+        }
+        @media (max-width:768px) {
+            .p-card {
+                flex-wrap: wrap;
+            }
+            .p-card .p-card-body {
+                width: 100%;
+                min-height: 150px;
+                max-height: 150px;  
+                transition: 0.3s all ease;
+            }
+            .p-card-header {
+                min-width: 100%;
+                max-width: 100%;
+                // width: 100%;
+            }
+        }
+        .p-card-footer {
+            bottom: 3%;
         }
     }
 }
-  
-  
+}

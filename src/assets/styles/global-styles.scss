@@ -78,6 +78,10 @@ pre {
     overflow: visible;
 }
 
+code, h1, h2, h3, h4, h5, h6 {
+    color: unset;
+}
+
 .margin-avoid-navbar {
     margin-top: 9.1rem;
     @media (max-width: 992px) {

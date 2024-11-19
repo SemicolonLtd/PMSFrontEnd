@@ -2,10 +2,8 @@
   class="event-card border-round-3xl" 
   [routerLink]="
     cardType == 'event' ? '/events/details/' + eventData.slug :
-    cardType == 'tender' ? '/tenders/details/' + eventData.slug :
-    cardType == 'fleet' ? '/fleets/details' : ''
+    cardType == 'tender' ? '/tenders/details/' + eventData.slug : ''
   "
-  [queryParams]="cardType == 'fleet' ? { slug: eventData.slug } : null"
 > 
     <div class="img-wrapper">
         <img class="w-full border-round-3xl" [src]="eventData.image" alt="Project Image">

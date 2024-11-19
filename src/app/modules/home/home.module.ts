@@ -14,6 +14,9 @@ import { CountUpModule } from 'ngx-countup';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from "../../shared/shared.module";
 import { EmptyStateComponent } from "../../shared/components/empty-state/empty-state.component";
+import { OurPartnersComponent } from './components/our-partners/our-partners.component';
+import { CarouselModule } from 'primeng/carousel';
+import { TooltipModule } from 'primeng/tooltip';
 
 
 @NgModule({
@@ -22,7 +25,8 @@ import { EmptyStateComponent } from "../../shared/components/empty-state/empty-s
     HomeComponent,
     CoreBusinessSectionComponent,
     RecentProjectsComponent,
-    NewsSectionComponent
+    NewsSectionComponent,
+    OurPartnersComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +38,9 @@ import { EmptyStateComponent } from "../../shared/components/empty-state/empty-s
     CountUpModule,
     TranslateModule,
     SharedModule,
-    EmptyStateComponent
+    EmptyStateComponent,
+    CarouselModule,
+    TooltipModule
 ]
 })
 export class HomeModule { }

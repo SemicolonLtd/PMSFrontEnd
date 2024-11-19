@@ -28,7 +28,8 @@ export class NewsComponent implements OnInit, OnDestroy {
   subscriptions = new Subscription();
   schemaObj: any;
   schemaList: any[] = [];
-
+  lang = environment.lang
+  
   constructor(
     private newsService: NewsService,
     private translateService:TranslateService,

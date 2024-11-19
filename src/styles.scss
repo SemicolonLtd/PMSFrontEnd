@@ -24,6 +24,11 @@
     src: url('./assets/fonts/AktivGroteskCorp-Regular.ttf');
 }
 
+@font-face {
+    font-family: 'logo-font';
+    src: url('./assets/fonts/MinionPro-Regular.otf');
+}
+
 .desc,
 pre{
     &:lang(ar) {

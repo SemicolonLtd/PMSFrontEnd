@@ -1,0 +1,43 @@
+.our-partners {
+    // background-image: url('../../../../../assets/images/global/without-wave.webp');
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    background-color: #E5EEFB;
+    .pms-container {
+        padding-block: 3rem;
+        @media (max-width:768px) {
+            padding-block: 2rem;
+        }
+    }
+    .partner-wrapper {
+        .partner-img {
+            width: 100px;
+            height: 100px;
+            @media (max-width:576px) {
+                width: 70px;
+                height: 70px;
+            }
+        }
+    }
+}
+
+::ng-deep {
+    .our-partners {
+        .p-carousel-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        p-carousel {
+            &:lang(ar) {
+                direction: ltr;
+                .p-icon-wrapper {
+                    svg {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+
+        }
+    }
+}
