@@ -32,7 +32,6 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit(): void {
-        this.getCoreList();
         this.handleMetaTags();
         this.getBusinessSlugFromParams();
     }
@@ -41,6 +40,7 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
         this.route.params.subscribe((params: any) => {
             if (params['slug']) {
                 this.selectedBusinessSlug = params['slug'];
+                this.getCoreList();
             }
         });
     }
@@ -70,12 +70,12 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
                 error: (err: any) => {
                     this.loading = false;
                 },
-                complete: () => {
-                    if (this.selectedBusinessSlug) {
-                        this.scrollToDiv(this.selectedBusinessSlug);
-                        this.selectedBusinessSlug = '';  // reset the selected slug after scrolling to it
-                    }
-                }
+                // complete: () => {
+                //     if (this.selectedBusinessSlug) {
+                //         this.scrollToDiv(this.selectedBusinessSlug);
+                //         this.selectedBusinessSlug = '';  // reset the selected slug after scrolling to it
+                //     }
+                // }
             })
         );
     }
