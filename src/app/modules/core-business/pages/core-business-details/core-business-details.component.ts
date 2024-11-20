@@ -87,12 +87,15 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
             this.breadcrumbItems.push(
               {
                 name: this.businessData?.cate_name,
-                link: '/core-business'
+                link: '/core-business/' + this.businessData?.cate_slug
               },
               {
               name: this.businessData?.title,
               link: '/core-business/details/' + this.businessData?.slug
             });
+
+            console.log(this.businessData?.cate_slug);
+            
             this.handleMetaTags();
             this.getBusinessProjects();
           }
