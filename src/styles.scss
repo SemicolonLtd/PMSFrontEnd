@@ -51,14 +51,15 @@ span:not(.pi), p:not(.pi){
 :root {
     --primary-color: #141414;
     --primary-color-light: #5894AC;
-    --primary-color-medium: #1B2E5E;
+    --primary-color-medium: #0B396A;
     --secondary-color: #007236;
 }
 
 body {
     font-family: 'main-font', sans-serif;
     overflow-x: hidden;
-    background-color: #F8FAFF;
+    // background-color: #F8FAFF;
+    background-color: #fff;
 }
 
 h1, h2, h3, h4, h5 {
