@@ -24,8 +24,8 @@ const routes: Routes = [
     scrollPositionRestoration: 'enabled',
 })],
   exports: [RouterModule],
-  // providers: [
-  //   { provide: UrlSerializer, useClass: LanguageUrlSerializer }
-  // ],
+  providers: [
+    { provide: UrlSerializer, useClass: LanguageUrlSerializer }
+  ],
 })
 export class AppRoutingModule { }

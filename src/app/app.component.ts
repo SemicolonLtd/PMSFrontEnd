@@ -15,7 +15,7 @@ export class AppComponent {
   title = 'pms';
   pageYoffset!: number;
   currentRoute!: string;
-  lang:any = environment.lang;
+  lang: any = environment.lang;
   isLoading = true;
   isPopStateNavigation = false;
   // fromLink = false;
@@ -25,27 +25,34 @@ export class AppComponent {
     private scroll: ViewportScroller,
     private router: Router,
     private route: ActivatedRoute,
-    private cookieService:CookieService,
-    private translateService:TranslateService,
+    private cookieService: CookieService,
+    private translateService: TranslateService,
     @Inject(DOCUMENT) private document: Document,
     @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
+  ) {
+    const currentLang = this.router.routerState.snapshot.root.queryParams['lang'] || environment.lang;
+    this.router.navigate([], { queryParams: { lang: currentLang }, queryParamsHandling: 'merge' });
+
+  }
 
   ngOnInit(): void {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         // Check if the navigation is triggered by browser back/forward button
-        if (event.navigationTrigger === 'popstate') {
-          this.isPopStateNavigation = true;
-        } else {
-          this.isPopStateNavigation = false;
-        }}
+        // if (event.navigationTrigger === 'popstate') {
+        //   this.isPopStateNavigation = true;
+        // } else {
+        //   this.isPopStateNavigation = false;
+        // }}
         if (event instanceof NavigationEnd) {
           if (isPlatformBrowser(this.platformId)) {
             this.checkLanguageFromUrl();
-          }}
+          }
+        }
+      }
     });
-
+    // this.translateService.use(environment.lang);
+    this.checkLanguageFromUrl();
     this.checkCurrentRoute();
     this.checkLoading();
   }
@@ -62,24 +69,24 @@ export class AppComponent {
 
   checkCurrentRoute(): void {
     this.router.events
-    .pipe(
-      filter(
-        (event): event is NavigationEnd => event instanceof NavigationEnd
+      .pipe(
+        filter(
+          (event): event is NavigationEnd => event instanceof NavigationEnd
+        )
       )
-    )
-    .subscribe((event: NavigationEnd) => {
-      this.currentRoute = event.url
-    });
+      .subscribe((event: NavigationEnd) => {
+        this.currentRoute = event.url
+      });
   }
 
   checkLoading(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
-          this.isLoading = true;
+        this.isLoading = true;
       } else if (event instanceof NavigationEnd) {
-          this.isLoading = false;
+        this.isLoading = false;
       }
-  });
+    });
   }
 
   checkCookiesForLang(): void {
@@ -121,23 +128,25 @@ export class AppComponent {
 
   checkLanguageFromUrl(): void {
     this.route.queryParams.subscribe(params => {
+      console.log('params:', params);
+      
       if (params['lang']) {
         this.cookieService.put('lang', params['lang']);
         this.lang = params['lang'];
         this.checkCookiesForLang();
-      } else if (!this.isPopStateNavigation) {  // Prevent navigate on back button
-        const queryParams = {
-          lang: this.lang
-        };
+      // } else if (!this.isPopStateNavigation) {  // Prevent navigate on back button
+        // const queryParams = {
+        //   lang: this.lang
+        // };
         this.router.navigate(
           [],
           {
             relativeTo: this.route,
-            queryParams: queryParams,
+            queryParams: { lang: this.lang},
             queryParamsHandling: 'merge',
           }
         );
-        this.checkCookiesForLang();
+        // this.checkCookiesForLang();
       }
     });
   }
