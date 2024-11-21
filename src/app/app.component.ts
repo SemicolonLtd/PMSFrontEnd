@@ -129,6 +129,7 @@ export class AppComponent {
   checkLanguageFromUrl(): void {
     this.route.queryParams.subscribe(params => {
       console.log('params:', params);
+      console.log('route', this.route);
       
       if (params['lang']) {
         this.cookieService.put('lang', params['lang']);

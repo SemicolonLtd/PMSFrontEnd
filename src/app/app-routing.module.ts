@@ -15,6 +15,7 @@ const routes: Routes = [
   {path: 'contact-us', loadChildren: ()=> import('./modules/contact-us/contact-us.module').then((m)=> m.ContactUsModule)},
   {path: 'faq', loadChildren: ()=> import('./modules/faq/faq.module').then((m)=> m.FaqModule)},
   {path: 'search-results', loadChildren: ()=> import('./modules/search-results/search-results.module').then((m)=> m.SearchResultsModule)},
+  { path: '**', redirectTo: '', pathMatch: 'full' } // Fallback route
 
 ];
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, {
     initialNavigation: 'enabledBlocking',
     scrollPositionRestoration: 'enabled',
+    useHash: false
 })],
   exports: [RouterModule],
   providers: [
