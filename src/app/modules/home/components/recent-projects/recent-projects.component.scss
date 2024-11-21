@@ -275,6 +275,10 @@
   }
 }
 
+.loading_wrapper {
+    height: 50vh;
+}
+
 // ::ng-deep {
 //     .images-container {
 //         .item-info {
@@ -412,8 +416,9 @@
     .p-tabview .p-tabview-nav li .p-tabview-nav-link {
         background: transparent;
         font-weight: 600;
-        font-size: 1.2rem;
+        font-size: 1rem;
         border-width: 0 0 5px 0;
+        color: #000;
     }
     .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
         border-color: var(--secondary-color);

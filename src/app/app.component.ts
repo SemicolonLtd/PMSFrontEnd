@@ -139,14 +139,14 @@ export class AppComponent {
         // const queryParams = {
         //   lang: this.lang
         // };
-        this.router.navigate(
-          [],
-          {
-            relativeTo: this.route,
-            queryParams: { lang: this.lang},
-            queryParamsHandling: 'merge',
-          }
-        );
+        // this.router.navigate(
+        //   [],
+        //   {
+        //     relativeTo: this.route,
+        //     queryParams: { lang: this.lang},
+        //     queryParamsHandling: 'merge',
+        //   }
+        // );
         // this.checkCookiesForLang();
       }
     });
