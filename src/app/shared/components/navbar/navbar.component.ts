@@ -63,9 +63,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
           this.linkName = event.urlAfterRedirects.slice(0, event.urlAfterRedirects.length - 8);
         }
         this.linkName = event.urlAfterRedirects;
+        this.checkCurrentRoute();
       }
     });
-    this.checkCurrentRoute();
     this.getCoreBusinessMenus();
     this.getAllLinks();
     this.checkCurrentRoute();
