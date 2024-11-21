@@ -1,7 +1,7 @@
 .our-news-section {
-    background-image: url('../../../../../assets/images/global/without-wave.webp');
-    background-repeat: no-repeat;
-    background-size: cover;
+    // background-image: url('../../../../../assets/images/global/without-wave.webp');
+    // background-repeat: no-repeat;
+    // background-size: cover;
     .big-card-container ,
     .small-cards-container {
         // min-height: 850px;
@@ -219,8 +219,9 @@
             .p-tabview .p-tabview-nav li .p-tabview-nav-link {
                 background: transparent;
                 font-weight: 600;
-                font-size: 1.2rem;
+                font-size: 1rem;
                 border-width: 0 0 5px 0;
+                color: #000;
             }
             .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
                 border-color: var(--secondary-color);
