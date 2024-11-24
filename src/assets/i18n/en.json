@@ -2,6 +2,7 @@
     "General": {
         "ViewMore":"View More +",
         "ReadMore": "Read More",
+        "ReadLess":"Read Less",
         "NotFoundData": "Not Found Data",
         "SearchDesc":"Search in petroleum marine services",
         "All": "All",
@@ -12,7 +13,8 @@
         "ShowMore": "Show More...",
         "BackToTop":"Back To Top",
         "DiscoverMore":"Discover More",
-        "Events":"Events"
+        "Events":"Events",
+        "DiscoverPMS":"Discover PMS's"
     },
     "Navbar": {
         "Home":"Home",

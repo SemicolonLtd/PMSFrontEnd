@@ -18,7 +18,7 @@
                         <div class="grid" *ngIf="(bigCardNews || smallCardsNews?.length) && !loading">
                             <div class="sm:col-12 md:col-6 big-card-container p-1" *ngIf="bigCardNews">
                                 <a class="big-card" 
-                                [routerLink]="bigCardNews.menu === 'Events' ? 
+                                [routerLink]="bigCardNews.isEventCard ? 
                                 '/events/details/' + bigCardNews?.slug :
                                 '/news/details/' + bigCardNews?.slug"
                                 >
@@ -46,9 +46,9 @@
                                 <div class="grid mx-0">
                                     <div class="sm:col-12 md:col-6 p-1" style="margin-bottom:10px" *ngFor="let card of smallCardsNews" >
                                         <a class="small-card"
-                                        [routerLink]="bigCardNews.menu === 'Events' ? 
-                                        '/events/details/' + bigCardNews?.slug :
-                                        '/news/details/' + bigCardNews?.slug"
+                                        [routerLink]="card.isEventCard ? 
+                                        '/events/details/' + card?.slug :
+                                        '/news/details/' + card?.slug"
                                         >
                                             <p-card [header]="card?.title">
                                                 <ng-template pTemplate="header">
