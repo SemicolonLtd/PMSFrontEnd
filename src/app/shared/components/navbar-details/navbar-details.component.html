@@ -28,7 +28,11 @@
                         <div class="links-list">
                             <ul>
                                 <li *ngFor="let link of displayedLinks" 
-                                    (click)="openLink(link)">
+                                    (click)="link?.slug === 'الاسطول' || link?.slug === 'fleet' ? null : openLink(link)"
+                                    (mouseenter)="link?.slug === 'الاسطول' || link?.slug === 'fleet' ? 
+                                    displayFleetCategories = true : 
+                                    displayFleetCategories = false"
+                                    >
                                     {{ link?.name }}
                                 </li>
                             </ul>

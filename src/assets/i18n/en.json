@@ -32,7 +32,8 @@
         "DiscoverMore":"Discover More",
         "News":"News",
         "Events": "Events",
-        "Search": "Search"
+        "Search": "Search",
+        "PressRelease":"Press Release"
     },
     "Home" :{
         "Technical":"Technical",

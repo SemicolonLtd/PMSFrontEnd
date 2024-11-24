@@ -1,5 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { MetaService } from 'src/app/core/services/meta.service';
@@ -29,17 +30,38 @@ export class NewsComponent implements OnInit, OnDestroy {
   schemaObj: any;
   schemaList: any[] = [];
   lang = environment.lang
-  
+  activeIndex = 0
   constructor(
     private newsService: NewsService,
     private translateService:TranslateService,
+    private route:ActivatedRoute,
     @Inject(PLATFORM_ID) private platformId: Object,
-    private metaService: MetaService
+    private metaService: MetaService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
     this.isBrowser = isPlatformBrowser(this.platformId);
     this.getNewsCategories();
+  }
+
+  checkTabIndexParam(): void {
+    this.selectedIndex = 0;
+    this.newsData = [];
+    this.route.queryParams.subscribe(
+      (params)=> {
+        if (params['index']) {
+          this.selectedIndex = params['index']
+          this.newsData = []
+          this.selectedCategoryId = this.newsCategories[this.selectedIndex].id;
+          this.getNewsData();
+        } else {
+          this.selectedIndex = 0;
+          this.newsData = []
+          this.getRecentNews();
+        }
+      }
+    )
   }
 
   getNewsCategories(): void {
@@ -59,7 +81,8 @@ export class NewsComponent implements OnInit, OnDestroy {
               },
               ...res?.data?.data
             ];
-            this.getRecentNews();
+            this.checkTabIndexParam()
+            // this.getRecentNews();
           }
         },
         error: (err: any) => {
@@ -100,6 +123,7 @@ export class NewsComponent implements OnInit, OnDestroy {
     this.bigCardNews = [];
     this.smallCardsNews = [];
     this.selectedIndex = index;
+
     if(this.selectedIndex == 0) {
       this.getRecentNews();
     } else {

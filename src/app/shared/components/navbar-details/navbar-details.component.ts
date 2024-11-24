@@ -25,6 +25,7 @@ export class NavbarDetailsComponent implements OnChanges {
   lang = environment.lang
   displayFleetCategories:boolean = false
   fleetCategories:any = []
+  isFleet: boolean = false
   constructor(
     private renderer: Renderer2,
     private router: Router,

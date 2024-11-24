@@ -249,6 +249,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 name: 'media-center',
                 menu: [
                   {
+                    name: this.translateService.instant('Navbar.PressRelease'),
+                    link: 'news?index=1'
+                  },
+                  {
                     name: this.translateService.instant('Navbar.News'),
                     link: 'news'
                   },
