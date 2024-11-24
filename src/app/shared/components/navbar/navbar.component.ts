@@ -232,7 +232,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                     // type: 'recent-projects'
                   },
                   {
-                    name: this.translateService.instant('Projects.CompletedProjects'),
+                    name: this.translateService.instant('Projects.TrackRecord'),
                     link: '/projects?type=completed-projects',
                     // link: '/projects',
                     // type: 'completed-projects'
@@ -248,6 +248,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
               {
                 name: 'media-center',
                 menu: [
+                  {
+                    name: this.translateService.instant('Navbar.PressRelease'),
+                    link: 'news?index=1'
+                  },
                   {
                     name: this.translateService.instant('Navbar.News'),
                     link: 'news'

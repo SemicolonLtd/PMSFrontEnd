@@ -40,7 +40,7 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
   loading = false;
   breadcrumbItems = [
     {
-      name: this.translateService.instant('Navbar.CoreBusiness'),
+      name: this.translateService.instant('Navbar.OurBusiness'),
       link: '/core-business'
     }
   ];

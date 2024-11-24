@@ -25,6 +25,7 @@ export class NavbarDetailsComponent implements OnChanges {
   lang = environment.lang
   displayFleetCategories:boolean = false
   fleetCategories:any = []
+  isFleet: boolean = false
   constructor(
     private renderer: Renderer2,
     private router: Router,
@@ -33,6 +34,7 @@ export class NavbarDetailsComponent implements OnChanges {
   ) { }
 
   ngOnInit(): void {
+    this.getFleetsCategories()
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -43,7 +45,6 @@ export class NavbarDetailsComponent implements OnChanges {
 
   onHideNavDetails(): void {
     this.navDetailsVisible = false;
-    this.fleetCategories = []
     this.displayFleetCategories = false
     this.navDetailsVisibilityChange.emit(this.navDetailsVisible);
   }
@@ -51,7 +52,7 @@ export class NavbarDetailsComponent implements OnChanges {
   openLink(link: any): void {
     if (link?.slug) {
       if (link?.slug === 'الاسطول' || link?.slug === 'fleet') {
-        this.getFleetsCategories()
+        this.displayFleetCategories = true
       } else {
         this.onHideNavDetails();
         this.router.navigateByUrl('/content?slug=' + link.slug);
@@ -62,6 +63,20 @@ export class NavbarDetailsComponent implements OnChanges {
     }
   }
 
+  onDiscoverMore(): void {
+    if (this.displayedLinks[0]?.slug) {
+      if (this.displayedLinks[0]?.slug === 'الاسطول' || this.displayedLinks[0]?.slug === 'fleet') {
+        this.displayFleetCategories = true
+      } else {
+        this.onHideNavDetails();
+        this.router.navigateByUrl('/content?slug=' + this.displayedLinks[0].slug);
+      }
+    } else if (this.displayedLinks[0]?.link) {
+      this.onHideNavDetails();
+      this.router.navigateByUrl(this.displayedLinks[0].link);
+    }
+  }
+
   getFleetsCategories(): void {
     this.loading = true
     this.subscriptions.add(
@@ -69,7 +84,6 @@ export class NavbarDetailsComponent implements OnChanges {
         next: (res: any) => {
           this.loading = false
           if(res?.status == 200) {
-            this.displayFleetCategories = true
             this.fleetCategories = [...res?.data?.data]
           }
         },

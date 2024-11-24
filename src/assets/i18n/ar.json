@@ -2,6 +2,7 @@
     "General": {
         "ViewMore":"مشاهدة المزيد +",
         "ReadMore": "مشاهدة المزيد",
+        "ReadLess":"مشاهدة الاقل",
         "NotFoundData": "لا يوجد بيانات",
         "SearchDesc": "البحث في خدمات البترول البحرية",
         "All": "الكل",
@@ -11,17 +12,19 @@
         "Close": "إغلاق",
         "ShowMore": "اظهار المزيد...",
         "BackToTop":"الرجوع لأعلي الصفحة",
-        "DiscoverMore":"اكتشف المزيد"
+        "DiscoverMore":"اكتشف المزيد",
+        "Events":"الفعاليات",
+        "DiscoverPMS":"إكتشف PMS's"
     },
     "Navbar": {
         "Home":"الرئيسية",
         "AboutUs" :"من نحن",
         "OurStrategy" :"استراتيجيتنا",
-        "CoreBusiness" : "الأعمال الرئيسية",
-        "KeyAssets" :"الأصول الرئيسية",
+        "OurBusiness" : "عملنا",
+        "OurSolutions" :"حلولنا",
         "Projects" :"المشاريع",
         "ContactUs" :"اتصل بنا",
-        "MediaCenter" : "المركز الإعلامي",
+        "Media" : "المركز الإعلامي",
         "HSE" : "الصحة والسلامة والبيئة",
         "Certificates":"الشهادات",
         "Sustainability" :"الاستدامة",
@@ -29,13 +32,14 @@
         "DiscoverMore":"اكتشف المزيد",
         "News":"الاخبار",
         "Events": "الفعاليات",
-        "Search": "بحث"
+        "Search": "بحث",
+        "PressRelease":"بيان صحفي"
     },
     "Home" :{
         "Technical":"تقني",
         "Projects":"المشاريع",
         "Engineers":"المهندسين",
-        "CoreBusiness":"الأعمال الرئيسية",
+        "OurBusiness":"عملنا",
         "RecentProjects":"مشاريعنا",
         "OurNews":"أخبارنا",
         "OurPartners":"شركائنا"
@@ -54,6 +58,7 @@
     "Projects": {
         "RecentProjects":"المشاريع الأخيرة",
         "CompletedProjects":"المشاريع المكتملة",
+        "TrackRecord":"سجل الانجازات",
         "MegaProjects":"المشاريع الكبيرة",
         "LatestProject":"اخر مشروع",
         "FollowOurProjects":"تابع مشاريعنا",
@@ -63,7 +68,9 @@
         "Country": "الدولة",
         "Location": "العنوان",
         "Client": "العميل",
-        "ProjectInfo": "معلومات المشروع"
+        "ProjectInfo": "معلومات المشروع",
+        "ShowMore":"اظهار المزيد",
+        "ShowLess":"اخفاء المزيد"
     },
     "Events": {
         "LatestEvent":"اخر فعالية",

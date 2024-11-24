@@ -68,6 +68,12 @@
     }
 }
 
+.address_wrapper {
+    @media (min-width:1201px) {
+        width: 60%;
+    }
+}
+
 .footer-bottom {
     padding-block: 0.5rem;
     background-color: #C7DCF1;

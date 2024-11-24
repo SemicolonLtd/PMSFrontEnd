@@ -2,6 +2,7 @@
     "General": {
         "ViewMore":"View More +",
         "ReadMore": "Read More",
+        "ReadLess":"Read Less",
         "NotFoundData": "Not Found Data",
         "SearchDesc":"Search in petroleum marine services",
         "All": "All",
@@ -11,17 +12,19 @@
         "Close": "Close",
         "ShowMore": "Show More...",
         "BackToTop":"Back To Top",
-        "DiscoverMore":"Discover More"
+        "DiscoverMore":"Discover More",
+        "Events":"Events",
+        "DiscoverPMS":"Discover PMS's"
     },
     "Navbar": {
         "Home":"Home",
         "AboutUs" :"About Us",
         "OurStrategy" :"Our Strategy",
-        "CoreBusiness" : "Core Business",
-        "KeyAssets" :"Key Assets",
+        "OurBusiness" : "Our Business",
+        "OurSolutions" :"Our Solutions",
         "Projects" :"Projects",
         "ContactUs" :"Contact Us",
-        "MediaCenter" : "Media Center",
+        "Media" : "Media",
         "HSE" : "HSE & Quality",
         "Certificates":"Certificates",
         "Sustainability" :"Sustainability",
@@ -29,13 +32,14 @@
         "DiscoverMore":"Discover More",
         "News":"News",
         "Events": "Events",
-        "Search": "Search"
+        "Search": "Search",
+        "PressRelease":"Press Release"
     },
     "Home" :{
         "Technical":"Technical",
         "Projects":"Projects",
         "Engineers":"Engineers",
-        "CoreBusiness":"Core Business",
+        "OurBusiness":"Our Business",
         "RecentProjects":"Our Projects",
         "OurNews":"Our News",
         "OurPartners":"Our Partners"
@@ -55,6 +59,7 @@
     "Projects": {
         "RecentProjects":"Recent Projects",
         "CompletedProjects":"Completed Projects",
+        "TrackRecord":"Track Record",
         "MegaProjects":"Mega Projects",
         "LatestProject":"Latest Project",
         "FollowOurProjects":"Follow Our Projects",

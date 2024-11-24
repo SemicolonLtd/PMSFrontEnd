@@ -3,7 +3,6 @@
         <ng-template pTemplate="header">
             <div class="flex align-items-center">
                 <h3>{{detailsTitle}}</h3>
-                <!-- <span>Discover PMS {{detailsTitle}}</span> -->
                 <i class="pi" [ngClass]="lang == 'ar' ? 'pi-arrow-left' : 'pi-arrow-right'"></i>
             </div>
         </ng-template>
@@ -14,24 +13,31 @@
         <div class="details-content">
             <div class="pms-container">
                 <div class="grid">
-                    <!-- <div class="lg:col-3 md:col-12 sm:col-12" *ngIf="detailsType !== 'Search'">
-                        <div class="discover-btn">
+                    <div class="lg:col-3 md:col-12 sm:col-12" *ngIf="detailsType !== 'Search'">
+                        <span>{{'General.DiscoverPMS' | translate}} {{detailsTitle}}</span>
+                        <div class="discover-btn mt-3">
                             <p-button 
                                 label="{{'Navbar.DiscoverMore' | translate}}" 
                                 icon="pi pi-arrow-right" 
+                                (onClick)="onDiscoverMore()"
                             />
                         </div>
-                    </div> -->
-                    <div class="all-links lg:col-10 md:col-12 sm:col-12" *ngIf="detailsType !== 'Search'">
+                        
+                    </div>
+                    <div class="all-links lg:col-9 md:col-12 sm:col-12" *ngIf="detailsType !== 'Search'">
                         <div class="links-list">
                             <ul>
                                 <li *ngFor="let link of displayedLinks" 
-                                    (click)="openLink(link)">
+                                    (click)="link?.slug === 'الاسطول' || link?.slug === 'fleet' ? null : openLink(link)"
+                                    (mouseenter)="link?.slug === 'الاسطول' || link?.slug === 'fleet' ? 
+                                    displayFleetCategories = true : 
+                                    displayFleetCategories = false"
+                                    >
                                     {{ link?.name }}
                                 </li>
                             </ul>
-                            <div class="loader" *ngIf="loading"></div>
-                            <ul class="fleet-list" *ngIf="displayFleetCategories && !loading">
+                            <!-- <div class="loader" *ngIf="loading"></div> -->
+                            <ul class="fleet-list" *ngIf="displayFleetCategories">
                                 <li *ngFor="let cate of fleetCategories" 
                                     (click)="openFleetCategory(cate)">
                                     {{ cate?.name }}

@@ -43,7 +43,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   ];
   subscriptions = new Subscription();
   websiteUrl = environment.websiteUrl;
-
+  showDesc: boolean = false
   constructor(
     private projectsService: ProjectsService,
     private route: ActivatedRoute,
@@ -144,6 +144,10 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     console.log(content);
     
     this.metaService.createMetaData(content);
+  }
+
+  onShowDesc(): void {
+    this.showDesc = !this.showDesc;
   }
 
   ngOnDestroy(): void {
