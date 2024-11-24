@@ -17,7 +17,11 @@
                     <p-tabPanel *ngFor="let category of newsCategories" [header]="category?.name">
                         <div class="grid" *ngIf="(bigCardNews || smallCardsNews?.length) && !loading">
                             <div class="sm:col-12 md:col-6 big-card-container p-1" *ngIf="bigCardNews">
-                                <a class="big-card" [routerLink]="'/news/details/' + bigCardNews?.slug">
+                                <a class="big-card" 
+                                [routerLink]="bigCardNews.menu === 'Events' ? 
+                                '/events/details/' + bigCardNews?.slug :
+                                '/news/details/' + bigCardNews?.slug"
+                                >
                                     <p-card [header]="bigCardNews?.title">
                                         <ng-template pTemplate="header">
                                             <img alt="Card" [src]="bigCardNews?.image" />
@@ -26,7 +30,7 @@
                                         </p> -->
                                         <ng-template pTemplate="footer">
                                             <!-- <span>{{bigCardNews?.date}}</span> -->
-                                            <button class="discover_btn" [routerLink]="'/news/details/' + bigCardNews?.slug">
+                                            <button class="discover_btn">
                                                 <i class="pi pi-angle-right" *ngIf="lang == 'en'"></i>
                                                 <i class="pi pi-angle-left" *ngIf="lang == 'ar'"></i>
                                                 <span>{{'General.DiscoverMore' | translate}}</span>
@@ -42,7 +46,10 @@
                                 <div class="grid mx-0">
                                     <div class="sm:col-12 md:col-6 p-1" style="margin-bottom:10px" *ngFor="let card of smallCardsNews" >
                                         <a class="small-card"
-                                        [routerLink]="'/news/details/' + card?.slug">
+                                        [routerLink]="bigCardNews.menu === 'Events' ? 
+                                        '/events/details/' + bigCardNews?.slug :
+                                        '/news/details/' + bigCardNews?.slug"
+                                        >
                                             <p-card [header]="card?.title">
                                                 <ng-template pTemplate="header">
                                                     <img alt="Card" [src]="card?.image" />
@@ -51,7 +58,7 @@
                                                 </p> -->
                                                 <ng-template pTemplate="footer">
                                                     <!-- <span>{{card?.date}}</span> -->
-                                                    <button class="discover_btn" [routerLink]="'/news/details/' + card?.slug">
+                                                    <button class="discover_btn">
                                                         <i class="pi pi-angle-right" *ngIf="lang == 'en'"></i>
                                                         <i class="pi pi-angle-left" *ngIf="lang == 'ar'"></i>
                                                         <span>{{'General.DiscoverMore' | translate}}</span>

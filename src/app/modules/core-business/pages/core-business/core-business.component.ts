@@ -99,7 +99,7 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
 
     handleMetaTags(): void {
         const content: any = {
-          title: 'Navbar.CoreBusiness',
+          title: 'Navbar.OurBusiness',
           useTranslation: true,
           description: 'Core Business Discription',
           keywords: 'Core Business',

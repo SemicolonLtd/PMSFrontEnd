@@ -36,13 +36,13 @@ export class RecentProjectsComponent implements OnInit, OnDestroy {
     this.translateService.get([
       'General.All',
       'Projects.RecentProjects',
-      'Projects.CompletedProjects',
+      'Projects.TrackRecord',
       'Projects.MegaProjects'
     ]).subscribe(translations => {
       this.projectCategories = [
         { name: translations['General.All'], value: 'all' },
         { name: translations['Projects.RecentProjects'], value: 'recent-projects' },
-        { name: translations['Projects.CompletedProjects'], value: 'completed-projects' },
+        { name: translations['Projects.TrackRecord'], value: 'completed-projects' },
         { name: translations['Projects.MegaProjects'], value: 'mega-projects' }
       ];
     });

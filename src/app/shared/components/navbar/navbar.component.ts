@@ -232,7 +232,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                     // type: 'recent-projects'
                   },
                   {
-                    name: this.translateService.instant('Projects.CompletedProjects'),
+                    name: this.translateService.instant('Projects.TrackRecord'),
                     link: '/projects?type=completed-projects',
                     // link: '/projects',
                     // type: 'completed-projects'

@@ -11,17 +11,18 @@
         "Close": "إغلاق",
         "ShowMore": "اظهار المزيد...",
         "BackToTop":"الرجوع لأعلي الصفحة",
-        "DiscoverMore":"اكتشف المزيد"
+        "DiscoverMore":"اكتشف المزيد",
+        "Events":"الفعاليات"
     },
     "Navbar": {
         "Home":"الرئيسية",
         "AboutUs" :"من نحن",
         "OurStrategy" :"استراتيجيتنا",
-        "CoreBusiness" : "الأعمال الرئيسية",
-        "KeyAssets" :"الأصول الرئيسية",
+        "OurBusiness" : "عملنا",
+        "OurSolutions" :"حلولنا",
         "Projects" :"المشاريع",
         "ContactUs" :"اتصل بنا",
-        "MediaCenter" : "المركز الإعلامي",
+        "Media" : "المركز الإعلامي",
         "HSE" : "الصحة والسلامة والبيئة",
         "Certificates":"الشهادات",
         "Sustainability" :"الاستدامة",
@@ -35,7 +36,7 @@
         "Technical":"تقني",
         "Projects":"المشاريع",
         "Engineers":"المهندسين",
-        "CoreBusiness":"الأعمال الرئيسية",
+        "OurBusiness":"عملنا",
         "RecentProjects":"مشاريعنا",
         "OurNews":"أخبارنا",
         "OurPartners":"شركائنا"
@@ -54,6 +55,7 @@
     "Projects": {
         "RecentProjects":"المشاريع الأخيرة",
         "CompletedProjects":"المشاريع المكتملة",
+        "TrackRecord":"سجل الانجازات",
         "MegaProjects":"المشاريع الكبيرة",
         "LatestProject":"اخر مشروع",
         "FollowOurProjects":"تابع مشاريعنا",

@@ -6,6 +6,9 @@
     width: 100%;
     z-index: 3;
     color: white;
+    // background-color: #0000003d;
+    // box-shadow: 0 0 5px rgba(40, 40, 40, 0.5); 
+    background: linear-gradient(180deg, rgba(0, 0, 0, .748), transparent);
     .pms-container {
         @media (max-width: 1500px) {
             padding-inline: 3%;
