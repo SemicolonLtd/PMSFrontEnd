@@ -1,6 +1,8 @@
 <nav class="nav-container desktop" 
-    [ngClass]="{'nav-sticky': (isSticky || navDetailsOpened),
-    'nav-on-details': (navDetailsOpened || (currentRoute != '/' && currentRoute != 'certificates' && currentRoute != 'faq' && currentRoute != 'content'))}"
+    [ngClass]="{
+    'nav-sticky': (isSticky || navDetailsOpened),
+    'nav-on-details': navDetailsOpened  || !pageWithHeader
+    }"
     >
     <div class="topbar" *ngIf="!navDetailsOpened">
         <div class="pms-container w-full">
@@ -8,22 +10,27 @@
                 <div class="nav-links">
                     <ul class="flex align-items-center">
                         <li>
-                            <a routerLink="/" [queryParams]="{ lang: lang }">{{"Navbar.Home" | translate}}</a>
+                            <a routerLink="/">{{"Navbar.Home" | translate}}</a>
                         </li>
                         <li>
                             <a (click)="onSelectLink('about-us', 'AboutUs', false)">{{"Navbar.AboutUs" | translate}}</a>
+                            <!-- <i class="pi pi-angle-down"></i> -->
                         </li>
                         <li>
                             <a (click)="onSelectLink('our-strategy', 'OurStrategy', false)">{{"Navbar.OurStrategy" | translate}}</a>
+                            <!-- <i class="pi pi-angle-down"></i> -->
                         </li>
                         <li>
-                            <a (click)="onSelectLink('core-business', 'CoreBusiness', false)">{{"Navbar.CoreBusiness" | translate}}</a>
+                            <a (click)="onSelectLink('core-business', 'OurBusiness', false)">{{"Navbar.OurBusiness" | translate}}</a>
+                            <!-- <i class="pi pi-angle-down"></i> -->
                         </li>
                         <li>
-                            <a (click)="onSelectLink('key-assets', 'KeyAssets', false)">{{"Navbar.KeyAssets" | translate}}</a>
+                            <a (click)="onSelectLink('key-assets', 'OurSolutions', false)">{{"Navbar.OurSolutions" | translate}}</a>
+                            <!-- <i class="pi pi-angle-down"></i> -->
                         </li>
                         <li>
                             <a (click)="onSelectLink('projects', 'Projects', false)">{{"Navbar.Projects" | translate}}</a>
+                            <!-- <i class="pi pi-angle-down"></i> -->
                         </li>
                     </ul>
                 </div>
@@ -41,6 +48,14 @@
                         [href]="socialMediaData?.insta" target="_blank">
                             <i class="pi pi-instagram"></i>
                         </a>
+                        <a class="social-item" *ngIf="socialMediaData?.x"
+                        [href]="socialMediaData?.x" target="_blank">
+                            <i class="pi pi-twitter"></i>
+                        </a>
+                        <a class="social-item" *ngIf="socialMediaData?.facebook"
+                        [href]="socialMediaData?.facebook" target="_blank">
+                            <i class="pi pi-facebook"></i>
+                        </a>
                     </div>
                     <div class="langs">
                         <p-dropdown 
@@ -48,8 +63,8 @@
                         [(ngModel)]="lang" 
                         (onChange)="changeLang($event)"
                         optionLabel="name"
-                        class="lang hide-responsive"
-                        [placeholder]="lang" />
+                        optionValue="code"
+                        class="lang hide-responsive" />
                     </div>
                 </div>
             </div>
@@ -60,7 +75,7 @@
         <div class="pms-container w-full">
             <div class="navbar-wrapper flex align-items-center justify-content-between">
                 <div class="logo-wrapper">
-                    <a routerLink="/"[queryParams]="{ lang: lang }" class="flex align-items-center">
+                    <a routerLink="/" class="flex align-items-center">
                         <img class="logo-img" src="assets/images/global/logo.svg" alt="">
                         <h1 class="logo-txt">{{"Navbar.PMS" | translate}}</h1>
                     </a>
@@ -71,22 +86,28 @@
                         <ng-container *ngIf="isSticky || navDetailsOpened">
                             <li>
                                 <a (click)="onSelectLink('about-us', 'AboutUs', false)">{{"Navbar.AboutUs" | translate}}</a>
+                                <!-- <i class="pi pi-angle-down"></i> -->
                             </li>
                             <li>
                                 <a (click)="onSelectLink('our-strategy', 'OurStrategy', false)">{{"Navbar.OurStrategy" | translate}}</a>
+                                <!-- <i class="pi pi-angle-down"></i> -->
                             </li>
                             <li>
-                                <a (click)="onSelectLink('core-business', 'CoreBusiness', false)">{{"Navbar.CoreBusiness" | translate}}</a>
+                                <a (click)="onSelectLink('core-business', 'OurBusiness', false)">{{"Navbar.OurBusiness" | translate}}</a>
+                                <!-- <i class="pi pi-angle-down"></i> -->
                             </li>
                             <li>
-                                <a (click)="onSelectLink('key-assets', 'KeyAssets', false)">{{"Navbar.KeyAssets" | translate}}</a>
+                                <a (click)="onSelectLink('key-assets', 'OurSolutions', false)">{{"Navbar.OurSolutions" | translate}}</a>
+                                <!-- <i class="pi pi-angle-down"></i> -->
                             </li>
                             <li>
                                 <a (click)="onSelectLink('projects', 'Projects', false)">{{"Navbar.Projects" | translate}}</a>
+                                <!-- <i class="pi pi-angle-down"></i> -->
                             </li>
                         </ng-container>
                         <li>
-                            <a (click)="onSelectLink('hse-policy-records', 'HSE', true)">{{"Navbar.HSE" | translate}}</a>
+                            <a (click)="onSelectLink('HSE-quality', 'HSE', false)">{{"Navbar.HSE" | translate}}</a>
+                            <!-- <i class="pi pi-angle-down"></i> -->
                         </li>
                         <li>
                             <a (click)="onSelectLink('certificates', 'Certificates', true)">{{"Navbar.Certificates" | translate}}</a>
@@ -95,7 +116,8 @@
                             <a (click)="onSelectLink('sustainability', 'Sustainability', true)">{{"Navbar.Sustainability" | translate}}</a>
                         </li>
                         <li>
-                            <a (click)="onSelectLink('media-center', 'MediaCenter', false)">{{"Navbar.MediaCenter" | translate}}</a>
+                            <a (click)="onSelectLink('media-center', 'Media', false)">{{"Navbar.Media" | translate}}</a>
+                            <!-- <i class="pi pi-angle-down"></i> -->
                         </li>
                         <li>
                             <a (click)="onSelectLink('contact-us', 'ContactUs', true)">{{"Navbar.ContactUs" | translate}}</a>
@@ -128,9 +150,8 @@
                         [(ngModel)]="lang" 
                         (onChange)="changeLang($event)"
                         optionLabel="name" 
-                        (ngModelChange)="changeLang($event)"
-                        class="lang hide-responsive"
-                        [placeholder]="lang" />
+                        optionValue="code"
+                        class="lang hide-responsive" />
                     </div>
                 </div>
             </div>
@@ -166,15 +187,15 @@
                         [(ngModel)]="lang" 
                         (onChange)="changeLang($event)"
                         optionLabel="name"
-                        class="lang hide-responsive"
-                        [placeholder]="lang" />
+                        optionValue="code"
+                        class="lang hide-responsive" />
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="pms-container flex justify-content-between align-items-center py-2 bg-white">
-        <img class="logo-img" routerLink="/"[queryParams]="{ lang: lang }" src="assets/images/global/logo.svg" alt="">
+        <img class="logo-img" routerLink="/" src="assets/images/global/logo.svg" alt="">
 
         <p-sidebar [(visible)]="sidebarMobileVisible"  [position]="lang == 'en' ? 'left' : 'right'">
             <ng-template pTemplate="header">
@@ -185,25 +206,31 @@
             <div class="nav-links">
                 <ul>
                     <li>
-                        <a routerLink="/" [queryParams]="{ lang: lang }">{{"Navbar.Home" | translate}}</a>
+                        <a routerLink="/">{{"Navbar.Home" | translate}}</a>
                     </li>
                     <li>
                         <a (click)="onSelectLink('about-us', 'AboutUs', false)">{{"Navbar.AboutUs" | translate}}</a>
+                        <!-- <i class="pi pi-angle-down"></i> -->
                     </li>
                     <li>
                         <a (click)="onSelectLink('our-strategy', 'OurStrategy', false)">{{"Navbar.OurStrategy" | translate}}</a>
+                        <!-- <i class="pi pi-angle-down"></i> -->
                     </li>
                     <li>
-                        <a (click)="onSelectLink('core-business', 'CoreBusiness', false)">{{"Navbar.CoreBusiness" | translate}}</a>
+                        <a (click)="onSelectLink('core-business', 'OurBusiness', false)">{{"Navbar.OurBusiness" | translate}}</a>
+                        <!-- <i class="pi pi-angle-down"></i> -->
                     </li>
                     <li>
-                        <a (click)="onSelectLink('key-assets', 'KeyAssets', false)">{{"Navbar.KeyAssets" | translate}}</a>
+                        <a (click)="onSelectLink('key-assets', 'OurSolutions', false)">{{"Navbar.OurSolutions" | translate}}</a>
+                        <!-- <i class="pi pi-angle-down"></i> -->
                     </li>
                     <li>
                         <a (click)="onSelectLink('projects', 'Projects', false)">{{"Navbar.Projects" | translate}}</a>
+                        <!-- <i class="pi pi-angle-down"></i> -->
                     </li>
                     <li>
-                        <a (click)="onSelectLink('hse-policy-records', 'HSE', true)">{{"Navbar.HSE" | translate}}</a>
+                        <a (click)="onSelectLink('HSE-quality', 'HSE', false)">{{"Navbar.HSE" | translate}}</a>
+                        <!-- <i class="pi pi-angle-down"></i> -->
                     </li>
                     <hr>
 
@@ -214,7 +241,8 @@
                         <a (click)="onSelectLink('sustainability', 'Sustainability', true)">{{"Navbar.Sustainability" | translate}}</a>
                     </li>
                     <li>
-                        <a (click)="onSelectLink('media-center', 'MediaCenter', false)">{{"Navbar.MediaCenter" | translate}}</a>
+                        <a (click)="onSelectLink('media-center', 'Media', false)">{{"Navbar.Media" | translate}}</a>
+                        <!-- <i class="pi pi-angle-down"></i> -->
                     </li>
                     <li>
                         <a (click)="onSelectLink('contact-us', 'ContactUs', true)">{{"Navbar.ContactUs" | translate}}</a>

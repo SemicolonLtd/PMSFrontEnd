@@ -1,6 +1,6 @@
 .footer {
     padding-block: 2rem;
-    background-color: var(--primary-color-medium);
+    background-color: #0B396A;
     color: white;
     a {
         color: white;
@@ -19,6 +19,9 @@
             .logo-txt {
                 margin-inline-start: 1.5rem;
                 font-size: 1.7rem;
+                font-family:'logo-font' ;
+                margin-bottom: 0;
+                font-weight: 600;
             }
             @media (max-width: 576px) {
                 margin-bottom: 1.5rem;
@@ -62,6 +65,12 @@
         .social-wrapper {
             justify-content: center;
         }
+    }
+}
+
+.address_wrapper {
+    @media (min-width:1201px) {
+        width: 60%;
     }
 }
 

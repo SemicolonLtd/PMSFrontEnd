@@ -16,11 +16,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   barTitle = this.translateService.instant('Projects.FollowOurProjects');
   pageTopProject: any;
   topProjectLoading = false;
-  stateOptions: any[] = [
-    { label: this.translateService.instant('Projects.RecentProjects'), value: 'recent-projects' },
-    { label: this.translateService.instant('Projects.CompletedProjects'), value: 'completed-projects' },
-    { label: this.translateService.instant('Projects.MegaProjects'), value: 'mega-projects' }
-  ];
+  stateOptions!: any[];
   projectsList: any[] = [];
   projectsLoading = false;
   pageSize = 10;
@@ -38,8 +34,14 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+
     this.getSelectedTypeFromParams();
     this.getTopProjectData();
+    this.stateOptions = [
+      { label: this.translateService.instant('Projects.RecentProjects'), value: 'recent-projects' },
+      { label: this.translateService.instant('Projects.TrackRecord'), value: 'completed-projects' },
+      { label: this.translateService.instant('Projects.MegaProjects'), value: 'mega-projects' }
+    ]
   }
 
   getSelectedTypeFromParams(): void {

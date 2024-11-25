@@ -82,9 +82,6 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
             this.eventData = res?.data;
             this.eventData.media = [
               ...this.eventData.media
-              // {
-              //   image: this.eventData.image
-              // }
             ];
             this.breadcrumbItems.push(
               {

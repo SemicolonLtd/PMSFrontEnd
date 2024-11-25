@@ -2,6 +2,7 @@
     "General": {
         "ViewMore":"View More +",
         "ReadMore": "Read More",
+        "ReadLess":"Read Less",
         "NotFoundData": "Not Found Data",
         "SearchDesc":"Search in petroleum marine services",
         "All": "All",
@@ -9,39 +10,47 @@
         "OrgDesc": "PMS, is a leading Egyptian EPCI offshore construction company, established in 2001 under the auspices of the Egyptian General Petroleum Corporation (EGPC), with almost four decades of experience as a continuation of its previous entity as the Marine Department of PETROJET.",
         "OrgName": "Petroleum Marine Services Co.",
         "Close": "Close",
-        "ShowMore": "Show More..."
+        "ShowMore": "Show More...",
+        "BackToTop":"Back To Top",
+        "DiscoverMore":"Discover More",
+        "Events":"Events",
+        "DiscoverPMS":"Discover PMS's"
     },
     "Navbar": {
         "Home":"Home",
         "AboutUs" :"About Us",
         "OurStrategy" :"Our Strategy",
-        "CoreBusiness" : "Core Business",
-        "KeyAssets" :"Key Assets",
+        "OurBusiness" : "Our Business",
+        "OurSolutions" :"Our Solutions",
         "Projects" :"Projects",
         "ContactUs" :"Contact Us",
-        "MediaCenter" : "Media Center",
-        "HSE" : "HSE",
+        "Media" : "Media",
+        "HSE" : "HSE & Quality",
         "Certificates":"Certificates",
         "Sustainability" :"Sustainability",
         "PMS": "Petroleum Marine Services Co.",
         "DiscoverMore":"Discover More",
         "News":"News",
         "Events": "Events",
-        "Search": "Search"
+        "Search": "Search",
+        "PressRelease":"Press Release"
     },
     "Home" :{
         "Technical":"Technical",
         "Projects":"Projects",
         "Engineers":"Engineers",
-        "CoreBusiness":"Core Business",
-        "RecentProjects":"Recent Projects",
-        "OurNews":"Our News"
+        "OurBusiness":"Our Business",
+        "RecentProjects":"Our Projects",
+        "OurNews":"Our News",
+        "Media":"Media",
+        "OurPartners":"Our Partners"
     },
     "Search": {
         "WelcomeTo": "Welcome to",
         "OurProjects":"Our Projects Page",
         "OurNews":"Our News Page",
         "OurEvents":"Our Events Page",
+        "OurTenders":"Our Tenders Page",
         "OurCoreBusiness":"Our Core Business Page",
         "Page":"Page",
         "Explore":"Explore",
@@ -51,6 +60,7 @@
     "Projects": {
         "RecentProjects":"Recent Projects",
         "CompletedProjects":"Completed Projects",
+        "TrackRecord":"Track Records",
         "MegaProjects":"Mega Projects",
         "LatestProject":"Latest Project",
         "FollowOurProjects":"Follow Our Projects",
@@ -69,6 +79,26 @@
         "StartDate": "Start Date",
         "EndDate":"End Date",
         "EventInfo": "Event Information"
+    },
+    "Tenders": {
+        "LatestTender":"Latest Tender",
+        "TenderAndActivities":"Tender & Activities",
+        "More": "More...",
+        "StartDate": "Start Date",
+        "EndDate":"End Date",
+        "TenderInfo": "Tender Information",
+        "PDF":"Terms Book",
+        "Terms": "Terms & Conditions",
+        "ClickHere": "Click here to preview"
+    },
+    "Fleets": {
+        "Fleets":"Fleets",
+        "StartDate": "Start Date",
+        "EndDate":"End Date",
+        "TenderInfo": "Tender Information",
+        "PDF":"Terms Book",
+        "Terms": "Terms & Conditions",
+        "ClickHere": "Click here to preview"
     },
     "Certificates": {
         "Certificates":"Certificates",
@@ -93,6 +123,7 @@
         "SimilarNews":"Similar News",
         "SimilarCoreBusiness":"Similar Core Business",
         "SimilarEvents":"Similar Events",
+        "SimilarTenders":"Similar Tenders",
         "CoreBusinessProjects": "Core Business Projects"
     },
     "Footer": {
@@ -101,7 +132,7 @@
         "TermsAndConditions": "Terms and conditions",
         "PrivacyPolicy":"Privacy Policy",
         "ContactUs": "Contact Us",
-        "Copyright": "Copyright 2010 - 2024 PMS.com",
+        "Copyright": "Copyright 2001 - 2024 PMS.com",
         "OtherLinks":"Other Links",
         "FAQ": "FAQ",
         "Vision": "Vision",
@@ -110,7 +141,8 @@
         "Email":"Email",
         "Address": "Address",
         "Phone": "Phone",
-        "KeepInTouch":"Keep in touch"
+        "KeepInTouch":"Keep in touch",
+        "Tenders":"Tenders"
     },
     "SearchResults": {
         "Projects":"Projects",
@@ -121,7 +153,7 @@
         "Search":"Search"
     },
     "Static": {
-        "HSE-quality": "HSE",
+        "HSE-quality": "HSE & Quality",
         "key-assets":"Key Assets",
         "sustainability": "Sustainability",
         "about-us": "About Us",

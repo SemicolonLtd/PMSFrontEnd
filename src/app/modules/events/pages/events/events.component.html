@@ -1,6 +1,12 @@
 <div class="events">
     <!-- <img src="assets/images/global/pages-wave-top.webp" alt="" class="pages-wave-top"> -->
-    <app-search [Title]="searchTitle" (searchEmitter)="searchForEvents($event)"></app-search>
+    <!-- <app-search [Title]="searchTitle" (searchEmitter)="searchForEvents($event)"></app-search> -->
+    <div class="header flex align-items-center justify-content-center">
+        <img src="assets/images/global/certificates.webp" alt="" class="cover">
+        <div class="content">
+            <h2 class="title">{{'Navbar.Events' | translate}}</h2>
+        </div>
+    </div>
     <div class="latest-event" *ngIf="pageTopEvent && !topEventLoading && !searchMode">
         <div class="pms-container">
             <div class="grid">
@@ -38,7 +44,7 @@
                 <div class="grid">
                     <ng-container *ngIf="eventsList.length">
                         <div class="card-wrapper xl:col-4 md:col-6 sm:col-12 mb-4" *ngFor="let event of eventsList">
-                            <app-event-card [eventData]="event"></app-event-card>
+                            <app-event-card [eventData]="event" [cardType]="'event'"></app-event-card>
                         </div>
                         <ng-container *ngFor="let schema of schemaList">
                             <ngx-json-ld [json]="schema"></ngx-json-ld>

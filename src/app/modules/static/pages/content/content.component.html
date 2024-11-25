@@ -4,7 +4,7 @@
             <img [src]="pageContent.image" [alt]="pageContent.title">
             <h1 class="page-title">{{pageContent.title}}</h1>
         </div>
-        <div class="pms-container head-wrapper flex-wrap flex align-items-center justify-content-between">
+        <div class="static-page-container head-wrapper flex-wrap flex align-items-center justify-content-between">
             <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
             <div class="share_details">
                 <span class="txt">
@@ -28,10 +28,12 @@
                 </button>
             </div>
         </div>
-        <div class="content" [innerHTML]="sanitizeHtml(pageContent.body)"></div>
+        <div class="static-page-container">
+            <div class="content" [innerHTML]="sanitizeHtml(pageContent.body)"></div>
+        </div>
     </ng-container>
     <app-loading type="small" *ngIf="loading"></app-loading>
-    <div class="flex align-items-center justify-content-center" style="height: 50vh;">
-        <app-empty-state *ngIf="!pageContent?.slug && !loading"></app-empty-state>
+    <div class="flex align-items-center justify-content-center" *ngIf="!pageContent?.slug && !loading" style="height: 100vh;">
+        <app-empty-state></app-empty-state>
     </div>
 </main>

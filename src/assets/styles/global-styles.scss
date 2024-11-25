@@ -68,11 +68,18 @@
             max-height: 450px;
         }
     }
+    .p-image-mask {
+        z-index: 1107 !important;
+    }
 }
 
 pre {
     white-space: break-spaces;
     overflow: visible;
+}
+
+code, h1, h2, h3, h4, h5, h6 {
+    color: unset;
 }
 
 .margin-avoid-navbar {

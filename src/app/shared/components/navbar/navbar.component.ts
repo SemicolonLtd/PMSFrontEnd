@@ -18,10 +18,10 @@ import { SettingsService } from 'src/app/core/services/settings.service';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   langs = [
-    { name: 'En', code: 'en' },
-    { name: 'Ar', code: 'ar' },
+    { name: 'EN', code: 'en' },
+    { name: 'AR', code: 'ar' },
   ];
-  lang = environment.lang;
+  lang = this.cookieService.get('lang') || '';
   isSticky = false
   navDetailsOpened: boolean = false;
   detailsType: string = '';
@@ -36,6 +36,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   subscriptions = new Subscription();
   linkName = '';
   socialMediaData: any;
+  pageWithHeader: boolean = false;
 
   constructor(
     private router: Router,
@@ -54,7 +55,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.linkName = this.router.url;
-
+    
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd && event.urlAfterRedirects) {
         if (event.urlAfterRedirects.includes('?lang=ar') || event.urlAfterRedirects.includes('?lang=en')) {
@@ -62,24 +63,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
           this.linkName = event.urlAfterRedirects.slice(0, event.urlAfterRedirects.length - 8);
         }
         this.linkName = event.urlAfterRedirects;
+        this.checkCurrentRoute();
       }
     });
-    // if(isPlatformBrowser(this.platformId)) {
-    //   this.checkCookiesForLang()
-    // }
-    // this.router.events.subscribe(
-    //   event=> {
-    //     if(event instanceof NavigationEnd) {
-    //       if (isPlatformBrowser(this.platformId)) {
-    //         this.checkCookiesForLang()
-    //       }
-    //     }
-        
-    //   }
-    // )
-    this.checkCurrentRoute();
-    this.getCoreBusinessMenus();
-    this.getAllLinks();
     this.checkCurrentRoute();
     this.getSocialMediaData();
   }
@@ -99,6 +85,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
               })
             }
           ];
+          this.getAllLinks();
+
         },
         error: (err: any) => {
           console.log(err);
@@ -114,6 +102,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
           if (res?.status === 200) {
             this.socialMediaData = res?.data;
           }
+          this.getCoreBusinessMenus();
         },
         error: (err: any) => {
           console.log(err);
@@ -145,12 +134,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   // }
 
   changeLang(lang:any): void {
-    this.lang = lang.value.code;
+    this.lang = lang.value;
     environment.lang = this.lang;
-    this.translateService.use(lang.value.code);
-    this.cookieService.put('lang', lang.value.code);
-    console.log(this.linkName);
-    
+    this.translateService.use(lang.value);
+    this.cookieService.put('lang', lang.value);
     const link = this.linkName.slice(0, this.linkName.length - 8)
     this.router.navigate([link], { queryParams: { lang: this.lang } })
     this.route.queryParams.subscribe(
@@ -179,10 +166,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   onSelectLink(type: string, title: string, directRoute: boolean): void {
     this.sidebarMobileVisible = false;
     if (directRoute) {
-      if(['about-us','our-strategy','key-assets','hse-policy-records','sustainability'].includes(type)) {
-        this.router.navigate(['/content'] , {queryParams: {slug: type, lang :this.lang}});
+      if(['about-us','our-strategy','key-assets','sustainability'].includes(type)) {
+        this.router.navigateByUrl('/content?slug=' + type);
       } else {
-        this.router.navigate(['/' + type], {queryParams: {lang :this.lang}});
+        this.router.navigate(['/' + type]);
       }
       this.sidebarVisible = false;
       this.navDetailsOpened = false;
@@ -211,7 +198,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
       const urlTree = this.router.parseUrl(event.url);
       this.currentRoute = urlTree.root.children['primary']?.segments.map(it => it.path).join('/') || '/';
+      // if (this.currentRoute === 'news') {
+      //   // console.log(page);
+      //   this.pageWithHeader = true;
+      // } else {
+      //   this.pageWithHeader = false
+      // }
+        this.checkPagesWithHeaders()
       });
+
   }
 
   getAllLinks(): void {
@@ -228,27 +223,31 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 menu: [
                   {
                     name: this.translateService.instant('Projects.RecentProjects') ,
-                    // link: '/projects?type=recent-projects',
-                    link: '/projects',
-                    type: 'recent-projects'
+                    link: '/projects?type=recent-projects',
+                    // link: '/projects',
+                    // type: 'recent-projects'
                   },
                   {
-                    name: this.translateService.instant('Projects.CompletedProjects'),
-                    // link: '/projects?type=completed-projects',
-                    link: '/projects',
-                    type: 'completed-projects'
+                    name: this.translateService.instant('Projects.TrackRecord'),
+                    link: '/projects?type=completed-projects',
+                    // link: '/projects',
+                    // type: 'completed-projects'
                   },
                   {
                     name: this.translateService.instant('Projects.MegaProjects'),
-                    // link: '/projects?type=mega-projects',
-                    link: '/projects',
-                    type: 'mega-projects'
+                    link: '/projects?type=mega-projects',
+                    // link: '/projects',
+                    // type: 'mega-projects'
                   }
                 ]
               },
               {
                 name: 'media-center',
                 menu: [
+                  {
+                    name: this.translateService.instant('Navbar.PressRelease'),
+                    link: 'news?index=1'
+                  },
                   {
                     name: this.translateService.instant('Navbar.News'),
                     link: 'news'
@@ -269,6 +268,25 @@ export class NavbarComponent implements OnInit, OnDestroy {
         } 
       )
     )
+  }
+
+  checkPagesWithHeaders(): void {
+    const pages = [
+      '/',
+      'news',
+      'projects',
+      'events',
+      'tenders',
+      'content', 
+      'certificates',
+      'core-business/marine-services',
+      'core-business/offshore-construction',
+      'fleets/category',
+      'fleets/details'
+    ]
+
+    this.pageWithHeader = pages.includes(this.currentRoute)
+    // this.pageWithHeader = pages.some(page => this.currentRoute.startsWith(page));
   }
 
   ngOnDestroy(): void {

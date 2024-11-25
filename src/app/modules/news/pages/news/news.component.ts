@@ -1,5 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { MetaService } from 'src/app/core/services/meta.service';
@@ -15,7 +16,7 @@ export class NewsComponent implements OnInit, OnDestroy {
   searchTitle = this.translateService.instant('Search.OurNews')
   isBrowser!: boolean;
   bigCardNews: any[] = [];
-  pageSize = 10;
+  pageSize = 5;
   smallCardsNews: any[] = [];
   newsData: any[] = [];
   newsCategories: any[] = [];
@@ -24,21 +25,43 @@ export class NewsComponent implements OnInit, OnDestroy {
   paginationData: any;
   searchMode = false;
   searchQuery = '';
-  selectedIndex: any = null;
+  selectedIndex: any = 0;
   subscriptions = new Subscription();
   schemaObj: any;
   schemaList: any[] = [];
-
+  lang = environment.lang
+  activeIndex = 0
   constructor(
     private newsService: NewsService,
     private translateService:TranslateService,
+    private route:ActivatedRoute,
     @Inject(PLATFORM_ID) private platformId: Object,
-    private metaService: MetaService
+    private metaService: MetaService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
     this.isBrowser = isPlatformBrowser(this.platformId);
     this.getNewsCategories();
+  }
+
+  checkTabIndexParam(): void {
+    this.selectedIndex = 0;
+    this.newsData = [];
+    this.route.queryParams.subscribe(
+      (params)=> {
+        if (params['index']) {
+          this.selectedIndex = params['index']
+          this.newsData = []
+          this.selectedCategoryId = this.newsCategories[this.selectedIndex].id;
+          this.getNewsData();
+        } else {
+          this.selectedIndex = 0;
+          this.newsData = []
+          this.getRecentNews();
+        }
+      }
+    )
   }
 
   getNewsCategories(): void {
@@ -58,7 +81,8 @@ export class NewsComponent implements OnInit, OnDestroy {
               },
               ...res?.data?.data
             ];
-            this.getRecentNews();
+            this.checkTabIndexParam()
+            // this.getRecentNews();
           }
         },
         error: (err: any) => {
@@ -99,6 +123,7 @@ export class NewsComponent implements OnInit, OnDestroy {
     this.bigCardNews = [];
     this.smallCardsNews = [];
     this.selectedIndex = index;
+
     if(this.selectedIndex == 0) {
       this.getRecentNews();
     } else {
@@ -139,7 +164,8 @@ export class NewsComponent implements OnInit, OnDestroy {
       this.newsService.getAllNews(this.pageSize).subscribe({
         next: (res: any) => {
           if(res?.status == 200) {
-            this.newsData = [... this.newsData, ...res?.data?.data];
+            this.newsData = []
+            this.newsData = res?.data?.data
             this.paginationData = res?.data?.meta?.pagination;
             this.bigCardNews = this.newsData?.filter((card: any) => card.big_card == true);
             this.smallCardsNews = this.newsData?.filter((card: any) => card.big_card == false);

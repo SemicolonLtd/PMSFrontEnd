@@ -23,7 +23,7 @@ export class CoreBusinessService {
   }
 
   getSimilarBusiness(slug: string): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/core/business/similar/${slug}/10`);
+    return this.http.get<any>(`${environment.apiUrl}/core/business/similar/${slug}/3`);
   }
 
   getBusinessProjects(slug: string): Observable<any> {

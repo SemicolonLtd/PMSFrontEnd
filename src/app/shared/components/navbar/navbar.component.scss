@@ -6,6 +6,9 @@
     width: 100%;
     z-index: 3;
     color: white;
+    // background-color: #0000003d;
+    // box-shadow: 0 0 5px rgba(40, 40, 40, 0.5); 
+    background: linear-gradient(180deg, rgba(0, 0, 0, .748), transparent);
     .pms-container {
         @media (max-width: 1500px) {
             padding-inline: 3%;
@@ -53,12 +56,20 @@
 
 .nav-on-details {
     z-index: 1106;
+    background: unset;
     .navbar {
         // background-color: #A8C8E8;
         border-top: 1px solid #80808089;
         .navbar-wrapper {
             a {
                 color: var(--primary-color);
+            }
+            ul {
+                li {
+                    i {
+                    color: var(--primary-color);
+                    }
+                }
             }
         }
         .social {
@@ -71,6 +82,13 @@
             a {
                 color: var(--primary-color);
                 cursor: pointer;
+            }
+            ul {
+                li {
+                    i {
+                    color: var(--primary-color);
+                    }
+                }
             }
         }
     }
@@ -123,7 +141,7 @@
                         margin-inline-end: 1.1rem;
                     }
                     a {
-                        font-size: 0.8rem;
+                        font-size: 0.9rem;
                         font-weight: 700;
                         transition: 0.3s all ease;
                         border-bottom: 4px solid transparent;
@@ -177,6 +195,7 @@
     }
 }
 
+
 .topbar {
     .topbar-wrapper {
         padding-block: 0.6rem;
@@ -193,7 +212,7 @@
             li {
                 margin-inline-end: 1.1rem;
                 a {
-                    font-size: 0.8rem;
+                    font-size: 0.9rem;
                     padding-bottom: 0.7rem;
                     font-weight: 700;
                     transition: 0.3s all ease;
@@ -250,7 +269,9 @@
             .logo-txt {
                 margin-inline-start: 1.5rem;
                 font-size: 1.4rem;
-                font-weight: 700;
+                font-weight: 600;
+                margin-bottom: 0;
+                font-family:'logo-font' ;
             }
         }
         .nav-links {
@@ -262,7 +283,7 @@
                 margin-inline-end: 1.1rem;
                 white-space: nowrap;
                 a {
-                    font-size: 0.8rem;
+                    font-size: 0.9rem;
                     font-weight: 700;
                     transition: 0.3s all ease;
                     border-bottom: 4px solid transparent;
@@ -276,6 +297,16 @@
     }
 }
 
+.nav-links {
+    ul {
+        li {
+            i {
+                margin-inline-start: 0.2rem;
+                font-size: 14px;
+            }
+        }
+    }
+}
 
 ::ng-deep {
     .nav-sticky {
@@ -291,6 +322,7 @@
         }
 
     }
+
     .topbar-wrapper {
         .lang .p-dropdown{
             background: transparent;
@@ -308,9 +340,13 @@
             color: white;
         }
         .lang .p-dropdown-trigger {
+            width: fit-content;
+        }
+        .p-inputtext {
             color: white;
         }
     }
+
     .mobile-topbar {
         background-color: var(--primary-color-light);
         .nav-social-langs {
@@ -404,6 +440,9 @@
         }
         .lang .p-dropdown-trigger {
             width: 1rem;
+            color: var(--primary-color);
+        }
+        .p-inputtext {
             color: var(--primary-color);
         }
     }

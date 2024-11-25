@@ -15,64 +15,44 @@ export class AppComponent {
   title = 'pms';
   pageYoffset!: number;
   currentRoute!: string;
-  lang:any = environment.lang;
+  lang: any = environment.lang;
   isLoading = true;
   isPopStateNavigation = false;
-  fromLink = false;
-  isLangLoaded = false;
-  linkName:any;
+  // fromLink = false;
+  // isLangLoaded = false;
+  // linkName:any;
   constructor(
     private scroll: ViewportScroller,
     private router: Router,
     private route: ActivatedRoute,
-    private cookieService:CookieService,
-    private translateService:TranslateService,
+    private cookieService: CookieService,
+    private translateService: TranslateService,
     @Inject(DOCUMENT) private document: Document,
     @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
+  ) {
+    const currentLang = this.router.routerState.snapshot.root.queryParams['lang'] || environment.lang;
+    // this.router.navigate([], { queryParams: { lang: currentLang }, queryParamsHandling: 'merge' });
+
+  }
 
   ngOnInit(): void {
-    this.linkName = this.router.url;
-    this.route.queryParams.subscribe(params => {
-      if (params && params['lang']) {
-        this.lang = params['lang']?.slice(0, 2);
-        this.fromLink = true;
-        this.cookieService.put('lang', this.lang);
-        this.checkCookiesForLang();
-      }
-    });
     this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd && event.urlAfterRedirects) {
-        if (event.urlAfterRedirects.includes('lang=ar') || event.urlAfterRedirects.includes('lang=en')) {
-          // this.cookieService.put('lang', event.urlAfterRedirects.slice(-2));
-          const LANG_STRING = `lang=${environment.lang}`;
-          event.urlAfterRedirects = event.urlAfterRedirects.slice(0, event?.url.indexOf(LANG_STRING) + 7);
-          this.lang = event.urlAfterRedirects.slice(-2);
-          this.linkName = event.urlAfterRedirects.slice(0, event.urlAfterRedirects.length - 7);
-        }
-        this.linkName = event.urlAfterRedirects;
-        if (!this.fromLink) {
-          this.checkCookiesForLang();
+      if (event instanceof NavigationStart) {
+        // Check if the navigation is triggered by browser back/forward button
+        // if (event.navigationTrigger === 'popstate') {
+        //   this.isPopStateNavigation = true;
+        // } else {
+        //   this.isPopStateNavigation = false;
+        // }}
+        if (event instanceof NavigationEnd) {
+          if (isPlatformBrowser(this.platformId)) {
+            this.checkLanguageFromUrl();
+          }
         }
       }
     });
-    // this.router.events.subscribe(event => {
-    //   if (event instanceof NavigationStart) {
-    //     // Check if the navigation is triggered by browser back/forward button
-    //     if (event.navigationTrigger === 'popstate') {
-    //       this.isPopStateNavigation = true;
-    //     } else {  
-    //       this.isPopStateNavigation = false;
-    //     }
-    //   }
-
-    //   if (event instanceof NavigationEnd) {
-    //     if (isPlatformBrowser(this.platformId)) {
-    //       this.checkLanguageFromUrl();
-    //     }
-    //   }
-    // });
-
+    // this.translateService.use(environment.lang);
+    this.checkLanguageFromUrl();
     this.checkCurrentRoute();
     this.checkLoading();
   }
@@ -89,24 +69,24 @@ export class AppComponent {
 
   checkCurrentRoute(): void {
     this.router.events
-    .pipe(
-      filter(
-        (event): event is NavigationEnd => event instanceof NavigationEnd
+      .pipe(
+        filter(
+          (event): event is NavigationEnd => event instanceof NavigationEnd
+        )
       )
-    )
-    .subscribe((event: NavigationEnd) => {
-      this.currentRoute = event.url
-    });
+      .subscribe((event: NavigationEnd) => {
+        this.currentRoute = event.url
+      });
   }
 
   checkLoading(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
-          this.isLoading = true;
+        this.isLoading = true;
       } else if (event instanceof NavigationEnd) {
-          this.isLoading = false;
+        this.isLoading = false;
       }
-  });
+    });
   }
 
   checkCookiesForLang(): void {
@@ -132,39 +112,39 @@ export class AppComponent {
       this.document.dir = 'ltr';
       this.document.documentElement.lang = 'en';
     }
-    this.lang = this.cookieService.get('lang');
-    this.isLangLoaded = true;
-    const queryParams = {
-      lang: this.lang
-    }
-    this.router.navigate(
-      [],
-      {
-        relativeTo: this.route,
-        queryParams: queryParams,
-        queryParamsHandling: 'merge', // remove to replace all query params by provided
-    });
+    // this.lang = this.cookieService.get('lang');
+    // this.isLangLoaded = true;
+    // const queryParams = {
+    //   lang: this.lang
+    // }
+    // this.router.navigate(
+    //   [],
+    //   {
+    //     relativeTo: this.route,
+    //     queryParams: queryParams,
+    //     queryParamsHandling: 'merge', // remove to replace all query params by provided
+    // });
   }
 
   checkLanguageFromUrl(): void {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe(params => {      
       if (params['lang']) {
         this.cookieService.put('lang', params['lang']);
         this.lang = params['lang'];
         this.checkCookiesForLang();
-      } else if (!this.isPopStateNavigation) {  // Prevent navigate on back button
-        const queryParams = {
-          lang: this.lang
-        };
-        this.router.navigate(
-          [],
-          {
-            relativeTo: this.route,
-            queryParams: queryParams,
-            queryParamsHandling: 'merge',
-          }
-        );
-        this.checkCookiesForLang();
+      // } else if (!this.isPopStateNavigation) {  // Prevent navigate on back button
+        // const queryParams = {
+        //   lang: this.lang
+        // };
+        // this.router.navigate(
+        //   [],
+        //   {
+        //     relativeTo: this.route,
+        //     queryParams: { lang: this.lang},
+        //     queryParamsHandling: 'merge',
+        //   }
+        // );
+        // this.checkCookiesForLang();
       }
     });
   }

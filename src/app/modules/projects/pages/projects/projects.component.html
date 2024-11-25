@@ -1,6 +1,15 @@
 <div class="projects">
     <!-- <img src="assets/images/global/pages-wave-top.webp" alt="" class="pages-wave-top"> -->
-    <app-search [Title]="searchTitle" (searchEmitter)="searchForProjects($event)"></app-search>
+    <!-- <app-search [Title]="searchTitle" (searchEmitter)="searchForProjects($event)"></app-search> -->
+    <div class="header flex align-items-center justify-content-center">
+        <img src="assets/images/global/our_projects.webp" alt="" class="cover">
+        <div class="content">
+            <h2 class="title">{{'Navbar.Projects' | translate}}</h2>
+            <!-- <span class="text mt-3">
+                {{'Certificates.Desc' | translate}}
+            </span> -->
+        </div>
+    </div>
     <div class="latest-project" *ngIf="pageTopProject && !topProjectLoading && !searchMode">
         <div class="pms-container">
             <div class="grid">

@@ -40,7 +40,7 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
   loading = false;
   breadcrumbItems = [
     {
-      name: this.translateService.instant('Navbar.CoreBusiness'),
+      name: this.translateService.instant('Navbar.OurBusiness'),
       link: '/core-business'
     }
   ];
@@ -87,12 +87,13 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
             this.breadcrumbItems.push(
               {
                 name: this.businessData?.cate_name,
-                link: '/core-business'
+                link: '/core-business/' + this.businessData?.cate_slug
               },
               {
               name: this.businessData?.title,
               link: '/core-business/details/' + this.businessData?.slug
             });
+            
             this.handleMetaTags();
             this.getBusinessProjects();
           }

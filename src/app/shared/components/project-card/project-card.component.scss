@@ -1,9 +1,25 @@
 .img-wrapper {
+    cursor: pointer;
+    display: block;
     img {
         height: 276px;
         width: 100%;
     }
 }
+
+.project-card {
+    .title {
+        color: black;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.4s all ease;
+        &:hover {
+            color: var(--primary-color-light);
+        }
+    }
+}
+
+
 ::ng-deep {
     .project-card {
         .p-button.p-button-icon-only.p-button-rounded {

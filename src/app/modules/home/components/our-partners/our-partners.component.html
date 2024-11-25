@@ -1,0 +1,13 @@
+<div class="our-partners">
+    <div class="pms-container">
+        <h2 class="title-font-size color-primary">{{"Home.OurPartners" | translate}}</h2>
+        <p-carousel [value]="products" [numVisible]="7" [showIndicators]="false" [autoplayInterval]="3000" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
+            <ng-template let-product pTemplate="item">
+                <div class="partner-wrapper d-flex align-items-center justify-content-center">
+                    <img class="partner-img" [pTooltip]="product.title" tooltipPosition="top" [src]="product.image" [alt]="product.title"/>
+                </div>
+            </ng-template>
+        </p-carousel>
+        <app-loading type="small" *ngIf="loading" ></app-loading>
+    </div>
+</div>

@@ -2,6 +2,7 @@
     "General": {
         "ViewMore":"مشاهدة المزيد +",
         "ReadMore": "مشاهدة المزيد",
+        "ReadLess":"مشاهدة الاقل",
         "NotFoundData": "لا يوجد بيانات",
         "SearchDesc": "البحث في خدمات البترول البحرية",
         "All": "الكل",
@@ -9,17 +10,21 @@
         "OrgDesc": "شركة PMS هي شركة رائدة في مجال إنشاءات الهندسة والتوريد والبناء والإنشاءات البحرية في مصر، تأسست عام 2001 تحت رعاية الهيئة المصرية العامة للبترول (EGPC)، ولديها ما يقرب من أربعة عقود من الخبرة كاستمرار لكيانها السابق كقسم بحري لشركة بتروجت.",
         "OrgName": "خدمات البترول البحرية",
         "Close": "إغلاق",
-        "ShowMore": "اظهار المزيد..."
+        "ShowMore": "اظهار المزيد...",
+        "BackToTop":"الرجوع لأعلي الصفحة",
+        "DiscoverMore":"اكتشف المزيد",
+        "Events":"الفعاليات",
+        "DiscoverPMS":"إكتشف PMS's"
     },
     "Navbar": {
         "Home":"الرئيسية",
         "AboutUs" :"من نحن",
         "OurStrategy" :"استراتيجيتنا",
-        "CoreBusiness" : "الأعمال الرئيسية",
-        "KeyAssets" :"الأصول الرئيسية",
+        "OurBusiness" : "عملنا",
+        "OurSolutions" :"حلولنا",
         "Projects" :"المشاريع",
         "ContactUs" :"اتصل بنا",
-        "MediaCenter" : "المركز الإعلامي",
+        "Media" : "المركز الإعلامي",
         "HSE" : "الصحة والسلامة والبيئة",
         "Certificates":"الشهادات",
         "Sustainability" :"الاستدامة",
@@ -27,21 +32,25 @@
         "DiscoverMore":"اكتشف المزيد",
         "News":"الاخبار",
         "Events": "الفعاليات",
-        "Search": "بحث"
+        "Search": "بحث",
+        "PressRelease":"بيان صحفي"
     },
     "Home" :{
         "Technical":"تقني",
         "Projects":"المشاريع",
         "Engineers":"المهندسين",
-        "CoreBusiness":"الأعمال الرئيسية",
-        "RecentProjects":"المشاريع الأخيرة",
-        "OurNews":"أخبارنا"
+        "OurBusiness":"عملنا",
+        "RecentProjects":"مشاريعنا",
+        "OurNews":"أخبارنا",
+        "Media":"المركز الإعلامي",
+        "OurPartners":"شركائنا"
     },
     "Search": {
         "WelcomeTo": "مرحباً بك في",
         "OurProjects":"صفحة مشاريعنا",
         "OurNews":"صفحة اخبارنا",
         "OurEvents":"صفحة فعالياتنا",
+        "OurTenders":"صفحة المناقصات",
         "OurCoreBusiness":"صفحة الاعمال الاساسية",
         "Explore":"استكشف",
         "SearchHere": "ابحث هنا...",
@@ -50,6 +59,7 @@
     "Projects": {
         "RecentProjects":"المشاريع الأخيرة",
         "CompletedProjects":"المشاريع المكتملة",
+        "TrackRecord":"سجل الانجازات",
         "MegaProjects":"المشاريع الكبيرة",
         "LatestProject":"اخر مشروع",
         "FollowOurProjects":"تابع مشاريعنا",
@@ -59,7 +69,9 @@
         "Country": "الدولة",
         "Location": "العنوان",
         "Client": "العميل",
-        "ProjectInfo": "معلومات المشروع"
+        "ProjectInfo": "معلومات المشروع",
+        "ShowMore":"اظهار المزيد",
+        "ShowLess":"اخفاء المزيد"
     },
     "Events": {
         "LatestEvent":"اخر فعالية",
@@ -68,6 +80,26 @@
         "StartDate": "تاريخ البدء",
         "EndDate": "تاريخ الإنتهاء",
         "EventInfo": "معلومات الفعالية"
+    },
+    "Tenders": {
+        "LatestEvent":"اخر فعالية",
+        "EventAndActivities":"الفعاليات والنشاطات",
+        "More": "المزيد...",
+        "StartDate": "تاريخ البدء",
+        "EndDate": "تاريخ الإنتهاء",
+        "EventInfo": "معلومات الفعالية",
+        "PDF":"كراسة الشروط",
+        "Terms": "الشروط والاحكام",
+        "ClickHere": "اضغط هنا للمشاهدة"
+    },
+    "Fleets": {
+        "Fleets":"الاسطول",
+        "StartDate": "تاريخ البدء",
+        "EndDate": "تاريخ الإنتهاء",
+        "EventInfo": "معلومات الفعالية",
+        "PDF":"كراسة الشروط",
+        "Terms": "الشروط والاحكام",
+        "ClickHere": "اضغط هنا للمشاهدة"
     },
     "Certificates": {
         "Certificates":"الشهادات",
@@ -92,6 +124,7 @@
         "SimilarNews":"الاخبار المشابهة",
         "SimilarCoreBusiness":"الاعمال الاساسية المشابهة",
         "SimilarEvents":"الفعاليات المشابهة",
+        "SimilarTenders":"المناقصات المشابهة",
         "CoreBusinessProjects": "المشاريع المرتبطة بالاعمال الاساسية"
     },
     "Footer": {
@@ -100,7 +133,7 @@
         "TermsAndConditions": "الشروط والأحكام",
         "PrivacyPolicy":"سياسة الخصوصية",
         "ContactUs": "اتصل بنا",
-        "Copyright": "حقوق الطبع والنشر 2010 - 2024 PMS.com",
+        "Copyright": "حقوق الطبع والنشر 2001 - 2024 PMS.com",
         "OtherLinks":"روابط أخرى",
         "FAQ": "الأسئلة الشائعة",
         "Vision": "الرؤية",
@@ -109,7 +142,8 @@
         "Email":"البريد الإلكتروني",
         "Address": "العنوان",
         "Phone": "الهاتف",
-        "KeepInTouch":"ابق على تواصل"
+        "KeepInTouch":"ابق على تواصل",
+        "Tenders":"المناقصات"
     },
     "SearchResults": {
         "Projects":"المشاريع",
