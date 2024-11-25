@@ -9,7 +9,6 @@ export class LanguageUrlSerializer extends DefaultUrlSerializer {
         // Parse the URL and handle the language parameter
         const urlTree = super.parse(url);
         const lang = urlTree.queryParams['lang'] || environment.lang; // Default language is 'en'
-        console.log('urlTree', urlTree);
         
         urlTree.queryParams['lang'] = lang;
         environment.lang = lang;
