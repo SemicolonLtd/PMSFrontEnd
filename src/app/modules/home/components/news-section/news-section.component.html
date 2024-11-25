@@ -74,6 +74,9 @@
                             </div>
                         </div>
                         <app-loading type="small" *ngIf="loading"></app-loading>
+                        <div class="col-12" *ngIf="!newsData.length && !loading">
+                            <app-empty-state></app-empty-state>
+                        </div>
                     </p-tabPanel>
                 </p-tabView>
             </ng-container>

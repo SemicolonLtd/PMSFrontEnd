@@ -14,7 +14,7 @@
         "BackToTop":"الرجوع لأعلي الصفحة",
         "DiscoverMore":"اكتشف المزيد",
         "Events":"الفعاليات",
-        "DiscoverPMS":"إكتشف PMS's"
+        "DiscoverPMS":"إكتشف"
     },
     "Navbar": {
         "Home":"الرئيسية",
@@ -33,7 +33,7 @@
         "News":"الاخبار",
         "Events": "الفعاليات",
         "Search": "بحث",
-        "PressRelease":"بيان صحفي"
+        "PressRelease":"البيانات الصحفية"
     },
     "Home" :{
         "Technical":"تقني",

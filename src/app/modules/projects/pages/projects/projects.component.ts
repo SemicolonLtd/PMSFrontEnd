@@ -39,8 +39,9 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     this.getTopProjectData();
     this.stateOptions = [
       { label: this.translateService.instant('Projects.RecentProjects'), value: 'recent-projects' },
-      { label: this.translateService.instant('Projects.TrackRecord'), value: 'completed-projects' },
-      { label: this.translateService.instant('Projects.MegaProjects'), value: 'mega-projects' }
+      { label: this.translateService.instant('Projects.MegaProjects'), value: 'mega-projects' },
+      { label: this.translateService.instant('Projects.TrackRecord'), value: 'completed-projects' }
+
     ]
   }
 
