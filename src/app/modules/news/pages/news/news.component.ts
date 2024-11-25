@@ -133,8 +133,6 @@ export class NewsComponent implements OnInit, OnDestroy {
   }
 
   loadMore(): void {
-    console.log(this.selectedIndex);
-    
     this.pageSize += 10;
     if(this.selectedIndex == 0) {
       this.getRecentNews();

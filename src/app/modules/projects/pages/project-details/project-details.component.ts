@@ -141,8 +141,6 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
       // url: `${environment.websiteUrl}news/news-view/${encodeURIComponent(this.projectData.slug)}`
       url: `${environment.websiteUrl}/projects/details/${this.projectData.slug}`
     };
-    console.log(content);
-    
     this.metaService.createMetaData(content);
   }
 
