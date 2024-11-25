@@ -42,8 +42,8 @@ export class RecentProjectsComponent implements OnInit, OnDestroy {
       this.projectCategories = [
         { name: translations['General.All'], value: 'all' },
         { name: translations['Projects.RecentProjects'], value: 'recent-projects' },
-        { name: translations['Projects.TrackRecord'], value: 'completed-projects' },
-        { name: translations['Projects.MegaProjects'], value: 'mega-projects' }
+        { name: translations['Projects.MegaProjects'], value: 'mega-projects' },
+        { name: translations['Projects.TrackRecord'], value: 'completed-projects' }
       ];
     });
     this.isBrowser = isPlatformBrowser(this.platformId);
