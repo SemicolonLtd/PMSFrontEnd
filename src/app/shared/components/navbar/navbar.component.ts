@@ -82,7 +82,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
               menu: res.data?.data?.map((item: any) => {
                 return {
                   name: item.title,
-                  link: 'core-business/' + item.slug
+                  link: 'core-business/' + item.slug,
+                  core_sub_menu: item.business,
+                  url: item.url
                 }
               })
             }
@@ -232,16 +234,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
                     // type: 'recent-projects'
                   },
                   {
-                    name: this.translateService.instant('Projects.TrackRecord'),
-                    link: '/projects?type=completed-projects',
-                    // link: '/projects',
-                    // type: 'completed-projects'
-                  },
-                  {
                     name: this.translateService.instant('Projects.MegaProjects'),
                     link: '/projects?type=mega-projects',
                     // link: '/projects',
                     // type: 'mega-projects'
+                  },
+                  {
+                    name: this.translateService.instant('Projects.TrackRecord'),
+                    link: '/projects?type=completed-projects',
+                    // link: '/projects',
+                    // type: 'completed-projects'
                   }
                 ]
               },
@@ -283,10 +285,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
       'tenders',
       'content', 
       'certificates',
-      'core-business/marine-services',
+      'core-business/Offshore-services',
       'core-business/offshore-construction',
       'fleets/category',
-      'fleets/details'
+      'fleets/details',
+      'faq'
     ]
 
     this.pageWithHeader = pages.includes(this.currentRoute)

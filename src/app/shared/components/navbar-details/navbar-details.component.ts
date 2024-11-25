@@ -23,9 +23,11 @@ export class NavbarDetailsComponent implements OnChanges {
   linksList: any[] = [];
   searchQuery = '';
   lang = environment.lang
-  displayFleetCategories:boolean = false
+  displaySubMenu:boolean = false
   fleetCategories:any = []
   isFleet: boolean = false
+  linkWithMenu:boolean = false
+  subMenuList: any[] = []
   constructor(
     private renderer: Renderer2,
     private router: Router,
@@ -38,39 +40,66 @@ export class NavbarDetailsComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.displayFleetCategories = false;
+    this.displaySubMenu = false;
     this.displayedLinks = changes['displayedLinks']?.currentValue ? changes['displayedLinks']?.currentValue : this.displayedLinks;
     this.detailsType = changes['detailsType']?.currentValue ? changes['detailsType']?.currentValue : this.detailsType;
+    if (this.displayedLinks) {
+      this.displayedLinks.forEach(
+        (item)=> {
+          if ((item.slug === 'الاسطول' || item.slug === 'fleet') || item.hasSubMenu) {
+            this.linkWithMenu = true
+          } else {
+            this.linkWithMenu = false
+          }
+        }
+      )
+    }
   }
 
   onHideNavDetails(): void {
     this.navDetailsVisible = false;
-    this.displayFleetCategories = false
+    this.displaySubMenu = false
     this.navDetailsVisibilityChange.emit(this.navDetailsVisible);
   }
 
   openLink(link: any): void {
     if (link?.slug) {
-      if (link?.slug === 'الاسطول' || link?.slug === 'fleet') {
-        this.displayFleetCategories = true
-      } else {
-        this.onHideNavDetails();
-        this.router.navigateByUrl('/content?slug=' + link.slug);
-      }
+      this.onHideNavDetails();
+      this.router.navigateByUrl('/content?slug=' + link.slug);
     } else if (link?.link) {
       this.onHideNavDetails();
       this.router.navigateByUrl(link.link);
     }
   }
 
+  checkIfLinkHasMenu(link:any): boolean {
+    console.log(link);
+    
+    if (link?.slug === 'الاسطول' || link?.slug === 'fleet' || link.core_sub_menu) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  openSubMenu(link:any): void {
+    if (link?.slug === 'الاسطول' || link?.slug === 'fleet') {
+      this.displaySubMenu = true;
+      this.subMenuList = [...this.fleetCategories]
+    } else if (link.core_sub_menu){
+      this.displaySubMenu = true;
+      this.subMenuList = [...link.core_sub_menu]
+    } else {
+      this.displaySubMenu = false
+    }
+    
+    
+  }
+
   onDiscoverMore(): void {
     if (this.displayedLinks[0]?.slug) {
-      if (this.displayedLinks[0]?.slug === 'الاسطول' || this.displayedLinks[0]?.slug === 'fleet') {
-        this.displayFleetCategories = true
-      } else {
-        this.onHideNavDetails();
-        this.router.navigateByUrl('/content?slug=' + this.displayedLinks[0].slug);
-      }
+      this.onHideNavDetails();
+      this.router.navigateByUrl('/content?slug=' + this.displayedLinks[0].slug);
     } else if (this.displayedLinks[0]?.link) {
       this.onHideNavDetails();
       this.router.navigateByUrl(this.displayedLinks[0].link);
@@ -104,7 +133,9 @@ export class NavbarDetailsComponent implements OnChanges {
   openFleetCategory(category:any): void {
     this.onHideNavDetails();
     // this.router.navigate(['/fleets/category'], {queryParams: {slug : category.slug}});
-    this.router.navigateByUrl('/fleets/category?slug=' + category.slug);
+    console.log(category);
+    
+    this.router.navigateByUrl(category.url);
   }
 
   ngOnDestroy(): void {

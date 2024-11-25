@@ -5,8 +5,8 @@
         display: flex;
         align-items: flex-start;
         .images {
-            height: auto;
-            margin: 10px;
+            height: 500px;
+            margin-inline-start: 20px;
         }
         @media (max-width: 768px) {
             flex-wrap: wrap;
@@ -101,6 +101,7 @@
 }
 
 .table-part {
+    height: 500px;
     padding-top: 1em;
     table {
         background-color: white;
@@ -130,6 +131,7 @@
 }
 
 .short-desc {
+    text-align: justify;
     font-size: 18px;
     font-weight: bolder;
 }
@@ -161,6 +163,7 @@
         }
         .p-image {
             img {
+                height: 500px;
                 width: 100%;
             }
         }

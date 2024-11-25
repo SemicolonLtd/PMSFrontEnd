@@ -28,19 +28,17 @@
                         <div class="links-list">
                             <ul>
                                 <li *ngFor="let link of displayedLinks" 
-                                    (click)="link?.slug === 'الاسطول' || link?.slug === 'fleet' ? null : openLink(link)"
-                                    (mouseenter)="link?.slug === 'الاسطول' || link?.slug === 'fleet' ? 
-                                    displayFleetCategories = true : 
-                                    displayFleetCategories = false"
+                                    (click)="!checkIfLinkHasMenu(link) ? openLink(link) : null"
+                                    (mouseenter)="checkIfLinkHasMenu(link) ? openSubMenu(link) : displaySubMenu = false"
                                     >
                                     {{ link?.name }}
                                 </li>
                             </ul>
                             <!-- <div class="loader" *ngIf="loading"></div> -->
-                            <ul class="fleet-list" *ngIf="displayFleetCategories">
-                                <li *ngFor="let cate of fleetCategories" 
-                                    (click)="openFleetCategory(cate)">
-                                    {{ cate?.name }}
+                            <ul class="sub_menu" *ngIf="displaySubMenu">
+                                <li *ngFor="let item of subMenuList" 
+                                    (click)="openFleetCategory(item)">
+                                    {{ item?.name ? item?.name : item?.title }}
                                 </li>
                             </ul>
                         </div>
