@@ -14,7 +14,7 @@
             <div class="pms-container">
                 <div class="grid">
                     <div class="lg:col-3 md:col-12 sm:col-12" *ngIf="detailsType !== 'Search'">
-                        <span>{{'General.DiscoverPMS' | translate}} {{detailsTitle}}</span>
+                        <span>{{'General.DiscoverPMS' | translate}} {{detailsTitle | removeOur}}</span>
                         <div class="discover-btn mt-3">
                             <p-button 
                                 label="{{'Navbar.DiscoverMore' | translate}}" 

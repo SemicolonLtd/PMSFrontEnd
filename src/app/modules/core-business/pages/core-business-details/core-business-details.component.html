@@ -33,7 +33,10 @@
                     <div class="images">
                         <div class="news-images">
                             <p-galleria [value]="businessData?.media" [responsiveOptions]="responsiveOptions"
-                                [numVisible]="5">
+                                [numVisible]="5"
+                                [showThumbnailNavigators]="businessData?.media?.length > 5"
+                                [showThumbnails]="businessData?.media?.length > 1"
+                                >
                                 <ng-template pTemplate="item" let-item>
                                     <p-image [src]="item.image"  [preview]="true"  />
                                 </ng-template>
