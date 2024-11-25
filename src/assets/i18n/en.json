@@ -42,6 +42,7 @@
         "OurBusiness":"Our Business",
         "RecentProjects":"Our Projects",
         "OurNews":"Our News",
+        "Media":"Media",
         "OurPartners":"Our Partners"
     },
     "Search": {
@@ -59,7 +60,7 @@
     "Projects": {
         "RecentProjects":"Recent Projects",
         "CompletedProjects":"Completed Projects",
-        "TrackRecord":"Track Record",
+        "TrackRecord":"Track Records",
         "MegaProjects":"Mega Projects",
         "LatestProject":"Latest Project",
         "FollowOurProjects":"Follow Our Projects",
@@ -131,7 +132,7 @@
         "TermsAndConditions": "Terms and conditions",
         "PrivacyPolicy":"Privacy Policy",
         "ContactUs": "Contact Us",
-        "Copyright": "Copyright 2010 - 2024 PMS.com",
+        "Copyright": "Copyright 2001 - 2024 PMS.com",
         "OtherLinks":"Other Links",
         "FAQ": "FAQ",
         "Vision": "Vision",

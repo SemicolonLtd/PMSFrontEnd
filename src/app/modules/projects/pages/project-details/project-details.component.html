@@ -80,6 +80,7 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <p class="short-desc">{{projectData.short}}</p>
                     </div>
                     <div class="images w-100">
                         <div class="project-images">
@@ -100,7 +101,6 @@
                         </div>
                     </div>
                 </div>
-                <p class="short-desc">{{projectData.short}}</p>
                 <div class="text project-desc col-12" 
                 [innerHTML]="sanitizeHtml(projectData?.desc)" 
                 [ngClass]="{'show': showDesc}" 
