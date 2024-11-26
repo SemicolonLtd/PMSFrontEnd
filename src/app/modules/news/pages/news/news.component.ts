@@ -83,10 +83,10 @@ export class NewsComponent implements OnInit, OnDestroy {
                 name: this.translateService.instant('General.All'),
               },
               ...res?.data?.data,
-              {
-                id: 'x',
-                name: this.translateService.instant('General.Events'),
-              },
+              // {
+              //   id: 'x',
+              //   name: this.translateService.instant('General.Events'),
+              // },
             ];
             this.checkTabIndexParam()
             // this.getRecentNews();
@@ -133,9 +133,11 @@ export class NewsComponent implements OnInit, OnDestroy {
 
     if(index == 0) {
       this.getRecentNews();
-    } else if (index === this.newsCategories.length - 1) {
-      this.getEventsData()
-    } else {
+    } 
+    // else if (index === this.newsCategories.length - 1) {
+    //   this.getEventsData()
+    // } 
+    else {
       this.selectedCategoryId = this.newsCategories[index].id;
       this.getNewsData();
     }
@@ -165,10 +167,12 @@ export class NewsComponent implements OnInit, OnDestroy {
     if(this.selectedIndex == 0) {
       this.newsPageSize += 10;
       this.getRecentNews();
-    } else if (this.selectedIndex === this.newsCategories.length - 1) {
-      this.eventsPageSize += 10;
-      this.getEventsData()
-    } else {
+    } 
+    // else if (this.selectedIndex === this.newsCategories.length - 1) {
+    //   this.eventsPageSize += 10;
+    //   this.getEventsData()
+    // } 
+    else {
       this.newsPageSize += 10;
       this.selectedCategoryId = this.newsCategories[this.selectedIndex].id;
       this.getNewsData();
