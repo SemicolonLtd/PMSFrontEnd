@@ -66,8 +66,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.checkCurrentRoute();
       }
     });
-    this.getCoreBusinessMenus();
-    this.getAllLinks();
     this.checkCurrentRoute();
     this.getSocialMediaData();
   }
@@ -89,6 +87,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
               })
             }
           ];
+          this.getAllLinks();
+
         },
         error: (err: any) => {
           console.log(err);
@@ -104,6 +104,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
           if (res?.status === 200) {
             this.socialMediaData = res?.data;
           }
+          this.getCoreBusinessMenus();
         },
         error: (err: any) => {
           console.log(err);
@@ -135,14 +136,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   // }
 
   changeLang(lang:any): void {
-    console.log(lang.value);
-    
     this.lang = lang.value;
     environment.lang = this.lang;
     this.translateService.use(lang.value);
     this.cookieService.put('lang', lang.value);
-    console.log(this.linkName);
-    
     const link = this.linkName.slice(0, this.linkName.length - 8)
     this.router.navigate([link], { queryParams: { lang: this.lang } })
     this.route.queryParams.subscribe(
@@ -203,7 +200,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
       const urlTree = this.router.parseUrl(event.url);
       this.currentRoute = urlTree.root.children['primary']?.segments.map(it => it.path).join('/') || '/';
-      console.log(this.currentRoute);
       // if (this.currentRoute === 'news') {
       //   // console.log(page);
       //   this.pageWithHeader = true;
@@ -212,7 +208,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       // }
         this.checkPagesWithHeaders()
       });
-      
+
   }
 
   getAllLinks(): void {

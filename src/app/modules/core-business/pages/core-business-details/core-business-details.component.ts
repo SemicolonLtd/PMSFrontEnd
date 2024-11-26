@@ -93,8 +93,6 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
               name: this.businessData?.title,
               link: '/core-business/details/' + this.businessData?.slug
             });
-
-            console.log(this.businessData?.cate_slug);
             
             this.handleMetaTags();
             this.getBusinessProjects();

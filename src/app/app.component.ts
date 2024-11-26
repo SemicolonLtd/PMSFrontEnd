@@ -31,7 +31,7 @@ export class AppComponent {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     const currentLang = this.router.routerState.snapshot.root.queryParams['lang'] || environment.lang;
-    this.router.navigate([], { queryParams: { lang: currentLang }, queryParamsHandling: 'merge' });
+    // this.router.navigate([], { queryParams: { lang: currentLang }, queryParamsHandling: 'merge' });
 
   }
 
@@ -127,10 +127,7 @@ export class AppComponent {
   }
 
   checkLanguageFromUrl(): void {
-    this.route.queryParams.subscribe(params => {
-      console.log('params:', params);
-      console.log('route', this.route);
-      
+    this.route.queryParams.subscribe(params => {      
       if (params['lang']) {
         this.cookieService.put('lang', params['lang']);
         this.lang = params['lang'];

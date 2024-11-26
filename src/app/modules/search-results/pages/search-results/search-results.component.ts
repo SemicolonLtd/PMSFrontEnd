@@ -34,7 +34,6 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
     getSearchQueryFromParams(): void {
         this.subscriptions.add(
             this.route.queryParams.subscribe(params => {
-                console.log(params);
                 this.searchQuery = params['query'] || '';
                 this.getSearchResults();
             })
