@@ -177,6 +177,14 @@
                         [href]="socialMediaData?.insta" target="_blank">
                             <i class="pi pi-instagram"></i>
                         </a>
+                        <a class="social-item" *ngIf="socialMediaData?.x"
+                        [href]="socialMediaData?.x" target="_blank">
+                            <i class="pi pi-twitter"></i>
+                        </a>
+                        <a class="social-item" *ngIf="socialMediaData?.facebook"
+                        [href]="socialMediaData?.facebook" target="_blank">
+                            <i class="pi pi-facebook"></i>
+                        </a>
                     </div>
                     <div class="langs">
                         <a (click)="onSelectLink('Search', 'Search', false)">

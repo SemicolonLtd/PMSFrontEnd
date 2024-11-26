@@ -22,11 +22,11 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
     },
     {
         breakpoint: '768px',
-        numVisible: 3
+        numVisible: 5
     },
     {
         breakpoint: '560px',
-        numVisible: 1
+        numVisible: 5
     }
   ];
 
