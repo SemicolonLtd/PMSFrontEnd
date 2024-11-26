@@ -13,7 +13,7 @@
             bottom: 0;
             height: 100%;
             width: 100%;
-            object-fit: cover;
+            object-fit: fill;
             filter: brightness(0.5);
         }
         .pms-container {
@@ -55,6 +55,24 @@
                 }
             }
         }
+    }
+}
+
+.desc {
+    width: 75%;
+    margin-inline: auto;
+    font-weight: bolder;
+    margin-bottom: 3.5rem;
+    p {
+        text-align: justify;
+    }
+    ul {
+        li {
+            list-style-type: disc;
+        }
+    }
+    @media(max-width: 768px) {
+        width: 90%;
     }
 }
 

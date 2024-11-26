@@ -17,34 +17,34 @@
                     <div class="header-desc" [innerHTML]="slider.desc | textSlice : 'desc' : 150">
                     </div>
                     <a type="button" target="_blank" *ngIf="slider.link_to" class="btn btn-light show-more" [href]="slider.link_to">
-                        {{'General.ShowMore' | translate}}
+                        {{slider.button}}
                     </a>
-                    <div class="statistics flex justify-content-center align-items-center">
-                        <div class="item-wrapper">
-                            <span class="count d-block" [countUp]="statistics?.technical"
-                            [options]="{duration: 6}">
-                                0
-                            </span>
-                            <span class="label d-block">
-                                {{"Home.Technical" | translate}}
-                            </span>
-                        </div>
-                        <div class="item-wrapper">
-                            <span class="count d-block" [countUp]="statistics?.projects" [options]="{duration: 6}">
-                                0
-                            </span>
-                            <span class="label d-block">
-                                {{"Home.Projects" | translate}}
-                            </span>
-                        </div>
-                        <div class="item-wrapper">
-                            <span class="count d-block" [countUp]="statistics?.engineers" [options]="{duration: 6}">
-                               0
-                            </span>
-                            <span class="label d-block">
-                                {{"Home.Engineers" | translate}}
-                            </span>
-                        </div>
+                </div>
+                <div class="statistics flex justify-content-center align-items-center">
+                    <div class="item-wrapper">
+                        <span class="count d-block" [countUp]="statistics?.technical"
+                        [options]="{duration: 6}">
+                            0
+                        </span>
+                        <span class="label d-block">
+                            {{"Home.Technical" | translate}}
+                        </span>
+                    </div>
+                    <div class="item-wrapper">
+                        <span class="count d-block" [countUp]="statistics?.projects" [options]="{duration: 6}">
+                            0
+                        </span>
+                        <span class="label d-block">
+                            {{"Home.Projects" | translate}}
+                        </span>
+                    </div>
+                    <div class="item-wrapper">
+                        <span class="count d-block" [countUp]="statistics?.engineers" [options]="{duration: 6}">
+                           0
+                        </span>
+                        <span class="label d-block">
+                            {{"Home.Engineers" | translate}}
+                        </span>
                     </div>
                 </div>
             </div>

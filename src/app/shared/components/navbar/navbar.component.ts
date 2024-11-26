@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     { name: 'EN', code: 'en' },
     { name: 'AR', code: 'ar' },
   ];
-  lang = this.cookieService.get('lang') || '';
+  lang = environment.lang;
   isSticky = false
   navDetailsOpened: boolean = false;
   detailsType: string = '';

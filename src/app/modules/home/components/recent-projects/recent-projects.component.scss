@@ -161,7 +161,7 @@
         img {
             min-height: 520px;
             max-height: 520px;
-            object-fit: cover;
+            object-fit: fill;
         }
         .news-badge.desktop {
             background-color: #fff;
@@ -188,7 +188,7 @@
         cursor: pointer;
         img {
             height: 100%;
-            object-fit: cover;
+            object-fit: fill;
             min-height: calc(200px - (32px / 3));
             max-height: calc(200px - (32px / 3));
             // max-height: calc(300px - (32px / 3));

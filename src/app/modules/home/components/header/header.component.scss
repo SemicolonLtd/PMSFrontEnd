@@ -3,6 +3,7 @@
 }
 
 .carousel-item {
+    position: relative;
     .header-bg {
         height: 100vh;
         object-fit: fill;
@@ -85,7 +86,10 @@
         }
     }
     .statistics {
-        margin-top: 3rem;
+        position: absolute;
+        bottom: 10%;
+        left: 50%;
+        transform: translateX(-50%);
         .item-wrapper {
             font-family: 'title-font';
             &:nth-of-type(2) {
@@ -96,6 +100,8 @@
                 font-weight: 700;
                 font-family: 'title-font';
                 pointer-events: none;
+                color: white;
+                text-align: center;
                 &:lang(ar) {
                     font-family: 'ar-title-font';
                 }

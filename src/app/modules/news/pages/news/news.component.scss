@@ -51,7 +51,7 @@
             //     height: 100%;
             //     width: 100%;
             // }
-            object-fit: cover;
+            object-fit: fill;
         }
         .news-badge.desktop {
             background-color: #fff;
@@ -82,7 +82,7 @@
         img {
             height: 100%;
             // max-height: calc(300px - (32px / 3));
-            object-fit: cover;
+            object-fit: fill;
             min-height: calc(200px - (32px / 3));
             max-height: calc(200px - (32px / 3));
         }
@@ -147,7 +147,7 @@
         bottom: 0;
         height: 100%;
         width: 100%;
-        object-fit: cover;
+        object-fit: fill;
         filter: brightness(0.5);
     }
     .content {

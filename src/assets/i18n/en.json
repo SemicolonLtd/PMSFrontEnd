@@ -102,8 +102,12 @@
     },
     "Certificates": {
         "Certificates":"Certificates",
-        "Desc":"Good people delivering an honest value ",
-        "PMSCertificates": "PMS Certificates"
+        "Desc":"PMS aims to achieve the highest standards of Quality, Health, Safety and Environment, delivering quality, ensuring health and safety and minimizing the impact on the environment is the top priority of PMS. Our principles, vision and commitment to quality, health, safety and environment are set in our QHSE policy. Our QHSE Policy defines the objective of incorporating best Quality, Health, Safety and Environment (QHSE) practices in all our business for Client’s’ satisfaction and successful business results and reveals our willingness to take pro-active measures to prevent injuries and minimize its environmental impacts, and is based on our commitments:",
+        "PMSCertificates": "PMS Certificates",
+        "DescList1": "Provide Excellent Services for Customer Satisfaction",
+        "DescList2": "Developing a long-term sustainable business",
+        "DescList3": "Preventing pollution and minimizing the environmental impact of our operations"
+
     },
     "Contact": {
         "ContactUs":"Contact Us",
