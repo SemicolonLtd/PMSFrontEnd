@@ -84,10 +84,6 @@ export class NewsSectionComponent implements OnInit, OnDestroy {
   }
 
   onSelectCategory(index: any): void {
-    console.log(index);
-    console.log(this.newsCategories.length - 1);
-    
-    
     this.newsData = [];
     this.bigCardNews = {};
     this.smallCardsNews = [];
