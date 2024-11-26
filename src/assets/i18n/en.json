@@ -33,7 +33,7 @@
         "News":"News",
         "Events": "Events",
         "Search": "Search",
-        "PressRelease":"Press Release"
+        "PressRelease":"Press Releases"
     },
     "Home" :{
         "Technical":"Technical",
@@ -60,7 +60,7 @@
     "Projects": {
         "RecentProjects":"Recent Projects",
         "CompletedProjects":"Completed Projects",
-        "TrackRecord":"Track Records",
+        "TrackRecord":"Track Record",
         "MegaProjects":"Mega Projects",
         "LatestProject":"Latest Project",
         "FollowOurProjects":"Follow Our Projects",
