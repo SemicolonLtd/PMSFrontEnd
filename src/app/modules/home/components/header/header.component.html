@@ -8,7 +8,8 @@
         <div class="carousel-inner">
             <div class="carousel-item" *ngFor="let slider of slidersData; let i = index" [ngClass]="{'active' : i === 0}">
                 <img *ngIf="slider.type == 'image'" [src]="slider.image" class="d-block w-100 header-bg" alt="...">
-                <video *ngIf="slider.type == 'video'" class="d-block w-100 header-bg" autoplay loop>
+                <video *ngIf="slider.type == 'video'" #video (canplay)="video.play()"
+                (loadedmetadata)="video.muted = true" class="d-block w-100 header-bg" autoplay muted loop>
                     <source [src]="slider.image" type="video/mp4">
                 </video>
                 <div class="carousel-caption d-block">

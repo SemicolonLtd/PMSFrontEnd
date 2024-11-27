@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { AfterViewInit, Component, ElementRef, Inject, OnDestroy, OnInit, PLATFORM_ID, QueryList, ViewChildren } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { HomeService } from '../../services/home.service';
 
@@ -14,13 +15,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
   statistics: any;
   subscriptions = new Subscription();
 
+  @ViewChildren('videoElement') videoElements!: QueryList<ElementRef>;
   constructor(
-    private homeService: HomeService
+    private homeService: HomeService,
+  @Inject(PLATFORM_ID) private platformId: Object
+
   ) { }
 
   ngOnInit(): void {
-    this.getSlidersData();
-    this.getStatisticsData();
+    if (isPlatformBrowser(this.platformId)) {
+      this.getSlidersData();
+      this.getStatisticsData();
+    }
+
   }
 
   getSlidersData(): void {

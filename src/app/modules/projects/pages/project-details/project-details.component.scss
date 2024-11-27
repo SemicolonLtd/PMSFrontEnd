@@ -5,7 +5,8 @@
         display: flex;
         align-items: flex-start;
         .images {
-            height: 500px;
+            // height: 500px;
+            border-radius: 20px;
             margin-inline-start: 20px;
         }
         @media (max-width: 768px) {
@@ -163,7 +164,8 @@
         }
         .p-image {
             img {
-                height: 500px;
+                // height: 500px;
+                border-radius: 20px;
                 width: 100%;
             }
         }
