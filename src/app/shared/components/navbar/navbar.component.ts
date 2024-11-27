@@ -256,7 +256,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                   },
                   {
                     name: this.translateService.instant('Navbar.Events'),
-                    link: 'news?index=2'
+                    link: 'news?index=3'
                   },
                   // {
                   //   name: this.translateService.instant('Navbar.ContactUs'),

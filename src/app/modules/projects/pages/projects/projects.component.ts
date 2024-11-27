@@ -36,7 +36,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.getSelectedTypeFromParams();
-    this.getTopProjectData();
+    // this.getTopProjectData();
     this.stateOptions = [
       { label: this.translateService.instant('Projects.RecentProjects'), value: 'recent-projects' },
       { label: this.translateService.instant('Projects.MegaProjects'), value: 'mega-projects' },
