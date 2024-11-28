@@ -81,6 +81,18 @@
                             </tbody>
                         </table>
                         <p class="short-desc">{{projectData.short}}</p>
+                        <div class="text project-desc" 
+                        [innerHTML]="sanitizeHtml(projectData?.desc)" 
+                        [ngClass]="{'show': showDesc}" 
+                        *ngIf="showDesc || !showDesc"
+                        >
+                        </div>
+                        <p-button 
+                        [label]="showDesc ? ('General.ReadLess' | translate) : ('General.ReadMore' | translate)" 
+                        [icon]="showDesc ? 'pi pi-angle-up' : 'pi pi-angle-down'" 
+                        class="show-more" 
+                        (onClick)="onShowDesc()" 
+                        />
                     </div>
                     <div class="images w-100">
                         <div class="project-images">
@@ -101,18 +113,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="text project-desc col-12" 
-                [innerHTML]="sanitizeHtml(projectData?.desc)" 
-                [ngClass]="{'show': showDesc}" 
-                *ngIf="showDesc || !showDesc"
-                >
-                </div>
-                <p-button 
-                [label]="showDesc ? ('General.ReadLess' | translate) : ('General.ReadMore' | translate)" 
-                [icon]="showDesc ? 'pi pi-angle-up' : 'pi pi-angle-down'" 
-                class="show-more" 
-                (onClick)="onShowDesc()" 
-                />
             </div>
         </div>
         <app-loading type="small" *ngIf="loading"></app-loading>
