@@ -10,6 +10,10 @@ export class CoreBusinessService {
 
   constructor(private http: HttpClient) { }
 
+  getOurBusinessMenu(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/core/getCoreAndFleet`);
+  }
+
   getCoreBusinessMenus(pageSize: number): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/core/get/${pageSize}`);
   }

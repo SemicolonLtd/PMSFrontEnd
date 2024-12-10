@@ -73,7 +73,26 @@
                 <app-center-bar *ngIf="!searchMode" [Title]="core.title"></app-center-bar>
                 <div class="pms-container">
                     <div class="grid mt-5 justify-content-between">
-                        <div class="lg:col-6 md:col-12 sm:col-12 mb-4">
+                        <div class="card-wrapper xl:col-4 md:col-6 sm:col-12 mb-4" *ngFor="let fleet of businessCoreList">
+                            <a 
+                            class="fleet-card border-round-xl" 
+                            [routerLink]="'/core-business/details/' + fleet.slug"
+                            > 
+                                <div class="img-wrapper">
+                                    <img class="w-full border-round-xl" [src]="fleet.image" alt="Project Image">
+                                </div>
+                                <div class="content">
+                                    <div class="data">
+                                        <div class="info">
+                                            <h5 class="title" *ngIf="fleet?.title">
+                                                {{fleet?.title | textSlice : 'title' : 40}}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- <div class="lg:col-6 md:col-12 sm:col-12 mb-4">
                             <div class="core-data">
                                 <p-accordion [activeIndex]="0">
                                     <p-accordionTab *ngFor="let tab of core.business" [header]="tab.title">
@@ -94,7 +113,7 @@
                             <div class="core-img">
                                 <img class="w-full border-round-2xl" [src]="core.image" alt="">
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

@@ -44,9 +44,11 @@ export class NavbarDetailsComponent implements OnChanges {
     this.displayedLinks = changes['displayedLinks']?.currentValue ? changes['displayedLinks']?.currentValue : this.displayedLinks;
     this.detailsType = changes['detailsType']?.currentValue ? changes['detailsType']?.currentValue : this.detailsType;
     if (this.displayedLinks) {
+      console.log(this.displayedLinks);
+      
       this.displayedLinks.forEach(
         (item)=> {
-          if ((item.slug === 'الاسطول' || item.slug === 'fleet') || item.hasSubMenu) {
+          if (item.name === 'الاسطول' || item.name === 'Our Fleet') {
             this.linkWithMenu = true
           } else {
             this.linkWithMenu = false
@@ -75,7 +77,7 @@ export class NavbarDetailsComponent implements OnChanges {
   checkIfLinkHasMenu(link:any): boolean {
     console.log(link);
     
-    if (link?.slug === 'الاسطول' || link?.slug === 'fleet' || link.core_sub_menu) {
+    if (link?.name === 'الاسطول' || link?.name === 'Our Fleet') {
       return true
     } else {
       return false
@@ -83,7 +85,7 @@ export class NavbarDetailsComponent implements OnChanges {
   }
 
   openSubMenu(link:any): void {
-    if (link?.slug === 'الاسطول' || link?.slug === 'fleet') {
+    if (link?.slug === 'الاسطول' || link?.slug === 'Our Fleet') {
       this.displaySubMenu = true;
       this.subMenuList = [...this.fleetCategories]
     } else if (link.core_sub_menu){

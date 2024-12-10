@@ -244,6 +244,9 @@
                 color: var(--primary-color-light);
                 transform: scale(1.1, 1.1);
             }
+            @media (max-width: 576px) {
+                margin-inline-end: 1rem;
+            }
         }
     }
 }
