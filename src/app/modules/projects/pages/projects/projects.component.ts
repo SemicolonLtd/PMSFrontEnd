@@ -37,12 +37,18 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
     this.getSelectedTypeFromParams();
     // this.getTopProjectData();
-    this.stateOptions = [
-      { label: this.translateService.instant('Projects.RecentProjects'), value: 'recent-projects' },
-      { label: this.translateService.instant('Projects.MegaProjects'), value: 'mega-projects' },
-      { label: this.translateService.instant('Projects.TrackRecord'), value: 'completed-projects' }
-
-    ]
+    this.translateService.get([
+      'General.All',
+      'Projects.RecentProjects',
+      'Projects.TrackRecord',
+      'Projects.MegaProjects'
+    ]).subscribe(translations => {
+      this.stateOptions = [
+        { label: translations['Projects.RecentProjects'], value: 'recent-projects' },
+        { label: translations['Projects.MegaProjects'], value: 'mega-projects' },
+        { label: translations['Projects.TrackRecord'], value: 'completed-projects' }
+      ];
+    });
   }
 
   getSelectedTypeFromParams(): void {

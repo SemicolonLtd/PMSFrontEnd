@@ -73,7 +73,7 @@
                 <app-center-bar *ngIf="!searchMode" [Title]="core.title"></app-center-bar>
                 <div class="pms-container">
                     <div class="grid mt-5 justify-content-between">
-                        <div class="card-wrapper xl:col-4 md:col-6 sm:col-12 mb-4" *ngFor="let fleet of businessCoreList">
+                        <div class="card-wrapper xl:col-3 md:col-6 sm:col-12 mb-4" *ngFor="let fleet of businessCoreList">
                             <a 
                             class="fleet-card border-round-xl" 
                             [routerLink]="'/core-business/details/' + fleet.slug"
@@ -87,6 +87,11 @@
                                             <h5 class="title" *ngIf="fleet?.title">
                                                 {{fleet?.title | textSlice : 'title' : 40}}
                                             </h5>
+                                            <button class="discover_btn">
+                                                <i class="pi pi-angle-right" *ngIf="lang == 'en'"></i>
+                                                <i class="pi pi-angle-left" *ngIf="lang == 'ar'"></i>
+                                                <span>{{'General.DiscoverMore' | translate}}</span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

@@ -24,7 +24,8 @@ export class FleetsComponent implements OnInit, OnDestroy {
   pageSlug = '';
   fleetsData:any
   breadcrumbItems: any[] = [];
-
+  lang = environment.lang
+  
   constructor(
     private fleetsService: FleetsService,
     private translateService:TranslateService,

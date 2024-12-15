@@ -23,6 +23,7 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
     paginationData: any;
     selectedBusinessSlug = '';
     subscription = new Subscription();
+    lang = environment.lang
 
     constructor(
         private coreBusinessService: CoreBusinessService,
