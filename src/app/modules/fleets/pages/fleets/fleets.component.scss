@@ -94,6 +94,19 @@
     }
 }
 
+.pms-container {
+    padding-inline: 8%;
+    @media (max-width: 1500px) {
+        padding-inline: 6%;
+    }
+    @media (max-width: 1300px) {
+        padding-inline: 3%;
+    }
+    @media (max-width: 992px) {
+        padding-inline: 2rem;
+    }
+}
+
 .discover_btn {
     background-color: transparent;
     border: none;

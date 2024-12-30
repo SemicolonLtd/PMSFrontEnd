@@ -36,14 +36,17 @@
         "PressRelease":"البيانات الصحفية"
     },
     "Home" :{
-        "Technical":"تقني",
-        "Projects":"المشاريع",
-        "Engineers":"المهندسين",
+        "YearsExprience":"سنين الخبرة",
+        "Projects":"المشاريع المكتملة",
+        "Platforms":"المنصات البحرية",
+        "Pipelines":"خطوط بحرية",
         "OurBusiness":"عملنا",
         "RecentProjects":"مشاريعنا",
         "OurNews":"أخبارنا",
         "Media":"المركز الإعلامي",
-        "OurPartners":"شركائنا"
+        "OurPartners":"شركائنا",
+        "KM":"كم",
+        "TON":"طن"
     },
     "Search": {
         "WelcomeTo": "مرحباً بك في",

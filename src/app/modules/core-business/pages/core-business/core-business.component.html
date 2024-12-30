@@ -72,14 +72,14 @@
             <div class="core-img-end" *ngIf="core.slug === selectedBusinessSlug" [id]="core.slug">
                 <app-center-bar *ngIf="!searchMode" [Title]="core.title"></app-center-bar>
                 <div class="pms-container">
-                    <div class="grid mt-5 justify-content-between">
-                        <div class="card-wrapper xl:col-3 md:col-6 sm:col-12 mb-4" *ngFor="let fleet of businessCoreList">
+                    <div class="grid mt-5">
+                        <div class="card-wrapper xl:col-3 md:col-6 sm:col-12 mb-2" *ngFor="let fleet of businessCoreList">
                             <a 
-                            class="fleet-card border-round-xl" 
+                            class="fleet-card border-round-xs" 
                             [routerLink]="'/core-business/details/' + fleet.slug"
                             > 
                                 <div class="img-wrapper">
-                                    <img class="w-full border-round-xl" [src]="fleet.image" alt="Project Image">
+                                    <img class="w-full border-round-xs" [src]="fleet.image" alt="Project Image">
                                 </div>
                                 <div class="content">
                                     <div class="data">

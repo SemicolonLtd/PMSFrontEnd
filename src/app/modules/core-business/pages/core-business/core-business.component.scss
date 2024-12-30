@@ -5,6 +5,19 @@
     }
 }
 
+.pms-container {
+    padding-inline: 10%;
+    @media (max-width: 1500px) {
+        padding-inline: 7%;
+    }
+    @media (max-width: 1300px) {
+        padding-inline: 3%;
+    }
+    @media (max-width: 992px) {
+        padding-inline: 2rem;
+    }
+}
+
 .core-img {
     img {
         // aspect-ratio: 10 / 11;

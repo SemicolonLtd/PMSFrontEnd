@@ -1,8 +1,8 @@
 <div class="project-card" >
     <a class="img-wrapper" [routerLink]="'/projects/details/'+ projectData.slug ">
-        <img class="w-full rounded-3" [src]="projectData.image" alt="Project Image">
+        <img class="w-full rounded-1" [src]="projectData.image" alt="Project Image">
     </a>
-    <div class="content flex justify-content-between mt-3">
+    <div class="content mt-3">
         <div class="info">
             <a class="title" [routerLink]="'/projects/details/'+ projectData.slug ">
                 {{projectData.title | textSlice : 'desc' : 80}}
@@ -11,8 +11,13 @@
                 {{projectData.date}}
             </span>
         </div>
-        <a class="details-btn" [routerLink]="'/projects/details/'+ projectData.slug ">
+        <button class="discover_btn">
+            <i class="pi pi-angle-right" *ngIf="lang == 'en'"></i>
+            <i class="pi pi-angle-left" *ngIf="lang == 'ar'"></i>
+            <span>{{'General.DiscoverMore' | translate}}</span>
+        </button>
+        <!-- <a class="details-btn" [routerLink]="'/projects/details/'+ projectData.slug ">
             <p-button icon="pi pi-angle-right" [rounded]="true" severity="secondary"  />
-        </a>
+        </a> -->
     </div>
 </div>

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-project-card',
@@ -7,4 +8,6 @@ import { Component, Input } from '@angular/core';
 })
 export class ProjectCardComponent {
   @Input() projectData:any;
+  lang = environment.lang
+
 }
