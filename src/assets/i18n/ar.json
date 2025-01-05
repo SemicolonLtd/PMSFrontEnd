@@ -71,7 +71,21 @@
         "Client": "العميل",
         "ProjectInfo": "معلومات المشروع",
         "ShowMore":"اظهار المزيد",
-        "ShowLess":"اخفاء المزيد"
+        "ShowLess":"اخفاء المزيد",
+        "Num": "الرقم",
+        "ProjectName": "إسم المشروع",
+        "ScopeOfWork": "نطاق العمل",
+        "ServiceCategory": "فئة الخدمة",
+        "LocationTable": "الموقع",
+        "Owner": "المالك",
+        "TypeOfParticipation": "نوع المشاركة",
+        "ContractValue": "قيمة العقد",
+        "Duration": "المدة",
+        "ProjectDescription": "وصف المشروع",
+        "MarineVesselsUsedInTheProject": "السفن البحرية المستخدمة في المشروع",
+        "WorkVolume": "حجم العمل",
+        "Year": "السنة",
+        "To": "إلى"
     },
     "Events": {
         "LatestEvent":"اخر فعالية",

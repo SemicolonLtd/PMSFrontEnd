@@ -30,6 +30,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   ];
 
   projectData: any = {};
+  projectImages: string[] = [];
   similarProjectsData: any[] = [];
   similarProjectsLoading = false
   slug: string = '';
@@ -38,12 +39,13 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   breadcrumbItems = [
     {
       name: this.translateService.instant('Navbar.Projects'),
-      link: '/events'
+      link: '/projects'
     }
   ];
   subscriptions = new Subscription();
   websiteUrl = environment.websiteUrl;
-  showDesc: boolean = false
+  showDesc: boolean = false;
+
   constructor(
     private projectsService: ProjectsService,
     private route: ActivatedRoute,
@@ -57,7 +59,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getProjectSlugFromParams();
   }
-  
+
   sanitizeHtml(html: string): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(html);
   }
@@ -87,6 +89,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
               //   image: this.projectData.image
               // }
             ];
+            this.projectImages = this.projectData.media.map((image: any) => image.image);
             this.breadcrumbItems.push(
               {
                 name: this.projectData?.menu,

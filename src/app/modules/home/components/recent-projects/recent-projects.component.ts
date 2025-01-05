@@ -1,6 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { ProjectsService } from 'src/app/modules/projects/services/projects.service';
@@ -28,6 +28,7 @@ export class RecentProjectsComponent implements OnInit, OnDestroy {
     private projectsService: ProjectsService,
     private route: ActivatedRoute,
     private translateService:TranslateService,
+    private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
@@ -71,20 +72,39 @@ export class RecentProjectsComponent implements OnInit, OnDestroy {
 
   getProjectsDataByType(): void {
     this.loading = true;
+    let type = this.selectedType;
+    if(type == 'recent-projects') {
+      type = 'completed-projects'
+    } else if(type == 'mega-projects') {
+      type = 'mega-projects'
+    } else if (type == 'completed-projects') {
+      type = 'recent-projects'
+      this.router.navigateByUrl('projects/track-record');
+    }
     const API = 
     this.selectedType === 'all' ?  
     this.homeService.getRecentProjects() : 
-    this.projectsService.getProjectsByType(this.selectedType, this.pageSize)
+    this.projectsService.getProjectsByType(type, this.pageSize)
 
     this.subscriptions.add(
       API.subscribe({
         next: (res: any) => {
           if(res?.status == 200) {
-            this.projectsData = [... this.projectsData, ...res?.data?.data];
-            this.bigCardNews = this.projectsData?.filter((card: any) => card.big_card == true)[0];
-            this.smallCardsNews = this.projectsData?.filter((card: any) => card.big_card == false);
-            console.log(this.smallCardsNews);
-            
+            if(this.selectedType === 'all') {
+              this.projectsData = [... this.projectsData, ...res?.data?.data];
+            // } else if (type === 'recent-projects') {
+              // this.projectsData = Object.values(res?.data?.data).flat();
+              // console.log(this.projectsData);
+              
+              // this.projectsData = this.projectsData.map((project: any) => {
+              //   project.image = 'assets/images/global/no-project-image.png';
+              //   return project;
+              // });
+            } else {
+              this.projectsData = [... this.projectsData, ...res?.data?.data];
+            }
+            this.bigCardNews = this.projectsData[0];
+            this.smallCardsNews = this.projectsData.slice(1, 5);
           }
           this.loading = false
         },

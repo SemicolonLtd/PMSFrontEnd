@@ -15,12 +15,20 @@ import { EmptyStateComponent } from "../../shared/components/empty-state/empty-s
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ImageModule } from 'primeng/image';
+import { TrackRecordTableComponent } from './components/track-record-table/track-record-table.component';
+import { ProjectTableComponent } from './components/project-table/project-table.component';
+import { ImagesGridComponent } from './components/images-grid/images-grid.component';
+import { TrackRecordComponent } from './pages/track-record/track-record.component';
 
 
 @NgModule({
   declarations: [
     ProjectsComponent,
-    ProjectDetailsComponent
+    ProjectDetailsComponent,
+    TrackRecordTableComponent,
+    ProjectTableComponent,
+    ImagesGridComponent,
+    TrackRecordComponent
   ],
   imports: [
     CommonModule,

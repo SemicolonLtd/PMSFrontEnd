@@ -1,0 +1,9 @@
+<div class="project-details margin-avoid-navbar">
+    <div class="pms-container">
+        <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
+        <app-loading type="small" *ngIf="loading"></app-loading>
+        <ng-container *ngIf="trackRecordData && !loading">
+            <app-track-record-table [trackRecordData]="trackRecordData"></app-track-record-table>
+        </ng-container>
+    </div>
+</div>

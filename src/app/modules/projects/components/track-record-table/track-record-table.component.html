@@ -1,0 +1,69 @@
+<div class="table-part w-100">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="vertical-text">
+                    <p class="vertical-text-item">
+                        {{ 'Projects.Num' | translate }}
+                    </p>
+                </th>
+                <th>
+                    <p class="horizontal-text-item">
+                        {{ 'Projects.Client' | translate }}
+                    </p>
+                </th>
+                <th>
+                    <p class="horizontal-text-item">
+                        {{ 'Projects.ProjectName' | translate }}
+                    </p>
+                </th>
+                <th>
+                    <p class="horizontal-text-item">
+                        {{ 'Projects.ScopeOfWork' | translate }}
+                    </p>
+                </th>
+                <th>
+                    <p class="horizontal-text-item">
+                        {{ 'Projects.ServiceCategory' | translate }}
+                    </p>
+                </th>
+                <th class="vertical-text">
+                    <p class="vertical-text-item">
+                        {{ 'Projects.LocationTable' | translate }}
+                    </p>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let year of years; let i = index">
+                <tr class="year-row">
+                    <td colspan="6"> {{ 'Projects.Year' | translate }} {{ year }}</td>
+                </tr>
+                <tr *ngFor="let project of data[i]">
+                    <td class="text-center number">1</td>
+                    <td class="text-center table-images">
+                        <div class="table-img-wrapper" *ngIf="project?.logo1">
+                            <img class="table-img" [src]="project?.logo1" />
+
+                        </div>
+                        <ng-container *ngIf="project?.logo2">
+                            <hr class="hr" />
+                            <div class="table-img-wrapper">
+                                <img class="table-img" [src]="project?.logo2" />
+                            </div>
+                        </ng-container>
+                    </td>
+                    <td class="project-name">{{ project?.title }}</td>
+                    <td class="scope">
+                        <div [innerHTML]="project?.scope">
+                        </div>
+                    </td>
+                    <td class="category">{{ project?.core_bussiness[0]?.name }}</td>
+                    <td class="red-cell">
+                        <span>{{ project?.location }}</span>
+                    </td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>

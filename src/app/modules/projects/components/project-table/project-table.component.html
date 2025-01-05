@@ -1,0 +1,137 @@
+<div class="table-part w-100">
+    <table class="table table-bordered">
+        <thead>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="number">
+                    1
+                </td>
+                <td class="head">
+                    {{ 'Projects.LocationTable' | translate }}
+                </td>
+                <td class="data">
+                   {{ projectData.location ? projectData.location : '-'}}
+                </td>
+            </tr>
+            <tr>
+                <td class="number">
+                    2
+                </td>
+                <td class="head">
+                    {{ 'Projects.Client' | translate }}
+                </td>
+                <td class="data">
+                    {{ projectData.client ? projectData.client : '-'}}
+                </td>
+            </tr>
+            <tr>
+                <td class="number">
+                    3
+                </td>
+                <td class="head">
+                    {{ 'Projects.Owner' | translate }}
+                </td>
+                <td class="data owner-cell">
+                    <div class="owner-data">
+                        <span class="owner-name">
+                            {{ projectData.owner_name ? projectData.owner_name : '-'}}
+                        </span>
+                        <div class="owner-logo">
+                            <img [src]="projectData.owner_photo" [alt]="projectData.owner_name">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="number">
+                    4
+                </td>
+                <td class="head">
+                    {{ 'Projects.TypeOfParticipation' | translate }}
+                </td>
+                <td class="data">
+                    {{ projectData.core_bussiness[0]?.name ? projectData.core_bussiness[0].name : '-'}}
+                </td>
+            </tr>
+            <tr>
+                <td class="number">
+                    5
+                </td>
+                <td class="head">
+                    {{ 'Projects.ContractValue' | translate }}
+                </td>
+                <td class="data">
+                    {{ projectData.contract_value ? projectData.contract_value : '-'}}
+                </td>
+            </tr>
+            <tr>
+                <td class="number">
+                    6
+                </td>
+                <td class="head">
+                    {{ 'Projects.Duration' | translate }}
+                </td>
+                <td class="data">
+                    {{ projectData.duration ? projectData.duration : '-'}}
+                </td>
+            </tr>
+            <tr>
+                <td class="number">
+                    7
+                </td>
+                <td class="head">
+                    {{ 'Projects.StartDate' | translate }} - {{ 'Projects.EndDate' | translate }}
+                </td>
+                <td class="data">
+                    {{ projectData.start_date ? projectData.start_date : '-'}} {{ 'Projects.To' | translate }}  {{ projectData.end_date ? projectData.end_date : '-'}}
+                </td>
+            </tr>
+            <tr>
+                <td class="number">
+                    8
+                </td>
+                <td class="head">
+                    {{ 'Projects.ProjectDescription' | translate }}
+                </td>
+                <td class="data">
+                   <div [innerHTML]="projectData.desc"></div>
+                </td>
+            </tr>
+            <tr>
+                <td class="number">
+                    9
+                </td>
+                <td class="head">
+                    {{ 'Projects.ScopeOfWork' | translate }}
+                </td>
+                <td class="data">
+                   <div [innerHTML]="projectData.scope"></div>
+                </td>
+            </tr>
+            <tr>
+                <td class="number">
+                    10
+                </td>
+                <td class="head">
+                    {{ 'Projects.MarineVesselsUsedInTheProject' | translate }}
+                </td>
+                <td class="data">
+                    <div *ngIf="projectData?.marine" [innerHTML]="projectData?.marine"></div> 
+                    <span *ngIf="!projectData?.marine">-</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="number">
+                    10
+                </td>
+                <td class="head">
+                    {{ 'Projects.WorkVolume' | translate }}
+                </td>
+                <td class="data work-vol">
+                    <div [innerHTML]="projectData.work_volume"></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
