@@ -14,14 +14,14 @@
                 <div class="filtered-fleets mt-5">
                     <div class="grid">
                         <ng-container *ngIf="fleetsList?.length">
-                            <div class="card-wrapper xl:col-3 md:col-6 sm:col-12 mb-4" *ngFor="let fleet of fleetsList">
+                            <div class="card-wrapper xl:col-3 md:col-6 sm:col-12 mb-2" *ngFor="let fleet of fleetsList">
                                 <a 
-                                class="fleet-card border-round-xl" 
+                                class="fleet-card border-round-xs" 
                                 routerLink="/fleets/details"
                                 [queryParams]="{ slug: fleet.slug }"
                                 > 
                                     <div class="img-wrapper">
-                                        <img class="w-full border-round-xl" [src]="fleet.image" alt="Project Image">
+                                        <img class="w-full border-round-xs" [src]="fleet.image" alt="Project Image">
                                     </div>
                                     <div class="content">
                                         <div class="data">

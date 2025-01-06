@@ -91,6 +91,7 @@
                 }
             }
         }
+
     }
 
 }
@@ -368,6 +369,9 @@
         .lang .p-dropdown-trigger {
             color: white;
             width: 1rem;
+        }
+        @media (max-width: 350px) {
+            display: none;
         }
     }
 

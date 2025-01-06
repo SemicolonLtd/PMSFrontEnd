@@ -36,14 +36,17 @@
         "PressRelease":"Press Releases"
     },
     "Home" :{
-        "Technical":"Technical",
-        "Projects":"Projects",
-        "Engineers":"Engineers",
+        "YearsExprience":"Years Exprience",
+        "Projects":"Completed Projects",
+        "Platforms":"Platforms Installation",
+        "Pipelines":"Subsea Pipelines and Cables Laying",
         "OurBusiness":"Our Business",
         "RecentProjects":"Our Projects",
         "OurNews":"Our News",
         "Media":"Media",
-        "OurPartners":"Our Partners"
+        "OurPartners":"Our Partners",
+        "KM":"KMs",
+        "TON":"TONs"
     },
     "Search": {
         "WelcomeTo": "Welcome to",

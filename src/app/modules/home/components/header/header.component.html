@@ -23,28 +23,49 @@
                 </div>
                 <div class="statistics flex justify-content-center align-items-center">
                     <div class="item-wrapper">
-                        <span class="count d-block" [countUp]="statistics?.technical"
-                        [options]="{duration: 6}">
-                            0
+                        <span class="count-wrapper">
+                            <span class="count d-block" [countUp]="statistics?.technical" [options]="{duration: 6}">
+                                0
+                            </span>
+                            <span class="sign plus">+</span>
                         </span>
-                        <span class="label d-block">
-                            {{"Home.Technical" | translate}}
+                        <span class="label">
+                            {{"Home.YearsExprience" | translate}}
                         </span>
                     </div>
                     <div class="item-wrapper">
-                        <span class="count d-block" [countUp]="statistics?.projects" [options]="{duration: 6}">
-                            0
+                        <span class="count-wrapper">
+                            <span class="count d-block" [countUp]="statistics?.projects" [options]="{duration: 6}">
+                                0
+                            </span>
+                            <span class="sign plus">+</span>
                         </span>
-                        <span class="label d-block">
+                        <span class="label">
                             {{"Home.Projects" | translate}}
                         </span>
                     </div>
                     <div class="item-wrapper">
-                        <span class="count d-block" [countUp]="statistics?.engineers" [options]="{duration: 6}">
-                           0
+                        <span class="count-wrapper">
+                            <span class="count d-block" [countUp]="statistics?.engineers" [options]="{duration: 6}">
+                                0
+                            </span>
+                            <span class="sign plus">+</span>
+                            <span class="sign text">{{"Home.TON" | translate}}</span>
                         </span>
-                        <span class="label d-block">
-                            {{"Home.Engineers" | translate}}
+                        <span class="label">
+                            {{"Home.Platforms" | translate}}
+                        </span>
+                    </div>
+                    <div class="item-wrapper">
+                        <span class="count-wrapper">
+                            <span class="count d-block" [countUp]="statistics?.km_subsea_pipelines" [options]="{duration: 6}">
+                                0
+                            </span>
+                            <span class="sign plus">+</span>
+                            <span class="sign text">{{"Home.KM" | translate}}</span>
+                        </span>
+                        <span class="label">
+                            {{"Home.Pipelines" | translate}}
                         </span>
                     </div>
                 </div>

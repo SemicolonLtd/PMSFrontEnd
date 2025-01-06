@@ -18,6 +18,10 @@ export class NewsService {
     return this.http.get(`${environment.apiUrl}/news/${pageSize}`);
   }
 
+  getMoreNews(url: any): Observable<any> {
+    return this.http.get(`${url}`)
+  }
+
   getNews(categoryId: number, pageSize: number): Observable<any> {
     return this.http.get(`${environment.apiUrl}/news/by-category/${categoryId}/${pageSize}`);
   }
