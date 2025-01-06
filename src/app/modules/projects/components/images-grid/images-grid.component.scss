@@ -1,0 +1,11 @@
+.images-row {
+    margin-block: 1.5em;
+}
+
+.image-container img {
+    height: 50vh; /* Set your desired height */
+    object-fit: fill; /* Ensures the image fits without distortion */
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
