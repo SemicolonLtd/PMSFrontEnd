@@ -62,13 +62,15 @@ export class ContentComponent implements OnInit, OnDestroy {
                   }
                 )
               }
-              this.breadcrumbItems.push(
-                {
-                  name: this.pageContent.title,
-                  link: 'content/' + this.pageContent.slug
-                }
-              )
-              
+              if (this.pageContent.menu_name !== 'sustainability') {
+                this.breadcrumbItems.push(
+                  {
+                    name: this.pageContent.title,
+                    link: 'content/' + this.pageContent.slug
+                  }
+                )
+              }
+            
               this.handleMetaTags()
             }
           }

@@ -15,6 +15,7 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
 
     searchTitle = this.translateService.instant('Search.OurCoreBusiness')
     coreList: any[] = [];
+    businessCoreList: any[] = [];
     loading = false;
     searchMode = false;
     searchQuery = '';
@@ -22,6 +23,7 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
     paginationData: any;
     selectedBusinessSlug = '';
     subscription = new Subscription();
+    lang = environment.lang
 
     constructor(
         private coreBusinessService: CoreBusinessService,
@@ -64,6 +66,15 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
                 next: (res: any) => {
                     if (res?.status == 200) {
                         this.coreList = res?.data?.data;
+                        this.coreList.map(
+                            (core) => {
+                                if (core.slug === this.selectedBusinessSlug) {
+                                    this.businessCoreList = core.business
+                                }
+                            }
+                        )
+                        console.log(this.coreList);
+                        
                     }
                     this.loading = false;
                 },

@@ -8,7 +8,8 @@
         <div class="carousel-inner">
             <div class="carousel-item" *ngFor="let slider of slidersData; let i = index" [ngClass]="{'active' : i === 0}">
                 <img *ngIf="slider.type == 'image'" [src]="slider.image" class="d-block w-100 header-bg" alt="...">
-                <video *ngIf="slider.type == 'video'" class="d-block w-100 header-bg" autoplay loop>
+                <video *ngIf="slider.type == 'video'" #video (canplay)="video.play()"
+                (loadedmetadata)="video.muted = true" class="d-block w-100 header-bg" autoplay muted loop>
                     <source [src]="slider.image" type="video/mp4">
                 </video>
                 <div class="carousel-caption d-block">
@@ -17,34 +18,55 @@
                     <div class="header-desc" [innerHTML]="slider.desc | textSlice : 'desc' : 150">
                     </div>
                     <a type="button" target="_blank" *ngIf="slider.link_to" class="btn btn-light show-more" [href]="slider.link_to">
-                        {{'General.ShowMore' | translate}}
+                        {{slider.button}}
                     </a>
-                    <div class="statistics flex justify-content-center align-items-center">
-                        <div class="item-wrapper">
-                            <span class="count d-block" [countUp]="statistics?.technical"
-                            [options]="{duration: 6}">
+                </div>
+                <div class="statistics flex justify-content-center align-items-center">
+                    <div class="item-wrapper">
+                        <span class="count-wrapper">
+                            <span class="count d-block" [countUp]="statistics?.technical" [options]="{duration: 6}">
                                 0
                             </span>
-                            <span class="label d-block">
-                                {{"Home.Technical" | translate}}
-                            </span>
-                        </div>
-                        <div class="item-wrapper">
+                            <span class="sign plus">+</span>
+                        </span>
+                        <span class="label">
+                            {{"Home.YearsExprience" | translate}}
+                        </span>
+                    </div>
+                    <div class="item-wrapper">
+                        <span class="count-wrapper">
                             <span class="count d-block" [countUp]="statistics?.projects" [options]="{duration: 6}">
                                 0
                             </span>
-                            <span class="label d-block">
-                                {{"Home.Projects" | translate}}
-                            </span>
-                        </div>
-                        <div class="item-wrapper">
+                            <span class="sign plus">+</span>
+                        </span>
+                        <span class="label">
+                            {{"Home.Projects" | translate}}
+                        </span>
+                    </div>
+                    <div class="item-wrapper">
+                        <span class="count-wrapper">
                             <span class="count d-block" [countUp]="statistics?.engineers" [options]="{duration: 6}">
-                               0
+                                0
                             </span>
-                            <span class="label d-block">
-                                {{"Home.Engineers" | translate}}
+                            <span class="sign plus">+</span>
+                            <span class="sign text">{{"Home.TON" | translate}}</span>
+                        </span>
+                        <span class="label">
+                            {{"Home.Platforms" | translate}}
+                        </span>
+                    </div>
+                    <div class="item-wrapper">
+                        <span class="count-wrapper">
+                            <span class="count d-block" [countUp]="statistics?.km_subsea_pipelines" [options]="{duration: 6}">
+                                0
                             </span>
-                        </div>
+                            <span class="sign plus">+</span>
+                            <span class="sign text">{{"Home.KM" | translate}}</span>
+                        </span>
+                        <span class="label">
+                            {{"Home.Pipelines" | translate}}
+                        </span>
                     </div>
                 </div>
             </div>

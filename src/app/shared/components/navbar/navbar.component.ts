@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     { name: 'EN', code: 'en' },
     { name: 'AR', code: 'ar' },
   ];
-  lang = this.cookieService.get('lang') || '';
+  lang = environment.lang;
   isSticky = false
   navDetailsOpened: boolean = false;
   detailsType: string = '';
@@ -72,7 +72,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   getCoreBusinessMenus(): void {
     this.subscriptions.add(
-      this.coreBusinessService.getCoreBusinessMenus(1000).subscribe({
+      this.coreBusinessService.getOurBusinessMenu().subscribe({
         next: (res: any) => {
           this.coreBusinessList = [
             {
@@ -86,7 +86,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 }
               })
             }
-          ];
+          ]
           this.getAllLinks();
 
         },
@@ -168,7 +168,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   onSelectLink(type: string, title: string, directRoute: boolean): void {
     this.sidebarMobileVisible = false;
     if (directRoute) {
-      if(['about-us','our-strategy','key-assets','sustainability'].includes(type)) {
+      if(['sustainability'].includes(type)) {
         this.router.navigateByUrl('/content?slug=' + type);
       } else {
         this.router.navigate(['/' + type]);
@@ -246,17 +246,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
               {
                 name: 'media-center',
                 menu: [
+                  // {
+                  //   name: this.translateService.instant('Navbar.PressRelease'),
+                  //   link: 'news?index=1'
+                  // },
                   {
-                    name: this.translateService.instant('Navbar.PressRelease'),
+                    name: this.translateService.instant('Navbar.News'),
                     link: 'news?index=1'
                   },
                   {
-                    name: this.translateService.instant('Navbar.News'),
-                    link: 'news'
-                  },
-                  {
                     name: this.translateService.instant('Navbar.Events'),
-                    link: 'events'
+                    link: 'news?index=2'
                   },
                   // {
                   //   name: this.translateService.instant('Navbar.ContactUs'),
@@ -283,6 +283,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
       'certificates',
       'core-business/Offshore-services',
       'core-business/offshore-construction',
+      'core-business/joint-ventures',
+      'core-business/our-facilities',
       'fleets/category',
       'fleets/details',
       'faq'

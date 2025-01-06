@@ -48,10 +48,10 @@ export class NewsSectionComponent implements OnInit, OnDestroy {
                 name: this.translateService.instant('General.All'),
               },
               ...res?.data?.data,
-              {
-                id: 'x',
-                name: this.translateService.instant('General.Events'),
-              },
+              // {
+              //   id: 'x',
+              //   name: this.translateService.instant('General.Events'),
+              // },
             ];
             // this.selectedCategoryId = this.newsCategories[0].id;
             this.getRecentNews();
@@ -89,9 +89,11 @@ export class NewsSectionComponent implements OnInit, OnDestroy {
     this.smallCardsNews = [];
     if(index == 0) {
       this.getRecentNews();
-    } else if (index === this.newsCategories.length - 1) {
-      this.getEventsData()
-    } else {
+    }
+    // else if (index === this.newsCategories.length - 1) {
+    //   this.getEventsData()
+    // } 
+    else {
       this.selectedCategoryId = this.newsCategories[index].id;
       this.getNewsData();
     }

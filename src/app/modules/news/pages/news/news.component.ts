@@ -50,17 +50,14 @@ export class NewsComponent implements OnInit, OnDestroy {
 
   checkTabIndexParam(): void {
     this.selectedIndex = 0;
-    this.newsData = [];
     this.route.queryParams.subscribe(
       (params)=> {
         if (params['index']) {
           this.selectedIndex = params['index']
-          this.newsData = []
           this.selectedCategoryId = this.newsCategories[this.selectedIndex].id;
           this.getNewsData();
         } else {
           this.selectedIndex = 0;
-          this.newsData = []
           this.getRecentNews();
         }
       }
@@ -68,32 +65,21 @@ export class NewsComponent implements OnInit, OnDestroy {
   }
 
   getNewsCategories(): void {
-    // this.loading = true;
     this.subscriptions.add(
       this.newsService.getNewsCategories().subscribe({
         next: (res: any) => {
-          // this.loading = false
           if(res?.status == 200) {
-            // this.newsCategories = res?.data?.data;
-            // this.selectedCategoryId = this.newsCategories[0].id;
-            // this.getNewsData();
             this.newsCategories = [
               {
                 id: 'x',
                 name: this.translateService.instant('General.All'),
               },
               ...res?.data?.data,
-              {
-                id: 'x',
-                name: this.translateService.instant('General.Events'),
-              },
             ];
             this.checkTabIndexParam()
-            // this.getRecentNews();
           }
         },
         error: (err: any) => {
-          // this.loading = false
         }
       })
     )
@@ -109,8 +95,8 @@ export class NewsComponent implements OnInit, OnDestroy {
       API.subscribe({
         next: (res: any) => {
           if(res?.status == 200) {
-            this.newsData = [... this.newsData, ...res?.data?.data];
-            this.paginationData = res?.data?.meta?.pagination;
+            this.newsData = res?.data?.data
+            this.paginationData = res?.data?.links;
             this.bigCardNews = this.newsData?.filter((card: any) => card.big_card == true);
             this.smallCardsNews = this.newsData?.filter((card: any) => card.big_card == false);
             this.handleMetaTags();
@@ -130,12 +116,11 @@ export class NewsComponent implements OnInit, OnDestroy {
     this.newsData = [];
     this.bigCardNews = [];
     this.smallCardsNews = [];
-
+    this.newsPageSize = 5;
     if(index == 0) {
       this.getRecentNews();
-    } else if (index === this.newsCategories.length - 1) {
-      this.getEventsData()
-    } else {
+    } 
+    else {
       this.selectedCategoryId = this.newsCategories[index].id;
       this.getNewsData();
     }
@@ -150,7 +135,7 @@ export class NewsComponent implements OnInit, OnDestroy {
             this.newsData = res?.data?.data;
             this.bigCardNews = this.newsData?.filter((card: any) => card.big_card == true);
             this.smallCardsNews = this.newsData?.filter((card: any) => card.big_card == false);
-            this.paginationData = res?.data?.meta?.pagination;
+            this.paginationData = res?.data?.links;
           }
           this.loading = false
         },
@@ -163,16 +148,33 @@ export class NewsComponent implements OnInit, OnDestroy {
 
   loadMore(): void {
     if(this.selectedIndex == 0) {
-      this.newsPageSize += 10;
+      this.newsPageSize += 5;
       this.getRecentNews();
-    } else if (this.selectedIndex === this.newsCategories.length - 1) {
-      this.eventsPageSize += 10;
-      this.getEventsData()
-    } else {
-      this.newsPageSize += 10;
+    } 
+    else {
+      this.newsPageSize += 5;
       this.selectedCategoryId = this.newsCategories[this.selectedIndex].id;
       this.getNewsData();
     }
+  }
+
+  getMoreNews(url: any): void {
+    console.log(this.newsData);
+    
+    this.loading = true
+    this.newsService.getMoreNews(url).subscribe(
+      (res) => {
+        this.loading = false;
+        this.newsData = [...this.newsData, ...res['data']['data']];[]
+        this.paginationData = res?.data?.links;
+        this.bigCardNews = this.newsData?.filter((card: any) => card.big_card == true);
+        this.smallCardsNews = this.newsData?.filter((card: any) => card.big_card == false);
+        this.handleSchema();
+      },
+      (error: any) => {
+        this.loading = false;
+      }
+    )
   }
 
   searchForNews(query: string): void {
@@ -198,9 +200,8 @@ export class NewsComponent implements OnInit, OnDestroy {
       this.newsService.getAllNews(this.newsPageSize).subscribe({
         next: (res: any) => {
           if(res?.status == 200) {
-            this.newsData = []
             this.newsData = res?.data?.data
-            this.paginationData = res?.data?.meta?.pagination;
+            this.paginationData = res?.data?.links
             this.bigCardNews = this.newsData?.filter((card: any) => card.big_card == true);
             this.smallCardsNews = this.newsData?.filter((card: any) => card.big_card == false);
           }
