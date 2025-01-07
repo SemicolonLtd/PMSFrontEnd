@@ -58,8 +58,13 @@
                         <div [innerHTML]="project?.scope">
                         </div>
                     </td>
-                    <td class="category">{{ project?.core_bussiness[0]?.name }}</td>
-                    <td class="red-cell">
+                    <td class="category">
+                        <span *ngFor="let item of project.core_bussiness; let i = index">
+                            {{ item?.name ? item.name : '-'}}
+                            <span *ngIf="i < project.core_bussiness.length - 1"> , </span>
+                        </span>
+                     </td>
+                    <td class="red-cell" [ngStyle]="{ 'backgroundColor':  project.location_color}">
                         <span>{{ project?.location }}</span>
                     </td>
                 </tr>

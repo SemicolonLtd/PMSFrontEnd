@@ -37,7 +37,7 @@
                         <span class="owner-name">
                             {{ projectData.owner_name ? projectData.owner_name : '-'}}
                         </span>
-                        <div class="owner-logo">
+                        <div class="owner-logo" *ngIf="projectData.owner_photo">
                             <img [src]="projectData.owner_photo" [alt]="projectData.owner_name">
                         </div>
                     </div>
@@ -51,7 +51,10 @@
                     {{ 'Projects.TypeOfParticipation' | translate }}
                 </td>
                 <td class="data">
-                    {{ projectData.core_bussiness[0]?.name ? projectData.core_bussiness[0].name : '-'}}
+                    <span *ngFor="let item of projectData.core_bussiness; let i = index">
+                        {{ item?.name ? item.name : '-'}}
+                        <span *ngIf="i < projectData.core_bussiness.length - 1"> , </span>
+                    </span>
                 </td>
             </tr>
             <tr>
