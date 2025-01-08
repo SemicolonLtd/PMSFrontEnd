@@ -151,6 +151,30 @@
 
 ::ng-deep {
     .project-details {
+        .project-images {
+            width:60%;
+            margin-inline: auto;
+            margin-bottom: 1.5rem;
+            @media (max-width: 1500px) {
+                width:70%;
+            }
+            @media (max-width: 1300px) {
+                width:80%;
+            }
+            @media (max-width:992px) {
+                width:100%;
+            }
+            p-image {
+                width: 100%;
+            }
+            .p-image-preview-container {
+                width: 100%;
+                max-height: 450px;
+            }
+            .p-galleria-item-nav {
+                z-index: 2;
+            }
+        }
         .show-more {
             .p-button {
                 width: fit-content;

@@ -121,9 +121,27 @@
         <ng-container *ngIf="projectData?.title && !loading">
             <ng-container *ngIf="projectData.type !== 'recent-projects'">
                 <app-project-table [projectData]="projectData"></app-project-table>
-                <ng-container *ngIf="projectImages?.length">
+                <!-- <ng-container *ngIf="projectImages?.length">
                     <app-images-grid [images]="projectImages"></app-images-grid>
+                </ng-container> -->
+                <!-- [showThumbnailNavigators]="projectData?.media?.length > 5" -->
+                <ng-container *ngIf="projectData?.media?.length">
+                    <div class="project-images">
+                        <p-galleria [value]="projectData?.media" [showItemNavigators]="projectData?.media?.length > 1" [responsiveOptions]="responsiveOptions"
+                            [numVisible]="5" [showThumbnailNavigators]="projectData?.media?.length > 5" [circular]="true"
+                            [showThumbnails]="projectData?.media?.length > 1">
+                            <ng-template pTemplate="item" let-item>
+                                <p-image [preview]="true" [src]="item.image" />
+                            </ng-template>
+                            <ng-template pTemplate="thumbnail" let-item>
+                                <div class="grid grid-nogutter justify-content-center">
+                                    <img [src]="item.image" style="width: 100%;" />
+                                </div>
+                            </ng-template>
+                        </p-galleria>
+                    </div>
                 </ng-container>
+
             </ng-container>
         </ng-container>
     </div>
