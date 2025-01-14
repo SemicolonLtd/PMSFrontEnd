@@ -34,7 +34,6 @@ export class FleetsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-  
     this.getPageSlug();
     this.handleMetaTags();
   }

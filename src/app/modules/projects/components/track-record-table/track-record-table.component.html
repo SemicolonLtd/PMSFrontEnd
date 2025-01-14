@@ -39,8 +39,8 @@
                 <tr class="year-row">
                     <td colspan="6"> {{ 'Projects.Year' | translate }} {{ year }}</td>
                 </tr>
-                <tr *ngFor="let project of data[i]">
-                    <td class="text-center number">1</td>
+                <tr *ngFor="let project of data[i]; let x = index">
+                    <td class="text-center number">{{x + 1}}</td>
                     <td class="text-center table-images">
                         <div class="table-img-wrapper" *ngIf="project?.logo1">
                             <img class="table-img" [src]="project?.logo1" />

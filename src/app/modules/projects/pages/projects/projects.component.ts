@@ -36,7 +36,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.getSelectedTypeFromParams();
     // this.getTopProjectData();
     this.translateService.get([
       'General.All',
@@ -50,6 +49,8 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         { label: translations['Projects.TrackRecord'], value: 'completed-projects' }
       ];
     });
+    this.getSelectedTypeFromParams();
+
   }
 
   getSelectedTypeFromParams(): void {
@@ -57,8 +58,8 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       if(params['type']) {
         this.selectedType = params['type'];
       }
-      this.getProjectsDataByType();
     });
+    this.getProjectsDataByType();
   }
 
   getTopProjectData(): void {
@@ -104,9 +105,9 @@ export class ProjectsComponent implements OnInit, OnDestroy {
             //     return project;
             //   });
             // } else {
-              this.projectsList = [... this.projectsList, ...res?.data?.data];
+              this.projectsList = res?.data?.data
             // }
-            this.paginationData = res?.data?.meta?.pagination;
+            this.paginationData = res?.data?.links;
             this.handleMetaTags()
           }
           this.projectsLoading = false
@@ -136,9 +137,21 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     this.getProjectsDataByType();
   }
 
-  loadMore(): void {
-    this.pageSize += 10;
-    this.getProjectsDataByType();
+  getMoreProjects(url: any): void {
+    console.log(url);
+    
+    this.projectsLoading = true
+    this.projectsService.getMoreProjects(url).subscribe(
+      (res) => {
+        this.projectsLoading = false;
+        this.projectsList = [...this.projectsList, ...res['data']['data']];
+        this.paginationData = res?.data?.links;
+        this.handleMetaTags();
+      },
+      (error: any) => {
+        this.projectsLoading = false;
+      }
+    )
   }
 
   handleMetaTags(): void {
