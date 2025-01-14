@@ -83,9 +83,9 @@ export class FleetDetailsComponent implements OnInit, OnDestroy {
                 queryParams: { slug: this.fleetData?.menu }
               },
               {
-                name: this.fleetData?.title,
+                name: this.fleetData?.name,
                 link: '/fleets/details',
-                queryParams: { slug: this.fleetData?.title }
+                queryParams: { slug: this.fleetData?.name }
               }
             );
             this.handleMetaTags();
@@ -125,7 +125,7 @@ export class FleetDetailsComponent implements OnInit, OnDestroy {
 
   handleMetaTags(): void {
     const content: any = {
-      title: this.fleetData.title,
+      title: this.fleetData.name,
       useTranslation: false,
       description: this.fleetData.desc,
       keywords: this.fleetData.desc,
