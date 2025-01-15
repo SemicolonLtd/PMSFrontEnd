@@ -25,7 +25,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     },
     {
         breakpoint: '560px',
-        numVisible: 1
+        numVisible: 2
     }
   ];
 
@@ -36,12 +36,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   slug: string = '';
   typeId: any;
   loading = false;
-  breadcrumbItems = [
-    {
-      name: this.translateService.instant('Navbar.Projects'),
-      link: '/projects'
-    }
-  ];
+  breadcrumbItems:any[] = [];
   subscriptions = new Subscription();
   websiteUrl = environment.websiteUrl;
   showDesc: boolean = false;
@@ -93,12 +88,14 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
             this.breadcrumbItems.push(
               {
                 name: this.projectData?.menu,
-                link: '/projects/'
+                link: '/projects',
+                queryParams: { type: "mega-projects", lang: environment.lang }
               },
               {
-              name: this.projectData?.title,
-              link: '/projects/details/' + this.projectData?.slug
-            })
+                name: this.projectData?.title,
+                link: '/projects/details/' + this.projectData?.slug
+              }
+            )
             this.getSimilarProjects();
             this.handleMetaTags();
           }

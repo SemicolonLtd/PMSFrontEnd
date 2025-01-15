@@ -11,11 +11,11 @@
                 {{projectData.date}}
             </span>
         </div>
-        <button class="discover_btn">
+        <a class="discover_btn" [routerLink]="'/projects/details/'+ projectData.slug ">
             <i class="pi pi-angle-right" *ngIf="lang == 'en'"></i>
             <i class="pi pi-angle-left" *ngIf="lang == 'ar'"></i>
             <span>{{'General.DiscoverMore' | translate}}</span>
-        </button>
+        </a>
         <!-- <a class="details-btn" [routerLink]="'/projects/details/'+ projectData.slug ">
             <p-button icon="pi pi-angle-right" [rounded]="true" severity="secondary"  />
         </a> -->

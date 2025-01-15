@@ -13,9 +13,9 @@ export class TrackRecordTableComponent implements OnInit {
   data: any[] = [];
 
   ngOnInit(): void {
-    this.years = Object.keys(this.trackRecordData);
+    this.years = Object.keys(this.trackRecordData).reverse();
     console.log(this.years);
-    this.data = Object.values(this.trackRecordData);
+    this.data = Object.values(this.trackRecordData).reverse();
     console.log(this.data);
     
   }

@@ -17,7 +17,8 @@ export class TrackRecordComponent implements OnInit, OnDestroy {
   breadcrumbItems = [
     {
       name: this.translateService.instant('Navbar.Projects'),
-      link: '/projects'
+      link: '/projects',
+      queryParams: { type: "mega-projects", lang: environment.lang }
     },
     {
       name: this.translateService.instant('Projects.TrackRecord'),
@@ -49,7 +50,7 @@ export class TrackRecordComponent implements OnInit, OnDestroy {
       ).subscribe({
         next: (res: any) => {
           if (res?.status == 200) {
-            this.trackRecordData = res?.data?.data;
+            this.trackRecordData = res?.data?.data
           }
           this.loading = false
         },

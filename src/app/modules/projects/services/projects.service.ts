@@ -35,4 +35,8 @@ export class ProjectsService {
     return this.http.get(`${environment.apiUrl}/project/similar/${slug}/3`);
   }
 
+  getMoreProjects(url: any): Observable<any> {
+    return this.http.get(`${url}`)
+  }
+
 }

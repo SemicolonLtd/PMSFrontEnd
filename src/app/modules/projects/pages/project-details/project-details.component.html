@@ -1,129 +1,26 @@
 <div class="project-details margin-avoid-navbar">
     <div class="pms-container">
         <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
-        <!-- <div class="project-info" *ngIf="projectData?.title">
-            <div class="grid">
-                <div class="col-12">
-                    <div class="head-wrapper flex align-items-center justify-content-end">
-                        <div class="share_details">
-                            <span class="txt">
-                                {{ 'General.Share' | translate }}
-                            </span>
-                            <button class="share_link" shareButton="facebook"
-                                [url]="websiteUrl + '/projects/details/' + projectData?.slug"
-                                [title]="projectData.title" [image]="projectData.image"
-                                [description]="projectData.short">
-                                <img src="assets/images/global/facebook.svg" alt="">
-                            </button>
-                            <button class="share_link" shareButton="twitter"
-                                [url]="websiteUrl + '/projects/details/' + projectData?.slug"
-                                [title]="projectData.title" [image]="projectData.image"
-                                [description]="projectData.short">
-                                <img src="assets/images/global/twitter.svg" alt="">
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="content-wrapper d-flex col-12">
-                    <div class="table-part w-100">
-                        <table class="table table-striped table-bordered">
-                            <thead>
-                                <tr>
-                                    <th class="img-col"
-                                        style="color: white;background-color: var(--primary-color-light);">
-                                        <i class="pi pi-cog"></i>
-                                    </th>
-                                    <th colspan="2" class="text-lg"
-                                        style="color: white;background-color: var(--primary-color-light);">
-                                        {{'Projects.ProjectInfo' | translate}}
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngIf="projectData['start_date']">
-                                    <th class="img-col" scope="row">
-                                        <img src="assets/images/global/date-icon.svg" alt="">
-                                    </th>
-                                    <td class="title-col">{{ 'Projects.StartDate' | translate }}</td>
-                                    <td class="info-col">{{ projectData['start_date'] }}</td>
-                                </tr>
-                                <tr *ngIf="projectData['end_date']">
-                                    <th class="img-col" scope="row">
-                                        <img src="assets/images/global/date-icon.svg" alt="">
-                                    </th>
-                                    <td class="title-col">{{ 'Projects.EndDate' | translate }}</td>
-                                    <td class="info-col">{{ projectData['end_date'] }}</td>
-                                </tr>
-                                <tr *ngIf="projectData['location']">
-                                    <th class="img-col" scope="row">
-                                        <img src="assets/images/global/location-icon.svg" alt="">
-                                    </th>
-                                    <td class="title-col">{{ 'Projects.Location' | translate }}</td>
-                                    <td class="info-col">{{ projectData['location'] }}</td>
-                                </tr>
-                                <tr *ngIf="projectData['country']">
-                                    <th class="img-col" scope="row">
-                                        <img src="assets/images/global/country-icon.svg" alt="">
-                                    </th>
-                                    <td class="title-col">{{ 'Projects.Country' | translate }}</td>
-                                    <td class="info-col">{{ projectData['country'] }}</td>
-                                </tr>
-                                <tr *ngIf="projectData['client']">
-                                    <th class="img-col" scope="row">
-                                        <img src="assets/images/global/client-icon.svg" alt="">
-                                    </th>
-                                    <td class="title-col">{{ 'Projects.Client' | translate }}</td>
-                                    <td class="info-col">{{ projectData['client'] }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p class="short-desc">{{projectData.short}}</p>
-                        <div class="text project-desc" [innerHTML]="sanitizeHtml(projectData?.desc)"
-                            [ngClass]="{'show': showDesc}" *ngIf="showDesc || !showDesc">
-                        </div>
-                        <p-button
-                            [label]="showDesc ? ('General.ReadLess' | translate) : ('General.ReadMore' | translate)"
-                            [icon]="showDesc ? 'pi pi-angle-up' : 'pi pi-angle-down'" class="show-more"
-                            (onClick)="onShowDesc()" />
-                    </div>
-                    <div class="images w-100">
-                        <div class="project-images">
-                            <p-galleria [value]="projectData?.media" [responsiveOptions]="responsiveOptions"
-                                [numVisible]="5" [showThumbnailNavigators]="projectData?.media?.length > 5"
-                                [showThumbnails]="projectData?.media?.length > 1">
-                                <ng-template pTemplate="item" let-item>
-                                    <p-image [preview]="true" [src]="item.image" />
-                                </ng-template>
-                                <ng-template pTemplate="thumbnail" let-item>
-                                    <div class="grid grid-nogutter justify-content-center">
-                                        <img [src]="item.image" style="width: 100%;" />
-                                    </div>
-                                </ng-template>
-                            </p-galleria>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <app-loading type="small" *ngIf="loading"></app-loading>
-        <!-- <div class="similar-projects mt-5" *ngIf="similarProjectsData?.length && !similarProjectsLoading">
-            <span class="title block font-bold text-2xl color-primary-medium pb-2 mb-4">
-                {{'SimilarTitles.SimilarProjects' | translate}}
-            </span>
-            <div class="grid">
-                <div class="xl:col-4 lg:col-4 md:col-6 sm:col-12 mb-3" *ngFor="let product of similarProjectsData">
-                    <app-project-card [projectData]="product"></app-project-card>
-                </div>
-            </div>
-        </div>
-        <app-loading type="small" *ngIf="similarProjectsLoading"></app-loading> -->
-        <!-- <app-track-record-table></app-track-record-table> -->
         <ng-container *ngIf="projectData?.title && !loading">
             <ng-container *ngIf="projectData.type !== 'recent-projects'">
-                <app-project-table [projectData]="projectData"></app-project-table>
-                <ng-container *ngIf="projectImages?.length">
-                    <app-images-grid [images]="projectImages"></app-images-grid>
+                <ng-container *ngIf="projectData?.media?.length">
+                    <div class="project-images">
+                        <p-galleria [value]="projectData?.media" [showItemNavigators]="projectData?.media?.length > 1" [responsiveOptions]="responsiveOptions"
+                            [numVisible]="5" [showThumbnailNavigators]="projectData?.media?.length > 5" [circular]="true"
+                            [showThumbnails]="projectData?.media?.length > 1">
+                            <ng-template pTemplate="item" let-item>
+                                <p-image [preview]="true" [src]="item.image" />
+                            </ng-template>
+                            <ng-template pTemplate="thumbnail" let-item>
+                                <div class="grid grid-nogutter justify-content-center">
+                                    <img [src]="item.image" style="width: 100%;" />
+                                </div>
+                            </ng-template>
+                        </p-galleria>
+                    </div>
                 </ng-container>
+                <app-project-table [projectData]="projectData"></app-project-table>
             </ng-container>
         </ng-container>
     </div>

@@ -51,7 +51,7 @@
                 [(ngModel)]="selectedType" 
                 optionLabel="label" 
                 optionValue="value"
-                (onChange)="onSelectCategory($event)"
+                (onChange)="$event.value !== null ? onSelectCategory($event) : null"
                 />
             </div>
             <div class="filtered-projects ">
@@ -62,8 +62,8 @@
                         </div>
                     </ng-container>
                     <app-loading type="small" *ngIf="projectsLoading"></app-loading>
-                    <div class="load-more" *ngIf="(paginationData?.total! > projectsList?.length!) && !projectsLoading">
-                        <p-button label="{{'Projects.More' | translate}}" (click)="loadMore()" />
+                    <div class="load-more col-12" *ngIf="(paginationData! && projectsList?.length!) && !projectsLoading">
+                        <p-button label="{{'Projects.More' | translate}}" (click)="getMoreProjects(paginationData)" />
                     </div>
                     <div class="col-12" *ngIf="!projectsList.length && !projectsLoading">
                         <app-empty-state></app-empty-state>

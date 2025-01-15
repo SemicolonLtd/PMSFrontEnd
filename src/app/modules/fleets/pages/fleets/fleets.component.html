@@ -26,8 +26,8 @@
                                     <div class="content">
                                         <div class="data">
                                             <div class="info">
-                                                <h5 class="title" *ngIf="fleet?.title">
-                                                    {{fleet?.title | textSlice : 'title' : 40}}
+                                                <h5 class="title" *ngIf="fleet?.name">
+                                                    {{fleet?.name | textSlice : 'title' : 40}}
                                                 </h5>
                                                 <button class="discover_btn">
                                                     <i class="pi pi-angle-right" *ngIf="lang == 'en'"></i>

@@ -27,6 +27,7 @@
 .p-galleria {
     .p-galleria-thumbnail-item-content {
         overflow: hidden;
+        // margin-inline: 0.2rem;
     }
     .p-galleria-item-wrapper {
         border-radius: 20px;
@@ -47,6 +48,8 @@
         }
     }
     .p-galleria-thumbnail-wrapper {
+        // width: fit-content;
+        // margin-inline: auto;
         box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2509803922);
         border-radius: 10px;
         margin-top: 1rem;

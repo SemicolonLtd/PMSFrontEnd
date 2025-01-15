@@ -34,7 +34,6 @@ export class FleetsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-  
     this.getPageSlug();
     this.handleMetaTags();
   }
@@ -117,7 +116,7 @@ export class FleetsComponent implements OnInit, OnDestroy {
   handleSchema(): void {
     this.initSchemaObj();
     this.fleetsList.forEach((item: any) => {
-      this.schemaObj['name'] = item.title;
+      this.schemaObj['name'] = item.name;
       this.schemaObj['description'] = item.desc;
       this.schemaObj['image'] = item.image;
       this.schemaObj['url'] = `${environment.websiteUrl}/fleets/details?slug=${item.slug}`;
