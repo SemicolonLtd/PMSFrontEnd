@@ -144,13 +144,18 @@
                     border-color: var(--primary-color-medium);
                     @media(max-width:576px) {
                         padding: 0.75rem 0.4rem;
+                        font-size: 0.8rem;
                     }
                     @media(max-width:475px) {
-                        font-size: 0.8rem;
+                        font-size: 0.6rem;
                     }
                     @media(max-width:412px) {
                         padding: 0.75rem 0.25rem;
                         font-size: 0.58rem;
+                    }
+                    @media(max-width:361px) {
+                        padding: 0.75rem 0.06rem;
+                        font-size: 0.54rem;
                     }
                 }
                 .p-selectbutton .p-button.p-highlight {

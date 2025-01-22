@@ -10,9 +10,9 @@
         <div class="content-wrapper col-12" *ngIf="!loading">
             <!-- <div class="images">
                 <div class="news-images">
-                    <p-galleria [value]="fleetData?.media" [responsiveOptions]="responsiveOptions"
-                        [numVisible]="5" [showThumbnailNavigators]="fleetData?.media?.length > 5"
-                        [showThumbnails]="fleetData?.media?.length > 1"
+                    <p-galleria [value]="fleetData?.media" [showItemNavigators]="fleetData?.media?.length > 1" [responsiveOptions]="responsiveOptions"
+                            [numVisible]="5" [showThumbnailNavigators]="fleetData?.media?.length > 5" [circular]="true"
+                            [showThumbnails]="fleetData?.media?.length > 1"
                         >
                         <ng-template pTemplate="item" let-item>
                             <p-image [preview]="true" [src]="item.image" />

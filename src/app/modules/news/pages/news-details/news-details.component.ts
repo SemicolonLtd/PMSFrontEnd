@@ -15,21 +15,17 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 export class NewsDetailsComponent implements OnInit, OnDestroy {
   websiteUrl = environment.websiteUrl;
   responsiveOptions: any[] = [
-    // {
-    //   breakpoint: '2000px',
-    //   numVisible: 4
-    // },
     {
         breakpoint: '1024px',
-        numVisible: 3
+        numVisible: 5
     },
     {
         breakpoint: '768px',
-        numVisible: 2
+        numVisible: 3
     },
     {
         breakpoint: '560px',
-        numVisible: 1
+        numVisible: 2
     }
   ];
   newsData: any = {};

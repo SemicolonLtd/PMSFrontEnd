@@ -8,9 +8,18 @@
     </div>
     <!-- <app-loading type="small" *ngIf="topFleetLoading && !searchMode" ></app-loading>  -->
     <ng-container *ngIf="fleetsList">
-        <div class="fleets-list" *ngIf="fleetsList?.length && !fleetsLoading">
+        <div class="fleets-list mt-5" *ngIf="fleetsList?.length && !fleetsLoading">
             <div class="pms-container">
-                <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
+                <!-- <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb> -->
+                <div class="filter-btns text-center mb-5" *ngIf="!searchMode">
+                    <p-selectButton 
+                    [options]="fleetCategories" 
+                    [(ngModel)]="selectedType" 
+                    optionLabel="label" 
+                    optionValue="value"
+                    (onChange)="$event.value !== null ? onSelectCategory($event) : null"
+                    />
+                </div>
                 <div class="filtered-fleets mt-5">
                     <div class="grid">
                         <ng-container *ngIf="fleetsList?.length">
