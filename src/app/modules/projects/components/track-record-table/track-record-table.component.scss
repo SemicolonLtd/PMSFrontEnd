@@ -18,6 +18,15 @@ thead {
     }
 }
 
+.table-part {
+    @media (max-width: 768px) {
+        transform: scaleX(0.38) translateX(-325px);
+    }
+    @media (max-width: 375px) {
+        transform: scaleX(0.3) translateX(-370px);
+    }
+}
+
 .vertical-text-item {
     writing-mode: vertical-rl;
     transform: rotate(180deg);

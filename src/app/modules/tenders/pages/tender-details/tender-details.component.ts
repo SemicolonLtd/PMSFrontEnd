@@ -26,7 +26,7 @@ export class TenderDetailsComponent implements OnInit, OnDestroy {
     },
     {
         breakpoint: '560px',
-        numVisible: 1
+        numVisible: 2
     }
   ];
 

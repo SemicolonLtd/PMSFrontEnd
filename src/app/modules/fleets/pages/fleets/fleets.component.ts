@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { MetaService } from 'src/app/core/services/meta.service';
@@ -25,23 +25,51 @@ export class FleetsComponent implements OnInit, OnDestroy {
   fleetsData:any
   breadcrumbItems: any[] = [];
   lang = environment.lang
-  
+  selectedType!: string;
+  fleetCategories!: any[];
+
   constructor(
     private fleetsService: FleetsService,
     private translateService:TranslateService,
     private metaService: MetaService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
+    this.getFleetsCategories()
     this.getPageSlug();
     this.handleMetaTags();
+  }
+
+  getFleetsCategories(): void {
+    this.fleetsLoading = true
+    this.subscriptions.add(
+      this.fleetsService.getFleetsCategories().subscribe({
+        next: (res: any) => {
+          this.fleetsLoading = false
+          if(res?.status == 200) {
+            this.fleetCategories = res.data.data.map(
+              (item: any) => {
+                return {
+                  label: item.name,
+                  value: item.slug
+                }
+              }
+            )
+          }
+        },
+        error: (err: any) => {
+          this.fleetsLoading = false
+        }
+      })
+    )
   }
 
   getPageSlug(): void {
     this.route.queryParams.subscribe((params) => {
       if (params['slug']) {
-        this.pageSlug = params['slug'];
+        this.selectedType = params['slug'];
         this.getFleetsData();
       }
     })
@@ -49,7 +77,7 @@ export class FleetsComponent implements OnInit, OnDestroy {
 
   getFleetsData(): void {
     this.fleetsLoading = true;
-    const API = this.fleetsService.getCategoryBySlug(this.pageSlug)
+    const API = this.fleetsService.getCategoryBySlug(this.selectedType)
 
     this.subscriptions.add(
       API.subscribe({
@@ -76,22 +104,12 @@ export class FleetsComponent implements OnInit, OnDestroy {
     )
   }
 
-  searchForFleets(query: string): void {
-    if (query?.length) {
-      this.searchMode = true;
-      this.searchQuery = query;
-    } else {
-      this.searchMode = false;
-      this.searchQuery = '';
-    }
+  onSelectCategory(category: any): void {
+    this.pageSlug = category.value;
     this.fleetsList = [];
+    this.router.navigate([], { queryParams: { lang: environment.lang, slug:category.value }, queryParamsHandling: 'merge' });
     this.getFleetsData();
   }
-
-  // loadMore(): void {
-  //   this.pageSize += 10;
-  //   this.getFleetsData();
-  // }
 
   handleMetaTags(): void {
     const content: any = {

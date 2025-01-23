@@ -278,7 +278,11 @@
     // }
 
     @media (max-height: 800px) {
-        top: 30%;
+        top: 27%;
+        transform: unset
+    }
+    @media (max-height: 760px) {
+        top: 25%;
         transform: unset
     }
     @media (max-height: 700px) {

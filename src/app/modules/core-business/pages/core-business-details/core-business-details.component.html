@@ -32,9 +32,8 @@
                 <div class="content-wrapper col-12">
                     <div class="images">
                         <div class="news-images">
-                            <p-galleria [value]="businessData?.media" [responsiveOptions]="responsiveOptions"
-                                [numVisible]="5"
-                                [showThumbnailNavigators]="businessData?.media?.length > 5"
+                            <p-galleria [value]="businessData?.media" [showItemNavigators]="businessData?.media?.length > 1" [responsiveOptions]="responsiveOptions"
+                                [numVisible]="5" [showThumbnailNavigators]="businessData?.media?.length > 5" [circular]="true"
                                 [showThumbnails]="businessData?.media?.length > 1"
                                 >
                                 <ng-template pTemplate="item" let-item>

@@ -71,9 +71,8 @@
                     </div> -->
                     <div class="images w-100">
                         <div class="project-images">
-                            <p-galleria [value]="eventData?.media" [responsiveOptions]="responsiveOptions"
-                                [numVisible]="5" 
-                                [showThumbnailNavigators]="eventData?.media?.length > 5"
+                            <p-galleria [value]="eventData?.media" [showItemNavigators]="eventData?.media?.length > 1" [responsiveOptions]="responsiveOptions"
+                                [numVisible]="5" [showThumbnailNavigators]="eventData?.media?.length > 5" [circular]="true"
                                 [showThumbnails]="eventData?.media?.length > 1"
                                 >
                                 <ng-template pTemplate="item" let-item>
