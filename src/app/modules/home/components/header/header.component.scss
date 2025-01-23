@@ -7,6 +7,9 @@
     .header-bg {
         height: 100vh;
         object-fit: fill;
+        filter: brightness(60%);
+        -webkit-filter: brightness(60%);
+        -o-filter: brightness(60%);
     }
     .header-logo {
         width: 11rem;
@@ -271,7 +274,7 @@
 
 .carousel-caption {
     z-index: 2;
-    top: 55%;
+    top: 57%;
     transform: translateY(-50%);
     // @media (max-height: 850px) {
     //     font-size: 3.3rem;
@@ -282,11 +285,11 @@
         transform: unset
     }
     @media (max-height: 760px) {
-        top: 25%;
+        top: 30%;
         transform: unset
     }
     @media (max-height: 700px) {
-        top: 20%;
+        top: 25%;
         transform: unset
     }
     @media (max-width: 576px) {
