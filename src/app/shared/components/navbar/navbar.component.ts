@@ -5,7 +5,7 @@ import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { DOCUMENT } from '@angular/common';
-import { CookieService } from 'ngx-cookie';
+import { CookieService } from '@gorniv/ngx-universal';
 import { NavbarService } from 'src/app/core/services/navbar.service';
 import { isPlatformBrowser } from '@angular/common';
 import { CoreBusinessService } from 'src/app/modules/core-business/services/core-business.service';

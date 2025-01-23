@@ -12,7 +12,7 @@ import { ApiInterceptor } from './core/interceptors/api.interceptor';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { CookieModule } from 'ngx-cookie';
+import { CookieModule } from '@gorniv/ngx-universal';
 // import { AgmCoreModule } from '@agm/core';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 

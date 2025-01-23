@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CookieService } from 'ngx-cookie';
+import { CookieService } from '@gorniv/ngx-universal';
 
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
