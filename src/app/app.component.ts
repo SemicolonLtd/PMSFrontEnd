@@ -2,7 +2,7 @@ import { DOCUMENT, isPlatformBrowser, ViewportScroller } from '@angular/common';
 import { Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { CookieService } from 'ngx-cookie';
+import { CookieService } from '@gorniv/ngx-universal';
 import { filter } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
