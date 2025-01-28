@@ -1,0 +1,64 @@
+<div class="fleets">
+    <!-- <img src="assets/images/global/pages-wave-top.webp" alt="" class="pages-wave-top"> -->
+    <div class="header flex align-items-center justify-content-center">
+        <img src="assets/images/global/core_business.webp" alt="" class="cover">
+        <div class="content">
+            <h2 class="title">{{'Navbar.OurBusiness' | translate}}</h2>
+        </div>
+    </div>
+    <!-- <app-loading type="small" *ngIf="topFleetLoading && !searchMode" ></app-loading>  -->
+    <ng-container *ngIf="coreCategories">
+        <div class="fleets-list mt-5" *ngIf="coreCategories?.length && !loading">
+            <div class="pms-container">
+                <!-- <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb> -->
+                <div class="filter-btns text-center mb-5">
+                    <p-selectButton 
+                    [options]="coreCategories" 
+                    [(ngModel)]="selectedBusinessSlug" 
+                    optionLabel="label" 
+                    optionValue="value"
+                    (onChange)="$event.value !== null ? onSelectCategory($event) : null"
+                    />
+                </div>
+                <div class="filtered-fleets mt-5">
+                    <div class="grid">
+                        <ng-container *ngIf="coreCategories?.length">
+                            <div class="card-wrapper xl:col-3 md:col-6 sm:col-12 mb-2" *ngFor="let fleet of businessCoreList">
+                                <a 
+                                class="fleet-card border-round-xs" 
+                                [routerLink]="'/core-business/details/' + fleet.slug"
+                                > 
+                                    <div class="img-wrapper">
+                                        <img class="w-full border-round-xs" [src]="fleet.image" alt="Project Image">
+                                    </div>
+                                    <div class="content">
+                                        <div class="data">
+                                            <div class="info">
+                                                <h5 class="title" *ngIf="fleet?.title">
+                                                    {{fleet?.title | textSlice : 'title' : 40}}
+                                                </h5>
+                                                <button class="discover_btn">
+                                                    <i class="pi pi-angle-right" *ngIf="lang == 'en'"></i>
+                                                    <i class="pi pi-angle-left" *ngIf="lang == 'ar'"></i>
+                                                    <span>{{'General.DiscoverMore' | translate}}</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <ng-container *ngFor="let schema of schemaList">
+                                <ngx-json-ld [json]="schema"></ngx-json-ld>
+                            </ng-container>
+                        </ng-container>
+                        <!-- <div class="load-more" *ngIf="(paginationData?.total! > businessCoreList?.length!) && !loading">
+                            <p-button label="{{'Fleets.More' | translate}}" (click)="loadMore()" />
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <app-loading type="small" *ngIf="loading" ></app-loading>
+    <app-empty-state *ngIf="!businessCoreList?.length && !loading"></app-empty-state>
+</div>

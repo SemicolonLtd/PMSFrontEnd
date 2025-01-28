@@ -80,7 +80,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
               menu: res.data?.data?.map((item: any) => {
                 return {
                   name: item.title,
-                  link: 'core-business/' + item.slug,
+                  link: item.url,
                   core_sub_menu: item.business,
                   url: item.url
                 }
@@ -118,6 +118,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
     this.isSticky = scrollPosition > 50
+  }
+
+  onLogoClicked(): void {
+    this.navDetailsOpened = false;
   }
 
   // checkCookiesForLang(): void {
