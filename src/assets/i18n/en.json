@@ -14,7 +14,9 @@
         "BackToTop":"Back To Top",
         "DiscoverMore":"Discover More",
         "Events":"Events",
-        "DiscoverPMS":"Discover PMS's"
+        "DiscoverPMS":"Discover PMS's",
+        "Company":"Powered by Semicolon Ltd",
+        "Copyright":"All rights reserved © 2024 PMS"
     },
     "Navbar": {
         "Home":"Home",
