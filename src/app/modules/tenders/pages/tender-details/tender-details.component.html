@@ -83,7 +83,7 @@
                                             </th> -->
                                             <!-- <td class="title-col">{{ 'Projects.StartDate' | translate }}</td> -->
                                             <td class="info-col">
-                                                <div [innerHTML]="tenderData['terms']"></div>
+                                                <div class="html-content" [innerHTML]="tenderData['terms']"></div>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -129,7 +129,7 @@
                     <!-- </div> -->
                 </div>
                 <div class="col-12">
-                    <div class="text" [innerHTML]="sanitizeHtml(tenderData?.desc)">
+                    <div class="text html-content" [innerHTML]="sanitizeHtml(tenderData?.desc)">
                     </div>
                 </div>
             </div>

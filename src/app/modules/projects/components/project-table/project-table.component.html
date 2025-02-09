@@ -98,7 +98,7 @@
                     {{ 'Projects.ProjectDescription' | translate }}
                 </td>
                 <td class="data">
-                   <div [innerHTML]="projectData.desc"></div>
+                   <div class="html-content" [innerHTML]="projectData.desc"></div>
                 </td>
             </tr>
             <tr>
@@ -109,7 +109,7 @@
                     {{ 'Projects.ScopeOfWork' | translate }}
                 </td>
                 <td class="data">
-                   <div [innerHTML]="projectData.scope"></div>
+                   <div class="html-content" [innerHTML]="projectData.scope"></div>
                 </td>
             </tr>
             <tr>
@@ -120,7 +120,7 @@
                     {{ 'Projects.MarineVesselsUsedInTheProject' | translate }}
                 </td>
                 <td class="data">
-                    <div *ngIf="projectData?.marine" [innerHTML]="projectData?.marine"></div> 
+                    <div *ngIf="projectData?.marine" class="html-content" [innerHTML]="projectData?.marine"></div> 
                     <span *ngIf="!projectData?.marine">-</span>
                 </td>
             </tr>
@@ -132,7 +132,7 @@
                     {{ 'Projects.WorkVolume' | translate }}
                 </td>
                 <td class="data work-vol">
-                    <div [innerHTML]="projectData.work_volume"></div>
+                    <div class="html-content" [innerHTML]="projectData.work_volume"></div>
                 </td>
             </tr>
         </tbody>

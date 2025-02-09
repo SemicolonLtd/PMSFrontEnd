@@ -5,7 +5,7 @@
             <span class="txt" *ngIf="!htmlDesc">
                 {{Desc}}
             </span>
-            <span class="txt" *ngIf="htmlDesc" [innerHtml]="Desc">
+            <span class="txt html-content" *ngIf="htmlDesc" [innerHtml]="Desc">
             </span>
         </ng-container>
     </div>

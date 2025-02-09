@@ -25,7 +25,7 @@
                     </p-galleria>
                 </div>
             </div> -->
-            <div class="text" [innerHTML]="sanitizeHtml(fleetData?.desc)">
+            <div class="text html-content" [innerHTML]="sanitizeHtml(fleetData?.desc)">
             </div>
         </div>
         <app-loading type="small" *ngIf="loading"></app-loading>
