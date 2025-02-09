@@ -76,7 +76,7 @@
             <div class="navbar-wrapper flex align-items-center justify-content-between">
                 <div class="logo-wrapper">
                     <a routerLink="/" class="flex align-items-center">
-                        <img class="logo-img" src="assets/images/global/logo.svg" alt="">
+                        <img (click)="onLogoClicked()" class="logo-img" src="assets/images/global/logo.svg" alt="">
                         <h1 class="logo-txt">{{"Navbar.PMS" | translate}}</h1>
                     </a>
                 </div>
@@ -201,7 +201,7 @@
         </div>
     </div>
     <div class="pms-container flex justify-content-between align-items-center py-2 bg-white">
-        <img class="logo-img" routerLink="/" src="assets/images/global/logo.svg" alt="">
+        <img class="logo-img" (click)="onLogoClicked()" routerLink="/" src="assets/images/global/logo.svg" alt="">
 
         <p-sidebar [(visible)]="sidebarMobileVisible"  [position]="lang == 'en' ? 'left' : 'right'">
             <ng-template pTemplate="header">

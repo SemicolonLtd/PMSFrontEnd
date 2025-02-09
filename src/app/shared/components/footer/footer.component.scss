@@ -75,6 +75,11 @@
 }
 
 .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
     padding-block: 0.5rem;
     background-color: #C7DCF1;
+    font-size: 0.9rem;
 }

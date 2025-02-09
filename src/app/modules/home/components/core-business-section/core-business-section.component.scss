@@ -68,12 +68,15 @@
         .front, .back {
             position: absolute;
             img {
-                width: 25rem;
-                height: 380px;
+                // width: 25rem;
+                width: 28rem;
+                height: 410px;
             }
             @media (max-width: 1440px) {
                 img {
-                    width: 22rem;
+                    width: 28rem;
+                    height: 395px;
+                    // width: 22rem;
 
                 }
             }
