@@ -32,8 +32,10 @@
                 <div class="content-wrapper col-12">
                     <div class="images">
                         <div class="news-images">
-                            <p-galleria [value]="businessData?.media" [responsiveOptions]="responsiveOptions"
-                                [numVisible]="5">
+                            <p-galleria [value]="businessData?.media" [showItemNavigators]="businessData?.media?.length > 1" [responsiveOptions]="responsiveOptions"
+                                [numVisible]="5" [showThumbnailNavigators]="businessData?.media?.length > 5" [circular]="true"
+                                [showThumbnails]="businessData?.media?.length > 1"
+                                >
                                 <ng-template pTemplate="item" let-item>
                                     <p-image [src]="item.image"  [preview]="true"  />
                                 </ng-template>
@@ -45,7 +47,7 @@
                             </p-galleria>
                         </div>
                     </div>
-                    <div class="text" [innerHTML]="businessData?.desc">
+                    <div class="text html-content" [innerHTML]="sanitizeHtml(businessData?.desc)">
                     </div>
                 </div>
             </div>
@@ -53,7 +55,7 @@
         <app-loading type="small" *ngIf="loading" ></app-loading>
 
         <div class="similar-projects mt-5" *ngIf="businessProjectsData?.length && !businessProjectsLoading">
-            <span class="title block font-bold text-2xl pb-2 mb-4">
+            <span class="title block font-bold text-2xl pb-2 mb-4 color-primary-medium">
                 {{'SimilarTitles.CoreBusinessProjects' | translate}}
             </span>
             <!-- <p-carousel [value]="businessProjectsData" [numVisible]="3" [numScroll]="3" [circular]="true"

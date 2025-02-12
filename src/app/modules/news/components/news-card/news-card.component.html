@@ -1,18 +1,18 @@
 <div class="news-card-container" [routerLink]="'/news/details/' + newsData.slug">
     <div class="news-card">
-        <p-card [header]="newsData.title | textSlice : 'title'">
+        <p-card [header]="newsData.title | textSlice : 'title' : 40">
             <ng-template pTemplate="header">
                 <img alt="Card" [src]="newsData.image" />
             </ng-template>
             <p>
-                {{newsData.short | textSlice : 'desc'}}
+                {{newsData.short | textSlice : 'desc' : 70}}
             </p>
             <ng-template pTemplate="footer">
                 <span>{{newsData.date}}</span>
             </ng-template>
         </p-card>
-        <span class="news-badge desktop" *ngIf="newsData?.category_title">
+        <!-- <span class="news-badge desktop" *ngIf="newsData?.category_title">
             {{ newsData.category_title}}
-        </span>
+        </span> -->
     </div>
 </div>

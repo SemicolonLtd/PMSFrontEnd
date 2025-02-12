@@ -1,11 +1,11 @@
 <div class="certificates pb-5">
     <div class="header flex align-items-center justify-content-center">
-        <img src="assets/images/global/certificates.webp" alt="" class="cover">
+        <img src="assets/images/global/certificates-bg.jpg" alt="" class="cover">
         <div class="content">
             <h2 class="title">{{'Certificates.Certificates' | translate}}</h2>
-            <span class="text mt-3">
+            <!-- <span class="text mt-3">
                 {{'Certificates.Desc' | translate}}
-            </span>
+            </span> -->
         </div>
     </div>
     <div class="pms-container">
@@ -14,14 +14,24 @@
     <div class="center-bar flex align-items-center justify-content-center mb-5">
         <div class="wrapper text-center">
             <h4 class="title subtitle-font-size">{{'Certificates.PMSCertificates' | translate}} </h4>
-            <span class="txt">
+            <!-- <span class="txt">
                 It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.
-            </span>
+            </span> -->
         </div>
     </div>
     <ng-container *ngIf="certificatesList?.length && !loading">
         <div class="all-certificates">
             <div class="pms-container">
+                <div class="desc">
+                    <p>
+                        {{'Certificates.Desc' | translate}}
+                    </p>
+                    <ul>
+                        <li>{{'Certificates.DescList1' | translate}}</li>
+                        <li>{{'Certificates.DescList2' | translate}}</li>
+                        <li>{{'Certificates.DescList3' | translate}}</li>
+                    </ul>
+                </div>
                 <div class="grid justify-content-center">
                     <div class="xl:col-3 md:col-4 sm:col-6 mb-5" *ngFor="let certificate of certificatesList">
                         <div class="certificate-card" itemscope itemtype="https://schema.org/Certification">
@@ -36,7 +46,7 @@
                             </ng-template>
                         </p-image>
                             <div class="card-footer">
-                                <h3 class="card-title" itemprop="name">{{certificate.title}}</h3>
+                                <h3 class="card-title" itemprop="name">{{certificate.title | textSlice : 'title' : 40}}</h3>
                             </div>
                         </div>
                     </div>

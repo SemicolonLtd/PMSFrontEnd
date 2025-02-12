@@ -5,6 +5,7 @@ import { NewsService } from '../../services/news.service';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
 import { MetaService } from 'src/app/core/services/meta.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-news-details',
@@ -14,21 +15,17 @@ import { MetaService } from 'src/app/core/services/meta.service';
 export class NewsDetailsComponent implements OnInit, OnDestroy {
   websiteUrl = environment.websiteUrl;
   responsiveOptions: any[] = [
-    // {
-    //   breakpoint: '2000px',
-    //   numVisible: 4
-    // },
     {
         breakpoint: '1024px',
-        numVisible: 3
+        numVisible: 5
     },
     {
         breakpoint: '768px',
-        numVisible: 2
+        numVisible: 3
     },
     {
         breakpoint: '560px',
-        numVisible: 1
+        numVisible: 2
     }
   ];
   newsData: any = {};
@@ -49,12 +46,17 @@ export class NewsDetailsComponent implements OnInit, OnDestroy {
     private newsService: NewsService,
     private route: ActivatedRoute,
     private router: Router,
+    private sanitizer: DomSanitizer,
     private translateService: TranslateService,
     private metaService: MetaService
   ) { }
 
   ngOnInit(): void {
     this.getNewsSlugFromParams();
+  }
+
+  sanitizeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
   getNewsSlugFromParams(): void {

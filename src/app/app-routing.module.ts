@@ -9,10 +9,13 @@ const routes: Routes = [
   {path: 'news', loadChildren: ()=> import('./modules/news/news.module').then((m)=> m.NewsModule)},
   {path: 'core-business', loadChildren: ()=> import('./modules/core-business/core-business.module').then((m)=> m.CoreBusinessModule)},
   {path: 'events', loadChildren: ()=> import('./modules/events/events.module').then((m)=> m.EventsModule)},
+  {path: 'fleets', loadChildren: ()=> import('./modules/fleets/fleets.module').then((m)=> m.FleetsModule)},
+  {path: 'tenders', loadChildren: ()=> import('./modules/tenders/tenders.module').then((m)=> m.TendersModule)},
   {path: 'certificates', loadChildren: ()=> import('./modules/certificates/certificates.module').then((m)=> m.CertificatesModule)},
   {path: 'contact-us', loadChildren: ()=> import('./modules/contact-us/contact-us.module').then((m)=> m.ContactUsModule)},
   {path: 'faq', loadChildren: ()=> import('./modules/faq/faq.module').then((m)=> m.FaqModule)},
   {path: 'search-results', loadChildren: ()=> import('./modules/search-results/search-results.module').then((m)=> m.SearchResultsModule)},
+  // { path: '**', redirectTo: '', pathMatch: 'full' } // Fallback route
 
 ];
 
@@ -20,10 +23,11 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, {
     initialNavigation: 'enabledBlocking',
     scrollPositionRestoration: 'enabled',
+    useHash: false
 })],
   exports: [RouterModule],
-  // providers: [
-  //   { provide: UrlSerializer, useClass: LanguageUrlSerializer }
-  // ],
+  providers: [
+    { provide: UrlSerializer, useClass: LanguageUrlSerializer }
+  ],
 })
 export class AppRoutingModule { }

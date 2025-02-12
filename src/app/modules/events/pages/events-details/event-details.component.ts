@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
 import { MetaService } from 'src/app/core/services/meta.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-event-details',
@@ -25,7 +26,7 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
     },
     {
         breakpoint: '560px',
-        numVisible: 1
+        numVisible: 2
     }
   ];
 
@@ -48,11 +49,16 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
     private translateService: TranslateService,
     private route: ActivatedRoute,
     private router: Router,
+    private sanitizer: DomSanitizer,
     private metaService: MetaService
   ) { }
 
   ngOnInit(): void {
     this.getEventSlugFromParams();
+  }
+
+  sanitizeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
   getEventSlugFromParams(): void {
@@ -76,9 +82,6 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
             this.eventData = res?.data;
             this.eventData.media = [
               ...this.eventData.media
-              // {
-              //   image: this.eventData.image
-              // }
             ];
             this.breadcrumbItems.push(
               {

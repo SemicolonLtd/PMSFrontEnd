@@ -1,0 +1,113 @@
+.fleet-details {
+    @media (max-width:992px) {
+        margin-top: 7rem;
+    }
+}
+.content-wrapper {
+    width: 100%; 
+    .images {
+        float: right;
+        width: 50%; // or any width you want
+        height: auto;
+        margin: 10px; // optional
+        shape-outside: triangle(50%);
+        @media (max-width: 768px) {
+            width: 100%;
+        }
+        &:lang(ar){
+        float: left;
+        }
+    }
+    .text {
+        margin-left: 0;
+    }
+}
+
+.header {
+    position: relative;
+    height: 85vh;
+    .cover {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: fill;
+        filter: brightness(0.5);
+
+    }
+    .content {
+        position: absolute;
+        left: 0%;
+        bottom: 12.5%;
+        color: white;
+        text-align: start;
+        padding-inline: 5%;
+        .title {
+            font-size: 3rem;
+        }
+        &:lang(ar) {
+            left: unset;
+            right: 0%;
+        }
+    }
+    @media (max-width: 1440px) {
+        .content {
+            .title {
+                font-size: 2.5rem;
+            }
+        }
+    }
+    @media (max-width: 768px) {
+        height: 30vh;
+        .content {
+            .title {
+                font-size: 1.8rem;
+            }
+        }
+    }
+}
+
+.table-part {
+    padding-top: 1em;
+    table {
+        background-color: white;
+        width: 100%;
+        .img-col {
+            text-align: center;
+            img {
+                width: 1em;
+                vertical-align: middle;
+            }
+        }
+        .title-col {
+            color: #333;
+            font-size: 1em;
+            font-weight: 600;
+            text-transform: capitalize;
+            // white-space: nowrap;
+        }
+        .info-col {
+            color: #333;
+            font-size: 1em;
+        }
+    }
+    @media (max-width: 992px) {
+        margin-top: 1rem;
+    }
+}
+
+::ng-deep {
+    .fleet-details {
+        .p-image {
+            img {
+                width: 100%;
+            }
+        }
+        .p-galleria-item-nav {
+            z-index: 2;
+        }
+    }
+}

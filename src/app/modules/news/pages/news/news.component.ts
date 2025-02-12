@@ -1,8 +1,10 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { MetaService } from 'src/app/core/services/meta.service';
+import { EventsService } from 'src/app/modules/events/services/events.service';
 import { environment } from 'src/environments/environment';
 import { NewsService } from '../../services/news.service';
 
@@ -15,7 +17,8 @@ export class NewsComponent implements OnInit, OnDestroy {
   searchTitle = this.translateService.instant('Search.OurNews')
   isBrowser!: boolean;
   bigCardNews: any[] = [];
-  pageSize = 10;
+  newsPageSize = 5;
+  eventsPageSize = 5;
   smallCardsNews: any[] = [];
   newsData: any[] = [];
   newsCategories: any[] = [];
@@ -24,16 +27,20 @@ export class NewsComponent implements OnInit, OnDestroy {
   paginationData: any;
   searchMode = false;
   searchQuery = '';
-  selectedIndex: any = null;
+  selectedIndex: any = 0;
   subscriptions = new Subscription();
   schemaObj: any;
   schemaList: any[] = [];
-
+  lang = environment.lang
+  activeIndex = 0
   constructor(
     private newsService: NewsService,
     private translateService:TranslateService,
+    private route:ActivatedRoute,
     @Inject(PLATFORM_ID) private platformId: Object,
-    private metaService: MetaService
+    private metaService: MetaService,
+    private router:Router,
+    private eventsService: EventsService
   ) { }
 
   ngOnInit(): void {
@@ -41,28 +48,38 @@ export class NewsComponent implements OnInit, OnDestroy {
     this.getNewsCategories();
   }
 
+  checkTabIndexParam(): void {
+    this.selectedIndex = 0;
+    this.route.queryParams.subscribe(
+      (params)=> {
+        if (params['index']) {
+          this.selectedIndex = params['index']
+          this.selectedCategoryId = this.newsCategories[this.selectedIndex].id;
+          this.getNewsData();
+        } else {
+          this.selectedIndex = 0;
+          this.getRecentNews();
+        }
+      }
+    )
+  }
+
   getNewsCategories(): void {
-    // this.loading = true;
     this.subscriptions.add(
       this.newsService.getNewsCategories().subscribe({
         next: (res: any) => {
-          // this.loading = false
           if(res?.status == 200) {
-            // this.newsCategories = res?.data?.data;
-            // this.selectedCategoryId = this.newsCategories[0].id;
-            // this.getNewsData();
             this.newsCategories = [
               {
                 id: 'x',
                 name: this.translateService.instant('General.All'),
               },
-              ...res?.data?.data
+              ...res?.data?.data,
             ];
-            this.getRecentNews();
+            this.checkTabIndexParam()
           }
         },
         error: (err: any) => {
-          // this.loading = false
         }
       })
     )
@@ -71,15 +88,15 @@ export class NewsComponent implements OnInit, OnDestroy {
   getNewsData(): void {
     this.loading = true;
     const API = this.searchMode ? 
-    this.newsService.searchForNews(this.searchQuery, this.pageSize) :
-    this.newsService.getNews(this.selectedCategoryId, this.pageSize) ;
+    this.newsService.searchForNews(this.searchQuery, this.newsPageSize) :
+    this.newsService.getNews(this.selectedCategoryId, this.newsPageSize) ;
 
     this.subscriptions.add(
       API.subscribe({
         next: (res: any) => {
           if(res?.status == 200) {
-            this.newsData = [... this.newsData, ...res?.data?.data];
-            this.paginationData = res?.data?.meta?.pagination;
+            this.newsData = res?.data?.data
+            this.paginationData = res?.data?.links;
             this.bigCardNews = this.newsData?.filter((card: any) => card.big_card == true);
             this.smallCardsNews = this.newsData?.filter((card: any) => card.big_card == false);
             this.handleMetaTags();
@@ -95,25 +112,69 @@ export class NewsComponent implements OnInit, OnDestroy {
   }
 
   onSelectCategory(index: any): void {
+    this.selectedIndex = index;
     this.newsData = [];
     this.bigCardNews = [];
     this.smallCardsNews = [];
-    this.selectedIndex = index;
-    if(this.selectedIndex == 0) {
+    this.newsPageSize = 5;
+    if(index == 0) {
       this.getRecentNews();
-    } else {
+    } 
+    else {
       this.selectedCategoryId = this.newsCategories[index].id;
       this.getNewsData();
     }
   }
 
+  getEventsData(): void {
+    this.loading = true;
+    this.subscriptions.add(
+      this.eventsService.getEvents(this.eventsPageSize).subscribe({
+        next: (res: any) => {
+          if(res?.status == 200) {
+            this.newsData = res?.data?.data;
+            this.bigCardNews = this.newsData?.filter((card: any) => card.big_card == true);
+            this.smallCardsNews = this.newsData?.filter((card: any) => card.big_card == false);
+            this.paginationData = res?.data?.links;
+          }
+          this.loading = false
+        },
+        error: (err: any) => {
+          this.loading = false
+        }
+      })
+    )
+  }
+
   loadMore(): void {
-    this.pageSize += 10;
     if(this.selectedIndex == 0) {
+      this.newsPageSize += 5;
       this.getRecentNews();
-    } else {
+    } 
+    else {
+      this.newsPageSize += 5;
+      this.selectedCategoryId = this.newsCategories[this.selectedIndex].id;
       this.getNewsData();
     }
+  }
+
+  getMoreNews(url: any): void {
+    console.log(this.newsData);
+    
+    this.loading = true
+    this.newsService.getMoreNews(url).subscribe(
+      (res) => {
+        this.loading = false;
+        this.newsData = [...this.newsData, ...res['data']['data']];[]
+        this.paginationData = res?.data?.links;
+        this.bigCardNews = this.newsData?.filter((card: any) => card.big_card == true);
+        this.smallCardsNews = this.newsData?.filter((card: any) => card.big_card == false);
+        this.handleSchema();
+      },
+      (error: any) => {
+        this.loading = false;
+      }
+    )
   }
 
   searchForNews(query: string): void {
@@ -136,11 +197,11 @@ export class NewsComponent implements OnInit, OnDestroy {
   getRecentNews(): void {
     this.loading = true;
     this.subscriptions.add(
-      this.newsService.getAllNews(this.pageSize).subscribe({
+      this.newsService.getAllNews(this.newsPageSize).subscribe({
         next: (res: any) => {
           if(res?.status == 200) {
-            this.newsData = [... this.newsData, ...res?.data?.data];
-            this.paginationData = res?.data?.meta?.pagination;
+            this.newsData = res?.data?.data
+            this.paginationData = res?.data?.links
             this.bigCardNews = this.newsData?.filter((card: any) => card.big_card == true);
             this.smallCardsNews = this.newsData?.filter((card: any) => card.big_card == false);
           }

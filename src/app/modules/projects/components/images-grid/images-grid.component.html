@@ -1,0 +1,7 @@
+<ng-container>
+    <div *ngFor="let row of rows" class="row images-row">
+        <div *ngFor="let image of row.images; let i = index" [class]="'col-lg-' + row.config[i]" class="image-container">
+            <img [src]="image" alt="Image" class="img-fluid" />
+        </div>
+    </div>
+</ng-container>

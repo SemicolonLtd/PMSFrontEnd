@@ -27,6 +27,7 @@
 .p-galleria {
     .p-galleria-thumbnail-item-content {
         overflow: hidden;
+        // margin-inline: 0.2rem;
     }
     .p-galleria-item-wrapper {
         border-radius: 20px;
@@ -47,6 +48,8 @@
         }
     }
     .p-galleria-thumbnail-wrapper {
+        // width: fit-content;
+        // margin-inline: auto;
         box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2509803922);
         border-radius: 10px;
         margin-top: 1rem;
@@ -68,6 +71,9 @@
             max-height: 450px;
         }
     }
+    .p-image-mask {
+        z-index: 1107 !important;
+    }
 }
 
 pre {
@@ -75,10 +81,18 @@ pre {
     overflow: visible;
 }
 
+code, h1, h2, h3, h4, h5, h6 {
+    color: unset;
+}
+
 .margin-avoid-navbar {
-    margin-top: 9.88rem;
+    margin-top: 9.1rem;
     @media (max-width: 992px) {
         margin-top: 7rem;
+    }
+    @media (max-width: 400px) {
+        // padding-inline: 2rem;
+        margin-top: 6rem;
     }
 }
 

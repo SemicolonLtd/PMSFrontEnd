@@ -1,18 +1,23 @@
-<div class="project-card">
-    <div class="img-wrapper">
-        <img class="w-full rounded-3" [src]="projectData.image" alt="Project Image">
-    </div>
-    <div class="content flex justify-content-between mt-3">
+<div class="project-card" >
+    <a class="img-wrapper" [routerLink]="'/projects/details/'+ projectData.slug ">
+        <img class="w-full rounded-1" [src]="projectData.image" alt="Project Image">
+    </a>
+    <div class="content mt-3">
         <div class="info">
-            <h5 class="title">
-                {{projectData.title | textSlice : 'desc'}}
-            </h5>
+            <a class="title" [routerLink]="'/projects/details/'+ projectData.slug ">
+                {{projectData.title | textSlice : 'desc' : 80}}
+            </a>
             <span class="date">
                 {{projectData.date}}
             </span>
         </div>
-        <a class="details-btn" [routerLink]="'/projects/details/'+ projectData.slug ">
-            <p-button icon="pi pi-angle-right" [rounded]="true" severity="secondary"  />
+        <a class="discover_btn" [routerLink]="'/projects/details/'+ projectData.slug ">
+            <i class="pi pi-angle-right" *ngIf="lang == 'en'"></i>
+            <i class="pi pi-angle-left" *ngIf="lang == 'ar'"></i>
+            <span>{{'General.DiscoverMore' | translate}}</span>
         </a>
+        <!-- <a class="details-btn" [routerLink]="'/projects/details/'+ projectData.slug ">
+            <p-button icon="pi pi-angle-right" [rounded]="true" severity="secondary"  />
+        </a> -->
     </div>
 </div>

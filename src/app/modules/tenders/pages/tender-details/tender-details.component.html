@@ -1,0 +1,150 @@
+<div class="event-details margin-avoid-navbar">
+    <div class="pms-container">
+        <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
+        <div class="event-info" *ngIf="tenderData && !loading">
+            <div class="grid">
+                <div class="col-12">
+                    <div class="head-wrapper flex align-items-center justify-content-end">
+                        <!-- <h2 class="project-title">{{ tenderData?.title }}</h2> -->
+                        <div class="share_details">
+                            <span class="txt">
+                                {{ 'General.Share' | translate }}
+                            </span>
+                            <!-- (opened)="onLinkOpened($event)" -->
+                            <button class="share_link" shareButton="facebook" 
+                            [url]="websiteUrl + '/tenders/details/' + tenderData?.slug"
+                            [title]="tenderData.title"
+                            [image]="tenderData.image"
+                            [description]="tenderData.short"
+                            >
+                                <img src="assets/images/global/facebook.svg" alt="">
+                            </button>
+                            <button class="share_link" shareButton="twitter"
+                            [url]="websiteUrl + '/tenders/details/' + tenderData?.slug"
+                            [title]="tenderData.title"
+                            [image]="tenderData.image"
+                            [description]="tenderData.short">
+                                <img src="assets/images/global/twitter.svg" alt="">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-wrapper col-12">
+                    <!-- <div class="grid"> -->
+                        <!-- <div class="lg:col-6 md:col-12 sm:col-12"> -->
+                            <div class="table-part w-100">
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="img-col" style="color: white;background-color: var(--primary-color-light);">
+                                                <i class="pi pi-cog"></i>
+                                            </th>
+                                            <th colspan="2" class="text-lg" style="color: white;background-color: var(--primary-color-light);">
+                                                {{'Tenders.TenderInfo' | translate}}
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngIf="tenderData['date']">
+                                            <th class="img-col" scope="row">
+                                                <img src="assets/images/global/date-icon.svg" alt="">
+                                            </th>
+                                            <td class="title-col">{{ 'Projects.StartDate' | translate }}</td>
+                                            <td class="info-col">{{ tenderData['date'] }}</td>
+                                        </tr>
+                                        <tr *ngIf="tenderData['end_date']">
+                                            <th class="img-col" scope="row">
+                                                <img src="assets/images/global/date-icon.svg" alt="">
+                                            </th>
+                                            <td class="title-col">{{ 'Projects.EndDate' | translate }}</td>
+                                            <td class="info-col">{{ tenderData['end_date'] }}</td>
+                                        </tr>
+                                        <tr *ngIf="tenderData['address']">
+                                            <th class="img-col" scope="row">
+                                                <img src="assets/images/global/location-icon.svg" alt="">
+                                            </th>
+                                            <td class="title-col">{{ 'Projects.Location' | translate }}</td>
+                                            <td class="info-col">{{ tenderData['address'] }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2" class="text-lg" style="color: white;background-color: var(--primary-color-light);">
+                                                {{'Tenders.Terms' | translate}}
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngIf="tenderData['terms']">
+                                            <!-- <th class="img-col" scope="row">
+                                                <img src="assets/images/global/date-icon.svg" alt="">
+                                            </th> -->
+                                            <!-- <td class="title-col">{{ 'Projects.StartDate' | translate }}</td> -->
+                                            <td class="info-col">
+                                                <div class="html-content" [innerHTML]="tenderData['terms']"></div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2" class="text-lg" style="color: white;background-color: var(--primary-color-light);">
+                                                {{'Tenders.PDF' | translate}}
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngIf="tenderData['pdfUrl']">
+                                            <td class="info-col">
+                                                <a [href]="tenderData['pdfUrl']" target="_blank">
+                                                    {{'Tenders.ClickHere' | translate}}
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <!-- </div> -->
+                        <!-- <div class="lg:col-6 md:col-12 sm:col-12"> -->
+                            <div class="images w-100">
+                                <div class="project-images">
+                                    <p-galleria [value]="tenderData?.media" [showItemNavigators]="tenderData?.media?.length > 1" [responsiveOptions]="responsiveOptions"
+                                        [numVisible]="5" [showThumbnailNavigators]="tenderData?.media?.length > 5" [circular]="true"
+                                        [showThumbnails]="tenderData?.media?.length > 1">
+                                        <ng-template pTemplate="item" let-item>
+                                            <p-image [preview]="true" [src]="item.image" />
+                                        </ng-template>
+                                        <ng-template pTemplate="thumbnail" let-item>
+                                            <div class="grid grid-nogutter justify-content-center">
+                                                <img [src]="item.image" style="width: 100%;" />
+                                            </div>
+                                        </ng-template>
+                                    </p-galleria>
+                                </div>
+                            </div>
+                        <!-- </div> -->
+                    <!-- </div> -->
+                </div>
+                <div class="col-12">
+                    <div class="text html-content" [innerHTML]="sanitizeHtml(tenderData?.desc)">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <app-loading type="small" *ngIf="loading"></app-loading>
+        <div class="similar-events mt-5" *ngIf="similarTendersData?.length && !similarTendersLoading">
+            <span class="title block font-bold text-2xl color-primary-medium pb-2 mb-4">
+                {{'SimilarTitles.SimilarTenders' | translate}}
+            </span>
+            <div class="grid">
+                <div class="xl:col-4 lg:col-4 md:col-6 sm:col-12" *ngFor="let event of similarTendersData">
+                    <app-event-card [eventData]="event" [cardType]="'tender'"></app-event-card>
+                </div>
+            </div>
+        </div>
+        <app-loading type="small" *ngIf="similarTendersLoading"></app-loading>
+    </div>
+</div>

@@ -15,6 +15,7 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
 
     searchTitle = this.translateService.instant('Search.OurCoreBusiness')
     coreList: any[] = [];
+    businessCoreList: any[] = [];
     loading = false;
     searchMode = false;
     searchQuery = '';
@@ -22,6 +23,7 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
     paginationData: any;
     selectedBusinessSlug = '';
     subscription = new Subscription();
+    lang = environment.lang
 
     constructor(
         private coreBusinessService: CoreBusinessService,
@@ -32,7 +34,6 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit(): void {
-        this.getCoreList();
         this.handleMetaTags();
         this.getBusinessSlugFromParams();
     }
@@ -41,6 +42,7 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
         this.route.params.subscribe((params: any) => {
             if (params['slug']) {
                 this.selectedBusinessSlug = params['slug'];
+                this.getCoreList();
             }
         });
     }
@@ -64,18 +66,27 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
                 next: (res: any) => {
                     if (res?.status == 200) {
                         this.coreList = res?.data?.data;
+                        this.coreList.map(
+                            (core) => {
+                                if (core.slug === this.selectedBusinessSlug) {
+                                    this.businessCoreList = core.business
+                                }
+                            }
+                        )
+                        console.log(this.coreList);
+                        
                     }
                     this.loading = false;
                 },
                 error: (err: any) => {
                     this.loading = false;
                 },
-                complete: () => {
-                    if (this.selectedBusinessSlug) {
-                        this.scrollToDiv(this.selectedBusinessSlug);
-                        this.selectedBusinessSlug = '';  // reset the selected slug after scrolling to it
-                    }
-                }
+                // complete: () => {
+                //     if (this.selectedBusinessSlug) {
+                //         this.scrollToDiv(this.selectedBusinessSlug);
+                //         this.selectedBusinessSlug = '';  // reset the selected slug after scrolling to it
+                //     }
+                // }
             })
         );
     }
@@ -99,7 +110,7 @@ export class CoreBusinessComponent implements OnInit, OnDestroy {
 
     handleMetaTags(): void {
         const content: any = {
-          title: 'Navbar.CoreBusiness',
+          title: 'Navbar.OurBusiness',
           useTranslation: true,
           description: 'Core Business Discription',
           keywords: 'Core Business',

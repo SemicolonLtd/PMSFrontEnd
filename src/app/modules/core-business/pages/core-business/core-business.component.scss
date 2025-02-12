@@ -1,12 +1,93 @@
 .core-business {
     position: relative;
-
+    @media (max-width:992px) {
+        margin-top: 7rem;
+    }
 }
+
+.pms-container {
+    padding-inline: 10%;
+    @media (max-width: 1500px) {
+        padding-inline: 7%;
+    }
+    @media (max-width: 1300px) {
+        padding-inline: 3%;
+    }
+    @media (max-width: 992px) {
+        padding-inline: 2rem;
+    }
+}
+
 .core-img {
     img {
-        aspect-ratio: 10 / 11;
+        // aspect-ratio: 10 / 11;
+        aspect-ratio: 1 / 1;
         object-fit: fill;
     }
+}
+
+.discover_btn {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    padding-bottom: 0.3rem;
+    i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--primary-color-medium);
+        color: white;
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        margin-inline-end: 0.4rem;
+    }
+    span {
+        color: var(--primary-color-medium);
+        transition: 0.4s all ease;
+        font-size: 0.9rem;
+    }
+}
+
+.fleet-card {
+    background-color: #EBF3F5;
+    box-shadow: 0px 1px 7px 0px #2A2A2A3D;
+    cursor: pointer;
+    transition: 0.4s all ease;
+    color: #000;
+    display: block;
+    &:hover {
+        .img-wrapper {
+            transform: translateY(-10px);
+        }
+    }
+    .img-wrapper {
+        min-height: 12.625rem;
+        max-height: 12.625rem;
+        transition: 0.4s all ease;
+        img {
+            object-fit: fill;
+            min-height: 12.625rem;
+            max-height: 12.625rem;
+        }
+    }
+    .content {
+        padding:1rem;
+        .info {
+            .title {
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+.core-desc {
+    font-size: 1.07rem;
+    color: black;
 }
 
 .action {
@@ -36,6 +117,58 @@
     }
 }
 
+.header {
+    position: relative;
+    height: 85vh;
+    .cover {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: fill;
+        filter: brightness(0.5);
+    }
+    .content {
+        position: absolute;
+        left: 0%;
+        bottom: 12.5%;
+        color: white;
+        text-align: start;
+        padding-inline: 5%;
+        .title {
+            font-size: 5rem;
+        }
+        .text {
+            font-size: 2.5rem;
+        }
+        &:lang(ar) {
+            left: unset;
+            right: 0%;
+        }
+    }
+    @media (max-width: 1440px) {
+        .content {
+            .title {
+                font-size: 4rem;
+            }
+        }
+    }
+    @media (max-width: 768px) {
+        height: 30vh;
+        .content {
+            .title {
+                font-size: 3rem;
+            }
+            .text {
+                font-size: 1.7rem;
+            }
+        }
+    }
+}
+
 ::ng-deep {
     .core-business {
         .core-data {
@@ -45,6 +178,10 @@
                 border-radius: 0;
                 background-color: white;
                 color: var(--primary-color-medium);;
+                font-size: 1.13rem;
+            }
+            .p-accordion-header-text {
+                color: black;
             }
         }
     }

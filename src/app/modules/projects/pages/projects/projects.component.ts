@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ProjectsService } from '../../services/projects.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
 import { MetaService } from 'src/app/core/services/meta.service';
@@ -16,11 +16,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   barTitle = this.translateService.instant('Projects.FollowOurProjects');
   pageTopProject: any;
   topProjectLoading = false;
-  stateOptions: any[] = [
-    { label: this.translateService.instant('Projects.RecentProjects'), value: 'recent-projects' },
-    { label: this.translateService.instant('Projects.CompletedProjects'), value: 'completed-projects' },
-    { label: this.translateService.instant('Projects.MegaProjects'), value: 'mega-projects' }
-  ];
+  stateOptions!: any[];
   projectsList: any[] = [];
   projectsLoading = false;
   pageSize = 10;
@@ -34,12 +30,27 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     private projectsService: ProjectsService,
     private route: ActivatedRoute,
     private translateService:TranslateService,
-    private metaService: MetaService
+    private metaService: MetaService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+
+    // this.getTopProjectData();
+    this.translateService.get([
+      'General.All',
+      'Projects.RecentProjects',
+      'Projects.TrackRecord',
+      'Projects.MegaProjects'
+    ]).subscribe(translations => {
+      this.stateOptions = [
+        { label: translations['Projects.RecentProjects'], value: 'recent-projects' },
+        { label: translations['Projects.MegaProjects'], value: 'mega-projects' },
+        { label: translations['Projects.TrackRecord'], value: 'completed-projects' }
+      ];
+    });
     this.getSelectedTypeFromParams();
-    this.getTopProjectData();
+
   }
 
   getSelectedTypeFromParams(): void {
@@ -47,8 +58,8 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       if(params['type']) {
         this.selectedType = params['type'];
       }
-      this.getProjectsDataByType();
     });
+    this.getProjectsDataByType();
   }
 
   getTopProjectData(): void {
@@ -70,16 +81,33 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
   getProjectsDataByType(): void {
     this.projectsLoading = true;
+    let type = this.selectedType;
+    if(type == 'recent-projects') {
+      type = 'completed-projects'
+    } else if(type == 'mega-projects') {
+      type = 'mega-projects'
+    } else if (type == 'completed-projects') {
+      type = 'recent-projects'
+      this.router.navigateByUrl('projects/track-record');
+    }
     const API = this.searchMode ? 
     this.projectsService.searchForProject(this.searchQuery, this.pageSize) :
-    this.projectsService.getProjectsByType(this.selectedType, this.pageSize)
+    this.projectsService.getProjectsByType(type, this.pageSize)
 
     this.subscriptions.add(
       API.subscribe({
         next: (res: any) => {
           if(res?.status == 200) {
-            this.projectsList = [... this.projectsList, ...res?.data?.data];
-            this.paginationData = res?.data?.meta?.pagination;
+            // if (this.selectedType === 'recent-projects') {
+            //   this.projectsList = [... this.projectsList, ...res?.data?.data[""]];
+            //   this.projectsList = this.projectsList.map((project: any) => {
+            //     project.image = 'assets/images/global/no-project-image.png';
+            //     return project;
+            //   });
+            // } else {
+              this.projectsList = res?.data?.data
+            // }
+            this.paginationData = res?.data?.links;
             this.handleMetaTags()
           }
           this.projectsLoading = false
@@ -109,9 +137,21 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     this.getProjectsDataByType();
   }
 
-  loadMore(): void {
-    this.pageSize += 10;
-    this.getProjectsDataByType();
+  getMoreProjects(url: any): void {
+    console.log(url);
+    
+    this.projectsLoading = true
+    this.projectsService.getMoreProjects(url).subscribe(
+      (res) => {
+        this.projectsLoading = false;
+        this.projectsList = [...this.projectsList, ...res['data']['data']];
+        this.paginationData = res?.data?.links;
+        this.handleMetaTags();
+      },
+      (error: any) => {
+        this.projectsLoading = false;
+      }
+    )
   }
 
   handleMetaTags(): void {

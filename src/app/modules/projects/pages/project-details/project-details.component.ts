@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { ProjectsService } from '../../services/projects.service';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
-import { Meta } from '@angular/platform-browser';
+import { DomSanitizer, Meta, SafeHtml } from '@angular/platform-browser';
 import { MetaService } from 'src/app/core/services/meta.service';
 
 @Component({
@@ -25,24 +25,21 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     },
     {
         breakpoint: '560px',
-        numVisible: 1
+        numVisible: 2
     }
   ];
 
   projectData: any = {};
+  projectImages: string[] = [];
   similarProjectsData: any[] = [];
   similarProjectsLoading = false
   slug: string = '';
   typeId: any;
   loading = false;
-  breadcrumbItems = [
-    {
-      name: this.translateService.instant('Navbar.Projects'),
-      link: '/events'
-    }
-  ];
+  breadcrumbItems:any[] = [];
   subscriptions = new Subscription();
   websiteUrl = environment.websiteUrl;
+  showDesc: boolean = false;
 
   constructor(
     private projectsService: ProjectsService,
@@ -50,6 +47,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     private translateService: TranslateService,
     private router: Router,
     private meta: Meta,
+    private sanitizer: DomSanitizer,
     private metaService: MetaService
   ) { }
 
@@ -57,6 +55,10 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     this.getProjectSlugFromParams();
   }
 
+  sanitizeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
+  
   getProjectSlugFromParams(): void {
     this.route.params.subscribe((params: any) => {
       if(params['slug']) {
@@ -82,15 +84,18 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
               //   image: this.projectData.image
               // }
             ];
+            this.projectImages = this.projectData.media.map((image: any) => image.image);
             this.breadcrumbItems.push(
               {
                 name: this.projectData?.menu,
-                link: '/projects/'
+                link: '/projects',
+                queryParams: { type: "mega-projects", lang: environment.lang }
               },
               {
-              name: this.projectData?.title,
-              link: '/projects/details/' + this.projectData?.slug
-            })
+                name: this.projectData?.title,
+                link: '/projects/details/' + this.projectData?.slug
+              }
+            )
             this.getSimilarProjects();
             this.handleMetaTags();
           }
@@ -136,9 +141,11 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
       // url: `${environment.websiteUrl}news/news-view/${encodeURIComponent(this.projectData.slug)}`
       url: `${environment.websiteUrl}/projects/details/${this.projectData.slug}`
     };
-    console.log(content);
-    
     this.metaService.createMetaData(content);
+  }
+
+  onShowDesc(): void {
+    this.showDesc = !this.showDesc;
   }
 
   ngOnDestroy(): void {

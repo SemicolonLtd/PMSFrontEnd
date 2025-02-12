@@ -24,8 +24,13 @@
     src: url('./assets/fonts/AktivGroteskCorp-Regular.ttf');
 }
 
+@font-face {
+    font-family: 'logo-font';
+    src: url('./assets/fonts/MinionPro-Regular.otf');
+}
+
 .desc,
-pre {
+pre{
     &:lang(ar) {
         font-family: 'ar-main-font' !important;
     }
@@ -33,17 +38,28 @@ pre {
         font-family: 'main-font' !important;
     }
 }
+span:not(.pi), p:not(.pi){
+    
+    &:lang(ar) {
+        font-family: 'ar-main-font';
+    }
+    &:lang(en) {
+        font-family: 'main-font';
+    }
+}
 
 :root {
     --primary-color: #141414;
     --primary-color-light: #5894AC;
-    --primary-color-medium: #1B2E5E;
+    --primary-color-medium: #0B396A;
     --secondary-color: #007236;
 }
 
 body {
     font-family: 'main-font', sans-serif;
     overflow-x: hidden;
+    // background-color: #F8FAFF;
+    background-color: #fff;
 }
 
 h1, h2, h3, h4, h5 {
@@ -51,12 +67,19 @@ h1, h2, h3, h4, h5 {
 }
 
 html {
-    @media (max-width: 1440px) {
-        font-size: 14px;
-    }
-    // @media (max-width: 1300px) {
-    //     font-size: 13px;
+    font-size: 18px;
+    // @media (max-width: 1440px) {
+    //     font-size: 14px;
     // }
+    @media (max-width: 768px) {
+        font-size: 16px;
+    }
+    &:lang(ar){
+        font-size: 16px;
+        @media (max-width: 768px) {
+            font-size: 14px;
+        }
+    }
 }
 
 * {
@@ -66,9 +89,16 @@ html {
 }
 
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 7px;
 }
 
+::-webkit-scrollbar-horizontal {
+    height: 7px; /* Height of the horizontal scrollbar */
+}
+
+// .p-component-overlay {
+//     z-index: 1400 !important;
+// }
 
 /* Track */
 ::-webkit-scrollbar-track {
@@ -99,7 +129,7 @@ a {
     color: var(--primary-color-light);
 }
 
-ul, li {
+ul:not(.html-content ul), li:not(.html-content li) {
     list-style-type: none;
 }
 

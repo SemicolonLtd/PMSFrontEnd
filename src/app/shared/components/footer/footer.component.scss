@@ -1,6 +1,6 @@
 .footer {
-    padding-block: 3rem;
-    background-color: var(--primary-color-medium);
+    padding-block: 2rem;
+    background-color: #0B396A;
     color: white;
     a {
         color: white;
@@ -18,7 +18,16 @@
             }
             .logo-txt {
                 margin-inline-start: 1.5rem;
-                font-size: 2rem;
+                font-size: 1.7rem;
+                font-family:'logo-font' ;
+                margin-bottom: 0;
+                font-weight: 600;
+            }
+            @media (max-width: 576px) {
+                margin-bottom: 1.5rem;
+                .logo-txt {
+                    font-size: 1.5rem;
+                }
             }
         }
         .social-wrapper {
@@ -45,6 +54,9 @@
             }
         }
     }
+    // .footer-content {
+
+    // }
     @media (max-width:768px){
         text-align: center; 
         a {
@@ -56,7 +68,18 @@
     }
 }
 
+.address_wrapper {
+    @media (min-width:1201px) {
+        width: 60%;
+    }
+}
+
 .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
     padding-block: 0.5rem;
     background-color: #C7DCF1;
+    font-size: 0.9rem;
 }

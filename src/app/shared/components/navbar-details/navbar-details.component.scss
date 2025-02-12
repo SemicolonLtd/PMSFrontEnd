@@ -1,4 +1,33 @@
+.navbar-details {
+    h3 {
+        font-size: 2.5rem;
+        margin-inline-end: 0.5rem;
+        margin-bottom: 0;
+        @media (max-width:576px) {
+            font-size: 1.8rem;
+        }
+    }
+}
 
+.links-list {
+    display: flex;
+    align-items: flex-start;
+    .sub_menu {
+        border-inline-start: 1px solid #00000036;
+        margin-inline-start: 2rem;
+        padding-inline-start: 2rem;
+        animation: fade-in 0.4s;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
 ::ng-deep {
     .navbar-details {
         .p-sidebar .p-sidebar-header .p-sidebar-close:enabled:hover, .p-sidebar .p-sidebar-header .p-sidebar-icon:enabled {
@@ -21,7 +50,7 @@
             }
         }
         .p-sidebar .p-sidebar-header {
-            border-top: 1px solid var(--primary-color);
+            // border-top: 1px solid var(--primary-color);
             margin-top: 5rem;
             display: flex;
             align-items: center;
@@ -34,15 +63,22 @@
                 padding-inline: 2rem;
                 margin-top: 7rem;
             }
+            @media (max-width: 400px) {
+                // padding-inline: 2rem;
+                margin-top: 6rem;
+            }
         }
         .p-sidebar .p-sidebar-content {
             padding-inline: 0;
             overflow-y: unset;
             @media (max-width:992px) {
-                margin-top:2rem
+                margin-top:1rem
             }
         }
         .discover-btn {
+            @media (max-width:768px) {
+                margin-bottom: 1rem;
+            }
             .p-button {
                 background: var(--primary-color-light);
                 border: 1px solid var(--primary-color-light);
@@ -55,14 +91,30 @@
                 }
             }
         }
+        .all-links {
+            margin-inline-start: auto;
+            @media (max-width:992px) {
+                margin-top: 0rem;
+            }
+        }
         .links-list {
             ul {
+                @media (max-width:992px) {
+                    padding-left: 0;
+                }
+                @media (max-width:576px) {
+                    padding-left: 1rem;
+                }
                 li {
                     cursor: pointer;
                     margin-bottom: 1rem;
                     transition: 0.3s all ease;
                     font-size: 1.2rem;
                     font-weight: 600;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
                     &:hover {
                         color: var(--primary-color-light);
                     }
@@ -101,4 +153,24 @@
     }
 
 }
+
+.loader {
+    border: 5px solid rgba(0, 0, 0, 0.2);
+    border-left-color: transparent;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    animation: spin89345 1s linear infinite;
+    margin-inline-start: 6rem;
+  }
+  
+  @keyframes spin89345 {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 

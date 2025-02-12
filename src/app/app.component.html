@@ -1,19 +1,16 @@
 <app-navbar></app-navbar>
-<div class="content">
-    <ng-container *ngIf="isLoading; else contentLoaded">
-        <div class="load-wrapper">
-            <app-loading type="small"></app-loading>
-        </div>
-    </ng-container>
-    <ng-template #contentLoaded>
-        <div class="router-content position-relative">
-            <img *ngIf="currentRoute != '/'" src="assets/images/global/pages-wave-top.webp" alt="" class="pages-wave-top">
+    <div class="content">
+        <!-- <div class="router-content position-relative">
+            <img *ngIf="currentRoute != '/'" src="assets/images/global/pages-wave-top.webp" alt="" class="pages-wave-top"> -->
             <router-outlet></router-outlet>
-            <img *ngIf="currentRoute != '/'" src="assets/images/global/pages-wave-bottom.webp" alt="" class="pages-wave-bottom">
-        </div>
-    </ng-template>
-</div>
-
-<app-footer></app-footer>
-<p-button class="scroll-btn" icon="pi pi-arrow-up" [rounded]="true" *ngIf="pageYoffset > 200" (click)="scrollToTop()"
-    [raised]="true"></p-button>
+            <!-- <img *ngIf="currentRoute != '/'" src="assets/images/global/pages-wave-bottom.webp" alt="" class="pages-wave-bottom">
+        </div> -->
+    </div>
+    <app-footer></app-footer>
+<p-button class="scroll-btn" [rounded]="true" *ngIf="pageYoffset > 200" (click)="scrollToTop()"
+    [raised]="true">
+    <div class="button-temp">
+        <i class="pi pi-arrow-up block"></i>
+        <span class="block">{{'General.BackToTop' | translate}}</span>
+    </div>
+</p-button>

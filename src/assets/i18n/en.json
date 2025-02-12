@@ -2,45 +2,60 @@
     "General": {
         "ViewMore":"View More +",
         "ReadMore": "Read More",
+        "ReadLess":"Read Less",
         "NotFoundData": "Not Found Data",
         "SearchDesc":"Search in petroleum marine services",
         "All": "All",
         "Share": "Share",
-        "OrgDesc": "PMS, is a leading Egyptian EPCI offshore construction company, established in 2001 under the auspices of the Egyptian General Petroleum Corporation (EGPC), with almost four decades of experience as a continuation of its previous entity as the Marine Department of PETROJET.",
+        "OrgDesc": "PMS is the premier Egyptian offshore construction and services, PMS one of the Egyptian General Petroleum Corporation (EGPC) companies that have been established in 2001 as a separate entity with more than 40 years back experience as a continuation of its previous existing as the Marine sector of PETROJET, PMS grown to become a leading contractor for offshore construction and services in the Middle East.",
         "OrgName": "Petroleum Marine Services Co.",
-        "Close": "Close"
+        "Close": "Close",
+        "ShowMore": "Show More...",
+        "BackToTop":"Back To Top",
+        "DiscoverMore":"Discover More",
+        "Events":"Events",
+        "DiscoverPMS":"Discover PMS's",
+        "Company":"Powered by Semicolon Ltd",
+        "Copyright":"All rights reserved © 2024 PMS"
     },
     "Navbar": {
         "Home":"Home",
         "AboutUs" :"About Us",
         "OurStrategy" :"Our Strategy",
-        "CoreBusiness" : "Core Business",
-        "KeyAssets" :"Key Assets",
+        "OurBusiness" : "Our Business",
+        "OurSolutions" :"Our Solutions",
         "Projects" :"Projects",
         "ContactUs" :"Contact Us",
-        "MediaCenter" : "Media Center",
-        "HSE" : "HSE",
+        "Media" : "Media",
+        "QHSE" : "QHSE",
         "Certificates":"Certificates",
         "Sustainability" :"Sustainability",
         "PMS": "Petroleum Marine Services Co.",
         "DiscoverMore":"Discover More",
         "News":"News",
         "Events": "Events",
-        "Search": "Search"
+        "Search": "Search",
+        "PressRelease":"Press Releases"
     },
     "Home" :{
-        "Technical":"Technical",
-        "Projects":"Projects",
-        "Engineers":"Engineers",
-        "CoreBusiness":"Core Business",
-        "RecentProjects":"Recent Projects",
-        "OurNews":"Our News"
+        "YearsExprience":"Years Exprience",
+        "Projects":"Completed Projects",
+        "Platforms":"Platforms Installation",
+        "Pipelines":"Subsea Pipelines and Cables Laying",
+        "OurBusiness":"Our Business",
+        "RecentProjects":"Our Projects",
+        "OurNews":"Our News",
+        "Media":"Media",
+        "OurPartners":"Our Partners",
+        "KM":"KMs",
+        "TON":"TONs"
     },
     "Search": {
         "WelcomeTo": "Welcome to",
         "OurProjects":"Our Projects Page",
         "OurNews":"Our News Page",
         "OurEvents":"Our Events Page",
+        "OurTenders":"Our Tenders Page",
         "OurCoreBusiness":"Our Core Business Page",
         "Page":"Page",
         "Explore":"Explore",
@@ -50,6 +65,7 @@
     "Projects": {
         "RecentProjects":"Recent Projects",
         "CompletedProjects":"Completed Projects",
+        "TrackRecord":"Track Record",
         "MegaProjects":"Mega Projects",
         "LatestProject":"Latest Project",
         "FollowOurProjects":"Follow Our Projects",
@@ -58,19 +74,61 @@
         "EndDate": "End Date",
         "Country": "Country",
         "Location": "Location",
-        "Client": "Client"
+        "Client": "Client",
+        "ProjectInfo": "Project Information",
+        "ShowMore":"Show More...",
+        "ShowLess":"Show Less...",
+        "Num": "Num",
+        "ProjectName": "Project Name",
+        "ScopeOfWork": "Scope Of Work",
+        "ServiceCategory": "Service Category",
+        "LocationTable": "Location",
+        "Owner": "Owner",
+        "TypeOfParticipation": "Type of participation",
+        "ContractValue": "Contract value",
+        "Duration": "Duration",
+        "ProjectDescription": "Project description",
+        "MarineVesselsUsedInTheProject": "Marine vessels used in the project",
+        "WorkVolume": "Work volume",
+        "Year": "Year",
+        "To": "to"
     },
     "Events": {
         "LatestEvent":"Latest Event",
         "EventAndActivities":"Event & Activities",
         "More": "More...",
         "StartDate": "Start Date",
-        "EndDate":"End Date"
+        "EndDate":"End Date",
+        "EventInfo": "Event Information"
+    },
+    "Tenders": {
+        "LatestTender":"Latest Tender",
+        "TenderAndActivities":"Tender & Activities",
+        "More": "More...",
+        "StartDate": "Start Date",
+        "EndDate":"End Date",
+        "TenderInfo": "Tender Information",
+        "PDF":"Terms Book",
+        "Terms": "Terms & Conditions",
+        "ClickHere": "Click here to preview"
+    },
+    "Fleets": {
+        "Fleets":"Fleets",
+        "StartDate": "Start Date",
+        "EndDate":"End Date",
+        "TenderInfo": "Tender Information",
+        "PDF":"Terms Book",
+        "Terms": "Terms & Conditions",
+        "ClickHere": "Click here to preview"
     },
     "Certificates": {
         "Certificates":"Certificates",
-        "Desc":"Good people delivering an honest value ",
-        "PMSCertificates": "PMS Certificates"
+        "Desc":"PMS aims to achieve the highest standards of Quality, Health, Safety and Environment, delivering quality, ensuring health and safety and minimizing the impact on the environment is the top priority of PMS. Our principles, vision and commitment to quality, health, safety and environment are set in our QHSE policy. Our QHSE Policy defines the objective of incorporating best Quality, Health, Safety and Environment (QHSE) practices in all our business for Client’s’ satisfaction and successful business results and reveals our willingness to take pro-active measures to prevent injuries and minimize its environmental impacts, and is based on our commitments:",
+        "PMSCertificates": "PMS Certificates",
+        "DescList1": "Provide Excellent Services for Customer Satisfaction",
+        "DescList2": "Developing a long-term sustainable business",
+        "DescList3": "Preventing pollution and minimizing the environmental impact of our operations"
+
     },
     "Contact": {
         "ContactUs":"Contact Us",
@@ -90,6 +148,7 @@
         "SimilarNews":"Similar News",
         "SimilarCoreBusiness":"Similar Core Business",
         "SimilarEvents":"Similar Events",
+        "SimilarTenders":"Similar Tenders",
         "CoreBusinessProjects": "Core Business Projects"
     },
     "Footer": {
@@ -98,7 +157,7 @@
         "TermsAndConditions": "Terms and conditions",
         "PrivacyPolicy":"Privacy Policy",
         "ContactUs": "Contact Us",
-        "Copyright": "Copyright 2010 - 2024 PMS.com",
+        "Copyright": "Copyright 2001 - 2024 PMS.com",
         "OtherLinks":"Other Links",
         "FAQ": "FAQ",
         "Vision": "Vision",
@@ -107,7 +166,8 @@
         "Email":"Email",
         "Address": "Address",
         "Phone": "Phone",
-        "KeepInTouch":"Keep in touch"
+        "KeepInTouch":"Keep in touch",
+        "Tenders":"Tenders"
     },
     "SearchResults": {
         "Projects":"Projects",
@@ -118,7 +178,7 @@
         "Search":"Search"
     },
     "Static": {
-        "HSE-quality": "HSE",
+        "HSE-quality": "HSE & Quality",
         "key-assets":"Key Assets",
         "sustainability": "Sustainability",
         "about-us": "About Us",

@@ -5,6 +5,7 @@ import { CoreBusinessService } from '../../services/core-business.service';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
 import { MetaService } from 'src/app/core/services/meta.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-core-business-details',
@@ -14,21 +15,17 @@ import { MetaService } from 'src/app/core/services/meta.service';
 export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
   websiteUrl = environment.websiteUrl;
   responsiveOptions: any[] = [
-    // {
-    //   breakpoint: '2000px',
-    //   numVisible: 4
-    // },
     {
         breakpoint: '1024px',
-        numVisible: 3
+        numVisible: 5
     },
     {
         breakpoint: '768px',
-        numVisible: 2
+        numVisible: 3
     },
     {
         breakpoint: '560px',
-        numVisible: 1
+        numVisible: 2
     }
   ];
 
@@ -39,7 +36,7 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
   loading = false;
   breadcrumbItems = [
     {
-      name: this.translateService.instant('Navbar.CoreBusiness'),
+      name: this.translateService.instant('Navbar.OurBusiness'),
       link: '/core-business'
     }
   ];
@@ -49,6 +46,7 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
     private coreBusinessService: CoreBusinessService,
     private translateService: TranslateService,
     private route: ActivatedRoute,
+    private sanitizer: DomSanitizer,
     private router: Router,
     private metaService: MetaService
   ) { }
@@ -85,12 +83,13 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
             this.breadcrumbItems.push(
               {
                 name: this.businessData?.cate_name,
-                link: '/core-business'
+                link: this.businessData.url
               },
               {
               name: this.businessData?.title,
               link: '/core-business/details/' + this.businessData?.slug
             });
+            
             this.handleMetaTags();
             this.getBusinessProjects();
           }
@@ -136,6 +135,10 @@ export class CoreBusinessDetailsComponent implements OnInit, OnDestroy {
       url: `${environment.websiteUrl}/core-business/details/${this.businessData.slug}`
     };
     this.metaService.createMetaData(content);
+  }
+
+  sanitizeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
   ngOnDestroy(): void {

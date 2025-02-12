@@ -1,7 +1,10 @@
 .certificates {
+    @media (max-width:992px) {
+        margin-top: 7rem;
+    }
     .header {
         position: relative;
-        height: 75vh;
+        height: 85vh;
         .cover {
             position: absolute;
             left: 0;
@@ -11,32 +14,65 @@
             height: 100%;
             width: 100%;
             object-fit: fill;
+            filter: brightness(0.5);
+        }
+        .pms-container {
+            position: relative;
         }
         .content {
             position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+            left: 0%;
+            bottom: 12.5%;
             color: white;
-            text-align: center;
+            text-align: start;
+            padding-inline: 5%;
             .title {
                 font-size: 5rem;
             }
             .text {
                 font-size: 2.5rem;
             }
+            &:lang(ar) {
+                left: unset;
+                right: 0%;
+            }
         }
-        @media (max-width: 768px) {
-            height: 45vh;
+        @media (max-width: 1440px) {
             .content {
                 .title {
-                    font-size: 3.5rem;
+                    font-size: 4rem;
+                }
+            }
+        }
+        @media (max-width: 768px) {
+            height: 30vh;
+            .content {
+                .title {
+                    font-size: 3rem;
                 }
                 .text {
                     font-size: 1.7rem;
                 }
             }
         }
+    }
+}
+
+.desc {
+    width: 75%;
+    margin-inline: auto;
+    font-weight: bolder;
+    margin-bottom: 3.5rem;
+    p {
+        text-align: justify;
+    }
+    ul {
+        li {
+            list-style-type: disc;
+        }
+    }
+    @media(max-width: 768px) {
+        width: 90%;
     }
 }
 
@@ -132,6 +168,7 @@
     }
     .certificates {
         .load-more {
+            width: 100%;
             margin-block: 2em;
             text-align: center;
             .p-button {

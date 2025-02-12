@@ -1,0 +1,34 @@
+<div class="events">
+    <div class="header flex align-items-center justify-content-center">
+        <img src="assets/images/global/certificates.webp" alt="" class="cover">
+        <div class="content">
+            <h2 class="title">{{'Footer.Tenders' | translate}}</h2>
+        </div>
+    </div>
+    <app-center-bar *ngIf="!searchMode" [Title]="barTitle" [Desc]="'It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.'"></app-center-bar>
+    <div class="events-list">
+        <div class="pms-container">
+            <p-tabView [scrollable]="true" (activeIndexChange)="onSelectCategory($event)">
+                <p-tabPanel *ngFor="let category of newsCategories" [header]="category?.name">
+                    <div class="grid">
+                        <ng-container *ngIf="tendersList.length">
+                            <div class="card-wrapper xl:col-4 md:col-6 sm:col-12 mb-4" *ngFor="let tender of tendersList">
+                                <app-event-card [eventData]="tender" [cardType]="'tender'"></app-event-card>
+                            </div>
+                            <ng-container *ngFor="let schema of schemaList">
+                                <ngx-json-ld [json]="schema"></ngx-json-ld>
+                            </ng-container>
+                        </ng-container>
+                        <app-empty-state class="m-auto" *ngIf="!tendersList?.length && !tendersLoading"></app-empty-state> 
+                        <div class="load-more" *ngIf="(paginationData?.total! > tendersList?.length!) && !tendersLoading">
+                            <p-button label="{{'Tenders.More' | translate}}" (click)="loadMore()" />
+                        </div>
+                    </div>
+                </p-tabPanel>
+            </p-tabView>
+        </div>
+    </div>
+    
+    <app-loading type="small" *ngIf="tendersLoading" ></app-loading>
+    <!-- <app-empty-state *ngIf="!tendersList?.length && !tendersLoading"></app-empty-state> -->
+</div>

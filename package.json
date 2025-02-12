@@ -33,7 +33,7 @@
     "bootstrap": "^5.3.3",
     "express": "^4.15.2",
     "lottie-web": "^5.12.2",
-    "ngx-cookie": "^6.0.1",
+    "@gorniv/ngx-universal": "^2.2.3",
     "ngx-countup": "^13.2.0",
     "ngx-lottie": "^10.0.0",
     "ngx-sharebuttons": "^13.0.0",

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from './../../../../../environments/environment';
 
 @Component({
   selector: 'app-search-results-card',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export class SearchResultsCardComponent {
   @Input() card:any;
   @Input() type!: 'PROJECT' | 'NEWS' | 'CORE-BUSINESS' | 'EVENTS' | 'PAGES';
-
+  // lang = environment.lang
   constructor(private router: Router){}
 
   onClick(): void {

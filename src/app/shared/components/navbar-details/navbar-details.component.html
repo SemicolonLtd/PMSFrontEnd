@@ -1,9 +1,9 @@
 <div class="navbar-details">
     <p-sidebar [(visible)]="navDetailsVisible" [fullScreen]="true" (onHide)="onHideNavDetails()">
         <ng-template pTemplate="header">
-            <div>
+            <div class="flex align-items-center">
                 <h3>{{detailsTitle}}</h3>
-                <!-- <span>Discover PMS {{detailsTitle}}</span> -->
+                <i class="pi" [ngClass]="lang == 'ar' ? 'pi-arrow-left' : 'pi-arrow-right'"></i>
             </div>
         </ng-template>
         <ng-template pTemplate="closeicon">
@@ -13,20 +13,32 @@
         <div class="details-content">
             <div class="pms-container">
                 <div class="grid">
-                    <div class="lg:col-3" *ngIf="detailsType !== 'Search'">
-                        <div class="discover-btn">
+                    <div class="lg:col-3 md:col-12 sm:col-12" *ngIf="detailsType !== 'Search'">
+                        <span>{{'General.DiscoverPMS' | translate}} {{detailsTitle | removeOur}}</span>
+                        <div class="discover-btn mt-3">
                             <p-button 
                                 label="{{'Navbar.DiscoverMore' | translate}}" 
                                 icon="pi pi-arrow-right" 
+                                (onClick)="onDiscoverMore()"
                             />
                         </div>
+                        
                     </div>
-                    <div class="lg:col-9" *ngIf="detailsType !== 'Search'">
+                    <div class="all-links lg:col-9 md:col-12 sm:col-12" *ngIf="detailsType !== 'Search'">
                         <div class="links-list">
                             <ul>
                                 <li *ngFor="let link of displayedLinks" 
-                                    (click)="openLink(link)">
+                                    (click)="!checkIfLinkHasMenu(link) ? openLink(link) : null"
+                                    (mouseenter)="checkIfLinkHasMenu(link) ? openSubMenu(link) : displaySubMenu = false"
+                                    >
                                     {{ link?.name }}
+                                </li>
+                            </ul>
+                            <!-- <div class="loader" *ngIf="loading"></div> -->
+                            <ul class="sub_menu" *ngIf="displaySubMenu">
+                                <li *ngFor="let item of subMenuList" 
+                                    (click)="openFleetCategory(item)">
+                                    {{ item?.name ? item?.name : item?.title }}
                                 </li>
                             </ul>
                         </div>

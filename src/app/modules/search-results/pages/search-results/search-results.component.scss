@@ -13,6 +13,10 @@
         @media (max-width: 576px) {
             padding-inline: 0rem;
         }
+        @media (max-width: 400px) {
+            // padding-inline: 2rem;
+            margin-top: 6rem;
+        }
         .p-component {
             font-family: 'main-font';
             &:lang(ar) {

@@ -1,40 +1,16 @@
 <div class="project-details margin-avoid-navbar">
     <div class="pms-container">
         <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
-        <div class="project-info" *ngIf="projectData?.title">
-            <div class="grid">
-                <div class="col-12">
-                    <div class="head-wrapper flex align-items-center justify-content-end">
-                        <!-- <h2 class="project-title">{{ projectData?.title }}</h2> -->
-                        <div class="share_details">
-                            <span class="txt">
-                                {{ 'General.Share' | translate }}
-                            </span>
-                            <!-- (opened)="onLinkOpened($event)" -->
-                            <button class="share_link" shareButton="facebook" 
-                            [url]="websiteUrl + '/projects/details/' + projectData?.slug"
-                            [title]="projectData.title"
-                            [image]="projectData.image"
-                            [description]="projectData.short"
-                            >
-                                <img src="assets/images/global/facebook.svg" alt="">
-                            </button>
-                            <button class="share_link" shareButton="twitter"
-                            [url]="websiteUrl + '/projects/details/' + projectData?.slug"
-                            [title]="projectData.title"
-                            [image]="projectData.image"
-                            [description]="projectData.short">
-                                <img src="assets/images/global/twitter.svg" alt="">
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:col-6 md:col-12">
+        <app-loading type="small" *ngIf="loading"></app-loading>
+        <ng-container *ngIf="projectData?.title && !loading">
+            <ng-container *ngIf="projectData.type !== 'recent-projects'">
+                <ng-container *ngIf="projectData?.media?.length">
                     <div class="project-images">
-                        <p-galleria [value]="projectData?.media" [responsiveOptions]="responsiveOptions"
-                            [numVisible]="5">
+                        <p-galleria [value]="projectData?.media" [showItemNavigators]="projectData?.media?.length > 1" [responsiveOptions]="responsiveOptions"
+                            [numVisible]="5" [showThumbnailNavigators]="projectData?.media?.length > 5" [circular]="true"
+                            [showThumbnails]="projectData?.media?.length > 1">
                             <ng-template pTemplate="item" let-item>
-                                <p-image [preview]="true" [src]="item.image"  />
+                                <p-image [preview]="true" [src]="item.image" />
                             </ng-template>
                             <ng-template pTemplate="thumbnail" let-item>
                                 <div class="grid grid-nogutter justify-content-center">
@@ -43,93 +19,9 @@
                             </ng-template>
                         </p-galleria>
                     </div>
-                </div>
-                <div class="lg:col-6 md:col-12">
-                    <div class="row info">
-                        <div class="col-6">
-                            <div class="info-wrapper flex align-items-center" *ngIf="projectData?.start_date">
-                                <div class="img-with-title">
-                                    <img src="assets/images/global/date-icon.svg" alt="">
-                                    <span class="label text-gray-900"> {{'Projects.StartDate' | translate}} : </span>
-                                </div>
-                                <span class="data">{{ projectData?.start_date }}</span>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="info-wrapper flex align-items-center" *ngIf="projectData?.end_date">
-                                <div class="img-with-title">
-                                    <img src="assets/images/global/date-icon.svg" alt="">
-                                    <span class="label text-gray-900"> {{'Projects.EndDate' | translate}} : </span>
-                                </div>
-                                <span class="data">{{ projectData?.end_date }}</span>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="info-wrapper flex align-items-center" *ngIf="projectData?.country">
-                                <div class="img-with-title">
-                                    <img src="assets/images/global/country-icon.svg" alt="">
-                                    <span class="label text-gray-900"> {{'Projects.Country' | translate}} : </span>
-                                </div>
-                                <span class="data">{{ projectData?.country }}</span>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="info-wrapper flex align-items-center" *ngIf="projectData?.location">
-                                <div class="img-with-title">
-                                    <img src="assets/images/global/location-icon.svg" alt="">
-                                    <span class="label text-gray-900"> {{'Projects.Location' | translate}} : </span>
-                                </div>
-                                <span class="data">{{ projectData?.location }}</span>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="info-wrapper flex align-items-center" *ngIf="projectData?.client">
-                                <div class="img-with-title">
-                                    <img src="assets/images/global/client-icon.svg" alt="">
-                                    <span class="label text-gray-900"> {{'Projects.Client' | translate}} : </span>
-                                </div>
-                                <span class="data">{{ projectData?.client }}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text col-12" [innerHTML]="projectData?.desc">
-                </div>
-                <!-- <div class="content-wrapper col-12">
-                <div class="images">
-                    <div class="project-images">
-                        <p-galleria 
-                            [value]="projectData?.media" 
-                            [responsiveOptions]="responsiveOptions" 
-                            [numVisible]="5">
-                                <ng-template pTemplate="item" let-item>
-                                    <img [src]="item.image" style="width: 100%;" />
-                                </ng-template>
-                                <ng-template pTemplate="thumbnail" let-item>
-                                    <div class="grid grid-nogutter justify-content-center">
-                                        <img [src]="item.image" style="width: 100%;" />
-                                    </div>
-                                </ng-template>
-                        </p-galleria>
-                    </div>
-                </div>
-                <div class="text" [innerHTML]="projectData?.desc">
-                </div>
-            </div> -->
-
-            </div>
-        </div>
-        <app-loading type="small" *ngIf="loading"></app-loading>
-        <div class="similar-projects mt-5" *ngIf="similarProjectsData?.length && !similarProjectsLoading">
-            <span class="title block font-bold text-2xl pb-2 mb-4">
-                {{'SimilarTitles.SimilarProjects' | translate}}
-            </span>
-            <div class="grid">
-                <div class="xl:col-3 lg:col-4 md:col-6 sm:col-12 mb-3" *ngFor="let product of similarProjectsData">
-                    <app-project-card [projectData]="product"></app-project-card>
-                </div>
-            </div>
-        </div>
-        <app-loading type="small" *ngIf="similarProjectsLoading"></app-loading>
+                </ng-container>
+                <app-project-table [projectData]="projectData"></app-project-table>
+            </ng-container>
+        </ng-container>
     </div>
 </div>

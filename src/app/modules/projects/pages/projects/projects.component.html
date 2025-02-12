@@ -1,7 +1,16 @@
 <div class="projects">
     <!-- <img src="assets/images/global/pages-wave-top.webp" alt="" class="pages-wave-top"> -->
-    <app-search [Title]="searchTitle" (searchEmitter)="searchForProjects($event)"></app-search>
-    <div class="latest-project" *ngIf="pageTopProject && !topProjectLoading && !searchMode">
+    <!-- <app-search [Title]="searchTitle" (searchEmitter)="searchForProjects($event)"></app-search> -->
+    <div class="header flex align-items-center justify-content-center">
+        <img src="assets/images/global/our_projects.webp" alt="" class="cover">
+        <div class="content">
+            <h2 class="title">{{'Navbar.Projects' | translate}}</h2>
+            <!-- <span class="text mt-3">
+                {{'Certificates.Desc' | translate}}
+            </span> -->
+        </div>
+    </div>
+    <!-- <div class="latest-project" *ngIf="pageTopProject && !topProjectLoading && !searchMode">
         <div class="pms-container">
             <div class="grid">
                 <div class="project-img md:col-6 sm:col-12 max-h-30rem min-h-30rem">
@@ -30,8 +39,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <app-center-bar *ngIf="!searchMode" [Title]="barTitle" [Desc]="'It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.'"></app-center-bar>
+    </div> -->
+    <!-- <app-center-bar *ngIf="!searchMode" [Title]="barTitle" [Desc]="'It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.'"></app-center-bar> -->
     <app-loading type="small" *ngIf="topProjectLoading"></app-loading>
 
     <div class="projects-list">
@@ -42,19 +51,19 @@
                 [(ngModel)]="selectedType" 
                 optionLabel="label" 
                 optionValue="value"
-                (onChange)="onSelectCategory($event)"
+                (onChange)="$event.value !== null ? onSelectCategory($event) : null"
                 />
             </div>
             <div class="filtered-projects ">
                 <div class="grid">
                     <ng-container *ngIf="projectsList.length">
-                        <div class="card-wrapper xl:col-4 lg:col-6 md:col-12 mb-4" *ngFor="let project of projectsList">
+                        <div class="card-wrapper xl:col-3 lg:col-6 md:col-12 sm:col-12 mb-4" *ngFor="let project of projectsList">
                             <app-project-card [projectData]="project"></app-project-card>
                         </div>
                     </ng-container>
                     <app-loading type="small" *ngIf="projectsLoading"></app-loading>
-                    <div class="load-more" *ngIf="(paginationData?.total! > projectsList?.length!) && !projectsLoading">
-                        <p-button label="{{'Projects.More' | translate}}" (click)="loadMore()" />
+                    <div class="load-more col-12" *ngIf="(paginationData! && projectsList?.length!) && !projectsLoading">
+                        <p-button label="{{'Projects.More' | translate}}" (click)="getMoreProjects(paginationData)" />
                     </div>
                     <div class="col-12" *ngIf="!projectsList.length && !projectsLoading">
                         <app-empty-state></app-empty-state>

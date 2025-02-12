@@ -10,6 +10,14 @@ export class CoreBusinessService {
 
   constructor(private http: HttpClient) { }
 
+  getOurBusinessMenu(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/core/getCoreAndFleet`);
+  }
+
+  getCoreTabs(): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/core/core/get/tabs`);
+  }
+
   getCoreBusinessMenus(pageSize: number): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/core/get/${pageSize}`);
   }
@@ -23,7 +31,7 @@ export class CoreBusinessService {
   }
 
   getSimilarBusiness(slug: string): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/core/business/similar/${slug}/10`);
+    return this.http.get<any>(`${environment.apiUrl}/core/business/similar/${slug}/3`);
   }
 
   getBusinessProjects(slug: string): Observable<any> {

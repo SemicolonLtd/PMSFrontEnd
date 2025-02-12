@@ -7,6 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { MetaData } from 'src/app/core/models/metaData.model';
 import { environment } from 'src/environments/environment';
 import { MetaService } from 'src/app/core/services/meta.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-content',
@@ -25,6 +26,7 @@ export class ContentComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private staticService: StaticService,
+    private sanitizer: DomSanitizer,
     private translateService: TranslateService,
     private metaService: MetaService
   ) { }
@@ -38,7 +40,6 @@ export class ContentComponent implements OnInit, OnDestroy {
       if (params['slug']) {
         this.pageSlug = params['slug'];
         this.pageContent = {};
-        this.breadcrumbItems = []
         this.getPageContent();
       }
     })
@@ -51,6 +52,7 @@ export class ContentComponent implements OnInit, OnDestroy {
         next: (res: any) => {
           if (res?.status == 200) {
             if(res?.data?.slug) {
+              this.breadcrumbItems = []
               this.pageContent = res?.data;
               if(this.pageContent.menu_name) {
                 this.breadcrumbItems.push(
@@ -60,13 +62,15 @@ export class ContentComponent implements OnInit, OnDestroy {
                   }
                 )
               }
-              this.breadcrumbItems.push(
-                {
-                  name: this.pageContent.title,
-                  link: 'content/' + this.pageContent.slug
-                }
-              )
-              
+              if (this.pageContent.menu_name !== 'sustainability') {
+                this.breadcrumbItems.push(
+                  {
+                    name: this.pageContent.title,
+                    link: 'content/' + this.pageContent.slug
+                  }
+                )
+              }
+            
               this.handleMetaTags()
             }
           }
@@ -96,6 +100,10 @@ export class ContentComponent implements OnInit, OnDestroy {
   //   this.handleMetaTags();
   // }
 
+  sanitizeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
+  
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }

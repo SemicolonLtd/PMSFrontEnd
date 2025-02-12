@@ -2,21 +2,23 @@
     padding-top: 2em;
     .content-wrapper {
         width: 100%;
+        display: flex;
+        align-items: flex-start;
         .images {
-            float: left;
-            width: 50%; // or any width you want
-            height: auto;
-            margin: 10px; // optional
-            shape-outside: triangle(50%);
-            @media (max-width: 768px) {
-                width: 100%;
-            }
+            // height: 500px;
+            border-radius: 20px;
+            margin-inline-start: 20px;
+        }
+        @media (max-width: 768px) {
+            flex-wrap: wrap;
+            flex-direction: column-reverse;
         }
         .text {
             margin-left: 0;
         }
     }
     .project-info {
+        margin-bottom: 2rem;
         .info {
             .info-wrapper {
                 background-color: #fff;
@@ -27,8 +29,10 @@
                 box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
                 justify-content: space-between;
                 flex-wrap: wrap;
-                @media (max-width:576px) {
+                @media (max-width: 576px) {
+                    margin-bottom: 0;
                     justify-content: center;
+                    padding: 0.8em 0.7em;
                     .data {
                         width: 100%;
                         text-align: center;
@@ -62,6 +66,17 @@
                 // }
             }
         }
+        .show-more {
+            width: 100%;
+            text-align: center;
+            .p-button {
+                width: fit-content;
+                background: var(--primary-color-medium);
+                border: 1px solid var(--primary-color-medium);
+                border-radius: 7px;
+                padding-inline: 2em;
+            }
+        }
     }
     .similar-projects {
         .title {
@@ -86,10 +101,95 @@
     }
 }
 
+.table-part {
+    // height: 500px;
+    padding-top: 1em;
+    table {
+        background-color: white;
+        width: 100%;
+        .img-col {
+            text-align: center;
+            img {
+                width: 1em;
+                vertical-align: middle;
+            }
+        }
+        .title-col {
+            color: #333;
+            font-size: 1em;
+            font-weight: 600;
+            text-transform: capitalize;
+            white-space: nowrap;
+        }
+        .info-col {
+            color: #333;
+            font-size: 1em;
+        }
+    }
+    @media (max-width: 992px) {
+        margin-top: 1rem;
+    }
+}
+
+.short-desc {
+    text-align: justify;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.project-desc {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.project-desc.show {
+    opacity: 1;
+    max-height: 1000px; /* Adjust based on the maximum height of your content */
+}
+
 ::ng-deep {
     .project-details {
+        .project-images {
+            width:60%;
+            margin-inline: auto;
+            margin-bottom: 1.5rem;
+            @media (max-width: 1500px) {
+                width:70%;
+            }
+            @media (max-width: 1300px) {
+                width:80%;
+            }
+            @media (max-width:992px) {
+                width:100%;
+            }
+            p-image {
+                width: 100%;
+            }
+            .p-image-preview-container {
+                width: 100%;
+                max-height: 450px;
+            }
+            .p-galleria-item-nav {
+                z-index: 2;
+            }
+        }
+        .show-more {
+            .p-button {
+                width: fit-content;
+                background: var(--primary-color-medium);
+                border: 1px solid var(--primary-color-medium);
+                border-radius: 7px;
+                padding: 0.4rem 0.7rem;
+                font-size: 14px;
+                // padding-inline: 2em;
+            }
+        }
         .p-image {
             img {
+                // height: 500px;
+                border-radius: 20px;
                 width: 100%;
             }
         }
