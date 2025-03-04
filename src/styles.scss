@@ -129,7 +129,7 @@ a {
     color: var(--primary-color-light);
 }
 
-ul, li {
+ul:not(.html-content ul), li:not(.html-content li) {
     list-style-type: none;
 }
 

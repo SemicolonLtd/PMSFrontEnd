@@ -16,13 +16,13 @@
                     <p-accordionTab *ngFor="let faq of faqsList" itemscope itemtype="https://schema.org/Question">
                         <ng-template pTemplate="header">
                             <div class="flex align-items-center gap-2">
-                                <div class="question" [innerHtml]="sanitizeHtml(faq.question)" itemprop="name"></div>
+                                <div class="question html-content" [innerHtml]="sanitizeHtml(faq.question)" itemprop="name"></div>
                             </div>
                         </ng-template>
                         <!-- <ng-template #header>
                             <div [innerHTML]="faq.question"></div>
                         </ng-template> -->
-                        <div [innerHTML]="sanitizeHtml(faq.answer)" itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                        <div class="html-content" [innerHTML]="sanitizeHtml(faq.answer)" itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
                         </div>
                     </p-accordionTab>
                 </p-accordion>
