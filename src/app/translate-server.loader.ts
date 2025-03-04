@@ -22,7 +22,7 @@ export class TranslateServerLoader implements TranslateLoader {
       const assets_folder = join(
         process.cwd(),
         'dist',
-        'moqawlat-masr-website',
+        'pms',
         'browser',
         'assets',
         this.prefix
