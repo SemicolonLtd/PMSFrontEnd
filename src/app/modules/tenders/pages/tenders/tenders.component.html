@@ -5,7 +5,7 @@
             <h2 class="title">{{'Footer.Tenders' | translate}}</h2>
         </div>
     </div>
-    <app-center-bar *ngIf="!searchMode" [Title]="barTitle" [Desc]="'It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.'"></app-center-bar>
+    <app-center-bar *ngIf="!searchMode" [Title]="barTitle" Desc="{{ 'Tenders.TenderCaption' | translate}}"></app-center-bar>
     <div class="events-list">
         <div class="pms-container">
             <p-tabView [scrollable]="true" (activeIndexChange)="onSelectCategory($event)">
