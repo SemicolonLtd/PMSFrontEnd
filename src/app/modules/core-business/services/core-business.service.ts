@@ -14,6 +14,10 @@ export class CoreBusinessService {
     return this.http.get<any>(`${environment.apiUrl}/core/getCoreAndFleet`);
   }
 
+  getCoreTabs(): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/core/core/get/tabs`);
+  }
+
   getCoreBusinessMenus(pageSize: number): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/core/get/${pageSize}`);
   }

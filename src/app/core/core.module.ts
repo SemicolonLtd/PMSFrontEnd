@@ -9,10 +9,11 @@ import { RemoveOurPipe } from './pipes/remove-our.pipe';
   declarations: [
     
   
-    RemoveOurPipe
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RemoveOurPipe
+
   ]
 })
 export class CoreModule { }

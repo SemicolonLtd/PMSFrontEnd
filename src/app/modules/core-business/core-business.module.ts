@@ -15,19 +15,25 @@ import { EmptyStateComponent } from "../../shared/components/empty-state/empty-s
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ImageModule } from 'primeng/image';
+import { CoreBusinessCategoryComponent } from './pages/core-business-category/core-business-category.component';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     CoreBusinessComponent,
-    CoreBusinessDetailsComponent
+    CoreBusinessDetailsComponent,
+    CoreBusinessCategoryComponent
   ],
   imports: [
     CommonModule,
     CoreBusinessRoutingModule,
     RouterModule,
     SharedModule,
+    SelectButtonModule,
     AccordionModule,
+    FormsModule,
     CarouselModule,
     GalleriaModule,
     SharedModule,
