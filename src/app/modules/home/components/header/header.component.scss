@@ -3,7 +3,6 @@
 }
 
 .carousel-item {
-    position: relative;
     .header-bg {
         height: 100vh;
         object-fit: fill;
@@ -92,11 +91,7 @@
         }
     }
     .statistics {
-        position: absolute;
-        bottom: 17%;
-        left: 12.5%;
-        right: 12.5%;
-        // transform: translateX(-50%);
+        padding-block: 2rem;
         .item-wrapper {
             font-family: 'title-font';
             text-align: center;

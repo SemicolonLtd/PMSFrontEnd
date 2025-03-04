@@ -133,8 +133,8 @@
     "Contact": {
         "ContactUs":"Contact Us",
         "ContactInformation":"Contact Information",
-        "Desc":"Say something to start a live chat!",
-        "Username":"Username",
+        "Desc":"Write your message and contact us now",
+        "Username":"Name",
         "Email":"Email",
         "Phone":"Phone",
         "Message":"Message",
