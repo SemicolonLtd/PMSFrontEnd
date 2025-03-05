@@ -103,7 +103,8 @@
     },
     "Tenders": {
         "LatestTender":"Latest Tender",
-        "TenderAndActivities":"Tender & Activities",
+        "TenderAndActivities":"Tenders",
+        "TenderCaption":"You can view and explore the tenders of the Petroleum Marine Services and learn about their terms through this page.",
         "More": "More...",
         "StartDate": "Start Date",
         "EndDate":"End Date",
