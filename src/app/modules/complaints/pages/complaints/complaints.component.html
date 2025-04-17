@@ -1,0 +1,34 @@
+<header class="w-100 vh-100">
+  <div
+    class="layer w-100 h-100 d-flex justify-content-center align-items-center"
+  >
+    <div class="text-center w-custom">
+      <h1 class="text-white mb-3">
+        {{ "Complaints.SearchForComplaint" | translate }}
+      </h1>
+      <input
+        type="text"
+        class="p-3 w-100 rounded-3 border-0 my-4"
+        [(ngModel)]="complaintNumber"
+        [placeholder]="'Complaints.SearchHere' | translate"
+      />
+      <button
+        [disabled]="!complaintNumber"
+        (click)="searchForComplaint(complaintNumber)"
+        class="search-button rounded-3 text-white w-100 py-3 fs-5"
+      >
+      <span *ngIf="loadingSearch" class="spinner-border spinner-border-sm mx-2" role="status" aria-hidden="true"></span>
+        {{ "Complaints.Search" | translate }}
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- نضيف id هنا على العنصر الأب -->
+<div id="target-section" *ngIf="case === 'GET'; else ADD">
+  <app-get-complaints [complaintData]="complaintData"></app-get-complaints>
+</div>
+
+<ng-template #ADD>
+  <app-add-complaints></app-add-complaints>
+</ng-template>

@@ -15,6 +15,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CookieModule } from '@gorniv/ngx-universal';
 // import { AgmCoreModule } from '@agm/core';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ToastrModule } from 'ngx-toastr';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -26,6 +27,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     RouterModule,

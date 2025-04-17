@@ -1,0 +1,50 @@
+<section class="py-5 container">
+    <div class="d-flex justify-content-between align-items-start">
+        <h3>{{"Complaints.ComplaintsNom" | translate}}: {{complaintData?.complaint_number}}</h3>
+        <div class="text-white rounded-2 special-dev  px-4 py-2">{{complaintData?.status}}</div>
+    </div>
+    <div class="my-5 p-4 pb-5 bg-cover row g-4">
+        <div class="col-sm-12 col-md-6 col-lg-4"> 
+            <label class="mb-2" for="">{{"Complaints.TheComplaint" | translate}}</label>
+            <input readonly [value]="complaintData?.type" type="text" class=" w-100  p-2 bg-transparent " [placeholder]="'Complaints.TheComplaint' | translate">
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4"> 
+            <label class="mb-2" for="">{{"Complaints.ComplainantType" | translate}}</label>
+            <input readonly [value]="complaintData?.complaint_type?.name" type="text" class=" w-100  p-2 bg-transparent " [placeholder]="'Complaints.ComplainantType' | translate">
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4"> 
+            <label class="mb-2" for="">{{"Complaints.FullName" | translate}}</label>
+            <input readonly [value]="complaintData?.full_name" type="text" class=" w-100  p-2 bg-transparent " [placeholder]="'Complaints.FullName' | translate">
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4"> 
+            <label class="mb-2" for="">{{"Complaints.Email" | translate}}</label>
+            <input readonly [value]="complaintData?.email" type="text" class=" w-100  p-2 bg-transparent " [placeholder]="'Complaints.Email' | translate">
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4"> 
+            <label class="mb-2" for="">{{"Complaints.PhoneNumber" | translate}}</label>
+            <input readonly [value]="complaintData?.phone_number" type="text" class=" w-100  p-2 bg-transparent " [placeholder]="'Complaints.PhoneNumber' | translate">
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4"> 
+            <label class="mb-2" for="">{{"Complaints.Message" | translate}}</label>
+            <input readonly [value]="complaintData?.message" type="text" class=" w-100  p-2 bg-transparent " [placeholder]="'Complaints.Message' | translate">
+        </div>
+    </div>
+    <!-- Replies -->
+    <div *ngIf="complaintData?.replies?.length" class="my-5 px-3 py-4 bg-cover row g-3">
+        <h3>{{"Complaints.Replies" | translate}}</h3>
+        <div *ngFor="let replay of complaintData?.replies" class="bg-white p-4">
+            <p class="text-wrap w-100">{{replay?.message}}</p>
+            <div *ngFor="let file of replay?.attachments"  class="d-flex justify-content-between align-items-center my-4">
+                <div class="upload-btn-wrapper">
+                    <a [href]="file?.file_path" target="_blank" download class="btn-upload px-4 d-inline-flex align-items-center gap-2">
+                      {{ "Complaints.File" | translate }}
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20">
+                        <path d="M21.44 11.05l-8.49 8.49a5.66 5.66 0 01-8-8l8.49-8.49a3.54 3.54 0 015 5l-8.5 8.49a1.41 1.41 0 01-2-2l7.79-7.8"/>
+                      </svg>
+                    </a>
+                  </div>
+                <p>{{file?.created_at | date}}</p>
+            </div>
+        </div>
+    </div>
+</section>

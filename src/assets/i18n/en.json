@@ -35,7 +35,8 @@
         "News":"News",
         "Events": "Events",
         "Search": "Search",
-        "PressRelease":"Press Releases"
+        "PressRelease":"Press Releases",
+        "Complaints":"Complaints"
     },
     "Home" :{
         "YearsExprience":"Years Exprience",
@@ -187,6 +188,40 @@
     "FAQ": {
         "FAQ":"FAQ",
         "Desc": "Good people delivering an honest value"
+    },
+    "Complaints":{
+        "SearchForComplaint":"Search for Complaint",
+        "SearchHere":"Search Here...",
+        "Search":"Search",
+        "NewComplaint":"New Complaint",
+        "TheComplaint":"The Complaint",
+        "ComplainantType":"Complainant Type",
+        "Types":"Types..",
+        "FullName":"Full Name",
+        "PhoneNumber":"Phone Number",
+        "Email":"Email",
+        "VerifyCode":"Verify Code",
+        "Message":"Message",
+        "SendComplaint":"Send Complaint",
+        "UserCode":"User Code",
+        "Employee":"Employee",
+        "ServicePovider":"Service Povider",
+        "ResourceSupplier":"Resource Supplier",
+        "Client":"Client",
+        "ComplaintsNom":"Complaint No",
+        "Accepted":"Accepted",
+        "AttachFile":"Attach File",
+        "File":"File",
+        "Replies":"Replies",
+        "EmployeeEmail":"Invalid Employee Email",
+        "RequiredInput":"This Input is required",
+        "EmailValidation":"Invalid email format",
+        "userCodeError":"Invalid User Code",
+        "ErrorComplaintType":"Incorrect complaint number",
+        "GetCode":"Get Code",
+        "SendSuccessfully":"Your Complaint send successfully",
+        "SendAnother":"Send Another One",
+        "CodeSendSuccessfully":"Code sent successfully"
     }
 
 }

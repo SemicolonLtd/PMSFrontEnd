@@ -35,7 +35,8 @@
         "News":"الاخبار",
         "Events": "الفعاليات",
         "Search": "بحث",
-        "PressRelease":"البيانات الصحفية"
+        "PressRelease":"البيانات الصحفية",
+        "Complaints":"الشكاوي"
     },
     "Home" :{
         "YearsExprience":"سنين الخبرة",
@@ -185,6 +186,43 @@
     "FAQ": {
         "FAQ":"الأسئلة الشائعة",
         "Desc": "الناس الجيدة تعمل علي توصيل قيمة غالية"
+    },
+    "Complaints":{
+        "SearchForComplaint": "البحث عن شكوى",
+        "SearchHere": "ابحث هنا...",
+        "Search": "بحث",
+        "NewComplaint": "شكوى جديدة",
+        "TheComplaint": "موضوع الشكوى",
+        "ComplainantType": "نوع المشتكي",
+        "Types": "الأنواع..",
+        "FullName": "الاسم الكامل",
+        "PhoneNumber": "رقم الهاتف",
+        "Email": "البريد الإلكتروني",
+        "VerifyCode": "رمز التحقق",
+        "Message": "الرسالة",
+        "SendComplaint": "إرسال الشكوى",
+        "UserCode": "كود المستخدم",
+        "Employee": "موظف",
+        "ServicePovider": "مقدم خدمة",
+        "ResourceSupplier": "مورد",
+        "Client": "عميل",
+        "ComplaintsNom": "رقم الشكوى",
+        "Accepted": "تم القبول",
+        "AttachFile": "إرفاق ملف",
+        "File":"ملف",
+        "Replies":"الردود",
+        "EmployeeEmail": "بريد الموظف الإلكتروني غير صالح",
+        "RequiredInput": "هذا الحقل مطلوب",
+        "EmailValidation": "تنسيق البريد الإلكتروني غير صالح",
+        "userCodeError": "كود المستخدم غير صالح",
+        "ErrorComplaintType":"رقم الشكوى غير صحيح",
+        "GetCode": " تفعيل",
+        "SendSuccessfully": "تم إرسال الشكوى بنجاح",
+        "SendAnother": "إرسال شكوى أخرى",
+        "CodeSendSuccessfully": "تم إرسال الكود بنجاح"
+
+
+
     }
     
 }
