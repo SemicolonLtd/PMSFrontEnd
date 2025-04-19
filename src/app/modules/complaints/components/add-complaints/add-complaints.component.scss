@@ -34,6 +34,10 @@ button {
   &:hover {
     background-color: $main-color-hover;
   }
+  &:disabled 
+  {
+    cursor: not-allowed;
+  }
 }
 
 // Form Labels
@@ -59,7 +63,10 @@ input[type="radio"] {
   -webkit-appearance: none;
   -moz-appearance: none;
 }
-
+input[type="radio"]:disabled + label {
+  pointer-events: none;
+  opacity: 0.5; /* optional: visual feedback */
+}
 .custom-radio {
   display: flex;
   align-items: center;

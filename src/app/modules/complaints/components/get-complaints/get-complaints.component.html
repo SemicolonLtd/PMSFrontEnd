@@ -28,6 +28,18 @@
             <label class="mb-2" for="">{{"Complaints.Message" | translate}}</label>
             <input readonly [value]="complaintData?.message" type="text" class=" w-100  p-2 bg-transparent " [placeholder]="'Complaints.Message' | translate">
         </div>
+        <div class="col-12"> 
+            <div *ngFor="let file of complaintData?.files">
+                <div class="upload-btn-wrapper">
+                    <a [href]="file?.file_path" target="_blank"  class="btn-upload px-4 d-inline-flex align-items-center gap-2">
+                      {{ "Complaints.File" | translate }}
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20">
+                        <path d="M21.44 11.05l-8.49 8.49a5.66 5.66 0 01-8-8l8.49-8.49a3.54 3.54 0 015 5l-8.5 8.49a1.41 1.41 0 01-2-2l7.79-7.8"/>
+                      </svg>
+                    </a>
+                  </div>
+            </div>
+        </div>
     </div>
     <!-- Replies -->
     <div *ngIf="complaintData?.replies?.length" class="my-5 px-3 py-4 bg-cover row g-3">

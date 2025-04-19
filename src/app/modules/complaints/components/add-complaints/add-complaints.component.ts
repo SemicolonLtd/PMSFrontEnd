@@ -1,15 +1,13 @@
 import { Component, inject, OnInit, OnDestroy } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { debounceTime, Subscription } from 'rxjs';
 import { ComplaintsService } from '../../services/complaints.service';
 import { environment } from './../../../../../environments/environment';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
+
+type Status = "LOADING" | "SUCCESS" | "FAIL" | "DEFAULT";
+
 
 @Component({
   selector: 'app-add-complaints',
@@ -17,34 +15,40 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./add-complaints.component.scss'],
 })
 export class AddComplaintsComponent implements OnInit, OnDestroy {
-  private subscription: Subscription = new Subscription();
+  // Dependancy Injection >>
   private complaintsService: ComplaintsService = inject(ComplaintsService);
   private fb: FormBuilder = inject(FormBuilder);
-  private translateService:TranslateService = inject(TranslateService);
-  private toastrService:ToastrService = inject(ToastrService);
-  employeeErrorMessage:string = '';
-  userCodeErrorMessage:string = '';
-  userCodeLoading:boolean = false;
-  userCodeSuccess:boolean = false;
-  userCodeFaild:boolean = false;
-  verifyCodeLoading:boolean = false;
-  verifyCodeSuccess:boolean = false;
-  verifyCodeFaild:boolean = false;
-  sendSuccessfully:boolean = false;
-  loadingSubmit:boolean=false;
-  complaintId:string = '';
+  private translateService: TranslateService = inject(TranslateService);
+  private toastrService: ToastrService = inject(ToastrService);
+
+  // Variable >>
+  private subscription: Subscription = new Subscription();
+  complaintForm!: FormGroup;
+  employeeErrorMessage: string = '';
+  userCodeErrorMessage: string = '';
+  userCodeStatus: Status = "DEFAULT";
+  verifyCodeStatus: Status = "DEFAULT";
+  sendSuccessfully: boolean = false;
+  loadingSubmit: boolean = false;
+  complaintTypeLoading: boolean = false;
+  complaintId: string = '';
   uploadedFiles: File[] = [];
+  readOnlyComplainType: boolean = false;
+  showCode: boolean = true;
+  complaintsTypes: any;
+  complaintNumber: string = '';
+  disableUserType = false;
+  disableCode = false;
+  disableVerifyOTP = false;
+  readonlyMainInfo = false;
 
   usersHaveCode: string[] = [
     'client',
     'service_provider',
     'resource_supplier',
   ];
-  showCode: boolean = true;
-  complaintForm!: FormGroup;
 
-  complaintsTypes: any;
-
+  // Life Cycle Component
   ngOnInit(): void {
     this.initComplaintForm();
     this.verifyCodeTyping();
@@ -53,17 +57,31 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
 
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+
+
   initComplaintForm(): void {
     this.complaintForm = this.fb.group({
       type: ['client', Validators.required],
       complaint_type_id: ['', [Validators.required]],
-      full_name: [null, Validators.required],
-      phone_number: [null, Validators.required],
-      email: [null],
-      code: [null, Validators.required],
-      message: [null, Validators.required],
-      verifyCode:['']
+      full_name: ['', Validators.required],
+      phone_number: ['', [Validators.required, Validators.pattern(/^(?:\+|00)?[0-9]{8,15}$/)]
+      ],
+      email: ['', [Validators.required, Validators.email]],
+      code: ['', Validators.required],
+      message: ['', Validators.required],
+      verifyCode: ['', [Validators.required, Validators.pattern(/[0-9]{6}/)]]
     });
+  }
+  readonlyEmail(): boolean {
+    if (this.usersHaveCode?.includes(this.complaintForm.get('type')?.value)) {
+      return !!this.complaintForm.get('code')?.invalid || !!this.complaintForm.get('complaint_type_id')?.invalid || !!this.complaintForm.get('full_name')?.invalid || !!this.complaintForm.get('phone_number')?.invalid
+    } else {
+      return !!this.complaintForm.get('complaint_type_id')?.invalid || !!this.complaintForm.get('full_name')?.invalid || !!this.complaintForm.get('phone_number')?.invalid
+    }
   }
 
   addComplaint(): void {
@@ -76,15 +94,17 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
 
     this.subscription.add(
       this.complaintsService.submitComplaint(formData).subscribe({
-        next:(res)=> {
+        next: (res) => {
           this.loadingSubmit = false;
           console.log("response => ", res);
-          if(res?.success){
+          if (res?.success) {
             this.sendSuccessfully = true;
+            this.complaintNumber = res?.data.complaint_number;
+
           }
         },
-        error:(err)=>{
-          this.loadingSubmit=false
+        error: (err) => {
+          this.loadingSubmit = false
           console.log("error => ", err)
         }
       })
@@ -99,19 +119,23 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
     this.complaintsTypes = [];
     this.getComplaintTypesByUser(event?.target?.value);
     // set user type value 
-    this.complaintForm.patchValue({type:event?.target?.value})
+    this.complaintForm.patchValue({ type: event?.target?.value })
     // make error employee '' 
     this.employeeErrorMessage = '';
-    this.complaintForm.patchValue({email:''})
+    this.complaintForm.patchValue({ email: '' })
   }
 
   getComplaintTypesByUser(userType: string): void {
+    this.complaintTypeLoading = true;
     this.subscription.add(
       this.complaintsService.getComplaintsTypeByUserType(userType).subscribe({
         next: (res) => {
-            this.complaintsTypes = res?.data;
+          this.complaintTypeLoading = false;
+          this.complaintsTypes = res?.data;
         },
         error: (err) => {
+          this.complaintTypeLoading = false;
+          this.toastrService.error('err', err?.error?.message);
         },
       })
     );
@@ -127,36 +151,35 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
   }
 
   emailTyping(): void {
-      if(this.complaintForm.get('type')?.value == "employee" && !this.complaintForm
-      .get('email')?.value?.includes('@pms')){
-        this.employeeErrorMessage = this.translateService.instant("Complaints.EmployeeEmail")
-      }else{
-        this.employeeErrorMessage = '';
-      }
-      // call init complaint 
-      this.initComplaint({
-        type: this.complaintForm.get('type')?.value,
-        complaint_type_id: this.complaintForm.get('complaint_type_id')?.value,
-        full_name:this.complaintForm.get('full_name')?.value,
-        phone_number:this.complaintForm.get('phone_number')?.value,
-        email: this.complaintForm
+    if (this.complaintForm.get('type')?.value == "employee" && !/@pms\.com$/.test(this.complaintForm.get('email')?.value)) {
+      this.employeeErrorMessage = this.translateService.instant("Complaints.EmployeeEmail")
+    } else {
+      this.employeeErrorMessage = '';
+    }
+    // call init complaint 
+    this.initComplaint({
+      type: this.complaintForm.get('type')?.value,
+      complaint_type_id: this.complaintForm.get('complaint_type_id')?.value,
+      full_name: this.complaintForm.get('full_name')?.value,
+      phone_number: this.complaintForm.get('phone_number')?.value,
+      email: this.complaintForm
         .get('email')?.value,
-        code: this.complaintForm.get('code')?.value
-      });
+      code: this.complaintForm.get('code')?.value
+    });
   }
 
   verifyCodeTyping(): void {
     this.complaintForm
       .get('verifyCode')
       ?.valueChanges.pipe(debounceTime(500))
-      .subscribe((value:string) => {
+      .subscribe((value: string) => {
         // verify otp
-        if(value != ''){
-          this.verifyOTP({"complaint_id" : this.complaintId, "otp" : value});
-        }else{
-          this.verifyCodeFaild = false;
-          this.verifyCodeSuccess = false;
-          this.verifyCodeLoading = false;
+        if (value != '') {
+          if (this.complaintForm.get('verifyCode')?.valid) {
+            this.verifyOTP({ "complaint_id": this.complaintId, "otp": value });
+          }
+        } else {
+          this.verifyCodeStatus = "DEFAULT";
         }
       });
   }
@@ -166,117 +189,124 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
   captchaToken: string | null = null;
   siteKey: string = environment.siteKey;
   onCaptchaResolved(captchaResponse: any): void {
+    this.captchaToken = captchaResponse;
+    const formData = new FormData();
+    formData.append('captcha_token', this.captchaToken ?? '');
+    
+
   }
 
-
+  get isSubmitDisabled(): boolean {
+    return (
+      !this.complaintForm.get('type')?.valid ||
+      !this.complaintForm.get('complaint_type_id')?.valid ||
+      !this.complaintForm.get('full_name')?.valid ||
+      !this.complaintForm.get('phone_number')?.valid ||
+      !this.complaintForm.get('email')?.valid ||
+      !this.complaintForm.get('message')?.valid ||
+      !this.complaintForm.get('verifyCode')?.valid ||
+      this.loadingSubmit ||
+      !this.captchaToken
+    );
+  }
 
   FillFormData(formData: FormData): void {
     formData.append('message', this.complaintForm.get('message')?.value);
     formData.append('full_name', this.complaintForm.get('full_name')?.value);
     formData.append('phone_number', this.complaintForm.get('phone_number')?.value);
     formData.append('complaint_id', this.complaintId);
-  
+
     this.uploadedFiles.forEach((file, index) => {
       formData.append(`files[${index}]`, file);
     });
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
 
-  onChangeUserCode():void 
-  {
-    this.userCodeErrorMessage ="";
+
+  onChangeUserCode(): void {
+    this.userCodeErrorMessage = "";
     this.complaintForm
-    .get('code')
-    ?.valueChanges.pipe(debounceTime(500))
-    .subscribe((value:string) => {
-      // verify code
-      if(value != '' && value?.length < 10){
-        this.verifyCode({"type": this.complaintForm.get('type')?.value, "code":value})
-      }
-    });
+      .get('code')
+      ?.valueChanges.pipe(debounceTime(500))
+      .subscribe((value: string) => {
+        // verify code
+        if (value != '') {
+          if(this.complaintForm.get('code')?.valid){
+            this.verifyCode({ "type": this.complaintForm.get('type')?.value, "code": value });
+          }
+        } else {
+          this.userCodeStatus = "DEFAULT";
+        }
+      });
   }
 
   verifyCode(data: any): void {
-    this.userCodeSuccess = false;
-    this.userCodeFaild = false;
+    this.userCodeStatus = "LOADING";
     this.userCodeErrorMessage = '';
-    this.userCodeLoading = true;
     this.subscription.add(
       this.complaintsService.verifyCode(data).subscribe({
         next: (res) => {
-          this.userCodeLoading = false;
-          if(res?.success){
-            // user code success make correct and make user type and code read only
-            this.userCodeSuccess = true;
-            // make user code and user type and complain
+          if (res?.success) {
+            this.userCodeStatus = "SUCCESS";
+            this.readOnlyComplainType = true;
+            // ########################################### close user type and code
+            this.disableUserType = true;
+            this.disableCode = true;
           }
         },
         error: (err) => {
-          this.userCodeLoading = false;
-          this.userCodeFaild = true;
+          this.userCodeStatus = "FAIL";
           this.userCodeErrorMessage = this.translateService.instant("Complaints.userCodeError")
         },
       })
     );
   }
 
-  verifyOTP(data:any):void{
-    this.verifyCodeLoading = true;
-    this.verifyCodeSuccess = false;
-    this.verifyCodeFaild = false;
+  verifyOTP(data: any): void {
+    this.verifyCodeStatus = "LOADING";
     this.subscription.add(this.complaintsService.verifyOTP(data).subscribe({
-      next:(res)=>{
-        this.verifyCodeLoading = false;
-        if(res?.success){
-          this.verifyCodeSuccess = true;
+      next: (res) => {
+        if (res?.success) {
+          this.verifyCodeStatus = "SUCCESS";
+          // ############################## close verify OTP input
+          this.disableVerifyOTP = true;
         }
-      }, 
-      error:(err)=>{
-        this.verifyCodeLoading = false;
-        this.verifyCodeFaild = true
+      },
+      error: (err) => {
+        this.verifyCodeStatus = "FAIL";
       }
     }))
   }
 
-  initComplaint(data:any):void {
+  initComplaint(data: any): void {
     this.subscription.add(
       this.complaintsService.initiateComplaint(data).subscribe({
-        next:(res)=>{
-          if(res?.success){
+        next: (res) => {
+          if (res?.success) {
             this.complaintId = res?.data?.complaint_id;
             this.toastrService.success(this.translateService.instant("Complaints.CodeSendSuccessfully"))
+            // ########################################## close complaint_type_id  full_name phone_number email
+            this.readonlyMainInfo = true;
           }
         },
-        error:(err)=>{
+        error: (err) => {
           this.toastrService.error(err?.error?.message)
         }
       })
     );
   }
 
-  closePopUp():void 
-  {
+  closePopUp(): void {
     this.sendSuccessfully = false;
-    this.complaintForm.reset(); 
-  
+    this.complaintForm.reset();
     this.uploadedFiles = [];
     this.complaintId = '';
     this.employeeErrorMessage = '';
     this.userCodeErrorMessage = '';
-    
-    this.userCodeLoading = false;
-    this.userCodeSuccess = false;
-    this.userCodeFaild = false;
-    
-    this.verifyCodeLoading = false;
-    this.verifyCodeSuccess = false;
-    this.verifyCodeFaild = false;
-  
-    this.complaintsTypes = [];
+    this.userCodeStatus = "DEFAULT";
+    this.verifyCodeStatus = "DEFAULT";
     this.showCode = true;
-  
+
   }
+  
 }

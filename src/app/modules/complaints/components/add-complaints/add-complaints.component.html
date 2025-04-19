@@ -1,137 +1,197 @@
 <section class="py-5 container">
     <h2 class="fw-bold">{{"Complaints.NewComplaint" | translate}}</h2>
-    <form [formGroup]="complaintForm"  class="bg-form my-4 p-5">
+    <form [formGroup]="complaintForm" class="bg-form my-4 p-5">
         <h3 class="h4 my-4">{{"Complaints.TheComplaint" | translate}}</h3>
         <div class="row justify-content-start">
             <div class="col-sm-6 col-md-3  w-fit">
-                <input formControlName="type" (change)="onUserTypeChange($event)" type="radio" name="type" id="client" value="client">
-                <label class=" custom-radio" for="client">{{"Complaints.Client" | translate}}</label>
+                <input formControlName="type"  (change)="onUserTypeChange($event)" type="radio" name="type" id="client"
+                    value="client">
+                <label class=" custom-radio disabled" for="client">{{"Complaints.Client" | translate}}</label>
             </div>
             <div class="col-sm-6 col-md-3  w-fit">
-                <input formControlName="type" (change)="onUserTypeChange($event)" type="radio" name="type" id="service_provider" value="service_provider">
+                <input formControlName="type" (change)="onUserTypeChange($event)" type="radio" name="type"
+                    id="service_provider" value="service_provider">
                 <label class=" custom-radio" for="service_provider">{{"Complaints.ServicePovider" | translate}}</label>
             </div>
             <div class="col-sm-6 col-md-3  w-fit">
-                <input formControlName="type" (change)="onUserTypeChange($event)" type="radio" name="type" id="resource_supplier" value="resource_supplier">
-                <label class=" custom-radio" for="resource_supplier">{{"Complaints.ResourceSupplier" | translate}}</label>
+                <input formControlName="type" (change)="onUserTypeChange($event)" type="radio" name="type"
+                    id="resource_supplier" value="resource_supplier">
+                <label class=" custom-radio" for="resource_supplier">{{"Complaints.ResourceSupplier" |
+                    translate}}</label>
             </div>
             <div class="col-sm-6 col-md-3  w-fit">
-                <input formControlName="type" (change)="onUserTypeChange($event)" type="radio" name="type" id="employee" value="employee">
+                <input formControlName="type" (change)="onUserTypeChange($event)" type="radio" name="type" id="employee"
+                    value="employee">
                 <label class=" custom-radio" for="employee">{{"Complaints.Employee" | translate}}</label>
             </div>
         </div>
 
         <div class="my-4">
-            <label class="mb-3" for="">{{"Complaints.ComplainantType" | translate}}</label>
-            <select formControlName="complaint_type_id" name="complaintType" class=" w-100  p-3 rounded-3 border-0  " id="" >
-                <option value="" disabled selected hidden>{{"Complaints.Types" | translate}}</option>
-                <option *ngFor="let complaint of complaintsTypes" [value]="complaint?.id">{{complaint?.name}}sfdfasdf</option>
+            <label class="mb-3" for="ComplainantType">{{"Complaints.ComplainantType" | translate}}</label>
+            <select formControlName="complaint_type_id" name="complaintType" class="w-100 p-3 rounded-3 border-0"
+                id="ComplainantType" [disabled]="readonlyMainInfo">
+                <option value="" disabled selected hidden>
+                    {{"Complaints.Types" | translate}}
+                </option>
+
+                <!-- Show loading option -->
+                <option *ngIf="complaintTypeLoading" disabled>
+                    {{ 'Complaints.Loading' | translate }}
+                </option>
+
+                <!-- Show data if available -->
+                <ng-container *ngIf="!complaintTypeLoading && complaintsTypes?.length > 0">
+                    <option *ngFor="let complaint of complaintsTypes" [value]="complaint?.id">
+                        {{ complaint?.name }}
+                    </option>
+                </ng-container>
+
+                <!-- Show no data if array is empty -->
+                <option *ngIf="!complaintTypeLoading && complaintsTypes?.length === 0" disabled>
+                    {{ 'No data available' | translate }}
+                </option>
             </select>
-            <div *ngIf="complaintForm.get('complaint_type_id')?.touched && complaintForm.get('complaint_type_id')?.invalid">
-                <small class="text-danger pt-1" *ngIf="complaintForm.get('complaint_type_id')?.errors?.['required']"> {{"Complaints.RequiredInput" | translate}}</small>
-            </div>        
+            <div
+                *ngIf="complaintForm.get('complaint_type_id')?.touched && complaintForm.get('complaint_type_id')?.invalid">
+                <small class="text-danger pt-1" *ngIf="complaintForm.get('complaint_type_id')?.errors?.['required']">
+                    {{"Complaints.RequiredInput" | translate}}</small>
+            </div>
         </div>
-        <div class="my-4"> 
+        <div class="my-4">
             <label class="mb-2 label-gray" for="name">{{"Complaints.FullName" | translate}}</label>
-            <input formControlName="full_name" type="text" class=" w-100  p-2 bg-transparent " id="name" [placeholder]="'Complaints.FullName' | translate">
+            <input [readonly]="readonlyMainInfo" formControlName="full_name" type="text"
+                class=" w-100  p-2 bg-transparent " id="name" [placeholder]="'Complaints.FullName' | translate">
             <div *ngIf="complaintForm.get('full_name')?.touched && complaintForm.get('full_name')?.invalid">
-                <small class="text-danger pt-1" *ngIf="complaintForm.get('full_name')?.errors?.['required']"> {{"Complaints.RequiredInput" | translate}}</small>
-            </div>   
+                <small class="text-danger pt-1" *ngIf="complaintForm.get('full_name')?.errors?.['required']">
+                    {{"Complaints.RequiredInput" | translate}}</small>
+            </div>
         </div>
-        <div *ngIf="showCode" class="my-4"> 
-            <label class="mb-2 label-gray" for="userCode">{{"Complaints.UserCode" | translate}}</label>
+        <div *ngIf="showCode" class="my-4">
+            <label class="mb-2 label-gray" for="userCode">{{complaintForm.get('type')?.value?.replace('_', ' ') |
+                titlecase}} {{ "Complaints.Code" | translate}}</label>
             <div class="position-relative">
-                <input formControlName="code"    type="text" class=" w-100  p-2 bg-transparent " id="userCode" [placeholder]="'Complaints.UserCode' | translate">
+                <input formControlName="code" [readonly]="disableCode" type="text" class=" w-100  p-2 bg-transparent "
+                    id="userCode" [placeholder]=" 'Complaints.Code' | translate">
                 <div class="position-absolute end-0 top-50 translate-middle-y">
-                    <span *ngIf="userCodeLoading" class="spinner-border spinner-border-sm mx-2" role="status" aria-hidden="true"></span>
-                    <i *ngIf="userCodeFaild" class="text-danger fa-solid fa-circle-xmark mx-2" role="status" aria-hidden="true"></i>
-                    <i *ngIf="userCodeSuccess" class="text-success mx-2 fa-regular fa-circle-check" role="status" aria-hidden="true"></i>
+                    <span *ngIf="userCodeStatus == 'LOADING'" class="spinner-border spinner-border-sm mx-2"
+                        role="status" aria-hidden="true"></span>
+                    <i *ngIf="userCodeStatus == 'FAIL'" class="text-danger fa-solid fa-circle-xmark mx-2" role="status"
+                        aria-hidden="true"></i>
+                    <i *ngIf="userCodeStatus == 'SUCCESS'" class="text-success mx-2 fa-regular fa-circle-check"
+                        role="status" aria-hidden="true"></i>
                 </div>
             </div>
             <small *ngIf="userCodeErrorMessage" class="text-danger">{{userCodeErrorMessage}}</small>
             <div *ngIf="complaintForm.get('code')?.touched && complaintForm.get('code')?.invalid">
-                <small class="text-danger pt-1" *ngIf="complaintForm.get('code')?.errors?.['required']"> {{"Complaints.RequiredInput" | translate}}</small>
-            </div>  
+                <small class="text-danger pt-1" *ngIf="complaintForm.get('code')?.errors?.['required']">
+                    {{"Complaints.RequiredInput" | translate}}</small>
+            </div>
         </div>
-        <div class="my-4"> 
+        <div class="my-4">
             <label class="mb-2 label-gray" for="phone">{{"Complaints.PhoneNumber" | translate}}</label>
-            <input formControlName="phone_number" type="text" class=" w-100  p-2 bg-transparent " id="phone" [placeholder]="'Complaints.PhoneNumber' | translate">
-            <div *ngIf="complaintForm.get('phone_number')?.touched && complaintForm.get('phone_number')?.invalid">
-                <small class="text-danger pt-1" *ngIf="complaintForm.get('phone_number')?.errors?.['required']"> {{"Complaints.RequiredInput" | translate}}</small>
-            </div>   
+            <input [readonly]="readonlyMainInfo" formControlName="phone_number" type="text"
+                class=" w-100  p-2 bg-transparent " id="phone" [placeholder]="'Complaints.PhoneNumber' | translate">
+            <small class="text-danger pt-1"
+                *ngIf="complaintForm.get('phone_number')?.touched && complaintForm.get('phone_number')?.invalid">
+                <span *ngIf="complaintForm.get('phone_number')?.errors?.['required']">
+                    {{ "Complaints.RequiredInput" | translate }}
+                </span>
+                <span *ngIf="complaintForm.get('phone_number')?.errors?.['pattern']">
+                    {{ "Complaints.PhoneError" | translate }}
+                </span>
+            </small>
         </div>
         <div class="row g-5  justify-content-between">
-            <div class="col-sm-12 col-md-6 "> 
+            <div class="col-sm-12 col-md-6 ">
                 <label class="mb-2 label-gray" for="email">{{"Complaints.Email" | translate}}</label>
-                <div >
+                <div>
                     <div class="position-relative">
-                        <input formControlName="email" id="email" type="email" [placeholder]="'Complaints.Email' | translate" class="w-100 p-2 pe-5 bg-transparent" />
-                      
-                        <small class="fw-bold position-absolute end-0 top-50 translate-middle-y me-2 text-primary cursor-pointer text-black"
-                              (click)="emailTyping()">
-                          {{"Complaints.GetCode" | translate}}
+                        <input [readonly]="readonlyMainInfo" formControlName="email" id="email" type="email"
+                            [readonly]="readonlyEmail()" [placeholder]="'Complaints.Email' | translate"
+                            class="w-100 p-2 pe-5 bg-transparent" />
+                        <small *ngIf="!complaintForm.get('email')?.invalid"
+                            class="fw-bold position-absolute end-0 top-50 translate-middle-y me-2 text-primary cursor-pointer text-black"
+                            (click)="emailTyping()">
+                            {{"Complaints.GetCode" | translate}}
                         </small>
-                      </div>
-                    <!-- <div class="position-absolute end-0 top-50 translate-middle-y">
-                        <span *ngIf="emailLoading" class="spinner-border spinner-border-sm mx-2" role="status" aria-hidden="true"></span>
-                        <i *ngIf="emailFaild" class="text-danger fa-solid fa-circle-xmark mx-2" role="status" aria-hidden="true"></i>
-                        <i *ngIf="emailSuccess" class="text-success mx-2 fa-regular fa-circle-check" role="status" aria-hidden="true"></i>
-                    </div> -->
+                    </div>
                 </div>
                 <small *ngIf="employeeErrorMessage" class="text-danger">{{employeeErrorMessage}}</small>
-                <div *ngIf="complaintForm.get('email')?.touched && complaintForm.get('email')?.invalid">
-                    <small class="text-danger pt-1" *ngIf="complaintForm.get('email')?.errors?.['required']"> {{"Complaints.RequiredInput" | translate}}</small>
-                    <small class="text-danger pt-1" *ngIf="complaintForm.get('email')?.errors?.['email']"> {{"Complaints.EmailValidation" | translate}}</small>
-                </div>   
+                <small class="text-danger pt-1"
+                    *ngIf="complaintForm.get('email')?.touched && complaintForm.get('email')?.invalid && !readonlyEmail()">
+                    <span *ngIf="complaintForm.get('email')?.errors?.['required']">
+                        {{ "Complaints.RequiredInput" | translate }}
+                    </span>
+
+                    <span *ngIf="complaintForm.get('email')?.errors?.['email']">
+                        {{ "Complaints.EmailValidation" | translate }}
+                    </span>
+                </small>
             </div>
-            <div class="col-sm-12 col-md-6"> 
+            <div class="col-sm-12 col-md-6">
                 <label class="mb-2 label-gray" for="verifyCode">{{"Complaints.VerifyCode" | translate}}</label>
                 <div class="position-relative">
-                    <input type="text" id="verifyCode" formControlName="verifyCode" [placeholder]="'Complaints.VerifyCode' | translate" class=" w-100 p-2 bg-transparent ">
-                <div class="position-absolute end-0 top-50 translate-middle-y">
-                    <span *ngIf="verifyCodeLoading" class="spinner-border spinner-border-sm mx-2" role="status" aria-hidden="true"></span>
-                    <i *ngIf="verifyCodeFaild" class="text-danger fa-solid fa-circle-xmark mx-2" role="status" aria-hidden="true"></i>
-                    <i *ngIf="verifyCodeSuccess" class="text-success mx-2 fa-regular fa-circle-check" role="status" aria-hidden="true"></i>
-                </div>
+                    <input type="text" id="verifyCode" [readonly]="disableVerifyOTP" formControlName="verifyCode"
+                        [placeholder]="'Complaints.VerifyCode' | translate" class=" w-100 p-2 bg-transparent ">
+                    <div class="position-absolute end-0 top-50 translate-middle-y">
+                        <span *ngIf="verifyCodeStatus == 'LOADING'" class="spinner-border spinner-border-sm mx-2"
+                            role="status" aria-hidden="true"></span>
+                        <i *ngIf="verifyCodeStatus == 'FAIL'" class="text-danger fa-solid fa-circle-xmark mx-2"
+                            role="status" aria-hidden="true"></i>
+                        <i *ngIf="verifyCodeStatus == 'SUCCESS'" class="text-success mx-2 fa-regular fa-circle-check"
+                            role="status" aria-hidden="true"></i>
+                    </div>
                 </div>
                 <div *ngIf="complaintForm.get('verifyCode')?.touched && complaintForm.get('verifyCode')?.invalid">
-                    <small class="text-danger pt-1" *ngIf="complaintForm.get('verifyCode')?.errors?.['required']"> {{"Complaints.RequiredInput" | translate}}</small>
-                </div>   
+                    <small class="text-danger pt-1" *ngIf="complaintForm.get('verifyCode')?.errors?.['required']">
+                        {{"Complaints.RequiredInput" | translate}}</small>
+                    <small class="text-danger pt-1" *ngIf="complaintForm.get('verifyCode')?.errors?.['pattern']">
+                        {{"Complaints.CodePattern" | translate}}</small>
+                </div>
             </div>
         </div>
         <div class="my-4">
             <label class="mb-2 label-gray" for="message">{{"Complaints.Message" | translate}}</label>
-            <textarea formControlName="message"  id="message" cols="30" rows="3" [placeholder]="'Complaints.Message' | translate" class=" w-100  p-2 bg-transparent"></textarea>
+            <textarea formControlName="message" id="message" cols="30" rows="3"
+                [placeholder]="'Complaints.Message' | translate" class=" w-100  p-2 bg-transparent"></textarea>
             <div *ngIf="complaintForm.get('message')?.touched && complaintForm.get('message')?.invalid">
-                <small class="text-danger pt-1" *ngIf="complaintForm.get('message')?.errors?.['required']"> {{"Complaints.RequiredInput" | translate}}</small>
-            </div>   
+                <small class="text-danger pt-1" *ngIf="complaintForm.get('message')?.errors?.['required']">
+                    {{"Complaints.RequiredInput" | translate}}</small>
+            </div>
         </div>
-        <re-captcha
-        [siteKey]="siteKey"
-        (resolved)="onCaptchaResolved($event)">
-      </re-captcha>
+        <re-captcha [siteKey]="siteKey" (resolved)="onCaptchaResolved($event)">
+        </re-captcha>
         <div class="d-flex justify-content-between my-5">
             <div class="upload-btn-wrapper">
                 <button class="btn-upload px-3">
-                  {{"Complaints.AttachFile" | translate}}
-                  <!-- SVG أيقونة مشبك -->
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path d="M21.44 11.05l-8.49 8.49a5.66 5.66 0 01-8-8l8.49-8.49a3.54 3.54 0 015 5l-8.5 8.49a1.41 1.41 0 01-2-2l7.79-7.8"/>
-                  </svg>
+                    {{"Complaints.AttachFile" | translate}}
+                    <!-- SVG أيقونة مشبك -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path
+                            d="M21.44 11.05l-8.49 8.49a5.66 5.66 0 01-8-8l8.49-8.49a3.54 3.54 0 015 5l-8.5 8.49a1.41 1.41 0 01-2-2l7.79-7.8" />
+                    </svg>
                 </button>
                 <input (change)="onFileChange($event)" multiple type="file" name="myFile" />
-              </div>
-            <button (click)="addComplaint()" type="submit" class="border-0 text-white border-0 rounded-3 px-3 fw-medium"> {{"Complaints.SendComplaint" | translate}}<span *ngIf="loadingSubmit" class="spinner-border spinner-border-sm mx-2" role="status" aria-hidden="true"></span></button>
+            </div>
+            <button (click)="addComplaint()" type="submit" [disabled]="isSubmitDisabled"
+                class="border-0 text-white border-0 rounded-3 px-3 fw-medium"> {{"Complaints.SendComplaint" |
+                translate}}<span *ngIf="loadingSubmit" class="spinner-border spinner-border-sm mx-2" role="status"
+                    aria-hidden="true"></span></button>
         </div>
+        <span class="mx-1" *ngFor="let file of uploadedFiles">{{file?.name}}</span>
     </form>
 </section>
 
 
-<section *ngIf="sendSuccessfully" class="w-100 vh-100 postion-fixed bg-transparent fixed-top d-flex justify-content-center align-items-center">
+<section *ngIf="sendSuccessfully"
+    class="w-100 vh-100 postion-fixed bg-transparent fixed-top d-flex justify-content-center align-items-center">
     <div class="p-5 text-black bg-white text-center rounded-5 position-relative">
         <img class="w-25 mx-auto" src="../../../../../assets/images/global/correct.gif" alt="">
         <h3 class="mt-4">{{"Complaints.SendSuccessfully" | translate}}</h3>
-        <button (click)="closePopUp() " class="px-5 py-2 my-3 rounded-2">{{"Complaints.SendAnother" | translate}}</button>
+        <h5 class="mt-4">{{"Complaints.ComplaintNumber" | translate}}: {{complaintNumber}}</h5>
+        <button (click)="closePopUp() " class="px-5 py-2 my-3 rounded-2">{{"Complaints.SendAnother" |
+            translate}}</button>
         <i (click)="closePopUp() " class="cursor-pointer fa-x fa-solid position-absolute top-0 end-0 m-5"></i>
     </div>
 </section>

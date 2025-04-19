@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, TitleCasePipe } from '@angular/common';
 import { ComplaintsRoutingModule } from './complaints-routing.module';
 import { ComplaintsComponent } from './pages/complaints/complaints.component';
 import { AddComplaintsComponent } from './components/add-complaints/add-complaints.component';
@@ -22,7 +22,8 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     ReactiveFormsModule,
     RecaptchaModule,
-    ToastrModule
+    ToastrModule,
+    TitleCasePipe
   ]
 })
 export class ComplaintsModule { }

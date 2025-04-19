@@ -25,8 +25,6 @@ export class ComplaintsService {
     return this.http.post(`${environment.apiUrl2}/complaints/initiate`, data)
   }
 
-
-
   submitComplaint(data:FormData):Observable<any>{
     // send data to API and send code to email   
     return this.http.post(`${environment.apiUrl2}/complaints/submit`, 
@@ -44,5 +42,9 @@ export class ComplaintsService {
     // verify OTP
     return this.http.post(`${environment.apiUrl2}/complaints/verify-otp`, data)
   }
+
+  // sendCaptcha(data:FormData):Observable<any>{
+  //   return this.http.post(`https://www.google.com/recaptcha/api/siteverify`, data);
+  // }
 
 }

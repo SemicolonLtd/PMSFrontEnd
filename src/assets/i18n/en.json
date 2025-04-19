@@ -203,7 +203,7 @@
         "VerifyCode":"Verify Code",
         "Message":"Message",
         "SendComplaint":"Send Complaint",
-        "UserCode":"User Code",
+        "Code":" Code",
         "Employee":"Employee",
         "ServicePovider":"Service Povider",
         "ResourceSupplier":"Resource Supplier",
@@ -219,9 +219,13 @@
         "userCodeError":"Invalid User Code",
         "ErrorComplaintType":"Incorrect complaint number",
         "GetCode":"Get Code",
-        "SendSuccessfully":"Your Complaint send successfully",
+        "SendSuccessfully":"Your Complaint sent successfully",
         "SendAnother":"Send Another One",
-        "CodeSendSuccessfully":"Code sent successfully"
+        "CodeSendSuccessfully":"Code sent successfully",
+        "Loading":"Loading...",
+        "PhoneError":"Invalid Phone Number",
+        "CodePattern":"Code Must be 6 numeric",
+        "ComplaintNumber":"Complaint Number"
     }
 
 }

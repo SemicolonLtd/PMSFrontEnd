@@ -8,9 +8,6 @@ import { Component, Input } from '@angular/core';
 export class GetComplaintsComponent {
   @Input({required:true}) complaintData:any;
 
-  downloadFile():void 
-  {
-    // download file
-  }
+
 
 }
