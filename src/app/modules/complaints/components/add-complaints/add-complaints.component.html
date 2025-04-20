@@ -27,7 +27,7 @@
         </div>
 
         <div class="my-4">
-            <label class="mb-3" for="ComplainantType">{{"Complaints.ComplainantType" | translate}}</label>
+            <label class="mb-3" for="ComplainantType">{{"Complaints.ComplainantType" | translate}}  <span class="text-danger">*</span></label>
             <select formControlName="complaint_type_id" name="complaintType" class="w-100 p-3 rounded-3 border-0"
                 id="ComplainantType" [disabled]="readonlyMainInfo">
                 <option value="" disabled selected hidden>
@@ -58,7 +58,7 @@
             </div>
         </div>
         <div class="my-4">
-            <label class="mb-2 label-gray" for="name">{{"Complaints.FullName" | translate}}</label>
+            <label class="mb-2 label-gray" for="name">{{"Complaints.FullName" | translate}} <span class="text-danger">*</span></label>
             <input [readonly]="readonlyMainInfo" formControlName="full_name" type="text"
                 class=" w-100  p-2 bg-transparent " id="name" [placeholder]="'Complaints.FullName' | translate">
             <div *ngIf="complaintForm.get('full_name')?.touched && complaintForm.get('full_name')?.invalid">
@@ -67,8 +67,7 @@
             </div>
         </div>
         <div *ngIf="showCode" class="my-4">
-            <label class="mb-2 label-gray" for="userCode">{{complaintForm.get('type')?.value?.replace('_', ' ') |
-                titlecase}} {{ "Complaints.Code" | translate}}</label>
+            <label class="mb-2 label-gray" for="userCode">{{ "Complaints."+ complaintForm.get('type')?.value| translate}} <span class="text-danger">*</span></label>
             <div class="position-relative">
                 <input formControlName="code" [readonly]="disableCode" type="text" class=" w-100  p-2 bg-transparent "
                     id="userCode" [placeholder]=" 'Complaints.Code' | translate">
@@ -88,7 +87,7 @@
             </div>
         </div>
         <div class="my-4">
-            <label class="mb-2 label-gray" for="phone">{{"Complaints.PhoneNumber" | translate}}</label>
+            <label class="mb-2 label-gray" for="phone">{{"Complaints.PhoneNumber" | translate}} <span class="text-danger">*</span></label>
             <input [readonly]="readonlyMainInfo" formControlName="phone_number" type="text"
                 class=" w-100  p-2 bg-transparent " id="phone" [placeholder]="'Complaints.PhoneNumber' | translate">
             <small class="text-danger pt-1"
@@ -101,57 +100,55 @@
                 </span>
             </small>
         </div>
-        <div class="row g-5  justify-content-between">
-            <div class="col-sm-12 col-md-6 ">
-                <label class="mb-2 label-gray" for="email">{{"Complaints.Email" | translate}}</label>
-                <div>
-                    <div class="position-relative">
-                        <input [readonly]="readonlyMainInfo" formControlName="email" id="email" type="email"
-                            [readonly]="readonlyEmail()" [placeholder]="'Complaints.Email' | translate"
-                            class="w-100 p-2 pe-5 bg-transparent" />
-                        <small *ngIf="!complaintForm.get('email')?.invalid"
-                            class="fw-bold position-absolute end-0 top-50 translate-middle-y me-2 text-primary cursor-pointer text-black"
-                            (click)="emailTyping()">
-                            {{"Complaints.GetCode" | translate}}
-                        </small>
-                    </div>
-                </div>
-                <small *ngIf="employeeErrorMessage" class="text-danger">{{employeeErrorMessage}}</small>
-                <small class="text-danger pt-1"
-                    *ngIf="complaintForm.get('email')?.touched && complaintForm.get('email')?.invalid && !readonlyEmail()">
-                    <span *ngIf="complaintForm.get('email')?.errors?.['required']">
-                        {{ "Complaints.RequiredInput" | translate }}
-                    </span>
-
-                    <span *ngIf="complaintForm.get('email')?.errors?.['email']">
-                        {{ "Complaints.EmailValidation" | translate }}
-                    </span>
-                </small>
-            </div>
-            <div class="col-sm-12 col-md-6">
-                <label class="mb-2 label-gray" for="verifyCode">{{"Complaints.VerifyCode" | translate}}</label>
+        <div class="my-4">
+            <label class="mb-2 label-gray" for="email">{{"Complaints.Email" | translate}} <span class="text-danger">*</span></label>
+            <div>
                 <div class="position-relative">
-                    <input type="text" id="verifyCode" [readonly]="disableVerifyOTP" formControlName="verifyCode"
-                        [placeholder]="'Complaints.VerifyCode' | translate" class=" w-100 p-2 bg-transparent ">
-                    <div class="position-absolute end-0 top-50 translate-middle-y">
-                        <span *ngIf="verifyCodeStatus == 'LOADING'" class="spinner-border spinner-border-sm mx-2"
-                            role="status" aria-hidden="true"></span>
-                        <i *ngIf="verifyCodeStatus == 'FAIL'" class="text-danger fa-solid fa-circle-xmark mx-2"
-                            role="status" aria-hidden="true"></i>
-                        <i *ngIf="verifyCodeStatus == 'SUCCESS'" class="text-success mx-2 fa-regular fa-circle-check"
-                            role="status" aria-hidden="true"></i>
-                    </div>
+                    <input [readonly]="readonlyMainInfo" formControlName="email" id="email" type="email"
+                        [readonly]="readonlyEmail()" [placeholder]="'Complaints.Email' | translate"
+                        class="w-100 p-2 bg-transparent" />
+                    <small *ngIf="!complaintForm.get('email')?.invalid"
+                        class="fw-bold position-absolute end-0 top-50 translate-middle-y me-2 text-primary cursor-pointer text-black"
+                        (click)="emailTyping()">
+                        {{"Complaints.GetCode" | translate}}
+                    </small>
                 </div>
-                <div *ngIf="complaintForm.get('verifyCode')?.touched && complaintForm.get('verifyCode')?.invalid">
-                    <small class="text-danger pt-1" *ngIf="complaintForm.get('verifyCode')?.errors?.['required']">
-                        {{"Complaints.RequiredInput" | translate}}</small>
-                    <small class="text-danger pt-1" *ngIf="complaintForm.get('verifyCode')?.errors?.['pattern']">
-                        {{"Complaints.CodePattern" | translate}}</small>
+            </div>
+            <small *ngIf="employeeErrorMessage" class="text-danger">{{employeeErrorMessage}}</small>
+            <small class="text-danger pt-1"
+                *ngIf="complaintForm.get('email')?.touched && complaintForm.get('email')?.invalid && !readonlyEmail()">
+                <span *ngIf="complaintForm.get('email')?.errors?.['required']">
+                    {{ "Complaints.RequiredInput" | translate }}
+                </span>
+
+                <span *ngIf="complaintForm.get('email')?.errors?.['email']">
+                    {{ "Complaints.EmailValidation" | translate }}
+                </span>
+            </small>
+        </div>
+        <div class="my-4">
+            <label class="mb-2 label-gray" for="verifyCode">{{"Complaints.VerifyCode" | translate}} <span class="text-danger">*</span></label>
+            <div class="position-relative">
+                <input type="text" id="verifyCode" [readonly]="disableVerifyOTP" formControlName="verifyCode" [readOnly]="complaintForm.get('email')?.invalid"
+                    [placeholder]="'Complaints.VerifyCode' | translate" class=" w-100 p-2 bg-transparent ">
+                <div class="position-absolute end-0 top-50 translate-middle-y">
+                    <span *ngIf="verifyCodeStatus == 'LOADING'" class="spinner-border spinner-border-sm mx-2"
+                        role="status" aria-hidden="true"></span>
+                    <i *ngIf="verifyCodeStatus == 'FAIL'" class="text-danger fa-solid fa-circle-xmark mx-2"
+                        role="status" aria-hidden="true"></i>
+                    <i *ngIf="verifyCodeStatus == 'SUCCESS'" class="text-success mx-2 fa-regular fa-circle-check"
+                        role="status" aria-hidden="true"></i>
                 </div>
+            </div>
+            <div *ngIf="complaintForm.get('verifyCode')?.touched && complaintForm.get('verifyCode')?.invalid && !complaintForm.get('email')?.invalid">
+                <small class="text-danger pt-1" *ngIf="complaintForm.get('verifyCode')?.errors?.['required']">
+                    {{"Complaints.RequiredInput" | translate}}</small>
+                <small class="text-danger pt-1" *ngIf="complaintForm.get('verifyCode')?.errors?.['pattern']">
+                    {{"Complaints.CodePattern" | translate}}</small>
             </div>
         </div>
         <div class="my-4">
-            <label class="mb-2 label-gray" for="message">{{"Complaints.Message" | translate}}</label>
+            <label class="mb-2 label-gray" for="message">{{"Complaints.Message" | translate}} <span class="text-danger">*</span></label>
             <textarea formControlName="message" id="message" cols="30" rows="3"
                 [placeholder]="'Complaints.Message' | translate" class=" w-100  p-2 bg-transparent"></textarea>
             <div *ngIf="complaintForm.get('message')?.touched && complaintForm.get('message')?.invalid">

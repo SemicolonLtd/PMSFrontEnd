@@ -96,16 +96,14 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
       this.complaintsService.submitComplaint(formData).subscribe({
         next: (res) => {
           this.loadingSubmit = false;
-          console.log("response => ", res);
           if (res?.success) {
             this.sendSuccessfully = true;
             this.complaintNumber = res?.data.complaint_number;
-
           }
         },
         error: (err) => {
           this.loadingSubmit = false
-          console.log("error => ", err)
+          this.toastrService.error(err?.error?.message);
         }
       })
     );
@@ -135,7 +133,7 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
         },
         error: (err) => {
           this.complaintTypeLoading = false;
-          this.toastrService.error('err', err?.error?.message);
+          this.toastrService.error(err?.error?.message);
         },
       })
     );
@@ -254,7 +252,7 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
             this.disableCode = true;
           }
         },
-        error: (err) => {
+        error: () => {
           this.userCodeStatus = "FAIL";
           this.userCodeErrorMessage = this.translateService.instant("Complaints.userCodeError")
         },
@@ -272,7 +270,7 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
           this.disableVerifyOTP = true;
         }
       },
-      error: (err) => {
+      error: () => {
         this.verifyCodeStatus = "FAIL";
       }
     }))

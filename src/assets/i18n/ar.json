@@ -223,7 +223,11 @@
         "Loading": "تحميل...",
         "PhoneError": "رقم هاتف غير صالح",
         "CodePattern": "يجب أن يكون الكود مكونًا من 6 أرقام",
-        "ComplaintNumber":"رقم الشكوي"
+        "ComplaintNumber":"رقم الشكوي",
+        "client": "كود العميل",
+        "service_provider": "كود مقدم الخدمة",
+        "resource_supplier": "كود المورد ",
+        "employee": "كود الموظف"
 
     }
 }

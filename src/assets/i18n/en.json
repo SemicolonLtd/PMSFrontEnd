@@ -225,7 +225,11 @@
         "Loading":"Loading...",
         "PhoneError":"Invalid Phone Number",
         "CodePattern":"Code Must be 6 numeric",
-        "ComplaintNumber":"Complaint Number"
+        "ComplaintNumber":"Complaint Number",
+        "client":"Client Code",
+        "service_provider":"Service Provider Code",
+        "resource_supplier":"Resource Supplier Code",
+        "employee":"Employee Code"
     }
 
 }
