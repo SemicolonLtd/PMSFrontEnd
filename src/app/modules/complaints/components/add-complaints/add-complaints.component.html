@@ -1,3 +1,5 @@
+<h1>{{currentLang}}</h1>
+
 <section class="py-5 container">
     <h2 class="fw-bold">{{"Complaints.NewComplaint" | translate}}</h2>
     <form [formGroup]="complaintForm" class="bg-form my-4 p-5">
@@ -71,7 +73,7 @@
             <div class="position-relative">
                 <input formControlName="code" [readonly]="disableCode" type="text" class=" w-100  p-2 bg-transparent "
                     id="userCode" [placeholder]=" 'Complaints.Code' | translate">
-                <div class="position-absolute end-0 top-50 translate-middle-y">
+                <div [ngClass]="currentLang == 'en' ? 'end-0' : 'start-0'"  class="position-absolute  top-50 translate-middle-y" >
                     <span *ngIf="userCodeStatus == 'LOADING'" class="spinner-border spinner-border-sm mx-2"
                         role="status" aria-hidden="true"></span>
                     <i *ngIf="userCodeStatus == 'FAIL'" class="text-danger fa-solid fa-circle-xmark mx-2" role="status"
@@ -107,9 +109,10 @@
                     <input [readonly]="readonlyMainInfo" formControlName="email" id="email" type="email"
                         [readonly]="readonlyEmail()" [placeholder]="'Complaints.Email' | translate"
                         class="w-100 p-2 bg-transparent" />
-                    <small *ngIf="!complaintForm.get('email')?.invalid"
-                        class="fw-bold position-absolute end-0 top-50 translate-middle-y me-2 text-primary cursor-pointer text-black"
-                        (click)="emailTyping()">
+                    <small *ngIf="!complaintForm.get('email')?.invalid" 
+                    [ngClass]="currentLang == 'en' ? 'end-0' : 'start-0'"
+                        class="fw-bold position-absolute top-50 translate-middle-y me-2 text-primary cursor-pointer text-black"
+                        (click)="emailTyping()"  >
                         {{"Complaints.GetCode" | translate}}
                     </small>
                 </div>
@@ -131,7 +134,7 @@
             <div class="position-relative">
                 <input type="text" id="verifyCode" [readonly]="disableVerifyOTP" formControlName="verifyCode" [readOnly]="complaintForm.get('email')?.invalid"
                     [placeholder]="'Complaints.VerifyCode' | translate" class=" w-100 p-2 bg-transparent ">
-                <div class="position-absolute end-0 top-50 translate-middle-y">
+                <div [ngClass]="currentLang == 'en' ? 'end-0' : 'start-0'" class="position-absolute top-50 translate-middle-y">
                     <span *ngIf="verifyCodeStatus == 'LOADING'" class="spinner-border spinner-border-sm mx-2"
                         role="status" aria-hidden="true"></span>
                     <i *ngIf="verifyCodeStatus == 'FAIL'" class="text-danger fa-solid fa-circle-xmark mx-2"
@@ -189,6 +192,6 @@
         <h5 class="mt-4">{{"Complaints.ComplaintNumber" | translate}}: {{complaintNumber}}</h5>
         <button (click)="closePopUp() " class="px-5 py-2 my-3 rounded-2">{{"Complaints.SendAnother" |
             translate}}</button>
-        <i (click)="closePopUp() " class="cursor-pointer fa-x fa-solid position-absolute top-0 end-0 m-5"></i>
+        <i (click)="closePopUp() " [ngClass]="currentLang == 'en' ? 'end-0' : 'start-0'" class="cursor-pointer fa-x fa-solid position-absolute top-0 m-5"></i>
     </div>
 </section>

@@ -23,6 +23,7 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
 
   // Variable >>
   private subscription: Subscription = new Subscription();
+  currentLang  = this.translateService.currentLang || 'en';
   complaintForm!: FormGroup;
   employeeErrorMessage: string = '';
   userCodeErrorMessage: string = '';
@@ -47,6 +48,7 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
     'service_provider',
     'resource_supplier',
   ];
+  
 
   // Life Cycle Component
   ngOnInit(): void {
@@ -54,8 +56,9 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
     this.verifyCodeTyping();
     this.getComplaintTypesByUser('client');
     this.onChangeUserCode();
-
-  }
+    this.translateService.onLangChange.subscribe(lang => {
+      this.currentLang  = lang.lang;
+    });  }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
