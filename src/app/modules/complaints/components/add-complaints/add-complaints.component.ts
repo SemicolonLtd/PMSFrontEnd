@@ -27,6 +27,7 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
   userCodeErrorMessage: string = '';
   userCodeStatus: Status = 'DEFAULT';
   verifyCodeStatus: Status = 'DEFAULT';
+  verifyEmailStatus:Status = "DEFAULT";
   sendSuccessfully: boolean = false;
   loadingSubmit: boolean = false;
   complaintTypeLoading: boolean = false;
@@ -75,21 +76,54 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
     );
   }
   emailDomainValidator(): ValidatorFn {
-    return (group: AbstractControl): ValidationErrors | null => {
-      const type = group.get('type')?.value;
-      const email = group.get('email')?.value;
+    return (form: AbstractControl): ValidationErrors | null => {
+      const type = form.get('type')?.value;
+      const emailControl = form.get('email');
+      const email = emailControl?.value;
   
-      if (type === 'employee') {
-        if (!email?.includes('@pms')) {
-          group.get('email')?.setErrors({ domain: true });
-          return { domain: true };
+      if (!email || emailControl?.errors?.['email']) {
+        // لو الإيميل فاضي أو فيه خطأ في الصيغة، مانعملش أي حاجة
+        return null;
+      }
+  
+      const errors: any = {};
+  
+      // شرط @pms لو type = employee
+      if (type === 'employee' && !email.includes('@pms')) {
+        errors['missingPms'] = true;
+      }
+  
+      // تحقق من الامتداد
+      const validExtensions = ['.com', '.net', '.org', '.edu', '.gov'];
+      const lowerEmail = email.toLowerCase();
+      const endsWithValidExtension = validExtensions.some(ext =>
+        lowerEmail.endsWith(ext)
+      );
+  
+      if (!endsWithValidExtension) {
+        errors['invalidExtension'] = true;
+      }
+  
+      if (Object.keys(errors).length > 0) {
+        emailControl?.setErrors({ ...emailControl.errors, ...errors });
+        return errors;
+      }
+  
+      // إزالة الأخطاء السابقة إن وجدت
+      if (emailControl?.errors) {
+        delete emailControl.errors['missingPms'];
+        delete emailControl.errors['invalidExtension'];
+        if (Object.keys(emailControl.errors).length === 0) {
+          emailControl.setErrors(null);
         }
       }
   
       return null;
     };
   }
-
+  
+  
+  
   readonlyEmail(): boolean {
     if (this.usersHaveCode?.includes(this.complaintForm.get('type')?.value)) {
       return (
@@ -312,10 +346,12 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
   }
 
   initComplaint(data: any): void {
+    this.verifyEmailStatus = "LOADING";
     this.subscription.add(
       this.complaintsService.initiateComplaint(data).subscribe({
         next: (res) => {
           if (res?.success) {
+            this.verifyEmailStatus = "SUCCESS";
             this.complaintId = res?.data?.complaint_id;
             this.toastrService.success(
               this.translateService.instant('Complaints.CodeSendSuccessfully')
@@ -323,6 +359,8 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
           }
         },
         error: (err) => {
+          this.verifyEmailStatus = "FAIL";
+          this.isVerify = false;
           this.toastrService.error(err?.error?.message);
         },
       })
@@ -339,8 +377,10 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
     this.userCodeErrorMessage = '';
     this.userCodeStatus = 'DEFAULT';
     this.verifyCodeStatus = 'DEFAULT';
+    this.verifyEmailStatus = "DEFAULT";
     this.showCode = true;
     this.STEP = 0;
+    this.isVerify = false;
   }
   
 

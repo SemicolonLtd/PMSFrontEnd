@@ -108,27 +108,47 @@
                     <input (blur)="onEmailBlur()"  formControlName="email" id="email" type="email"
                     [placeholder]="(complaintForm.get('type')?.value == 'employee' ? 'Complaints.Example' : 'Complaints.Email') | translate"
                         class="w-100 p-2 bg-transparent" />
-                        <small *ngIf="complaintForm.get('type')?.valid && complaintForm.get('complaint_type_id')?.valid && complaintForm.get('full_name')?.valid && complaintForm.get('phone_number')?.valid && complaintForm.get('email')?.valid" 
-                    [ngClass]="currentLang == 'en' ? 'end-0' : 'start-0'"
-                        class="fw-bold position-absolute top-50 translate-middle-y me-2 text-primary cursor-pointer text-black"
-                        (click)="emailTyping()"  >
-                        {{"Complaints.GetCode" | translate}}
+                    <small [ngClass]="currentLang == 'en' ? 'end-0' : 'start-0'"
+                    class="fw-bold position-absolute top-50 translate-middle-y me-2 text-primary cursor-pointer text-black">
+                        
+                        <span *ngIf="verifyEmailStatus == 'LOADING'" class="spinner-border spinner-border-sm mx-2"
+                        role="status" aria-hidden="true"></span>
+                    <i *ngIf="verifyEmailStatus == 'FAIL'" class="text-danger fa-solid fa-circle-xmark mx-2"
+                        role="status" aria-hidden="true"></i>
+                    <i *ngIf="verifyEmailStatus == 'SUCCESS'" class="text-success mx-2 fa-regular fa-circle-check"
+                        role="status" aria-hidden="true"></i>
+                        <span (click)="emailTyping()"  *ngIf="complaintForm.get('type')?.valid && complaintForm.get('complaint_type_id')?.valid && complaintForm.get('full_name')?.valid && complaintForm.get('phone_number')?.valid && complaintForm.get('email')?.valid "  >
+                            {{"Complaints.GetCode" | translate}}
+                        </span>
                     </small>
                 </div>
             </div>
             <small class="text-danger pt-1"
-                *ngIf="complaintForm.get('email')?.touched && complaintForm.get('email')?.invalid ">
-                <span *ngIf="complaintForm.get('email')?.errors?.['required']">
-                    {{ "Complaints.RequiredInput" | translate }}
-                </span>
-                <span *ngIf="complaintForm.get('email')?.errors?.['domain']">
-                    {{ "Complaints.EmployeeEmail" | translate }}
-                </span>
-
-                <span *ngIf="complaintForm.get('email')?.errors?.['email']">
-                    {{ "Complaints.EmailValidation" | translate }}
-                </span>
-            </small>
+            *ngIf="complaintForm.get('email')?.touched && complaintForm.get('email')?.invalid">
+     
+       <!-- شرط خاص بالموظف -->
+       <span *ngIf="complaintForm.get('email')?.errors?.['missingPms']">
+         {{ "Complaints.EmployeeEmail" | translate }}
+       </span>
+     
+       <!-- لو مش خطأ موظف، نعرض باقي الأخطاء -->
+       <ng-container *ngIf="!complaintForm.get('email')?.errors?.['missingPms']">
+         
+         <span *ngIf="complaintForm.get('email')?.errors?.['required']">
+           {{ "Complaints.RequiredInput" | translate }}
+         </span>
+     
+         <span *ngIf="complaintForm.get('email')?.errors?.['email']">
+           {{ "Complaints.EmailValidation" | translate }}
+         </span>
+     
+         <span *ngIf="complaintForm.get('email')?.errors?.['invalidExtension']">
+           {{ "Complaints.EmailValidation" | translate }}
+         </span>
+     
+       </ng-container>
+     
+     </small>
         </div>
         <div *ngIf="complaintForm.get('type')?.valid && complaintForm.get('complaint_type_id')?.valid && complaintForm.get('full_name')?.valid && complaintForm.get('phone_number')?.valid && complaintForm.get('email')?.valid" class="my-4">
             <label class="mb-2 label-gray" for="verifyCode">{{"Complaints.VerifyCode" | translate}} <span class="text-danger">*</span></label>
