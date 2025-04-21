@@ -173,6 +173,8 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
     this.complaintForm.patchValue({ type: event?.target?.value });
     this.verifyCodeStatus = 'DEFAULT';
     this.userCodeStatus = 'DEFAULT';
+    this.verifyEmailStatus = "DEFAULT";
+    this.isVerify = false;
     this.userCodeErrorMessage = '';
   }
 
