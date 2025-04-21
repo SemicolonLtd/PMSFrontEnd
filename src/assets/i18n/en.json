@@ -218,7 +218,7 @@
         "EmailValidation":"Invalid email format",
         "userCodeError":"Invalid User Code",
         "ErrorComplaintType":"Incorrect complaint number",
-        "GetCode":"Get Code",
+        "GetCode":"Verify",
         "SendSuccessfully":"Your Complaint sent successfully",
         "SendAnother":"Send Another One",
         "CodeSendSuccessfully":"Code sent successfully",
@@ -229,7 +229,11 @@
         "client":"Client Code",
         "service_provider":"Service Provider Code",
         "resource_supplier":"Resource Supplier Code",
-        "employee":"Employee Code"
+        "employee":"Employee Code",
+        "Next":"Next",
+        "Prev":"Prev",
+        "EmployeeId":"Employee Id",
+        "Example":"example@pms.com"
     }
 
 }

@@ -144,3 +144,12 @@ input[type="radio"]:checked + .custom-radio::after {
 {
   font-size: 5rem;
 }
+
+.fs-small
+{
+  font-size: .75rem;
+  &:hover 
+  {
+    cursor: pointer;
+  }
+}

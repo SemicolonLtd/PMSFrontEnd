@@ -227,7 +227,13 @@
         "client": "كود العميل",
         "service_provider": "كود مقدم الخدمة",
         "resource_supplier": "كود المورد ",
-        "employee": "كود الموظف"
+        "employee": "كود الموظف",
+        "Next":"التالي",
+        "Prev":"السابق",
+        "EmployeeId": "معرّف الموظف",
+        "Example":"example@pms.com"
+
+
 
     }
 }
