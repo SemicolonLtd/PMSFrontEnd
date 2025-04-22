@@ -23,4 +23,11 @@ export class GetComplaintsComponent {
     return /\.(jpg|jpeg|png|gif|bmp|webp)$/i.test(url);
   }
 
+
+  getRowsCount(message: string): number {
+    if (!message) return 1;  
+    const lines = message.split(/\r\n|\n/);
+    return Math.max(lines.length, 3); 
+  }
+
 }

@@ -32,8 +32,14 @@
   
       <div class="col-sm-12 col-md-6 col-lg-4">
         <label class="mb-2">{{ "Complaints.Message" | translate }}</label>
-        <input readonly [value]="complaintData?.message" type="text" class="w-100 p-2 bg-transparent" [placeholder]="'Complaints.Message' | translate" />
-      </div>
+        <textarea
+        readonly
+        [value]="complaintData?.message"
+        class="w-100 p-2 bg-transparent"
+        [placeholder]="'Complaints.Message' | translate"
+        [attr.rows]="getRowsCount(complaintData?.message)"
+        style="white-space: pre-line;">
+      </textarea>      </div>
   
       <!-- Main Files -->
       <div class="col-12">
