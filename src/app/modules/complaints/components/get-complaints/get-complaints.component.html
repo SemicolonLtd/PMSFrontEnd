@@ -29,8 +29,12 @@
         <label class="mb-2">{{ "Complaints.PhoneNumber" | translate }}</label>
         <input readonly [value]="complaintData?.phone_number" type="text" class="w-100 p-2 bg-transparent" [placeholder]="'Complaints.PhoneNumber' | translate" />
       </div>
-  
       <div class="col-sm-12 col-md-6 col-lg-4">
+        <label class="mb-2">{{ "Complaints.CreatedAt" | translate }}</label>
+        <input readonly [value]="complaintData?.created_at" type="text" class="w-100 p-2 bg-transparent" [placeholder]="'Complaints.CreatedAt' | translate" />
+      </div>
+  
+      <div class="col-12">
         <label class="mb-2">{{ "Complaints.Message" | translate }}</label>
         <textarea
         readonly
@@ -43,7 +47,7 @@
   
       <!-- Main Files -->
       <div class="col-12">
-        <div *ngFor="let file of complaintData?.files">
+        <div class="d-flex justify-content-between my-2" *ngFor="let file of complaintData?.files">
           <div class="upload-btn-wrapper">
             <a (click)="openFileModal(file?.file_path)" class="btn-upload px-4 d-inline-flex align-items-center gap-2" style="cursor: pointer;">
               {{ "Complaints.File" | translate }}
@@ -52,6 +56,7 @@
               </svg>
             </a>
           </div>
+          <p>{{file?.created_at }}</p>
         </div>
       </div>
     </div>
@@ -61,8 +66,8 @@
       <h3>{{ "Complaints.Replies" | translate }}</h3>
   
       <div *ngFor="let replay of complaintData?.replies" class="bg-white p-4">
-        <p class="text-wrap w-100">{{ replay?.message }}</p>
-  
+          <p class="text-wrap w-100">{{ replay?.message }}</p>
+        <p>{{replay?.created_at }}</p>
         <div *ngFor="let file of replay?.attachments" class="d-flex justify-content-between align-items-center my-4">
           <div class="upload-btn-wrapper">
             <a (click)="openFileModal(file?.file_path)" class="btn-upload px-4 d-inline-flex align-items-center gap-2" style="cursor: pointer;">
@@ -72,7 +77,7 @@
               </svg>
             </a>
           </div>
-          <p>{{ file?.created_at | date }}</p>
+          <p>{{ file?.created_at }}</p>
         </div>
       </div>
     </div>

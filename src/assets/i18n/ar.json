@@ -231,7 +231,10 @@
         "Next":"التالي",
         "Prev":"السابق",
         "EmployeeId": "معرّف الموظف",
-        "Example":"example@pms.com"
+        "Example":"example@pms.com.eg",
+        "Home":"الصفحة الرئيسية",
+        "CreatedAt":"تاريخ الانشاء"
+
 
 
 

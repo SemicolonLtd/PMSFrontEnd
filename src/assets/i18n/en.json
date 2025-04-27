@@ -233,7 +233,9 @@
         "Next":"Next",
         "Prev":"Prev",
         "EmployeeId":"Employee Id",
-        "Example":"example@pms.com"
+        "Example":"example@pms.com.eg",
+        "Home":"Home Page",
+        "CreatedAt":"Created At"
     }
 
 }

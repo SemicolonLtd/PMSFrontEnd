@@ -2,7 +2,7 @@
     <h2 class="fw-bold">{{"Complaints.NewComplaint" | translate}}</h2>
     <form [formGroup]="complaintForm" class="bg-form my-4 p-5">
         <div *ngIf="STEP == 0">
-            <h3 class="h4 my-4">{{"Complaints.TheComplaint" | translate}}</h3>
+            <label class="mb-2 label-gray">{{"Complaints.TheComplaint" | translate}}  <span class="text-danger">*</span></label>
         <div class="row justify-content-start">
             <div class="col-sm-6 col-md-3  w-fit">
                 <input formControlName="type"  (change)="onUserTypeChange($event)" type="radio" name="type" id="client"
@@ -28,7 +28,7 @@
         </div>
 
         <div class="my-4">
-            <label class="mb-3" for="ComplainantType">{{"Complaints.ComplainantType" | translate}}  <span class="text-danger">*</span></label>
+            <label class="mb-2 label-gray" for="ComplainantType">{{"Complaints.ComplainantType" | translate}}  <span class="text-danger">*</span></label>
             <select formControlName="complaint_type_id" name="complaintType" class="w-100 p-3 rounded-3 border-0"
                 id="ComplainantType" >
                 <option value=""  >
@@ -172,8 +172,8 @@
             </div>
         </div>
         <div class="d-flex justify-content-end">
-            <button (click)="this.STEP = 1" type="submit" [disabled]="complaintForm.get('type')?.invalid || complaintForm.get('complaint_type_id')?.invalid || complaintForm.get('full_name')?.invalid || complaintForm.get('phone_number')?.invalid || complaintForm.get('email')?.invalid || complaintForm.get('verifyCode')?.invalid || verifyEmailStatus == 'FAIL'"
-        class="border-0 text-white border-0 rounded-3 px-4 fw-medium py-2"> {{"Complaints.Next" |
+            <button (click)="this.STEP = 1" type="submit" [disabled]="complaintForm.get('type')?.invalid || complaintForm.get('complaint_type_id')?.invalid || complaintForm.get('full_name')?.invalid || complaintForm.get('phone_number')?.invalid || complaintForm.get('email')?.invalid || complaintForm.get('verifyCode')?.invalid || verifyEmailStatus == 'FAIL' || verifyCodeStatus != 'SUCCESS'"
+        class="border-0 text-white border-0 rounded-3 px-4 fw-medium py-2 btn-special"> {{"Complaints.Next" |
         translate}}</button>
         </div>
         </div>
@@ -206,10 +206,10 @@
             </div>
             <div class="d-flex justify-content-between mb-4">
                 <button (click)="this.STEP = 0" 
-                class="border-0 text-white border-0 rounded-3 px-4 fw-medium py-2 "> {{"Complaints.Prev" |
+                class="border-0 text-white border-0 rounded-3 px-4 fw-medium py-2 btn-special"> {{"Complaints.Prev" |
                 translate}}</button>
                 <button (click)="addComplaint()" type="submit" [disabled]="isSubmitDisabled"
-                    class="border-0 text-white border-0 rounded-3 px-3 fw-medium"> {{"Complaints.SendComplaint" |
+                    class="border-0 text-white border-0 rounded-3 px-3 fw-medium btn-special"> {{"Complaints.SendComplaint" |
                     translate}}<span *ngIf="loadingSubmit" class="spinner-border spinner-border-sm mx-2" role="status"
                         aria-hidden="true"></span></button>
             </div>
@@ -225,8 +225,13 @@
         <img class="w-25 mx-auto" src="../../../../../assets/images/global/correct.gif" alt="">
         <h3 class="mt-4">{{"Complaints.SendSuccessfully" | translate}}</h3>
         <h5 class="mt-4">{{"Complaints.ComplaintNumber" | translate}}: {{complaintNumber}}</h5>
-        <button (click)="closePopUp() " class="px-5 py-2 my-3 rounded-2">{{"Complaints.SendAnother" |
-            translate}}</button>
+        <div class="my-4 row justify-content-center">
+            <button (click)="closePopUp() " class=" col-6  mx-1 rounded-2 btn-special">{{"Complaints.SendAnother" |
+                translate}}</button>
+                
+            <button routerLink="/"  class=" col-5 mx-1  rounded-2 btn btn-light btn">{{"Complaints.Home" |
+                translate}}</button>
+        </div>
         <i (click)="closePopUp() " [ngClass]="currentLang == 'en' ? 'end-0' : 'start-0'" class="cursor-pointer fa-x fa-solid position-absolute top-0 m-5"></i>
     </div>
 </section>

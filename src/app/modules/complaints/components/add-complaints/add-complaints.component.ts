@@ -89,12 +89,12 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
       const errors: any = {};
   
       // شرط @pms لو type = employee
-      if (type === 'employee' && !email.includes('@pms')) {
+      if (type === 'employee' && !email.includes('@pms.com.eg')) {
         errors['missingPms'] = true;
       }
   
       // تحقق من الامتداد
-      const validExtensions = ['.com', '.net', '.org', '.edu', '.gov'];
+      const validExtensions = ['.com', '.net', '.org', '.edu', '.gov','.com.eg'];
       const lowerEmail = email.toLowerCase();
       const endsWithValidExtension = validExtensions.some(ext =>
         lowerEmail.endsWith(ext)
@@ -370,6 +370,7 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
   }
 
   closePopUp(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.sendSuccessfully = false;
     this.complaintForm.reset();
     this.complaintForm.patchValue({type:'client'})
