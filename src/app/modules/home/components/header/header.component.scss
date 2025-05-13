@@ -95,9 +95,7 @@
         .item-wrapper {
             font-family: 'title-font';
             text-align: center;
-            &:not(:last-of-type) {
-                margin-inline-end: 3rem;
-            }
+
             .count-wrapper {
                 display: inline-flex;
                 align-items: baseline;
@@ -108,13 +106,13 @@
                     font-weight: 700;
                 }
                 .sign.plus {
-                    font-size: 3.2rem;
+                    font-size: 3rem;
                     @media (max-width: 768px) {
-                        font-size: 1.2rem;
+                        font-size: 1em;
                     }
                 }
                 .sign.text {
-                    font-size: 0.8rem;
+                    font-size: 0.6em;
                 }
                 @media (min-width: 768px) {
                     .label {
@@ -269,7 +267,7 @@
 
 .carousel-caption {
     z-index: 2;
-    top: 57%;
+    top: 50%;
     transform: translateY(-50%);
     // @media (max-height: 850px) {
     //     font-size: 3.3rem;
@@ -294,12 +292,5 @@
 
 }
 
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right:0;
-    background-color: rgba(0, 0, 0, 0.6);
-}
+
 

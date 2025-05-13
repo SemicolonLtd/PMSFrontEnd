@@ -94,7 +94,24 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
       }
   
       // تحقق من الامتداد
-      const validExtensions = ['.com', '.net', '.org', '.edu', '.gov','.com.eg','.eg'];
+      const validExtensions = [
+        // Generic TLDs
+        ".com", ".net", ".org", ".info", ".biz", ".name", ".xyz", ".online" , ".com.eg",
+        ".site", ".tech", ".store", ".app", ".dev", ".web", ".live",
+      
+        // Sponsored / Restricted TLDs
+        ".edu", ".gov", ".mil", ".int", ".aero", ".coop", ".museum",
+      
+        // Country Code TLDs (ccTLDs)
+        ".us", ".uk", ".ca", ".de", ".fr", ".ru", ".cn", ".in", ".au", ".br",
+        ".mx", ".jp", ".es", ".it", ".sa", ".ae", ".eg", ".jo", ".qa", ".pk", ".tr",
+      
+        // ccTLDs used for general purposes
+        ".tv", ".me", ".io", ".ai", ".cc", ".co",
+      
+        // New gTLDs
+        ".blog", ".design", ".agency", ".media", ".photo", ".news", ".law", ".health", ".finance"
+      ]
       const lowerEmail = email.toLowerCase();
       const endsWithValidExtension = validExtensions.some(ext =>
         lowerEmail.endsWith(ext)
