@@ -90,7 +90,7 @@
         <div class="my-4">
             <label class="mb-2 label-gray" for="phone">{{"Complaints.PhoneNumber" | translate}} <span class="text-danger">*</span></label>
             <input formControlName="phone_number" type="tel"
-                class=" w-100  p-2 bg-transparent " id="phone" [placeholder]="'Complaints.PhoneNumber' | translate">
+                class=" w-100  p-2 bg-transparent " id="phone" [placeholder]="'Complaints.PhoneNumber' | translate" (keydown)="preventLetters($event)">
             <small class="text-danger pt-1"
                 *ngIf="complaintForm.get('phone_number')?.touched && complaintForm.get('phone_number')?.invalid">
                 <span *ngIf="complaintForm.get('phone_number')?.errors?.['required']">

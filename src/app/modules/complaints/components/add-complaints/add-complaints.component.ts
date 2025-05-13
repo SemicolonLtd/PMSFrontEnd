@@ -63,7 +63,7 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
         full_name: ['', Validators.required],
         phone_number: [
           '',
-          [Validators.required, Validators.pattern(/^(?:\+|00)?[0-9]{8,15}$/)],
+          [Validators.required, Validators.pattern(/^(?:\+|00)?[0-9]{10,15}$/)],
         ],
         email: ['', [Validators.required, Validators.email]],
         code: ['', Validators.required],
@@ -89,12 +89,12 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
       const errors: any = {};
   
       // شرط @pms لو type = employee
-      if (type === 'employee' && !email.includes('@pms.com.eg')) {
+      if (type === 'employee' && !email.includes('@pms.eg')) {
         errors['missingPms'] = true;
       }
   
       // تحقق من الامتداد
-      const validExtensions = ['.com', '.net', '.org', '.edu', '.gov','.com.eg'];
+      const validExtensions = ['.com', '.net', '.org', '.edu', '.gov','.com.eg','.eg'];
       const lowerEmail = email.toLowerCase();
       const endsWithValidExtension = validExtensions.some(ext =>
         lowerEmail.endsWith(ext)
@@ -122,7 +122,19 @@ export class AddComplaintsComponent implements OnInit, OnDestroy {
     };
   }
   
+  preventLetters(event: KeyboardEvent) {
+    const allowedKeys = [
+      'Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Delete'
+    ];
   
+    // السماح بالأرقام أو المفاتيح المسموحة
+    if (
+      !/^[0-9]$/.test(event.key) &&
+      !allowedKeys.includes(event.key)
+    ) {
+      event.preventDefault();
+    }
+  }
   
   readonlyEmail(): boolean {
     if (this.usersHaveCode?.includes(this.complaintForm.get('type')?.value)) {
