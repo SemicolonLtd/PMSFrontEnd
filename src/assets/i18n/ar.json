@@ -102,8 +102,10 @@
         "EventInfo": "معلومات الفعالية"
     },
     "Tenders": {
-        "LatestEvent": "اخر فعالية",
-        "EventAndActivities": "الفعاليات والنشاطات",
+        "LatestEvent":"اخر فعالية",
+        "EventAndActivities":"الفعاليات والنشاطات",
+        "TenderAndActivities":"المناقصات",
+        "TenderCaption":"يمكنك الاطلاع على المناقصات الخاصة بشركة خدمات البترول البحرية واستعراضها ومعرفة شروطها من خلال هذه الصفحة",
         "More": "المزيد...",
         "StartDate": "تاريخ البدء",
         "EndDate": "تاريخ الإنتهاء",

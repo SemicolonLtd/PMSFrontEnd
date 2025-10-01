@@ -17,7 +17,7 @@ export class ApiInterceptor implements HttpInterceptor {
     if (environment.lang) {
       request = request.clone({
         setHeaders: {
-          'x-lang': this.cookieService.get('lang') || ''
+          'x-lang': this.cookieService.get('lang') || environment.lang
         }
       })
     }
