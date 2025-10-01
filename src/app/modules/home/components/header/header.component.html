@@ -17,7 +17,7 @@
                     <a type="button" target="_blank" *ngIf="slider.link_to" class="btn btn-light show-more" [href]="slider.link_to">
                         {{slider.button}}
                     </a>
-                    <div class="statistics flex justify-content-center align-items-center">
+                    <div class="statistics flex justify-content-between align-items-center p-0">
                         <div class="item-wrapper">
                             <span class="count-wrapper">
                                 <span class="count d-block" [countUp]="statistics?.technical" [options]="{duration: 6}">
@@ -69,15 +69,16 @@
                 
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-        <div class="overlay"></div>
+        <div class="postion-absolute bottom-0 ">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
     </div>
     <div class="loader-wrapper">
         <app-loading  type="small" *ngIf="loading"></app-loading>

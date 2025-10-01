@@ -1,0 +1,60 @@
+$main-color:#0B396A;
+$main-color-hover:#082a4e;
+$main-color-focus:#082a4e;
+$cover-color:rgb(241, 250, 252);
+
+
+.special-dev  
+{
+  background-color: $main-color;
+  border: none;
+}
+
+input  , textarea
+{
+  border: none;
+  border-bottom: solid 1px black;
+  &:focus 
+  {
+    outline: none;
+  }
+}
+
+.bg-cover 
+{
+  background-color: $cover-color;
+}
+
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn-upload {
+  border: 1px solid #001f3f;
+  color: black;
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.upload-btn-wrapper input[type="file"] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.upload-btn-wrapper svg {
+  width: 16px;
+  height: 16px;
+}

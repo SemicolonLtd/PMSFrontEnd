@@ -1,0 +1,103 @@
+<section class="py-5 container">
+    <div class="d-flex justify-content-between align-items-start">
+      <h3>{{ "Complaints.ComplaintsNom" | translate }}: {{ complaintData?.complaint_number }}</h3>
+      <div class="text-white rounded-2 special-dev px-4 py-2">{{ complaintData?.status }}</div>
+    </div>
+  
+    <div class="my-5 p-4 pb-5 bg-cover row g-4">
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <label class="mb-2">{{ "Complaints.TheComplaint" | translate }}</label>
+        <input readonly [value]="complaintData?.type" type="text" class="w-100 p-2 bg-transparent" [placeholder]="'Complaints.TheComplaint' | translate" />
+      </div>
+  
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <label class="mb-2">{{ "Complaints.ComplainantType" | translate }}</label>
+        <input readonly [value]="complaintData?.complaint_type?.name" type="text" class="w-100 p-2 bg-transparent" [placeholder]="'Complaints.ComplainantType' | translate" />
+      </div>
+  
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <label class="mb-2">{{ "Complaints.FullName" | translate }}</label>
+        <input readonly [value]="complaintData?.full_name" type="text" class="w-100 p-2 bg-transparent" [placeholder]="'Complaints.FullName' | translate" />
+      </div>
+  
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <label class="mb-2">{{ "Complaints.Email" | translate }}</label>
+        <input readonly [value]="complaintData?.email" type="text" class="w-100 p-2 bg-transparent" [placeholder]="'Complaints.Email' | translate" />
+      </div>
+  
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <label class="mb-2">{{ "Complaints.PhoneNumber" | translate }}</label>
+        <input readonly [value]="complaintData?.phone_number" type="text" class="w-100 p-2 bg-transparent" [placeholder]="'Complaints.PhoneNumber' | translate" />
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <label class="mb-2">{{ "Complaints.CreatedAt" | translate }}</label>
+        <input readonly [value]="complaintData?.created_at" type="text" class="w-100 p-2 bg-transparent" [placeholder]="'Complaints.CreatedAt' | translate" />
+      </div>
+  
+      <div class="col-12">
+        <label class="mb-2">{{ "Complaints.Message" | translate }}</label>
+        <textarea
+        readonly
+        [value]="complaintData?.message"
+        class="w-100 p-2 bg-transparent"
+        [placeholder]="'Complaints.Message' | translate"
+        [attr.rows]="getRowsCount(complaintData?.message)"
+        style="white-space: pre-line;">
+      </textarea>      </div>
+  
+      <!-- Main Files -->
+      <div class="col-12">
+        <div class="d-flex justify-content-between my-2" *ngFor="let file of complaintData?.files">
+          <div class="upload-btn-wrapper">
+            <a (click)="openFileModal(file?.file_path)" class="btn-upload px-4 d-inline-flex align-items-center gap-2" style="cursor: pointer;">
+              {{ "Complaints.File" | translate }}
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20">
+                <path d="M21.44 11.05l-8.49 8.49a5.66 5.66 0 01-8-8l8.49-8.49a3.54 3.54 0 015 5l-8.5 8.49a1.41 1.41 0 01-2-2l7.79-7.8" />
+              </svg>
+            </a>
+          </div>
+          <p>{{file?.created_at }}</p>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Replies -->
+    <div *ngIf="complaintData?.replies?.length" class="my-3 px-3 py-4 bg-cover row g-3">
+      <h3>{{ "Complaints.Replies" | translate }}</h3>
+  
+      <div *ngFor="let replay of complaintData?.replies" class="bg-white p-4">
+          <p class="text-wrap w-100">{{ replay?.message }}</p>
+        <p>{{replay?.created_at }}</p>
+        <div *ngFor="let file of replay?.attachments" class="my-4">
+          <div class="upload-btn-wrapper">
+            <a (click)="openFileModal(file?.file_path)" class="btn-upload px-4 d-inline-flex align-items-center gap-2" style="cursor: pointer;">
+              {{ "Complaints.File" | translate }}
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20">
+                <path d="M21.44 11.05l-8.49 8.49a5.66 5.66 0 01-8-8l8.49-8.49a3.54 3.54 0 015 5l-8.5 8.49a1.41 1.41 0 01-2-2l7.79-7.8" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Bootstrap Modal -->
+  <div class="modal fade" id="fileModal" tabindex="-1" aria-labelledby="fileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <ng-container *ngIf="isImage(selectedFile)">
+            <img [src]="selectedFile" class="img-fluid" style="max-height: 80vh;" />
+          </ng-container>
+          <ng-container *ngIf="!isImage(selectedFile)">
+            <iframe [src]="selectedFile" width="100%" height="600px" frameborder="0"></iframe>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+  
